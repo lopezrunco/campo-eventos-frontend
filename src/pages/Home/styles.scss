@@ -1,0 +1,27 @@
+@import '../../Variables.scss';
+
+.breadcrumbs {
+    background: $primary-color;
+    background: $primary-gradient;
+    color: $light-color;
+    margin-bottom: -1rem;
+    padding: 1rem 0;
+
+    .path {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        a {
+            color: $light-color;
+        }
+
+        i {
+            font-size: .5rem;
+        }
+
+        .actual-location {
+            color: $accent-color;
+        }
+    }
+}
