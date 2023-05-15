@@ -15,6 +15,7 @@ import { NotFound } from "./pages/NotFound";
 import { Home } from "./pages/Home";
 import { Servicios } from "./pages/Servicios";
 import Login from "./pages/security/Login";
+import Register from "./pages/security/Register";
 
 import { ScrollOnNav } from "./components/ScrollOnNav";
 import { Loader } from "./components/Loader";
@@ -41,7 +42,7 @@ const reducer = (state, action) => {
     case LOGIN:
       // Take user data and set it in local storage
       localStorage.setItem("user", JSON.stringify(action.payload.user));
-      localStorage.setItem("token", action.payload.user.role);
+      localStorage.setItem("token", action.payload.user.token);
       localStorage.setItem("refreshToken", action.payload.user.refreshToken);
 
       // Return new state
@@ -144,6 +145,7 @@ function App() {
           <Routes>
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
