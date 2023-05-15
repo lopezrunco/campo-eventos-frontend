@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;0,900;1,100;1,400;1,700;1,900&family=Salsa&display=swap');
+@import './Variables.scss';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+::selection {
+  background-color: $medium-dark-color;
+  color: $medium-light-color;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: $light-color;
+  color: $dark-color;
+  transition: $main-transition;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: $dark-color;
+  transition: $main-transition;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+section {
+  padding: 5rem 0;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+.container {
+  max-width: 1140px;
+}
+
+.separator {
+  background-color: $primary-color;
+  height: 1px;
+  width: 7rem;
+  margin: 1rem 0 2rem;
+}
+
+// Tags
+.tags {
+  span {
+    display: inline-block;
+    border: 1px solid $primary-color;
+    padding: .3rem .6rem;
+    margin: .6rem .3rem;
+    color: $primary-color;
+    font-size: 0.8rem;
+  }
+}
+
+// Buttons
+.button {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 0.5rem 1.9rem;
+  border-radius: $lg-border-radius;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: $main-transition;
+  cursor: pointer;
+
+  i {
+    margin-right: .5rem;
+  }
+
+  &.button-dark {
+    background-color: $primary-color;
+    color: $light-color;
+
+    &:hover {
+      background-color: $primary-medium-dark-color;
+      color: $light-color;
+    }
+  }
+
+  &.button-light {
+    background-color: $accent-color;
+    color: $light-color;
+
+    &:hover {
+      background-color: $primary-medium-dark-color;
+      color: $light-color;
+    }
+  }
+
+  &.button-dark-outline {
+    background-color: $medium-light-color;
+    color: $primary-color;
+    border: 2px solid $primary-color;
+
+    &:hover {
+      background-color: $primary-medium-dark-color;
+      color: $light-color;
+      border: 2px solid $primary-medium-dark-color;
+    }
+  }
+
+  &.button-light-outline {
+    background-color: $primary-color;
+    color: $light-color;
+    border: 2px solid $light-color;
+
+    &:hover {
+      background-color: $primary-medium-dark-color;
+      color: $light-color;
+      border: 2px solid $primary-medium-dark-color;
+    }
+  }
+}
+
+// Headings
+h1.main-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  text-indent: -9999em;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $primary-color;
+}
+
+h5 {
+  font-size: .8rem;
+  font-weight: 700;
+  color: $primary-color;
+}
+
+h6 {
+  font-family: 'Salsa', cursive;
+  font-size: 2.25rem;
+  color: $primary-color;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  .subtitle {
+    margin: 0 auto;
+    max-width: 35rem;
+  }
+
+  .separator {
+    margin: 1rem auto 1rem;
+  }
+}
+
+// Bootstrap overrides
+.nav-pills {
+  justify-content: center !important;
+  margin-bottom: 2rem !important;
+
+  .nav-link {
+    color: $dark-color !important;
+    border-radius: $lg-border-radius !important;
+    font-weight: 700 !important;
+  }
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  background-color: $primary-color !important;
+}
