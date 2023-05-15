@@ -131,16 +131,15 @@ function App() {
   return (
     <AuthContext.Provider value={{ state, dispatch }}>
       <div className="App">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <Top />
-        </motion.div>
-
         <BrowserRouter>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <Top />
+          </motion.div>
           <ScrollOnNav />
           <Routes>
             <Route path="/servicios" element={<Servicios />} />

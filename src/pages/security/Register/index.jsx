@@ -8,6 +8,7 @@ import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 
 import { Header } from "../../../components/Header";
+import { Breadcrumbs } from "../../../components/Breadcrumbs";
 
 import "./style.scss";
 
@@ -86,6 +87,14 @@ function Register() {
       >
         <Header menuItems={servicesMenu} />
       </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        viewport={{ once: true }}
+      >
+        <Breadcrumbs location={"Registro"} />
+      </motion.div>
       <section>
         <article className="container">
           <div className="row">
@@ -93,7 +102,7 @@ function Register() {
               <div className="register-container">
                 <h1>Registrarme</h1>
                 <div className="separator"></div>
-                <p>Registrese para acceder a la plataforma de preofertas.</p>
+                <p>Regístrese para acceder a la plataforma de preofertas.</p>
 
                 <label htmlFor="nickname">
                   <input
