@@ -28,7 +28,8 @@ import { servicesMenu } from "../../../data/services-menu";
 export const EventsContext = createContext();
 
 const initialState = {
-  events: [],
+  eventsList: [],
+  selectedEventId: undefined,
   isFetching: false,
   hasError: false,
 };
@@ -46,7 +47,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         isFetching: false,
-        events: action.payload.events,
+        eventsList: action.payload.events,
       };
     case FETCH_EVENTS_FAILURE:
       return {
@@ -54,12 +55,17 @@ const reducer = (state, action) => {
         hasError: true,
         isFetching: false,
       };
+    case 'SET_EVENT':
+      return {
+        ...state,
+        selectedEventId: action.payload,
+      };
     default:
       return state;
   }
 };
 
-function Events() {
+function EventsList() {
   const navigate = useNavigate();
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -159,8 +165,8 @@ function Events() {
                   <p>Error al fetchear</p>
                 ) : (
                   <>
-                    {state.events.length > 0 ? (
-                      state.events.map((event) => (
+                    {state.eventsList.length > 0 ? (
+                      state.eventsList.map((event) => (
                         <EventCard key={event.id} event={event} />
                       ))
                     ) : (
@@ -181,7 +187,7 @@ function Events() {
                     <i className="fa fa-chevron-left"></i> Anterior
                   </button>
                 )}
-                {currentPage < state.events.length && (
+                {currentPage < state.eventsList.length && (
                   <button
                     className="button button-light"
                     onClick={() => nextPage()}
@@ -198,4 +204,4 @@ function Events() {
   );
 }
 
-export default Events;
+export default EventsList;

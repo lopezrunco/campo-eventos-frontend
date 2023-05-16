@@ -16,7 +16,7 @@ import { Home } from "./pages/Home";
 import { Servicios } from "./pages/Servicios";
 import Login from "./pages/security/Login";
 import Register from "./pages/security/Register";
-import Events from "./pages/private/Events";
+import EventsList from "./pages/events/EventsList";
 
 import { ScrollOnNav } from "./components/ScrollOnNav";
 import { Loader } from "./components/Loader";
@@ -143,7 +143,7 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
-            <Route path="/remates" element={<Events />} />
+            <Route path="/remates" element={<EventsList />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

@@ -8,9 +8,9 @@ import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 
 import { Header } from "../../../components/Header";
+import { Breadcrumbs } from "../../../components/Breadcrumbs";
 
 import "./style.scss";
-import { Breadcrumbs } from "../../../components/Breadcrumbs";
 
 function Login() {
   // From auth AuthContext take the dispatch function to indicate a possible login
