@@ -99,28 +99,33 @@ function EventCard({ event }) {
 
   return (
     <React.Fragment>
-      <div className="col-lg-4">
+      <div className="col-12 event-card">
         <div className="border mb-3 p-4">
-          <h3>{event.title}</h3>
-          <h3>{event.id}</h3>
-          <p>{event.description}</p>
           <div className="row">
-            <small>Remata: {event.company}</small>
-            <small>Organiza: {event.organizer}</small>
-            <small>Lugar: {event.location}</small>
-            <small>Enlace vivo: {event.broadcastLink}</small>
-            <small>Financiación: {event.funder}</small>
-            <small>Video de los lotes: {event.videoLink}</small>
+            <div className="col-lg-9">
+              <h1>{event.title}</h1>
+              <small>{event.id}</small>
+              <p>{event.description}</p>
+                <p><b>Remata:</b> {event.company}</p>
+                <p><b>Organiza:</b> {event.organizer}</p>
+                <p><b>Lugar:</b> {event.location}</p>
+                <p><b>Enlace vivo:</b> {event.broadcastLink}</p>
+                <p><b>Financiación:</b> {event.funder}</p>
+                <p><b>Video de los lotes:</b> {event.videoLink}</p>
+              <a className="button button-dark" onClick={handleClick}>
+                {state.showLots ? 'Ocultar lotes' : 'Ver lotes'}
+              </a>
+            </div>
+            <div className="col-lg-3">
+              <img src="https://images.pexels.com/photos/51311/cow-calf-cattle-stock-51311.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" width='100%' />
+            </div>
           </div>
-          <a className="button button-dark" onClick={handleClick}>
-            Ver lotes
-          </a>
         </div>
       </div>
       {state.showLots && (
         <div className="col-12 lot-list-container">
           <div className="container">
-            <h1>Lotes: </h1>
+            <h1>Lotes:</h1>
             <div className="row">
               {state.data.map((lot) => {
                 return <LotCard key={lot.id} lot={lot} />;

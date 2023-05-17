@@ -1,25 +1,13 @@
-import React from "react";
-
 function LotCard({lot}) {
   return (
-    <div className="col-12">
-      <h2>Titulo: {lot.title}</h2>
-      <p>category: {lot.category}</p>
-      <p>description: {lot.description}</p>
-      <p>animals: {lot.animals}</p>
-      <p>weight: {lot.weight}</p>
-      <p>age: {lot.age}</p>
-      <p>class: {lot.class}</p>
-      <p>state: {lot.state}</p>
-      <p>observations: {lot.observations}</p>
-      <p>race: {lot.race}</p>
-      <p>certificate: {lot.certificate}</p>
-      <p>type: {lot.type}</p>
-      <p>currency: {lot.currency}</p>
-      <p>open: {lot.open}</p>
-      <p>preoffers: {lot.preoffers}</p>
-      <p>sold: {lot.sold}</p>
-      <p>completed: {lot.completed}</p>
+    <div className="col-12 border mb-3 p-4 lot-card">
+      <div className="container">
+        <h3>{lot.title}</h3>
+        <p><b>Categoria:</b> {lot.category}</p>
+        <p>{lot.description}</p>
+        <p><b>Animales:</b> {lot.animals} | <b>Peso:</b> {lot.weight} | <b>Edad:</b> {lot.age}<b>Clase:</b> {lot.class} | <b>Estado:</b> {lot.state} | <b>Raza:</b> {lot.race} | <b>Certificado:</b> {lot.certificate} | <b>Tipo:</b> {lot.type} | <b>Moneda:</b> {lot.currency} | <b>Abierto:</b> {lot.open ? 'Si' : 'No'} | <b>Vendido:</b> {lot.sold ? 'Si' : 'No'} | <b>Completado:</b> {lot.completed ? 'Si' : 'No'} | </p>
+        <p><b>Observaciones:</b> {lot.observations} | </p>
+      </div>
     </div>
   );
 }
