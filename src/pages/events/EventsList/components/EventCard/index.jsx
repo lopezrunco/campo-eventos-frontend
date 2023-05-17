@@ -3,8 +3,8 @@ import React, { useContext, useReducer } from "react";
 
 import {
   GET_LOTS_REQUEST,
-  GET_LOT_FAILURE,
-  GET_LOT_SUCCESS,
+  GET_LOTS_FAILURE,
+  GET_LOTS_SUCCESS,
 } from "../../action-types";
 import { refreshToken } from "../../../../../utils/refresh-token";
 import { apiUrl } from "../../../../../utils/api-url";
@@ -21,7 +21,7 @@ const initialState = {
   showLots: false,
 };
 
-// Hanlde lots and preoffers state
+// Handle lots state
 const reducer = (state, action) => {
   switch (action.type) {
     case GET_LOTS_REQUEST:
@@ -30,14 +30,14 @@ const reducer = (state, action) => {
         isSending: true,
         hasError: false,
       };
-    case GET_LOT_SUCCESS:
+    case GET_LOTS_SUCCESS:
       return {
         ...state,
         isSending: false,
         data: action.payload.lots,
         showLots: true,
       };
-    case GET_LOT_FAILURE:
+    case GET_LOTS_FAILURE:
       return {
         ...state,
         isSending: false,
@@ -51,7 +51,6 @@ const reducer = (state, action) => {
 function EventCard({ event }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
-
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -78,7 +77,7 @@ function EventCard({ event }) {
       })
       .then((data) => {
         dispatch({
-          type: GET_LOT_SUCCESS,
+          type: GET_LOTS_SUCCESS,
           payload: data,
         });
       })
@@ -91,7 +90,7 @@ function EventCard({ event }) {
           navigate("/forbidden");
         } else {
           dispatch({
-            type: GET_LOT_FAILURE,
+            type: GET_LOTS_FAILURE,
           });
         }
       });
@@ -113,7 +112,7 @@ function EventCard({ event }) {
                 <p><b>Financiación:</b> {event.funder}</p>
                 <p><b>Video de los lotes:</b> {event.videoLink}</p>
               <a className="button button-dark" onClick={handleClick}>
-                {state.showLots ? 'Ocultar lotes' : 'Ver lotes'}
+              <i className="fas fa-layer-group"></i> Ver lotes
               </a>
             </div>
             <div className="col-lg-3">
