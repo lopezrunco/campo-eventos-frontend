@@ -10,9 +10,9 @@ import { AuthContext } from "../../../../../../../App";
 import { apiUrl } from "../../../../../../../utils/api-url";
 import { refreshToken } from "../../../../../../../utils/refresh-token";
 
-import PreofferCard from "./components/PreofferCard";
+import PreoffersList from "./components/PreoffersList";
 
-import './styles.scss'
+import "./styles.scss";
 
 const initialState = {
   data: undefined,
@@ -123,20 +123,9 @@ function LotCard({ lot }) {
           <i className="fas fa-video"></i> Video de lote
         </a>
         <a className="button button-dark" onClick={handleClick}>
-          <i className="fas fa-comment-dollar"></i> Preofertas
+          <i className="fas fa-comments-dollar"></i> Preofertas
         </a>
-      {state.showPreoffers && (
-        <div className="col-12 preoffers-container border p-4">
-          <div className="container">
-            <h3>Pre ofertas:</h3>
-            <div className="row">
-              {state.data.map((preoffer) => {
-                return <PreofferCard key={preoffer.id} preoffer={preoffer} />;
-              })}
-            </div>
-          </div>
-        </div>
-      )}
+        {state.showPreoffers && <PreoffersList preoffers={state.data} />}
       </div>
     </React.Fragment>
   );
