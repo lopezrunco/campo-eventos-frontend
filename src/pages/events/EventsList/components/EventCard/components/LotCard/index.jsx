@@ -113,10 +113,10 @@ function LotCard({ lot }) {
             <b>Tipo:</b> {lot.type} | <b>Moneda:</b> {lot.currency} |{" "}
             <b>Abierto:</b> {lot.open ? "Si" : "No"} | <b>Vendido:</b>{" "}
             {lot.sold ? "Si" : "No"} | <b>Completado:</b>{" "}
-            {lot.completed ? "Si" : "No"} |{" "}
+            {lot.completed ? "Si" : "No"}
           </p>
           <p>
-            <b>Observaciones:</b> {lot.observations} |{" "}
+            <b>Observaciones:</b> {lot.observations}
           </p>
         </div>
         <a className="button button-dark me-3">
@@ -125,7 +125,7 @@ function LotCard({ lot }) {
         <a className="button button-dark" onClick={handleClick}>
           <i className="fas fa-comments-dollar"></i> Preofertas
         </a>
-        {state.showPreoffers && <PreoffersList preoffers={state.data} />}
+        {state.showPreoffers && <PreoffersList preoffers={state.data} lotId={lot.id} />}
       </div>
     </React.Fragment>
   );
