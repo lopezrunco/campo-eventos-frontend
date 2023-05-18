@@ -23,7 +23,6 @@ const reducer = (state, action) => {
   switch (action.type) {
     // Update state on input change
     case FORM_INPUT_CHANGE:
-      console.log("====> state ", state);
       return {
         ...state,
         amount: action.payload.value,
@@ -78,7 +77,7 @@ function PreoffersList({ preoffers, lotId }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userId: authState.user._id,
+        userId: authState.user.id,
         date: state.date,
         amount: state.amount,
         accepted: state.accepted,
@@ -97,6 +96,7 @@ function PreoffersList({ preoffers, lotId }) {
           type: CREATE_PREOFFER_SUCCESS,
           payload: data,
         });
+        navigate('/preoffer-done')
         console.log("preoffer created!");
       })
       .catch((error) => {

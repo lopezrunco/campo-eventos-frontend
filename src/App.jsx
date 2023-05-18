@@ -17,6 +17,7 @@ import { Servicios } from "./pages/Servicios";
 import Login from "./pages/security/Login";
 import Register from "./pages/security/Register";
 import EventsList from "./pages/events/EventsList";
+import PreOfferDone from "./pages/events/PreOfferDone";
 
 import { ScrollOnNav } from "./components/ScrollOnNav";
 import { Loader } from "./components/Loader";
@@ -143,6 +144,7 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
+            <Route path="/preoffer-done" element={<PreOfferDone />} />
             <Route path="/remates" element={<EventsList />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
