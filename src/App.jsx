@@ -11,14 +11,19 @@ import {
   SHOW_LOADER,
 } from "./utils/action-types";
 
-import { NotFound } from "./pages/NotFound";
 import { Home } from "./pages/Home";
 import { Servicios } from "./pages/Servicios";
-import Login from "./pages/security/Login";
-import Register from "./pages/security/Register";
 import EventsList from "./pages/events/EventsList";
 import PreOfferDone from "./pages/events/PreOfferDone";
 
+import Login from "./pages/security/Login";
+import Register from "./pages/security/Register";
+import { NotFound } from "./pages/access/NotFound";
+import {Forbidden} from "./pages/access/Forbidden";
+
+import AdminHomePage from "./pages/backoffice/AdminHomePage";
+
+import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
 import { Loader } from "./components/Loader";
 import { Top } from "./components/Top";
@@ -34,6 +39,7 @@ export const AuthContext = createContext();
 const initialState = {
   isAuthenticated: !!localStorage.getItem("token"),
   user: JSON.parse(localStorage.getItem("user")),
+  role: localStorage.getItem("role"),
   token: localStorage.getItem("token"),
   refreshToken: localStorage.getItem("refreshToken"),
   showingLoader: false,
@@ -45,6 +51,7 @@ const reducer = (state, action) => {
     case LOGIN:
       // Take user data and set it in local storage
       localStorage.setItem("user", JSON.stringify(action.payload.user));
+      localStorage.setItem("role", action.payload.user.role);
       localStorage.setItem("token", action.payload.user.token);
       localStorage.setItem("refreshToken", action.payload.user.refreshToken);
 
@@ -53,6 +60,7 @@ const reducer = (state, action) => {
         ...state,
         isAuthenticated: true,
         user: action.payload.user,
+        role: action.payload.user.role,
         token: action.payload.user.token,
         refreshToken: action.payload.user.refreshToken,
       };
@@ -75,6 +83,7 @@ const reducer = (state, action) => {
         ...state,
         isAuthenticated: false,
         user: null,
+        role: null,
         token: null,
         refreshToken: null,
       };
@@ -117,6 +126,7 @@ function App() {
   useEffect(() => {
     // Try to obtain the user data from the local storage
     const user = JSON.parse(localStorage.getItem("user"));
+    const role = localStorage.getItem("role");
     const token = localStorage.getItem("token");
 
     // If the user is already logged, do a login dispatch with the data
@@ -125,6 +135,7 @@ function App() {
         type: LOGIN,
         payload: {
           user,
+          role,
           token,
         },
       });
@@ -153,8 +164,42 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
-            <Route path="/preoffer-done" element={<PreOfferDone />} />
-            <Route path="/remates" element={<EventsList />} />
+            <Route
+              path="/consignatarios"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <AdminHomePage />
+                </RequireAuth>
+              }
+            />
+
+            <Route
+              path="/preoffer-done"
+              element={
+                <RequireAuth allowedRoles={["BASIC", "ADMIN"]}>
+                  <PreOfferDone />
+                </RequireAuth>
+              }
+            />
+
+            <Route
+              path="/remates"
+              element={
+                <RequireAuth allowedRoles={["BASIC", "ADMIN"]}>
+                  <EventsList />
+                </RequireAuth>
+              }
+            />
+
+            <Route
+              path="/forbidden"
+              element={
+                <>
+                  <Forbidden />
+                </>
+              }
+            />
+
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

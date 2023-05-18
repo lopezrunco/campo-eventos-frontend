@@ -32,6 +32,7 @@ export const Header = () => {
           <div className="nav-menu">
             <ul className="nav-list">
 
+              {/* Public menu */}
               <li className={`navigation-bar-item ${activeLink === '/' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
                 <a href='/' className="nav-link-item" title='En vivo'>En vivo</a>
               </li>
@@ -44,11 +45,22 @@ export const Header = () => {
                 <a href='/servicios' className="nav-link-item" title='Servicios'>Servicios</a>
               </li>
 
+              {/* BASIC users */}
               {authState.user && ( 
               <li className={`navigation-bar-item ${activeLink === '/remates' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
                 <a href="/remates" className="nav-link-item" title="Remates">Remates</a>
               </li>
               )}
+
+              {/* ADMIN users (consignatarios) */}
+              {
+                ['ADMIN'].find(role => role === authState.role) &&
+                <>
+                  <li className={`navigation-bar-item ${activeLink === '/consignatarios' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                    <a href="/consignatarios" className="nav-link-item" title="Consignatarios">Consignatarios</a>
+                  </li>
+                </>
+              }
 
             </ul>
           </div>

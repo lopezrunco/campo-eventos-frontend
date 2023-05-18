@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
-import { NotFoundMessage } from "../../components/NotFoundMessage";
+import { NotFoundMessage } from "./components/NotFoundMessage";
 
 export const NotFound = () => {
   return (
