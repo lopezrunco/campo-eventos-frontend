@@ -2,12 +2,10 @@ import { motion } from "framer-motion";
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { servicesMenu } from "../../../data/services-menu";
 import { LOGIN } from "../../../utils/action-types";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 
-import { Header } from "../../../components/Header";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 
 import "./style.scss";
@@ -83,14 +81,6 @@ function Login() {
 
   return (
     <React.Fragment>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-      >
-        <Header menuItems={servicesMenu} />
-      </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

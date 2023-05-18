@@ -21,10 +21,8 @@ import EventCard from "./components/EventCard";
 import { AuthContext } from "../../../App";
 import { Loader } from "../../../components/Loader";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
-import { Header } from "../../../components/Header";
-import { servicesMenu } from "../../../data/services-menu";
 
-// Create context to show events, lots & preoffers
+// Create context to manage events
 export const EventsContext = createContext();
 
 const initialState = {
@@ -34,7 +32,7 @@ const initialState = {
   hasError: false,
 };
 
-// Reducer to manage the events, lots & preoffers showed
+// Reducer to manage events
 const reducer = (state, action) => {
   switch (action.type) {
     case FETCH_EVENTS_REQUEST:
@@ -138,14 +136,6 @@ function EventsList() {
 
   return (
     <EventsContext.Provider value={{ state, dispatch }}>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-      >
-        <Header menuItems={servicesMenu} />
-      </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../App";
 import "./styles.scss";
 
-export const Header = ({ menuItems }) => {
+export const Header = () => {
   const { state: authState } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState(null);
@@ -31,37 +31,25 @@ export const Header = ({ menuItems }) => {
           ></i>
           <div className="nav-menu">
             <ul className="nav-list">
-              {menuItems.map((el, idx) => {
-                return (
-                  <li
-                    className={`navigation-bar-item ${
-                      activeLink === el.link ? "active-navigation" : ""
-                    }`}
-                    id="navigation-bar-item"
-                    key={idx}
-                    onClick={handleMenuClick}
-                  >
-                    <a
-                      href={el.link}
-                      className="nav-link-item"
-                      title={el.title}
-                    >
-                      {el.text}
-                    </a>
-                  </li>
-                );
-              })}
+
+              <li className={`navigation-bar-item ${activeLink === '/' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                <a href='/' className="nav-link-item" title='En vivo'>En vivo</a>
+              </li>
+
+              <li className={`navigation-bar-item ${activeLink === '/cartelera' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                <a href='/cartelera' className="nav-link-item" title='Cartelera'>Cartelera</a>
+              </li>
+
+              <li className={`navigation-bar-item ${activeLink === '/servicios' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                <a href='/servicios' className="nav-link-item" title='Servicios'>Servicios</a>
+              </li>
+
               {authState.user && ( 
-              <li
-                className={`navigation-bar-item`}
-                id="navigation-bar-item"
-                onClick={handleMenuClick}
-              >
-                <a href="/remates" className="nav-link-item" title="Remates">
-                  Remates
-                </a>
+              <li className={`navigation-bar-item ${activeLink === '/remates' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                <a href="/remates" className="nav-link-item" title="Remates">Remates</a>
               </li>
               )}
+
             </ul>
           </div>
         </div>

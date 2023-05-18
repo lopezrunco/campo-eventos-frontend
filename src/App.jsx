@@ -22,6 +22,7 @@ import PreOfferDone from "./pages/events/PreOfferDone";
 import { ScrollOnNav } from "./components/ScrollOnNav";
 import { Loader } from "./components/Loader";
 import { Top } from "./components/Top";
+import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 import "./App.scss";
@@ -141,6 +142,14 @@ function App() {
             viewport={{ once: true }}
           >
             <Top />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
+            <Header />
           </motion.div>
           <ScrollOnNav />
           <Routes>
