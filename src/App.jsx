@@ -19,9 +19,10 @@ import PreOfferDone from "./pages/events/PreOfferDone";
 import Login from "./pages/security/Login";
 import Register from "./pages/security/Register";
 import { NotFound } from "./pages/access/NotFound";
-import {Forbidden} from "./pages/access/Forbidden";
+import { Forbidden } from "./pages/access/Forbidden";
 
 import AdminHomePage from "./pages/backoffice/AdminHomePage";
+import MyEvents from "./pages/backoffice/MyEvents";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -164,6 +165,15 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
+            <Route
+              path="/consignatarios/mis-eventos"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <MyEvents />
+                </RequireAuth>
+              }
+            />
+
             <Route
               path="/consignatarios"
               element={
