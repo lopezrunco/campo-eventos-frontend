@@ -1,13 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import React, { useContext, useReducer } from "react";
+
 import {
   GET_LOTS_FAILURE,
   GET_LOTS_REQUEST,
   GET_LOTS_SUCCESS,
 } from "../../../events/EventsList/action-types";
 import { AuthContext } from "../../../../App";
-import { useNavigate } from "react-router-dom";
 import { apiUrl } from "../../../../utils/api-url";
 import { refreshToken } from "../../../../utils/refresh-token";
+
+import LotCard from "./components/LotCard";
 
 const initialState = {
   data: undefined,
@@ -147,7 +150,7 @@ function EventByUserCard({ event }) {
                 <i className="fas fa-edit"></i> Editar
               </a>
               <a className="button button-dark me-3" onClick={handleClick}>
-              <i className="fas fa-minus-circle"></i> Borrar
+                <i className="fas fa-minus-circle"></i> Borrar
               </a>
               <a className="button button-dark me-3" onClick={handleClick}>
                 <i className="fas fa-layer-group"></i> Ver lotes
@@ -165,6 +168,9 @@ function EventByUserCard({ event }) {
                 return <LotCard key={lot.id} lot={lot} />;
               })}
             </div>
+            <a className="button button-dark me-3">
+              <i className="fas fa-plus"></i> Crear nuevo lote
+            </a>
           </div>
         </div>
       )}
