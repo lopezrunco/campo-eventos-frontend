@@ -23,6 +23,7 @@ import { Forbidden } from "./pages/access/Forbidden";
 
 import AdminHomePage from "./pages/backoffice/AdminHomePage";
 import MyEvents from "./pages/backoffice/MyEvents";
+import PreofferEdit from "./pages/backoffice/PreofferEdit";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -165,6 +166,15 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
+            <Route
+              path="/ver-editar-preoferta/:id"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <PreofferEdit />
+                </RequireAuth>
+              }
+            />
+
             <Route
               path="/consignatarios/mis-eventos"
               element={
