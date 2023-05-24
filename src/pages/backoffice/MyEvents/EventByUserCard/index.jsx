@@ -160,7 +160,7 @@ function EventByUserCard({ event }) {
         </div>
       </div>
       {state.showLots && (
-        <div className="col-12 lot-list-container">
+        <div className="col-12">
           <div className="container">
             <h1>Lotes:</h1>
             <div className="row">

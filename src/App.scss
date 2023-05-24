@@ -125,6 +125,19 @@ button {
   }
 }
 
+.close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: $main-transition;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
 // Headings
 h1.main-logo {
   position: absolute;

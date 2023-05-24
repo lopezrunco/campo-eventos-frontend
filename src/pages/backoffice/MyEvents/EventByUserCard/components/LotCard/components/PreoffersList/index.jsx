@@ -1,3 +1,5 @@
+import UserDetails from "./components/UserDetails";
+
 function PreoffersList({ preoffers }) {
   return (
     <div className="col-12 preoffers-container border p-4">
@@ -29,9 +31,7 @@ function PreoffersList({ preoffers }) {
                         )}
                       </td>
                       <td>
-                        <a href={`/ver-editar-preoferta/${preoffer.id}`}>
-                          Ver detalle / Editar
-                        </a>
+                        <UserDetails userId={preoffer.userId} />
                       </td>
                     </tr>
                   );
