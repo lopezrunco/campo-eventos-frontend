@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { AuthContext } from "../../App";
 import "./styles.scss";
 
@@ -47,19 +47,24 @@ export const Header = () => {
 
               {/* BASIC users */}
               {authState.user && ( 
-              <li className={`navigation-bar-item ${activeLink === '/remates' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
-                <a href="/remates" className="nav-link-item" title="Remates">Remates</a>
-              </li>
+                <React.Fragment>
+                  <li className={`navigation-bar-item ${activeLink === '/remates' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                    <a href="/remates" className="nav-link-item" title="Remates">Remates</a>
+                  </li>
+                    <li className={`navigation-bar-item ${activeLink === '/mis-preofertas' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                    <a href="/mis-preofertas" className="nav-link-item" title="Mis preofertas">Mis preofertas</a>
+                  </li>
+                </React.Fragment>
               )}
 
               {/* ADMIN users (consignatarios) */}
               {
                 ['ADMIN'].find(role => role === authState.role) &&
-                <>
+                <React.Fragment>
                   <li className={`navigation-bar-item ${activeLink === '/consignatarios' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
                     <a href="/consignatarios" className="nav-link-item" title="Consignatarios">Consignatarios</a>
                   </li>
-                </>
+                </React.Fragment>
               }
 
             </ul>

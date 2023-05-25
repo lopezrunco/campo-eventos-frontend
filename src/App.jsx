@@ -15,6 +15,7 @@ import { Home } from "./pages/Home";
 import { Servicios } from "./pages/Servicios";
 import EventsList from "./pages/events/EventsList";
 import PreOfferDone from "./pages/events/PreOfferDone";
+import MyPreOffers from "./pages/events/MyPreOffers";
 
 import Login from "./pages/security/Login";
 import Register from "./pages/security/Register";
@@ -166,7 +167,7 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
-          <Route
+            <Route
               path="/preoferta-editada"
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
@@ -189,6 +190,15 @@ function App() {
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
                   <AdminHomePage />
+                </RequireAuth>
+              }
+            />
+
+            <Route
+              path="/mis-preofertas"
+              element={
+                <RequireAuth allowedRoles={["BASIC", "ADMIN"]}>
+                  <MyPreOffers />
                 </RequireAuth>
               }
             />
