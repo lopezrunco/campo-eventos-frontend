@@ -1,3 +1,4 @@
+import RefuseAcceptPreoffer from "./components/RefuseAcceptPreoffer";
 import UserDetails from "./components/UserDetails";
 
 function PreoffersList({ preoffers }) {
@@ -24,11 +25,7 @@ function PreoffersList({ preoffers }) {
                       <td>{preoffer.amount}</td>
                       <td>{preoffer.date}</td>
                       <td>
-                        {preoffer.accepted ? (
-                          <span className="tag">Aceptada</span>
-                        ) : (
-                          <span className="tag">No aceptada</span>
-                        )}
+                        <RefuseAcceptPreoffer preoffer={preoffer} />
                       </td>
                       <td>
                         <UserDetails userId={preoffer.userId} />
