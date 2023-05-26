@@ -16,7 +16,7 @@ import {
   FETCH_EVENTS_FAILURE,
   FETCH_EVENTS_REQUEST,
   FETCH_EVENTS_SUCCESS,
-} from "./action-types";
+} from "../action-types";
 
 import EventCard from "./components/EventCard";
 import { Loader } from "../../../components/Loader";

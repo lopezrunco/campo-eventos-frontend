@@ -5,7 +5,7 @@ import {
   GET_PREOFFERS_REQUEST,
   GET_PREOFFERS_FAILURE,
   GET_PREOFFERS_SUCCESS,
-} from "../../../../action-types";
+} from "../../../../../action-types";
 import { AuthContext } from "../../../../../../../App";
 import { apiUrl } from "../../../../../../../utils/api-url";
 import { refreshToken } from "../../../../../../../utils/refresh-token";
@@ -125,7 +125,9 @@ function LotCard({ lot }) {
         <a className="button button-dark" onClick={handleClick}>
           <i className="fas fa-comments-dollar"></i> Preofertas
         </a>
-        {state.showPreoffers && <PreoffersList preoffers={state.data} lotId={lot.id} />}
+        {state.showPreoffers && (
+          <PreoffersList preoffers={state.data} lotId={lot.id} />
+        )}
       </div>
     </React.Fragment>
   );

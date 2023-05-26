@@ -12,8 +12,10 @@ import {
 } from "./utils/action-types";
 
 import { Home } from "./pages/Home";
+import PublicEventsList from "./pages/PublicEventsList";
 import { Servicios } from "./pages/Servicios";
 import EventsList from "./pages/events/EventsList";
+import LotById from "./pages/events/LotById";
 import PreOfferDone from "./pages/events/PreOfferDone";
 import MyPreOffers from "./pages/events/MyPreOffers";
 
@@ -213,6 +215,15 @@ function App() {
             />
 
             <Route
+              path="/lotes/:id"
+              element={
+                <RequireAuth allowedRoles={["BASIC", "ADMIN"]}>
+                  <LotById />
+                </RequireAuth>
+              }
+            />
+
+            <Route
               path="/remates"
               element={
                 <RequireAuth allowedRoles={["BASIC", "ADMIN"]}>
@@ -230,6 +241,7 @@ function App() {
               }
             />
 
+            <Route path="/cartelera" element={<PublicEventsList />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import React, { useContext, useEffect, useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 
 import {
   GET_MY_PREOFFERS_FAILURE,
   GET_MY_PREOFFERS_REQUEST,
   GET_MY_PREOFFERS_SUCCESS,
-} from "../../events/EventsList/action-types";
+} from "../action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { AuthContext } from "../../../App";
@@ -52,17 +52,6 @@ function MyPreOffers() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
 
-  // Handle pagination
-  const [currentPage, setCurentPage] = useState(1);
-  const itemsPerPage = 9;
-
-  function prevPage() {
-    setCurentPage(currentPage - 1);
-  }
-  function nextPage() {
-    setCurentPage(currentPage + 1);
-  }
-
   useEffect(() => {
     if (authState.token) {
       authDispatch({
@@ -72,7 +61,6 @@ function MyPreOffers() {
         type: GET_MY_PREOFFERS_REQUEST,
       });
 
-      console.log(authState.user.id)
       fetch(apiUrl(`/preoffers/user/${authState.user.id}`), {
         headers: {
           Authorization: authState.token,
@@ -119,7 +107,7 @@ function MyPreOffers() {
   ]);
 
   return (
-    // Cuando se crea la preoferta por defecto que sea undefined, hasta que el consignatario la acepte o rechaze
+    // TO DO: Cuando se crea la preoferta que sea undefined, hasta que el consignatario la acepte o rechaze
     <React.Fragment>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -147,27 +135,6 @@ function MyPreOffers() {
                 )}
               </React.Fragment>
             )}
-
-            <div className="col-12">
-              <div className="pagination">
-                {currentPage > 1 && (
-                  <button
-                    className="button button-light me-3"
-                    onClick={() => prevPage()}
-                  >
-                    <i className="fa fa-chevron-left"></i> Anterior
-                  </button>
-                )}
-                {currentPage < state.preoffersList.length && (
-                  <button
-                    className="button button-light"
-                    onClick={() => nextPage()}
-                  >
-                    Siguiente <i className="fa fa-chevron-right"></i>
-                  </button>
-                )}
-              </div>
-            </div>
           </div>
         </article>
       </section>

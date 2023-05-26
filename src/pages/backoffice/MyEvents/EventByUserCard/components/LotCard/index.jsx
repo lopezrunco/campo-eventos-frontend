@@ -5,7 +5,7 @@ import {
   GET_PREOFFERS_FAILURE,
   GET_PREOFFERS_REQUEST,
   GET_PREOFFERS_SUCCESS,
-} from "../../../../../events/EventsList/action-types";
+} from "../../../../../events/action-types";
 import { AuthContext } from "../../../../../../App";
 import { apiUrl } from "../../../../../../utils/api-url";
 import { refreshToken } from "../../../../../../utils/refresh-token";
@@ -13,6 +13,7 @@ import { refreshToken } from "../../../../../../utils/refresh-token";
 import PreoffersList from "./components/PreoffersList";
 
 import "./styles.scss";
+
 
 const initialState = {
   data: undefined,

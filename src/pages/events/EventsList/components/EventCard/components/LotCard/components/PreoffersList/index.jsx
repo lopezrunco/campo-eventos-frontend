@@ -5,7 +5,7 @@ import {
   CREATE_PREOFFER_REQUEST,
   CREATE_PREOFFER_SUCCESS,
   FORM_INPUT_CHANGE,
-} from "../../../../../../action-types";
+} from "../../../../../../../action-types";
 import { useNavigate } from "react-router-dom";
 import { apiUrl } from "../../../../../../../../../utils/api-url";
 import { refreshToken } from "../../../../../../../../../utils/refresh-token";
@@ -96,7 +96,7 @@ function PreoffersList({ preoffers, lotId }) {
           type: CREATE_PREOFFER_SUCCESS,
           payload: data,
         });
-        navigate('/preoffer-done')
+        navigate("/preoffer-done");
         console.log("preoffer created!");
       })
       .catch((error) => {
@@ -127,8 +127,10 @@ function PreoffersList({ preoffers, lotId }) {
                 <p key={preoffer.id}>
                   <b>Monto: {preoffer.amount}</b> {preoffer.date}{" "}
                   {preoffer.accepted ? (
-                    <span className="tag">Aceptada</span>
-                  ) : null}
+                    <span className="tag acepted-preoffer">Aceptada</span>
+                  ) : (
+                    <span className="tag refused-preoffer">No aceptada</span>
+                  )}
                 </p>
               );
             })}

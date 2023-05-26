@@ -5,7 +5,7 @@ import {
   GET_LOTS_REQUEST,
   GET_LOTS_FAILURE,
   GET_LOTS_SUCCESS,
-} from "../../action-types";
+} from "../../../action-types";
 import { refreshToken } from "../../../../../utils/refresh-token";
 import { apiUrl } from "../../../../../utils/api-url";
 import { AuthContext } from "../../../../../App";
