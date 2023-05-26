@@ -10,8 +10,6 @@ import { refreshToken } from "../../../../../utils/refresh-token";
 import { apiUrl } from "../../../../../utils/api-url";
 import { AuthContext } from "../../../../../App";
 
-import LotCard from "./components/LotCard";
-
 import "./styles.scss";
 
 const initialState = {
@@ -105,34 +103,59 @@ function EventCard({ event }) {
               <h1>{event.title}</h1>
               <small>{event.id}</small>
               <p>{event.description}</p>
-                <p><b>Remata:</b> {event.company}</p>
-                <p><b>Organiza:</b> {event.organizer}</p>
-                <p><b>Lugar:</b> {event.location}</p>
-                <p><b>Enlace vivo:</b> {event.broadcastLink}</p>
-                <p><b>Financiación:</b> {event.funder}</p>
-                <p><b>Video de los lotes:</b> {event.videoLink}</p>
+              <p>
+                <b>Remata:</b> {event.company}
+              </p>
+              <p>
+                <b>Organiza:</b> {event.organizer}
+              </p>
+              <p>
+                <b>Lugar:</b> {event.location}
+              </p>
+              <p>
+                <b>Enlace vivo:</b> {event.broadcastLink}
+              </p>
+              <p>
+                <b>Financiación:</b> {event.funder}
+              </p>
+              <p>
+                <b>Video de los lotes:</b> {event.videoLink}
+              </p>
               <a className="button button-dark" onClick={handleClick}>
-              <i className="fas fa-layer-group"></i> Ver lotes
+                <i className="fas fa-layer-group"></i> Ver lotes
               </a>
             </div>
             <div className="col-lg-3">
-              <img src="https://images.pexels.com/photos/51311/cow-calf-cattle-stock-51311.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" width='100%' />
+              <img
+                src="https://images.pexels.com/photos/51311/cow-calf-cattle-stock-51311.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                width="100%"
+              />
             </div>
           </div>
+          {state.showLots && (
+            <div className="lot-list-container">
+              <div className="container">
+                <h3>Lotes:</h3>
+                <div className="row">
+                  {state.data.map((lot) => {
+                    return (
+                      <React.Fragment key={lot.id}>
+                        <div className="col-lg-4">
+                          <div className="border mb-3 p-3">
+                            <h4>{lot.title}</h4>
+                            <p>Animales: {lot.animals}</p> 
+                            <a className="button button-dark" href={`/lotes/${lot.id}`}>Ver lote</a>
+                          </div>
+                        </div>
+                      </React.Fragment>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-      {state.showLots && (
-        <div className="col-12 lot-list-container">
-          <div className="container">
-            <h1>Lotes:</h1>
-            <div className="row">
-              {state.data.map((lot) => {
-                return <LotCard key={lot.id} lot={lot} />;
-              })}
-            </div>
-          </div>
-        </div>
-      )}
     </React.Fragment>
   );
 }
