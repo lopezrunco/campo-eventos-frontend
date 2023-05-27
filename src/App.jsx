@@ -26,6 +26,7 @@ import { Forbidden } from "./pages/access/Forbidden";
 
 import AdminHomePage from "./pages/backoffice/AdminHomePage";
 import MyEvents from "./pages/backoffice/MyEvents";
+import MyEventById from "./pages/backoffice/MyEventById";
 import PreOfferEdited from "./pages/backoffice/PreOfferEdited";
 
 import RequireAuth from "./components/RequireAuth";
@@ -174,6 +175,15 @@ function App() {
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
                   <PreOfferEdited />
+                </RequireAuth>
+              }
+            />
+
+            <Route
+              path="/consignatarios/mis-eventos/:id"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <MyEventById />
                 </RequireAuth>
               }
             />

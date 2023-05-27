@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useEffect, useReducer, useState } from "react";
 
-import { AuthContext } from "../../../App";
 import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
-import { apiUrl } from "../../../utils/api-url";
 import { refreshToken } from "../../../utils/refresh-token";
+import { apiUrl } from "../../../utils/api-url";
+import { AuthContext } from "../../../App";
 import {
   FETCH_EVENTS_FAILURE,
   FETCH_EVENTS_REQUEST,
@@ -23,7 +23,6 @@ const initialState = {
   hasError: false,
 };
 
-// Reducer to manage events
 const reducer = (state, action) => {
   switch (action.type) {
     case FETCH_EVENTS_REQUEST:
@@ -44,11 +43,6 @@ const reducer = (state, action) => {
         hasError: true,
         isFetching: false,
       };
-    case "SET_EVENT":
-      return {
-        ...state,
-        selectedEventId: action.payload,
-      };
     default:
       return state;
   }
@@ -59,7 +53,6 @@ function MyEvents() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
 
-  // Handle pagination
   const [currentPage, setCurentPage] = useState(1);
   const itemsPerPage = 9;
 
@@ -144,6 +137,9 @@ function MyEvents() {
       </motion.div>
       <section className="container">
         <article className="row">
+          <a className="button button-dark me-3">
+            <i className="fas fa-plus"></i> Crear nuevo evento
+          </a>
           {state.isFetching ? (
             <Loader />
           ) : state.hasError ? (
@@ -180,10 +176,6 @@ function MyEvents() {
               )}
             </div>
           </div>
-
-          <a className="button button-dark me-3">
-            <i className="fas fa-plus"></i> Crear nuevo evento
-          </a>
         </article>
       </section>
     </React.Fragment>

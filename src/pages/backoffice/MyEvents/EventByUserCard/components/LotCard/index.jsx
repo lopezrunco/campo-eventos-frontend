@@ -14,7 +14,6 @@ import PreoffersList from "./components/PreoffersList";
 
 import "./styles.scss";
 
-
 const initialState = {
   data: undefined,
   isSending: false,
@@ -22,7 +21,6 @@ const initialState = {
   showPreoffers: false,
 };
 
-// Handle preoffers state
 const reducer = (state, action) => {
   switch (action.type) {
     case GET_PREOFFERS_REQUEST:
