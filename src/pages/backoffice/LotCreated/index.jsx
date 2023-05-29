@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
+import { useParams } from "react-router-dom";
 import React from "react";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 
 function LotCreated() {
+  const { id } = useParams();
+
   return (
     <React.Fragment>
       <motion.div
@@ -27,7 +30,8 @@ function LotCreated() {
               <h3>El lote ha sido creado</h3>
               <div className="separator"></div>
               <p>
-                El lote ha sido creado, para agregar más lotes, vuelva al remate.
+                El lote ha sido creado, para agregar más lotes, vuelva al
+                remate.
               </p>
 
               <a
@@ -36,9 +40,8 @@ function LotCreated() {
               >
                 <i className="fas fa-gavel"></i> Volver a mis remates
               </a>
-              {/* TO DO: Tomar de los params el id del remate en el que se creo el lote y llevar al usuario a ese remate */}
               <a
-                href="/consignatarios/mis-eventos"
+                href={`/consignatarios/mis-eventos/${id}`}
                 className="button button-dark"
               >
                 <i className="fas fa-gavel"></i> Volver a remate

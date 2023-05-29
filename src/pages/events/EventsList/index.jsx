@@ -160,7 +160,7 @@ function EventsList() {
                         <EventCard key={event.id} event={event} />
                       ))
                     ) : (
-                      <p>No hay eventos para mostrar...</p>
+                      <p>No hay remates para mostrar...</p>
                     )}
                   </>
                 )}

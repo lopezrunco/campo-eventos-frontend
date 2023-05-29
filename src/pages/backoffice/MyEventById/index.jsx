@@ -109,12 +109,12 @@ function MyEventById() {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Detalles de mi evento"} />
+        <Breadcrumbs location={"Detalles del remate"} />
       </motion.div>
       <section>
         <article className="container">
           {state.myEvent && <Card myEvent={state.myEvent} />}
-          {state.hasError && <p>Error al obtener el evento</p>}
+          {state.hasError && <p>Error al obtener el remate</p>}
         </article>
       </section>
     </React.Fragment>

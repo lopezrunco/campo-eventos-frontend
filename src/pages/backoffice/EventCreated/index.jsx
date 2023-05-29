@@ -12,7 +12,7 @@ function EventCreated() {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Evento creado"} />
+        <Breadcrumbs location={"Remate creado"} />
       </motion.div>
       <section className="container">
         <motion.div

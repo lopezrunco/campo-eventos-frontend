@@ -138,7 +138,7 @@ function MyEvents() {
       <section className="container">
         <article className="row">
           <a className="button button-dark me-3" href="/consignatarios/crear-remate">
-            <i className="fas fa-plus"></i> Crear nuevo evento
+            <i className="fas fa-plus"></i> Crear nuevo remate
           </a>
           {state.isFetching ? (
             <Loader />
@@ -151,7 +151,7 @@ function MyEvents() {
                   <EventByUserCard key={event.id} event={event} />
                 ))
               ) : (
-                <p>No hay eventos para mostrar...</p>
+                <p>No hay remates para mostrar...</p>
               )}
             </>
           )}
