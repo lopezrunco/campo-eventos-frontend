@@ -160,7 +160,10 @@ function Card({ myEvent }) {
                   return <LotCard key={lot.id} lot={lot} />;
                 })}
               </div>
-              <a className="button button-dark me-3">
+              <a
+                className="button button-dark me-3"
+                href={`/consignatarios/mis-eventos/${myEvent.id}/crear-lote`}
+              >
                 <i className="fas fa-plus"></i> Crear nuevo lote
               </a>
             </div>

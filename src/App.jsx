@@ -29,6 +29,9 @@ import MyEvents from "./pages/backoffice/MyEvents";
 import MyEventById from "./pages/backoffice/MyEventById";
 import PreOfferEdited from "./pages/backoffice/PreOfferEdited";
 import CreateEvent from "./pages/backoffice/CreateEvent";
+import EventCreated from "./pages/backoffice/EventCreated";
+import CreateLot from "./pages/backoffice/CreateLot";
+import LotCreated from "./pages/backoffice/LotCreated";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -38,7 +41,6 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 import "./App.scss";
-import EventCreated from "./pages/backoffice/EventCreated";
 
 // Create context to manage authentication data type
 export const AuthContext = createContext();
@@ -172,7 +174,23 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
-          <Route
+            <Route
+              path="/consignatarios/mis-eventos/:id/lote-creado"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <LotCreated />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/consignatarios/mis-eventos/:id/crear-lote"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <CreateLot />
+                </RequireAuth>
+              }
+            />
+            <Route
               path="/remate-creado"
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
@@ -180,7 +198,6 @@ function App() {
                 </RequireAuth>
               }
             />
-
             <Route
               path="/consignatarios/crear-remate"
               element={
@@ -189,7 +206,6 @@ function App() {
                 </RequireAuth>
               }
             />
-
             <Route
               path="/preoferta-editada"
               element={
@@ -198,7 +214,6 @@ function App() {
                 </RequireAuth>
               }
             />
-
             <Route
               path="/consignatarios/mis-eventos/:id"
               element={
@@ -207,7 +222,6 @@ function App() {
                 </RequireAuth>
               }
             />
-
             <Route
               path="/consignatarios/mis-eventos"
               element={
@@ -216,7 +230,6 @@ function App() {
                 </RequireAuth>
               }
             />
-
             <Route
               path="/consignatarios"
               element={
@@ -225,7 +238,6 @@ function App() {
                 </RequireAuth>
               }
             />
-
             <Route
               path="/mis-preofertas"
               element={
@@ -234,7 +246,6 @@ function App() {
                 </RequireAuth>
               }
             />
-
             <Route
               path="/preoffer-done"
               element={
@@ -243,7 +254,6 @@ function App() {
                 </RequireAuth>
               }
             />
-
             <Route
               path="/lotes/:id"
               element={
@@ -252,7 +262,6 @@ function App() {
                 </RequireAuth>
               }
             />
-
             <Route
               path="/remates"
               element={
@@ -261,7 +270,6 @@ function App() {
                 </RequireAuth>
               }
             />
-
             <Route
               path="/forbidden"
               element={
@@ -270,7 +278,6 @@ function App() {
                 </>
               }
             />
-
             <Route path="/cartelera" element={<PublicEventsList />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
