@@ -28,6 +28,7 @@ import AdminHomePage from "./pages/backoffice/AdminHomePage";
 import MyEvents from "./pages/backoffice/MyEvents";
 import MyEventById from "./pages/backoffice/MyEventById";
 import PreOfferEdited from "./pages/backoffice/PreOfferEdited";
+import CreateEvent from "./pages/backoffice/CreateEvent";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -37,6 +38,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 import "./App.scss";
+import EventCreated from "./pages/backoffice/EventCreated";
 
 // Create context to manage authentication data type
 export const AuthContext = createContext();
@@ -170,6 +172,24 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
+          <Route
+              path="/remate-creado"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <EventCreated />
+                </RequireAuth>
+              }
+            />
+
+            <Route
+              path="/consignatarios/crear-remate"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <CreateEvent />
+                </RequireAuth>
+              }
+            />
+
             <Route
               path="/preoferta-editada"
               element={

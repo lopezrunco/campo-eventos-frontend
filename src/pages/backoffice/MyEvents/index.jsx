@@ -137,7 +137,7 @@ function MyEvents() {
       </motion.div>
       <section className="container">
         <article className="row">
-          <a className="button button-dark me-3">
+          <a className="button button-dark me-3" href="/consignatarios/crear-remate">
             <i className="fas fa-plus"></i> Crear nuevo evento
           </a>
           {state.isFetching ? (
