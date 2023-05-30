@@ -32,6 +32,7 @@ import CreateEvent from "./pages/backoffice/CreateEvent";
 import EventCreated from "./pages/backoffice/EventCreated";
 import CreateLot from "./pages/backoffice/CreateLot";
 import LotCreated from "./pages/backoffice/LotCreated";
+import UploadFile from "./pages/backoffice/UploadFile";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -174,6 +175,14 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
+            <Route
+              path="/consignatarios/mis-eventos/:id/upload"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <UploadFile />
+                </RequireAuth>
+              }
+            />
             <Route
               path="/consignatarios/mis-eventos/:id/lote-creado"
               element={

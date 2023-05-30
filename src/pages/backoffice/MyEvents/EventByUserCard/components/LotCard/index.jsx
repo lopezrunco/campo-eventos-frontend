@@ -163,6 +163,9 @@ function LotCard({ lot }) {
           </p>
         </div>
         <a className="button button-dark me-3">
+          <i className="fas fa-video"></i> Agregar video del lote
+        </a>
+        <a className="button button-dark me-3">
           <i className="fas fa-video"></i> Video de lote
         </a>
         <a className="button button-dark" onClick={handleClick}>

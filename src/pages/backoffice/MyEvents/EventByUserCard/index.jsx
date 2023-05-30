@@ -7,10 +7,7 @@ function EventByUserCard({ event }) {
         <div className="border mb-3 p-4">
           <div className="row">
             <div className="col-12">
-              <img
-                src="https://images.pexels.com/photos/51311/cow-calf-cattle-stock-51311.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                width="100%"
-              />
+              <img src={event.imageUrl} width="100%" />
               <h3>{event.title}</h3>
               <small># {event.id}</small>
               <p>

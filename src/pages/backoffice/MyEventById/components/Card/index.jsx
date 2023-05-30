@@ -95,13 +95,16 @@ function Card({ myEvent }) {
 
   return (
     <div className="row">
-      <div className="col-lg-2">
-        <img
-          src="https://images.pexels.com/photos/51311/cow-calf-cattle-stock-51311.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          width="100%"
-        />
+      <div className="col-lg-3">
+        <img width="100%" src={myEvent.imageUrl} />
+        <a
+          className="button button-dark me-3"
+          href={`/consignatarios/mis-eventos/${myEvent.id}/upload`}
+        >
+          <i className="fas fa-camera"></i> Agregar imagen
+        </a>
       </div>
-      <div className="col-lg-10">
+      <div className="col-lg-9">
         <p>
           <b>{myEvent.title}</b> <small># {myEvent.id}</small>
         </p>
