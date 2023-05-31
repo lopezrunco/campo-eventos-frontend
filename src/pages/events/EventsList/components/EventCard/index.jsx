@@ -11,6 +11,7 @@ import { apiUrl } from "../../../../../utils/api-url";
 import { AuthContext } from "../../../../../App";
 
 import "./styles.scss";
+import FetchImage from "../../../../../components/FetchImage";
 
 const initialState = {
   data: undefined,
@@ -126,10 +127,11 @@ function EventCard({ event }) {
               </a>
             </div>
             <div className="col-lg-3">
-              <img
-                src="https://images.pexels.com/photos/51311/cow-calf-cattle-stock-51311.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                width="100%"
-              />
+              {event.imageUrl ? (
+                <FetchImage name={event.imageUrl} />
+              ) : (
+                <img src="../../src/assets/no-img.jpg" width="100%" />
+              )}
             </div>
           </div>
           {state.showLots && (
@@ -143,8 +145,13 @@ function EventCard({ event }) {
                         <div className="col-lg-4">
                           <div className="border mb-3 p-3">
                             <h4>{lot.title}</h4>
-                            <p>Animales: {lot.animals}</p> 
-                            <a className="button button-dark" href={`/lotes/${lot.id}`}>Ver lote</a>
+                            <p>Animales: {lot.animals}</p>
+                            <a
+                              className="button button-dark"
+                              href={`/lotes/${lot.id}`}
+                            >
+                              Ver lote
+                            </a>
                           </div>
                         </div>
                       </React.Fragment>

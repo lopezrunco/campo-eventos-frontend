@@ -11,6 +11,7 @@ import {
 } from "../../../../events/action-types";
 
 import LotCard from "../../../MyEvents/EventByUserCard/components/LotCard";
+import FetchImage from "../../../../../components/FetchImage";
 
 const initialState = {
   data: undefined,
@@ -96,12 +97,16 @@ function Card({ myEvent }) {
   return (
     <div className="row">
       <div className="col-lg-3">
-        <img width="100%" src={myEvent.imageUrl} />
+        {myEvent.imageUrl ? (
+          <FetchImage name={myEvent.imageUrl} />
+        ) : (
+          <img src="../../src/assets/no-img.jpg" width="100%" />
+        )}
         <a
           className="button button-dark me-3"
           href={`/consignatarios/mis-eventos/${myEvent.id}/upload`}
         >
-          <i className="fas fa-camera"></i> Agregar imagen
+          <i className="fas fa-camera"></i> Cambiar imagen
         </a>
       </div>
       <div className="col-lg-9">

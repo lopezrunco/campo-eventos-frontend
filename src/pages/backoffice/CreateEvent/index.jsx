@@ -24,7 +24,7 @@ const initialState = {
   funder: "",
   location: "",
   broadcastLink: "",
-  imageUrl: "",
+  imageUrl: undefined,
   userId: "",
   isSending: false,
   hasError: false,
@@ -94,7 +94,7 @@ function CreateEvent() {
         funder: state.funder,
         location: state.location,
         broadcastLink: state.broadcastLink,
-        imageUrl: "../../../../src/assets/no-img.jpg",
+        imageUrl: state.imageUrl,
         userId: authState.user.id,
       }),
     })

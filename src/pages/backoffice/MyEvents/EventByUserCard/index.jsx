@@ -1,4 +1,5 @@
 import React from "react";
+import FetchImage from "../../../../components/FetchImage";
 
 function EventByUserCard({ event }) {
   return (
@@ -7,7 +8,11 @@ function EventByUserCard({ event }) {
         <div className="border mb-3 p-4">
           <div className="row">
             <div className="col-12">
-              <img src={event.imageUrl} width="100%" />
+              {event.imageUrl ? (
+                <FetchImage name={event.imageUrl} />
+              ) : (
+                <img src="../../src/assets/no-img.jpg" width='100%' />
+              )}
               <h3>{event.title}</h3>
               <small># {event.id}</small>
               <p>
