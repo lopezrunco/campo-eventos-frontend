@@ -33,6 +33,7 @@ const initialState = {
   open: true,
   sold: false,
   completed: false,
+  videoSrc: undefined,
   eventId: "",
   isSending: false,
   hasError: false,
@@ -90,7 +91,6 @@ function CreateLot() {
     dispatch({
       type: CREATE_LOT_REQUEST,
     });
-    console.log(state);
 
     fetch(apiUrl("/lots/create"), {
       method: "POST",
@@ -115,6 +115,7 @@ function CreateLot() {
         open: state.open,
         sold: state.sold,
         completed: state.completed,
+        videoSrc: state.videoSrc,
         eventId: state.eventId,
       }),
     })

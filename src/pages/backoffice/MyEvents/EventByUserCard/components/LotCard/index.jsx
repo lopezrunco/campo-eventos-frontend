@@ -11,6 +11,7 @@ import { apiUrl } from "../../../../../../utils/api-url";
 import { refreshToken } from "../../../../../../utils/refresh-token";
 
 import PreoffersList from "./components/PreoffersList";
+import FetchVideo from "../../../../../../components/FetchVideo";
 
 import "./styles.scss";
 
@@ -162,12 +163,19 @@ function LotCard({ lot }) {
             {lot.observations}
           </p>
         </div>
-        <a className="button button-dark me-3">
-          <i className="fas fa-video"></i> Agregar video del lote
+
+        {lot.videoSrc ? (
+          <FetchVideo name={lot.videoSrc} />
+        ) : (
+          <p>Este lote no tiene video</p>
+        )}
+        <a
+          className="button button-dark me-3"
+          href={`/consignatarios/mis-eventos/lotes/${lot.id}/upload`}
+        >
+          <i className="fas fa-video"></i> Agregar / cambiar video
         </a>
-        <a className="button button-dark me-3">
-          <i className="fas fa-video"></i> Video de lote
-        </a>
+
         <a className="button button-dark" onClick={handleClick}>
           <i className="fas fa-comments-dollar"></i> Preofertas
         </a>
