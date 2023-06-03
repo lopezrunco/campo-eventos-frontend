@@ -13,14 +13,14 @@ const FileUpload = (file) => {
   let formData = new FormData();
   formData.append("file", file);
 
-  return http.post("/upload", formData, {
+  return http.post("/image-upload", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
   });
 };
 
-const UploadFile = () => {
+const UploadImage = () => {
   const [selectedFiles, setSelectedFiles] = useState(undefined);
   const [currentFile, setCurrentFile] = useState(undefined);
   const [message, setMessage] = useState("");
@@ -96,4 +96,4 @@ const UploadFile = () => {
   );
 };
 
-export default UploadFile;
+export default UploadImage;

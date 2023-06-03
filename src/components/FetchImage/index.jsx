@@ -6,7 +6,7 @@ function FetchImage({ name }) {
   const [img, setImg] = useState();
 
   const fetchImage = async () => {
-    const res = await fetch(apiUrl(`/files/${name}`));
+    const res = await fetch(apiUrl(`/image-files/${name}`));
     const imageBlob = await res.blob();
     const imageObjectURL = URL.createObjectURL(imageBlob);
     setImg(imageObjectURL);

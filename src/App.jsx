@@ -32,7 +32,7 @@ import CreateEvent from "./pages/backoffice/CreateEvent";
 import EventCreated from "./pages/backoffice/EventCreated";
 import CreateLot from "./pages/backoffice/CreateLot";
 import LotCreated from "./pages/backoffice/LotCreated";
-import UploadFile from "./pages/backoffice/UploadFile";
+import UploadImage from "./pages/backoffice/UploadImage";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -179,7 +179,7 @@ function App() {
               path="/consignatarios/mis-eventos/:id/upload"
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
-                  <UploadFile />
+                  <UploadImage />
                 </RequireAuth>
               }
             />
