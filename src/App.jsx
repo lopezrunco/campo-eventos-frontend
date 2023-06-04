@@ -30,6 +30,7 @@ import MyEventById from "./pages/backoffice/MyEventById";
 import PreOfferEdited from "./pages/backoffice/PreOfferEdited";
 import CreateEvent from "./pages/backoffice/CreateEvent";
 import EventCreated from "./pages/backoffice/EventCreated";
+import EventDeleted from "./pages/backoffice/EventDeleted";
 import CreateLot from "./pages/backoffice/CreateLot";
 import LotCreated from "./pages/backoffice/LotCreated";
 import UploadImage from "./pages/backoffice/UploadImage";
@@ -189,6 +190,14 @@ function App() {
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
                   <UploadImage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/consignatarios/mis-eventos/evento-borrado"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <EventDeleted />
                 </RequireAuth>
               }
             />

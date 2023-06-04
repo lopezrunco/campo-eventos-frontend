@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 
 import { refreshToken } from "../../../../../utils/refresh-token";
 import { apiUrl } from "../../../../../utils/api-url";
@@ -12,12 +12,14 @@ import {
 
 import LotCard from "../../../MyEvents/EventByUserCard/components/LotCard";
 import FetchImage from "../../../../../components/FetchImage";
+import DeleteEventModal from "./components/DeleteEventModal";
 
 const initialState = {
   data: undefined,
   isSending: false,
   hasError: false,
   showLots: false,
+  showDeleteModal: false,
 };
 
 const reducer = (state, action) => {
@@ -40,6 +42,11 @@ const reducer = (state, action) => {
         ...state,
         isSending: false,
         hasError: true,
+      };
+    case "SHOW_DELETE_MODAL":
+      return {
+        ...state,
+        showDeleteModal: !state.showDeleteModal,
       };
     default:
       return state;
@@ -94,91 +101,105 @@ function Card({ myEvent }) {
       });
   };
 
+  const handleDeleteModal = () => {
+    dispatch({
+      type: "SHOW_DELETE_MODAL",
+    });
+  };
+
   return (
-    <div className="row">
-      <div className="col-lg-3">
-        {myEvent.imageUrl ? (
-          <FetchImage name={myEvent.imageUrl} />
-        ) : (
-          <img src="../../src/assets/no-img.jpg" width="100%" />
-        )}
-        <a
-          className="button button-dark me-3"
-          href={`/consignatarios/mis-eventos/${myEvent.id}/upload`}
-        >
-          <i className="fas fa-camera"></i> Cambiar imagen
-        </a>
-      </div>
-      <div className="col-lg-9">
-        <p>
-          <b>{myEvent.title}</b> <small># {myEvent.id}</small>
-        </p>
+    <React.Fragment>
+      <div className="row">
+        <div className="col-lg-3">
+          {myEvent.imageUrl ? (
+            <FetchImage name={myEvent.imageUrl} />
+          ) : (
+            <img src="../../src/assets/no-img.jpg" width="100%" />
+          )}
+          <a
+            className="button button-dark me-3"
+            href={`/consignatarios/mis-eventos/${myEvent.id}/upload`}
+          >
+            <i className="fas fa-camera"></i> Cambiar imagen
+          </a>
+        </div>
+        <div className="col-lg-9">
+          <p>
+            <b>{myEvent.title}</b> <small># {myEvent.id}</small>
+          </p>
 
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">Remata</th>
-              <th scope="col">Organiza</th>
-              <th scope="col">Lugar</th>
-              <th scope="col">Financiación</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{myEvent.company}</td>
-              <td>{myEvent.organizer}</td>
-              <td>{myEvent.location}</td>
-              <td>{myEvent.funder}</td>
-            </tr>
-          </tbody>
-        </table>
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">Remata</th>
+                <th scope="col">Organiza</th>
+                <th scope="col">Lugar</th>
+                <th scope="col">Financiación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{myEvent.company}</td>
+                <td>{myEvent.organizer}</td>
+                <td>{myEvent.location}</td>
+                <td>{myEvent.funder}</td>
+              </tr>
+            </tbody>
+          </table>
 
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">Enlace vivo</th>
-              <th scope="col">Video de los lotes</th>
-              <th scope="col">Descripción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{myEvent.broadcastLink}</td>
-              <td>{myEvent.videoLink}</td>
-              <td>{myEvent.description}</td>
-            </tr>
-          </tbody>
-        </table>
+          <table className="table">
+            <thead>
+              <tr>
+                <th scope="col">Enlace vivo</th>
+                <th scope="col">Video de los lotes</th>
+                <th scope="col">Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{myEvent.broadcastLink}</td>
+                <td>{myEvent.videoLink}</td>
+                <td>{myEvent.description}</td>
+              </tr>
+            </tbody>
+          </table>
 
-        <a className="button button-dark me-3">
-          <i className="fas fa-edit"></i> Editar
-        </a>
-        <a className="button button-dark me-3">
-          <i className="fas fa-minus-circle"></i> Borrar
-        </a>
-        <a className="button button-dark me-3" onClick={handleClick}>
-          <i className="fas fa-layer-group"></i> Ver lotes
-        </a>
-        {state.showLots && (
-          <div className="col-12">
-            <div className="container">
-              <h3>Lotes:</h3>
-              <div className="row">
-                {state.data.map((lot) => {
-                  return <LotCard key={lot.id} lot={lot} />;
-                })}
+          <a className="button button-dark me-3">
+            <i className="fas fa-edit"></i> Editar
+          </a>
+          <a className="button button-dark me-3" onClick={handleDeleteModal}>
+            <i className="fas fa-trash"></i> Eliminar
+          </a>
+          <a className="button button-dark me-3" onClick={handleClick}>
+            <i className="fas fa-layer-group"></i> Ver lotes
+          </a>
+          {state.showLots && (
+            <div className="col-12">
+              <div className="container">
+                <h3>Lotes:</h3>
+                <div className="row">
+                  {state.data.map((lot) => {
+                    return <LotCard key={lot.id} lot={lot} />;
+                  })}
+                </div>
+                <a
+                  className="button button-dark me-3"
+                  href={`/consignatarios/mis-eventos/${myEvent.id}/crear-lote`}
+                >
+                  <i className="fas fa-plus"></i> Crear nuevo lote
+                </a>
               </div>
-              <a
-                className="button button-dark me-3"
-                href={`/consignatarios/mis-eventos/${myEvent.id}/crear-lote`}
-              >
-                <i className="fas fa-plus"></i> Crear nuevo lote
-              </a>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+      {state.showDeleteModal && (
+        <DeleteEventModal
+          eventId={myEvent.id}
+          closeFunction={handleDeleteModal}
+        />
+      )}
+    </React.Fragment>
   );
 }
 
