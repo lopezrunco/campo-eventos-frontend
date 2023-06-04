@@ -33,6 +33,7 @@ import EventCreated from "./pages/backoffice/EventCreated";
 import EventDeleted from "./pages/backoffice/EventDeleted";
 import CreateLot from "./pages/backoffice/CreateLot";
 import LotCreated from "./pages/backoffice/LotCreated";
+import LotDeleted from "./pages/backoffice/LotDeleted";
 import UploadImage from "./pages/backoffice/UploadImage";
 import UploadVideo from "./pages/backoffice/UploadVideo";
 
@@ -198,6 +199,14 @@ function App() {
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
                   <EventDeleted />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/consignatarios/mis-eventos/lote-borrado"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <LotDeleted />
                 </RequireAuth>
               }
             />

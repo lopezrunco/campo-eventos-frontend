@@ -12,6 +12,7 @@ import { refreshToken } from "../../../../../../utils/refresh-token";
 
 import PreoffersList from "./components/PreoffersList";
 import FetchVideo from "../../../../../../components/FetchVideo";
+import DeleteLotModal from "./components/DeleteLotModal";
 
 import "./styles.scss";
 
@@ -20,6 +21,7 @@ const initialState = {
   isSending: false,
   hasError: false,
   showPreoffers: false,
+  showDeleteModal: false,
 };
 
 const reducer = (state, action) => {
@@ -42,6 +44,11 @@ const reducer = (state, action) => {
         ...state,
         isSending: false,
         hasError: true,
+      };
+    case "SHOW_DELETE_MODAL":
+      return {
+        ...state,
+        showDeleteModal: !state.showDeleteModal,
       };
     default:
       return state;
@@ -94,6 +101,12 @@ function LotCard({ lot }) {
           });
         }
       });
+  };
+
+  const handleDeleteModal = () => {
+    dispatch({
+      type: "SHOW_DELETE_MODAL",
+    });
   };
 
   return (
@@ -175,14 +188,19 @@ function LotCard({ lot }) {
         >
           <i className="fas fa-video"></i> Agregar / cambiar video
         </a>
-
-        <a className="button button-dark" onClick={handleClick}>
+        <a className="button button-dark me-3" onClick={handleClick}>
           <i className="fas fa-comments-dollar"></i> Preofertas
+        </a>
+        <a className="button button-dark" onClick={handleDeleteModal}>
+          <i className="fas fa-trash"></i> Eliminar
         </a>
         {state.showPreoffers && (
           <PreoffersList preoffers={state.data} lotId={lot.id} />
         )}
       </div>
+      {state.showDeleteModal && (
+        <DeleteLotModal lotId={lot.id} closeFunction={handleDeleteModal} />
+      )}
     </React.Fragment>
   );
 }
