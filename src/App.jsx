@@ -31,6 +31,7 @@ import PreOfferEdited from "./pages/backoffice/PreOfferEdited";
 import CreateEvent from "./pages/backoffice/CreateEvent";
 import EventCreated from "./pages/backoffice/EventCreated";
 import EventDeleted from "./pages/backoffice/EventDeleted";
+import PreofferDeleted from "./pages/backoffice/PreofferDeleted";
 import CreateLot from "./pages/backoffice/CreateLot";
 import LotCreated from "./pages/backoffice/LotCreated";
 import LotDeleted from "./pages/backoffice/LotDeleted";
@@ -191,6 +192,14 @@ function App() {
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
                   <UploadImage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/consignatarios/mis-eventos/preoferta-borrada"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <PreofferDeleted />
                 </RequireAuth>
               }
             />
