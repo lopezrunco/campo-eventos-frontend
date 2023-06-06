@@ -33,6 +33,7 @@ const initialState = {
   open: true,
   sold: false,
   completed: false,
+  YTVideoSrc: undefined,
   videoSrc: undefined,
   eventId: "",
   isSending: false,
@@ -115,6 +116,7 @@ function CreateLot() {
         open: state.open,
         sold: state.sold,
         completed: state.completed,
+        YTVideoSrc: state.YTVideoSrc,
         videoSrc: state.videoSrc,
         eventId: state.eventId,
       }),
@@ -319,6 +321,20 @@ function CreateLot() {
                     onChange={handleInputChange}
                     name="currency"
                     id="currency"
+                  />
+                </label>
+
+                {/* TO DO: Si se hace click aqui y no rellena nada da error al enviar */}
+                {/* Dejar elegir que video mostrar, si local o de YT, o sino, mostrar los dos */}
+                <label htmlFor="ytvideo">
+                  Enlace a video YouTube
+                  <input
+                    required
+                    type="text"
+                    value={state.YTVideoSrc}
+                    onChange={handleInputChange}
+                    name="YTVideoSrc"
+                    id="ytvideo"
                   />
                 </label>
 

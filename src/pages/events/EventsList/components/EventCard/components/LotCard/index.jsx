@@ -120,7 +120,17 @@ function LotCard({ lot }) {
             <b>Observaciones:</b> {lot.observations}
           </p>
         </div>
-        {lot.videoSrc ? (
+        {lot.YTVideoSrc ? (
+          <iframe
+            width="560"
+            height="315"
+            src={`https://www.youtube.com/embed/${lot.YTVideoSrc}`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        ) : lot.videoSrc ? (
           <FetchVideo name={lot.videoSrc} />
         ) : (
           <p>Este lote no tiene video</p>

@@ -6,6 +6,7 @@ import http from "../../../utils/http-common";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import AppendVideo from "./components/AppendVideo";
+import YouTubeVideo from "./components/YouTubeVideo";
 
 import "./styles.scss";
 
@@ -63,12 +64,14 @@ const UploadVideo = () => {
       <section className="upload-video-page">
         <article className="container">
           <div className="row">
+            <YouTubeVideo lotId={id} />
             <div className="col-12">
               <div className="card p-5">
-                <h3>Subir video</h3>
+                <h3>Subir desde su dispositivo</h3>
                 <div className="separator"></div>
                 <p>
-                  Seleccione el video desde su dispositivo (No puede pesar más de 70 MB).
+                  Seleccione el video desde su dispositivo (No puede pesar más
+                  de 70 MB).
                 </p>
                 <label className="btn btn-default">
                   <input type="file" onChange={selectFile} />
@@ -80,9 +83,7 @@ const UploadVideo = () => {
                 >
                   <i className="fas fa-upload"></i> Subir archivo
                 </button>
-
                 <div className="p-3">{message}</div>
-
                 {appendVideoToEvent && (
                   <AppendVideo lotId={id} videoName={currentFile.name} />
                 )}
