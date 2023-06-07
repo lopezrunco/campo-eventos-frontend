@@ -176,7 +176,6 @@ function LotCard({ lot }) {
             {lot.observations}
           </p>
         </div>
-        {/* TO DO: en el backend obtener el video ID de los links de youtube */}
 
         {lot.YTVideoSrc ? (
           <iframe

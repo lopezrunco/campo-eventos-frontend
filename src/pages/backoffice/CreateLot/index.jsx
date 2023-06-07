@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import React, { useContext, useReducer } from "react";
 
 import { refreshToken } from "../../../utils/refresh-token";
+import { getYoutubeId } from "../../../utils/getYoutubeID";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 import {
@@ -116,7 +117,10 @@ function CreateLot() {
         open: state.open,
         sold: state.sold,
         completed: state.completed,
-        YTVideoSrc: state.YTVideoSrc,
+        YTVideoSrc:
+          state.YTVideoSrc === undefined
+            ? undefined
+            : getYoutubeId(state.YTVideoSrc),
         videoSrc: state.videoSrc,
         eventId: state.eventId,
       }),
@@ -324,8 +328,7 @@ function CreateLot() {
                   />
                 </label>
 
-                {/* TO DO: Si se hace click aqui y no rellena nada da error al enviar */}
-                {/* Dejar elegir que video mostrar, si local o de YT, o sino, mostrar los dos */}
+                {/* TO DO: Dejar elegir que video mostrar, si local o de YT, o sino, mostrar los dos */}
                 <label htmlFor="ytvideo">
                   Enlace a video YouTube
                   <input
