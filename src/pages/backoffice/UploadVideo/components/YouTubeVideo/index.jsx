@@ -1,14 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { useContext, useReducer } from "react";
+
+import { refreshToken } from "../../../../../utils/refresh-token";
+import { getYoutubeId } from "../../../../../utils/getYoutubeID";
+import { apiUrl } from "../../../../../utils/api-url";
+import { AuthContext } from "../../../../../App";
 import {
   EDIT_LOT_FAILURE,
   EDIT_LOT_REQUEST,
   EDIT_LOT_SUCCESS,
   FORM_INPUT_CHANGE,
 } from "../../../action-types";
-import { AuthContext } from "../../../../../App";
-import { useNavigate } from "react-router-dom";
-import { apiUrl } from "../../../../../utils/api-url";
-import { refreshToken } from "../../../../../utils/refresh-token";
 
 const initialState = {
   YTVideoSrc: undefined,
@@ -74,7 +76,10 @@ function YouTubeVideo({ lotId }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        YTVideoSrc: state.YTVideoSrc,
+        YTVideoSrc:
+          state.YTVideoSrc === undefined
+            ? undefined
+            : getYoutubeId(state.YTVideoSrc),
       }),
     })
       .then((response) => {
@@ -107,10 +112,12 @@ function YouTubeVideo({ lotId }) {
   return (
     <div className="col-12">
       <div className="card p-5 mb-5">
-        <h3>Video de Youtube</h3>
-        <p>Pegue en enlace de Youtube y presione enviar.</p>
+        <h3>Usar video de Youtube</h3>
+        <p>
+          Si cuenta con video subido a la plataforma de YouTube, péguelo a
+          continuación.
+        </p>
         <label htmlFor="YTVideoSrc">
-          Enlace
           <input
             required
             type="text"
@@ -118,6 +125,7 @@ function YouTubeVideo({ lotId }) {
             onChange={handleInputChange}
             name="YTVideoSrc"
             id="YTVideoSrc"
+            placeholder="Ej: www.youtube.com/su-video"
           />
         </label>
         <button
@@ -125,8 +133,8 @@ function YouTubeVideo({ lotId }) {
           onClick={handleSubmit}
           disabled={state.isSubmitting}
         >
-          <i className="fas fa-plus"></i>
-          {state.isSubmitting ? "Por favor, espere..." : "Enviar"}
+          <i className="fab fa-youtube"></i>
+          {state.isSubmitting ? "Por favor, espere..." : "Usar video"}
         </button>
 
         {state.errorMessage && (

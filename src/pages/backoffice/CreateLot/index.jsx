@@ -327,8 +327,6 @@ function CreateLot() {
                     id="currency"
                   />
                 </label>
-
-                {/* TO DO: Dejar elegir que video mostrar, si local o de YT, o sino, mostrar los dos */}
                 <label htmlFor="ytvideo">
                   Enlace a video YouTube
                   <input
