@@ -24,20 +24,22 @@ import Register from "./pages/security/Register";
 import { NotFound } from "./pages/access/NotFound";
 import { Forbidden } from "./pages/access/Forbidden";
 
-import AdminHomePage from "./pages/backoffice/AdminHomePage";
-import MyEvents from "./pages/backoffice/MyEvents";
-import MyEventById from "./pages/backoffice/MyEventById";
-import PreOfferEdited from "./pages/backoffice/PreOfferEdited";
-import CreateEvent from "./pages/backoffice/CreateEvent";
-import EventCreated from "./pages/backoffice/EventCreated";
-import EventDeleted from "./pages/backoffice/EventDeleted";
-import PreofferDeleted from "./pages/backoffice/PreofferDeleted";
-import CreateLot from "./pages/backoffice/CreateLot";
-import LotCreated from "./pages/backoffice/LotCreated";
-import LotEdited from "./pages/backoffice/LotEdited";
-import LotDeleted from "./pages/backoffice/LotDeleted";
-import UploadImage from "./pages/backoffice/UploadImage";
-import UploadVideo from "./pages/backoffice/UploadVideo";
+import ConsigneesHomePage from "./pages/consignees/ConsigneesHomePage";
+import MyEvents from "./pages/consignees/MyEvents";
+import MyEventById from "./pages/consignees/MyEventById";
+import PreOfferEdited from "./pages/consignees/PreOfferEdited";
+import CreateEvent from "./pages/consignees/CreateEvent";
+import EventCreated from "./pages/consignees/EventCreated";
+import EventDeleted from "./pages/consignees/EventDeleted";
+import PreofferDeleted from "./pages/consignees/PreofferDeleted";
+import CreateLot from "./pages/consignees/CreateLot";
+import LotCreated from "./pages/consignees/LotCreated";
+import LotEdited from "./pages/consignees/LotEdited";
+import LotDeleted from "./pages/consignees/LotDeleted";
+import UploadImage from "./pages/consignees/UploadImage";
+import UploadVideo from "./pages/consignees/UploadVideo";
+
+import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -181,9 +183,17 @@ function App() {
           <ScrollOnNav />
           <Routes>
             <Route
-              path="/consignatarios/mis-eventos/lotes/:id/upload"
+              path="/admin"
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
+                  <BackOfficeHome />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/consignatarios/mis-eventos/lotes/:id/upload"
+              element={
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <UploadVideo />
                 </RequireAuth>
               }
@@ -191,7 +201,7 @@ function App() {
             <Route
               path="/consignatarios/mis-eventos/:id/upload"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <UploadImage />
                 </RequireAuth>
               }
@@ -199,7 +209,7 @@ function App() {
             <Route
               path="/consignatarios/mis-eventos/preoferta-borrada"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <PreofferDeleted />
                 </RequireAuth>
               }
@@ -207,7 +217,7 @@ function App() {
             <Route
               path="/consignatarios/mis-eventos/evento-borrado"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <EventDeleted />
                 </RequireAuth>
               }
@@ -215,7 +225,7 @@ function App() {
             <Route
               path="/consignatarios/mis-eventos/lote-borrado"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <LotDeleted />
                 </RequireAuth>
               }
@@ -223,7 +233,7 @@ function App() {
             <Route
               path="/consignatarios/mis-eventos/:id/lote-editado"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <LotEdited />
                 </RequireAuth>
               }
@@ -231,7 +241,7 @@ function App() {
             <Route
               path="/consignatarios/mis-eventos/:id/lote-creado"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <LotCreated />
                 </RequireAuth>
               }
@@ -239,7 +249,7 @@ function App() {
             <Route
               path="/consignatarios/mis-eventos/:id/crear-lote"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <CreateLot />
                 </RequireAuth>
               }
@@ -247,7 +257,7 @@ function App() {
             <Route
               path="/remate-creado"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <EventCreated />
                 </RequireAuth>
               }
@@ -255,7 +265,7 @@ function App() {
             <Route
               path="/consignatarios/crear-remate"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <CreateEvent />
                 </RequireAuth>
               }
@@ -263,7 +273,7 @@ function App() {
             <Route
               path="/preoferta-editada"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <PreOfferEdited />
                 </RequireAuth>
               }
@@ -271,7 +281,7 @@ function App() {
             <Route
               path="/consignatarios/mis-eventos/:id"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <MyEventById />
                 </RequireAuth>
               }
@@ -279,7 +289,7 @@ function App() {
             <Route
               path="/consignatarios/mis-eventos"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <MyEvents />
                 </RequireAuth>
               }
@@ -287,15 +297,15 @@ function App() {
             <Route
               path="/consignatarios"
               element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
-                  <AdminHomePage />
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
+                  <ConsigneesHomePage />
                 </RequireAuth>
               }
             />
             <Route
               path="/mis-preofertas"
               element={
-                <RequireAuth allowedRoles={["BASIC", "ADMIN"]}>
+                <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
                   <MyPreOffers />
                 </RequireAuth>
               }
@@ -303,7 +313,7 @@ function App() {
             <Route
               path="/preoffer-done"
               element={
-                <RequireAuth allowedRoles={["BASIC", "ADMIN"]}>
+                <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
                   <PreOfferDone />
                 </RequireAuth>
               }
@@ -311,7 +321,7 @@ function App() {
             <Route
               path="/lotes/:id"
               element={
-                <RequireAuth allowedRoles={["BASIC", "ADMIN"]}>
+                <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
                   <LotById />
                 </RequireAuth>
               }
@@ -319,7 +329,7 @@ function App() {
             <Route
               path="/remates"
               element={
-                <RequireAuth allowedRoles={["BASIC", "ADMIN"]}>
+                <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
                   <EventsList />
                 </RequireAuth>
               }

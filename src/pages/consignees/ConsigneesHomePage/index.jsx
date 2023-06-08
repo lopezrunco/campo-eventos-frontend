@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import React from "react"
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 
-function AdminHomePage() {
+function ConsigneesHomePage() {
   return (
     <React.Fragment>
       <motion.div
@@ -24,4 +24,4 @@ function AdminHomePage() {
   )
 }
 
-export default AdminHomePage
+export default ConsigneesHomePage

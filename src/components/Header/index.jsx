@@ -45,7 +45,7 @@ export const Header = () => {
                 <a href='/servicios' className="nav-link-item" title='Servicios'>Servicios</a>
               </li>
 
-              {/* BASIC users */}
+              {/* Basic users */}
               {authState.user && ( 
                 <React.Fragment>
                   <li className={`navigation-bar-item ${activeLink === '/remates' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
@@ -57,12 +57,22 @@ export const Header = () => {
                 </React.Fragment>
               )}
 
-              {/* ADMIN users (consignatarios) */}
+              {/* Consignatarios users */}
               {
-                ['ADMIN'].find(role => role === authState.role) &&
+                ['CONS'].find(role => role === authState.role) &&
                 <React.Fragment>
                   <li className={`navigation-bar-item ${activeLink === '/consignatarios' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
                     <a href="/consignatarios" className="nav-link-item" title="Consignatarios">Consignatarios</a>
+                  </li>
+                </React.Fragment>
+              }
+
+              {/* Administrator users */}
+              {
+                ['ADMIN'].find(role => role === authState.role) &&
+                <React.Fragment>
+                  <li className={`navigation-bar-item ${activeLink === '/admin' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                    <a href="/admin" className="nav-link-item" title="Administracion">Administracion</a>
                   </li>
                 </React.Fragment>
               }
