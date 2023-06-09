@@ -59,7 +59,7 @@ export const Header = () => {
 
               {/* Consignatarios users */}
               {
-                ['CONS'].find(role => role === authState.role) &&
+                ['CONS', 'ADMIN'].find(role => role === authState.role) &&
                 <React.Fragment>
                   <li className={`navigation-bar-item ${activeLink === '/consignatarios' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
                     <a href="/consignatarios" className="nav-link-item" title="Consignatarios">Consignatarios</a>

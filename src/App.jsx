@@ -42,6 +42,7 @@ import UploadVideo from "./pages/consignees/UploadVideo";
 import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
 import CreateLiveEvent from "./pages/backoffice/CreateLiveEvent";
 import LiveEventCreated from "./pages/backoffice/LiveEventCreated";
+import LiveEvents from "./pages/backoffice/LiveEvents";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -184,6 +185,14 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
+          <Route
+              path="/admin/remates-vivo"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <LiveEvents />
+                </RequireAuth>
+              }
+            />
           <Route
               path="/admin/remate-vivo-creado"
               element={

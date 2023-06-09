@@ -1,69 +1,63 @@
 import { motion } from "framer-motion";
-import {
+import { useNavigate } from "react-router-dom";
+import React, {
   createContext,
   useContext,
   useEffect,
   useReducer,
   useState,
 } from "react";
-import { useNavigate } from "react-router-dom";
 
-import { apiUrl } from "../../../utils/api-url";
-import { refreshToken } from "../../../utils/refresh-token.js";
-import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import { AuthContext } from "../../../App";
+import { apiUrl } from "../../../utils/api-url";
+import { refreshToken } from "../../../utils/refresh-token";
+import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import {
-  FETCH_EVENTS_FAILURE,
-  FETCH_EVENTS_REQUEST,
-  FETCH_EVENTS_SUCCESS,
+  FETCH_LIVE_EVENTS_FAILURE,
+  FETCH_LIVE_EVENTS_REQUEST,
+  FETCH_LIVE_EVENTS_SUCCESS,
 } from "../action-types";
 
-import EventCard from "./components/EventCard";
-import { Loader } from "../../../components/Loader";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
+import { Loader } from "../../../components/Loader";
+import LiveEventCard from "./components/LiveEventCard";
 
-// Create context to manage events
-export const EventsContext = createContext();
+// Create context to manage live events
+export const LiveEventsContext = createContext();
 
 const initialState = {
-  eventsList: [],
-  selectedEventId: undefined,
+  liveEventsList: [],
+  selectedLiveEventId: undefined,
   isFetching: false,
   hasError: false,
 };
 
-// Reducer to manage events
 const reducer = (state, action) => {
   switch (action.type) {
-    case FETCH_EVENTS_REQUEST:
+    case FETCH_LIVE_EVENTS_REQUEST:
       return {
         ...state,
         isFetching: true,
         hasError: false,
       };
-    case FETCH_EVENTS_SUCCESS:
+    case FETCH_LIVE_EVENTS_SUCCESS:
       return {
         ...state,
         isFetching: false,
-        eventsList: action.payload.events,
+        liveEventsList: action.payload.events,
       };
-    case FETCH_EVENTS_FAILURE:
+    case FETCH_LIVE_EVENTS_FAILURE:
       return {
         ...state,
         hasError: true,
         isFetching: false,
-      };
-    case 'SET_EVENT':
-      return {
-        ...state,
-        selectedEventId: action.payload,
       };
     default:
       return state;
   }
 };
 
-function EventsList() {
+function LiveEvents() {
   const navigate = useNavigate();
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -85,15 +79,18 @@ function EventsList() {
         type: SHOW_LOADER,
       });
       dispatch({
-        type: FETCH_EVENTS_REQUEST,
+        type: FETCH_LIVE_EVENTS_REQUEST,
       });
 
-      fetch(apiUrl(`events?page=${currentPage}&itemsPerPage=${itemsPerPage}`), {
-        headers: {
-          Authorization: authState.token,
-          "Content-Type": "application/json",
-        },
-      })
+      fetch(
+        apiUrl(`live-events?page=${currentPage}&itemsPerPage=${itemsPerPage}`),
+        {
+          headers: {
+            Authorization: authState.token,
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -103,12 +100,12 @@ function EventsList() {
         })
         .then((data) => {
           dispatch({
-            type: FETCH_EVENTS_SUCCESS,
+            type: FETCH_LIVE_EVENTS_SUCCESS,
             payload: data,
           });
         })
         .catch((error) => {
-          console.error("Error trying to fetch the events", error);
+          console.error("Error trying to fetch the live events", error);
 
           if (error.status === 401) {
             refreshToken(authState.refreshToken, authDispatch, navigate);
@@ -116,7 +113,7 @@ function EventsList() {
             navigate("/forbidden");
           } else {
             dispatch({
-              type: FETCH_EVENTS_FAILURE,
+              type: FETCH_LIVE_EVENTS_FAILURE,
             });
           }
         })
@@ -128,23 +125,23 @@ function EventsList() {
     }
   }, [
     authDispatch,
-    authState.token,
     authState.refreshToken,
-    navigate,
+    authState.token,
     currentPage,
+    navigate,
   ]);
 
   return (
-    <EventsContext.Provider value={{ state, dispatch }}>
+    <LiveEventsContext.Provider value={{ state, dispatch }}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Remates"} />
+        <Breadcrumbs location={"Remates en vivo"} />
       </motion.div>
-      <section className="events">
+      <section className="backoffice-live-events-page">
         <article className="container">
           <div className="row">
             <div className="col-12">
@@ -154,19 +151,21 @@ function EventsList() {
                 ) : state.hasError ? (
                   <p>Error al obtener los datos</p>
                 ) : (
-                  <>
-                    {state.eventsList.length > 0 ? (
-                      state.eventsList.map((event) => (
-                        <EventCard key={event.id} event={event} />
+                  <React.Fragment>
+                    {state.liveEventsList.length > 0 ? (
+                      state.liveEventsList.map((liveEvent) => (
+                        <LiveEventCard
+                          key={liveEvent.id}
+                          liveEvent={liveEvent}
+                        />
                       ))
                     ) : (
-                      <p>No hay remates para mostrar...</p>
+                      <p>En este momento, no hay remates en vivo.</p>
                     )}
-                  </>
+                  </React.Fragment>
                 )}
               </div>
             </div>
-
             <div className="col-12">
               <div className="pagination">
                 {currentPage > 1 && (
@@ -177,7 +176,7 @@ function EventsList() {
                     <i className="fa fa-chevron-left"></i> Anterior
                   </button>
                 )}
-                {currentPage < state.eventsList.length && (
+                {currentPage < state.liveEventsList.length && (
                   <button
                     className="button button-light"
                     onClick={() => nextPage()}
@@ -190,8 +189,8 @@ function EventsList() {
           </div>
         </article>
       </section>
-    </EventsContext.Provider>
+    </LiveEventsContext.Provider>
   );
 }
 
-export default EventsList;
+export default LiveEvents;

@@ -123,7 +123,7 @@ function MyPreOffers() {
             {state.isFetching ? (
               <Loader />
             ) : state.hasError ? (
-              <p>Error al fetchear</p>
+              <p>Error al obtener los datos</p>
             ) : (
               <React.Fragment>
                 {state.preoffersList.length > 0 ? (

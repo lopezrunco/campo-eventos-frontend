@@ -143,7 +143,7 @@ function MyEvents() {
           {state.isFetching ? (
             <Loader />
           ) : state.hasError ? (
-            <p>Error al fetchear</p>
+            <p>Error al obtener los datos</p>
           ) : (
             <>
               {state.eventsList.length > 0 ? (
