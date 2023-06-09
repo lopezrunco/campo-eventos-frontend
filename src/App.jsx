@@ -40,6 +40,8 @@ import UploadImage from "./pages/consignees/UploadImage";
 import UploadVideo from "./pages/consignees/UploadVideo";
 
 import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
+import CreateLiveEvent from "./pages/backoffice/CreateLiveEvent";
+import LiveEventCreated from "./pages/backoffice/LiveEventCreated";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -182,6 +184,22 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
+          <Route
+              path="/admin/remate-vivo-creado"
+              element={
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
+                  <LiveEventCreated />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/admin/crear-remate-vivo"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <CreateLiveEvent />
+                </RequireAuth>
+              }
+            />
             <Route
               path="/admin"
               element={
@@ -367,3 +385,5 @@ function App() {
 }
 
 export default App;
+
+// TO DO: Construir UI de eventos en vivo conectando con los endpoints ya hechos en la API
