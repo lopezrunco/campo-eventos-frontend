@@ -97,7 +97,6 @@ function PreoffersList({ preoffers, lotId }) {
           payload: data,
         });
         navigate("/preoffer-done");
-        console.log("preoffer created!");
       })
       .catch((error) => {
         console.error("Error creating the preoffer", error);

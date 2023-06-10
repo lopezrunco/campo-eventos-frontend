@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import React, { useContext, useEffect, useReducer } from "react";
 
 import { HIDE_LOADER, SHOW_LOADER } from "../../utils/action-types";
-import { refreshToken } from "../../utils/refresh-token";
 import { apiUrl } from "../../utils/api-url";
 import { AuthContext } from "../../App";
 import {
@@ -47,59 +46,47 @@ const reducer = (state, action) => {
 };
 
 function LiveEventById() {
-  const navigate = useNavigate();
   const { id } = useParams();
   const [state, dispatch] = useReducer(reducer, initialState);
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
 
   useEffect(() => {
-    if (authState.token) {
-      authDispatch({
-        type: SHOW_LOADER,
-      });
-      dispatch({
-        type: FETCH_LIVE_EVENT_REQUEST,
-      });
+    authDispatch({
+      type: SHOW_LOADER,
+    });
+    dispatch({
+      type: FETCH_LIVE_EVENT_REQUEST,
+    });
 
-      fetch(apiUrl(`/live-events/${id}`), {
-        headers: {
-          Authorization: authState.token,
-          "Content-Type": "application/json",
-        },
+    fetch(apiUrl(`/live-events/${id}`))
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw response;
+        }
       })
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw response;
-          }
-        })
-        .then((data) => {
-          dispatch({
-            type: FETCH_LIVE_EVENT_SUCCESS,
-            payload: data,
-          });
-        })
-        .catch((error) => {
-          console.error("Error trying to fetch the live event", error);
-
-          if (error.status === 401) {
-            refreshToken(authState.refreshToken, authDispatch, navigate);
-          } else if (error.status === 403) {
-            navigate("/forbidden");
-          } else {
-            dispatch({
-              type: FETCH_LIVE_EVENT_FAILURE,
-            });
-          }
-        })
-        .finally(() => {
-          authDispatch({
-            type: HIDE_LOADER,
-          });
+      .then((data) => {
+        dispatch({
+          type: FETCH_LIVE_EVENT_SUCCESS,
+          payload: data,
         });
-    }
-  }, [authDispatch, authState.refreshToken, authState.token, id, navigate]);
+      })
+      .catch((error) => {
+        console.error("Error trying to fetch the live event", error);
+
+        if (error) {
+          dispatch({
+            type: FETCH_LIVE_EVENT_FAILURE,
+          });
+        }
+      })
+      .finally(() => {
+        authDispatch({
+          type: HIDE_LOADER,
+        });
+      });
+  }, [authDispatch, id]);
 
   return (
     <React.Fragment>

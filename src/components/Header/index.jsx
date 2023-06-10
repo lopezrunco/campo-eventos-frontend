@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
+
 import { AuthContext } from "../../App";
+
 import "./styles.scss";
 
 export const Header = () => {
@@ -67,8 +69,8 @@ export const Header = () => {
               {
                 ['ADMIN'].find(role => role === authState.role) &&
                 <React.Fragment>
-                  <li className={`navigation-bar-item ${activeLink === '/admin' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
-                    <a href="/admin" className="nav-link-item" title="Administracion">Administracion</a>
+                  <li className={`navigation-bar-item admin ${activeLink === '/admin' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                    <a href="/admin" className="nav-link-item" title="Administracion">Administradores</a>
                   </li>
                 </React.Fragment>
               }

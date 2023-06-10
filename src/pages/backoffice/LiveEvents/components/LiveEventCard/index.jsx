@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { getMonth } from "../../../../../utils/get-month";
 
 import DeleteLiveEventModal from "./components/DeleteLiveEventModal";
+import FetchImage from "../../../../../components/FetchImage";
 
 function LiveEventCard({ liveEvent }) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -16,13 +17,13 @@ function LiveEventCard({ liveEvent }) {
       <div className="col-12 mb-3 live-event-card">
         <div className="row">
           <div className="col-lg-3">
-            <img
-              src={liveEvent.coverImgName}
-              alt={liveEvent.title}
-              width="100%"
-            />
+            {liveEvent.coverImgName ? (
+              <FetchImage name={liveEvent.coverImgName} />
+            ) : (
+              <img src="../../src/assets/no-img.jpg" width="100%" />
+            )}
           </div>
-          <div className="col-lg-7">
+          <div className="col-lg-6">
             <h3>{liveEvent.title}</h3>
             <p className="event-date">
               <i className="fas fa-calendar-alt"></i>
@@ -43,10 +44,16 @@ function LiveEventCard({ liveEvent }) {
               {liveEvent.broadcastLinkId}
             </p>
           </div>
-          <div className="col-lg-2">
+          <div className="col-lg-3">
+            <a
+              className="button button-dark"
+              href={`/admin/remates-vivo/${liveEvent.id}/upload`}
+            >
+              <i className="fas fa-camera"></i> Cambiar imagen
+            </a>
             <a
               href={`/admin/remates-vivo/editar/${liveEvent.id}`}
-              className="button button-dark me-3"
+              className="button button-dark"
             >
               {/* TO DO: Pagina de editar remate en vivo */}
               {/* TO DO: Pagina de editar remate normal */}

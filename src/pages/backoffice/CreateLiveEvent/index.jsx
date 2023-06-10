@@ -25,7 +25,7 @@ const initialState = {
   endHour: "",
   location: "",
   organizer: "",
-  coverImgName: "",
+  coverImgName: undefined,
   broadcastLinkId: "",
   isSending: false,
   hasError: false,
@@ -224,17 +224,6 @@ function CreateLiveEvent() {
                     onChange={handleInputChange}
                     name="organizer"
                     id="organizer"
-                  />
-                </label>
-                <label htmlFor="coverImgName">
-                  Url del afiche
-                  <input
-                    required
-                    type="text"
-                    value={state.coverImgName}
-                    onChange={handleInputChange}
-                    name="coverImgName"
-                    id="coverImgName"
                   />
                 </label>
                 <label htmlFor="broadcastLinkId">

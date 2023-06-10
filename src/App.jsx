@@ -37,6 +37,7 @@ import LotCreated from "./pages/consignees/LotCreated";
 import LotEdited from "./pages/consignees/LotEdited";
 import LotDeleted from "./pages/consignees/LotDeleted";
 import UploadImage from "./pages/consignees/UploadImage";
+import UploadImageToLiveEvent from "./pages/consignees/UploadImageToLiveEvent";
 import UploadVideo from "./pages/consignees/UploadVideo";
 
 import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
@@ -186,6 +187,14 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
+            <Route
+              path="/admin/remates-vivo/:id/upload"
+              element={
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
+                  <UploadImageToLiveEvent />
+                </RequireAuth>
+              }
+            />
             <Route
               path="/admin/remate-vivo-borrado"
               element={
@@ -371,14 +380,6 @@ function App() {
               }
             />
             <Route
-              path="/remates-vivo/:id"
-              element={
-                <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
-                  <LiveEventById />
-                </RequireAuth>
-              }
-            />
-            <Route
               path="/forbidden"
               element={
                 <>
@@ -389,6 +390,7 @@ function App() {
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/remates-vivo/:id" element={<LiveEventById />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

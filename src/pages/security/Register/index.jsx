@@ -130,8 +130,9 @@ function Register() {
                 <button
                   onClick={handleFormSubmit}
                   disabled={data.isSubmitting}
-                  className="primary-button"
+                  className="button button-dark"
                 >
+                  <i className="fas fa-sign-in-alt"></i>
                   {data.isSubmitting ? "Enviando datos..." : "Registrar"}
                 </button>
 

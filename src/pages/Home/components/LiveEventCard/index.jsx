@@ -4,6 +4,7 @@ import React from "react";
 import { getMonth } from "../../../../utils/get-month";
 
 import "./styles.scss";
+import FetchImage from "../../../../components/FetchImage";
 
 function LiveEventCard({ liveEvent }) {
   const nowTimeStamp = Date.now();
@@ -24,11 +25,11 @@ function LiveEventCard({ liveEvent }) {
           >
             <div className="content">
               <div className="thumb">
-                <img
-                  src={`${liveEvent.coverImgName}`}
-                  alt={liveEvent.title}
-                  width="100%"
-                />
+                {liveEvent.coverImgName ? (
+                  <FetchImage name={liveEvent.coverImgName} />
+                ) : (
+                  <img src="../../src/assets/no-img.jpg" width="100%" />
+                )}
               </div>
               <div className="description">
                 <h3>{liveEvent.title}</h3>
