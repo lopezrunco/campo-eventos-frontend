@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useContext, useReducer } from "react";
 
 import { refreshToken } from "../../../utils/refresh-token";
+import { getYoutubeId } from "../../../utils/getYoutubeID";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 import {
@@ -95,7 +96,10 @@ function CreateLiveEvent() {
         location: state.location,
         organizer: state.organizer,
         coverImgName: state.coverImgName,
-        broadcastLinkId: state.broadcastLinkId,
+        broadcastLinkId:
+          state.broadcastLinkId === undefined
+            ? undefined
+            : getYoutubeId(state.broadcastLinkId),
       }),
     })
       .then((response) => {
@@ -234,7 +238,7 @@ function CreateLiveEvent() {
                   />
                 </label>
                 <label htmlFor="broadcastLinkId">
-                  ID de la transmisión (YouTube)
+                  Link de la transmisión (YouTube)
                   <input
                     required
                     type="text"
