@@ -42,6 +42,7 @@ import UploadVideo from "./pages/consignees/UploadVideo";
 import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
 import CreateLiveEvent from "./pages/backoffice/CreateLiveEvent";
 import LiveEventCreated from "./pages/backoffice/LiveEventCreated";
+import LiveEventDeleted from "./pages/backoffice/LiveEventDeleted";
 import LiveEvents from "./pages/backoffice/LiveEvents";
 
 import RequireAuth from "./components/RequireAuth";
@@ -185,18 +186,18 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
-          <Route
-              path="/admin/remates-vivo"
+            <Route
+              path="/admin/remate-vivo-borrado"
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
-                  <LiveEvents />
+                  <LiveEventDeleted />
                 </RequireAuth>
               }
             />
-          <Route
+            <Route
               path="/admin/remate-vivo-creado"
               element={
-                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
+                <RequireAuth allowedRoles={["ADMIN"]}>
                   <LiveEventCreated />
                 </RequireAuth>
               }
@@ -206,6 +207,14 @@ function App() {
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
                   <CreateLiveEvent />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/admin/remates-vivo"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <LiveEvents />
                 </RequireAuth>
               }
             />
