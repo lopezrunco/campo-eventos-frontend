@@ -49,6 +49,7 @@ function LiveEventCard({ liveEvent }) {
               className="button button-dark me-3"
             >
               {/* TO DO: Pagina de editar remate en vivo */}
+              {/* TO DO: Pagina de editar remate normal */}
               <i className="fas fa-edit"></i> Editar
             </a>
             <a className="button button-dark" onClick={handleDeleteModal}>
