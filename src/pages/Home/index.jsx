@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useEffect, useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 
 import { HIDE_LOADER, SHOW_LOADER } from "../../utils/action-types";
 import { refreshToken } from "../../utils/refresh-token";
+import { getMonth } from "../../utils/get-month";
 import { apiUrl } from "../../utils/api-url";
 import { AuthContext } from "../../App";
 import {
@@ -16,6 +17,8 @@ import LiveEventCard from "./components/LiveEventCard";
 import { Loader } from "../../components/Loader";
 import { Intro } from "../../components/Intro";
 import { Title } from "../../components/Title";
+
+import "./styles.scss";
 
 const initialState = {
   liveEventsList: [],
@@ -53,6 +56,8 @@ export const Home = () => {
   const navigate = useNavigate();
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
+  let currentDate = new Date();
+  const currentTimeStamp = currentDate.getTime();
 
   useEffect(() => {
     if (authState.token) {
@@ -106,7 +111,62 @@ export const Home = () => {
   return (
     <React.Fragment>
       <Intro />
-      <section className="home-page">
+      <div className="broadcast-section">
+        <div className="container">
+          <div className="row">
+            {state.liveEventsList.map((el, i) => {
+              let beginDate = Date.parse(
+                `2023-${el.month}-${el.day}T${el.beginHour}`
+              );
+              let finishDate = Date.parse(
+                `2023-${el.month}-${el.day}T${el.endHour}`
+              );
+
+              return beginDate < currentTimeStamp &&
+                finishDate > currentTimeStamp ? (
+                <div key={i} className="col-12 items-container">
+                  {i === 0 ? <Title title="En vivo" /> : null}
+                  <div className="item">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${el.broadcastLinkId}`}
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    ></iframe>
+                    <div className="event-description">
+                      <h2>{el.title}</h2>
+                      <span className="event-date">
+                        <i className="fas fa-calendar-alt"></i>{" "}
+                        {`${el.day} de ${getMonth(el.month)} - ${
+                          el.beginHour
+                        } hs.`}
+                      </span>
+                      <span>
+                        <b>Lugar: </b>
+                        {el.location}
+                      </span>
+                      <span>
+                        <b>Organiza: </b>
+                        {el.organizer}
+                      </span>
+                      <a
+                        className="button button-light-outline"
+                        href={`https://www.youtube.com/watch/${el.broadcastLinkId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <i className="fas fa-play"></i> Ver en vivo
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ) : null;
+            })}
+          </div>
+        </div>
+      </div>
+      <section className="live-events-list">
         <article className="container">
           <Title
             title="Cartelera de eventos"
