@@ -1,0 +1,92 @@
+@import '../../../Variables.scss';
+
+.live-event-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .event-image-iframe {
+        overflow: hidden;
+
+        img,
+        iframe {
+            width: 100%;
+            height: auto;
+            border-radius: $sm-border-radius;
+            box-shadow: $box-shadow;
+        }
+    }
+
+    .event-description {
+        color: $primary-color;
+        text-align: center;
+
+        i {
+            margin-right: .5rem;
+        }
+
+        h2 {
+            font-size: 1rem;
+            color: $dark-color;
+        }
+
+        span {
+            display: block;
+            margin: 0 0 .3rem .5rem;
+        }
+
+        .event-date {
+            background-color: $accent-color;
+            border-radius: $lg-border-radius;
+            display: inline-block;
+            padding: 0 1rem;
+            margin: .5rem 0 1rem 0;
+        }
+    }
+
+    .close-icon {
+        position: fixed;
+        top: 1rem;
+        right: 2rem;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+}
+
+@media screen and (min-width: 380px) {
+    .live-event-card {
+        .event-image-iframe {
+            iframe {
+                height: 200px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .live-event-card {
+        .event-image-iframe {
+            iframe {
+                height: 220px;
+            }
+        }
+
+        .event-description {
+            text-align: left;
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .live-event-card {
+        .event-image-iframe {
+            iframe {
+                height: 250px;
+            }
+        }
+    }
+}

@@ -12,7 +12,7 @@ import {
 } from "./utils/action-types";
 
 import { Home } from "./pages/Home";
-import PublicEventsList from "./pages/PublicEventsList";
+import LiveEventById from "./pages/LiveEventById";
 import { Servicios } from "./pages/Servicios";
 import EventsList from "./pages/events/EventsList";
 import LotById from "./pages/events/LotById";
@@ -362,6 +362,14 @@ function App() {
               }
             />
             <Route
+              path="/remates-vivo/:id"
+              element={
+                <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
+                  <LiveEventById />
+                </RequireAuth>
+              }
+            />
+            <Route
               path="/forbidden"
               element={
                 <>
@@ -369,7 +377,6 @@ function App() {
                 </>
               }
             />
-            <Route path="/cartelera" element={<PublicEventsList />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

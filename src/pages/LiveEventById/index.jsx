@@ -2,40 +2,40 @@ import { motion } from "framer-motion";
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useContext, useEffect, useReducer } from "react";
 
-import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
-import { refreshToken } from "../../../utils/refresh-token";
-import { apiUrl } from "../../../utils/api-url";
-import { AuthContext } from "../../../App";
+import { HIDE_LOADER, SHOW_LOADER } from "../../utils/action-types";
+import { refreshToken } from "../../utils/refresh-token";
+import { apiUrl } from "../../utils/api-url";
+import { AuthContext } from "../../App";
 import {
-  GET_MY_EVENT_FAILURE,
-  GET_MY_EVENT_REQUEST,
-  GET_MY_EVENT_SUCCESS,
+  FETCH_LIVE_EVENT_FAILURE,
+  FETCH_LIVE_EVENT_REQUEST,
+  FETCH_LIVE_EVENT_SUCCESS,
 } from "../action-types";
 
-import { Breadcrumbs } from "../../../components/Breadcrumbs";
-import Card from "./components/Card";
+import { Breadcrumbs } from "../../components/Breadcrumbs";
+import Card from "./Card";
 
 const initialState = {
-  myEvent: undefined,
+  liveEvent: undefined,
   isSending: false,
   hasError: false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case GET_MY_EVENT_REQUEST:
+    case FETCH_LIVE_EVENT_REQUEST:
       return {
         ...state,
         isSending: true,
         hasError: false,
       };
-    case GET_MY_EVENT_SUCCESS:
+    case FETCH_LIVE_EVENT_SUCCESS:
       return {
         ...state,
         isSending: false,
-        myEvent: action.payload.event,
+        liveEvent: action.payload.event,
       };
-    case GET_MY_EVENT_FAILURE:
+    case FETCH_LIVE_EVENT_FAILURE:
       return {
         ...state,
         isSending: false,
@@ -46,7 +46,7 @@ const reducer = (state, action) => {
   }
 };
 
-function MyEventById() {
+function LiveEventById() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -58,10 +58,10 @@ function MyEventById() {
         type: SHOW_LOADER,
       });
       dispatch({
-        type: GET_MY_EVENT_REQUEST,
+        type: FETCH_LIVE_EVENT_REQUEST,
       });
 
-      fetch(apiUrl(`/events/${id}`), {
+      fetch(apiUrl(`/live-events/${id}`), {
         headers: {
           Authorization: authState.token,
           "Content-Type": "application/json",
@@ -76,12 +76,12 @@ function MyEventById() {
         })
         .then((data) => {
           dispatch({
-            type: GET_MY_EVENT_SUCCESS,
+            type: FETCH_LIVE_EVENT_SUCCESS,
             payload: data,
           });
         })
         .catch((error) => {
-          console.error("Error trying to fetch the event", error);
+          console.error("Error trying to fetch the live event", error);
 
           if (error.status === 401) {
             refreshToken(authState.refreshToken, authDispatch, navigate);
@@ -89,7 +89,7 @@ function MyEventById() {
             navigate("/forbidden");
           } else {
             dispatch({
-              type: GET_MY_EVENT_FAILURE,
+              type: FETCH_LIVE_EVENT_FAILURE,
             });
           }
         })
@@ -111,10 +111,13 @@ function MyEventById() {
       >
         <Breadcrumbs location={"Detalles del remate"} />
       </motion.div>
-      {state.myEvent && <Card myEvent={state.myEvent} />}
-      {state.hasError && <p>Error al obtener el remate</p>}
+
+      <article className="container">
+        {state.liveEvent && <Card liveEvent={state.liveEvent} />}
+        {state.hasError && <p>Error al cargar los datos.</p>}
+      </article>
     </React.Fragment>
   );
 }
 
-export default MyEventById;
+export default LiveEventById;

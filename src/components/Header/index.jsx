@@ -37,10 +37,6 @@ export const Header = () => {
                 <a href='/' className="nav-link-item" title='En vivo'>En vivo</a>
               </li>
 
-              <li className={`navigation-bar-item ${activeLink === '/cartelera' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
-                <a href='/cartelera' className="nav-link-item" title='Cartelera'>Cartelera</a>
-              </li>
-
               <li className={`navigation-bar-item ${activeLink === '/servicios' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
                 <a href='/servicios' className="nav-link-item" title='Servicios'>Servicios</a>
               </li>
