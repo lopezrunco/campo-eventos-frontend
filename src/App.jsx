@@ -37,7 +37,6 @@ import LotCreated from "./pages/consignees/LotCreated";
 import LotEdited from "./pages/consignees/LotEdited";
 import LotDeleted from "./pages/consignees/LotDeleted";
 import UploadEventCover from "./pages/consignees/UploadEventCover";
-import UploadLiveEventCover from "./pages/backoffice/UploadLiveEventCover";
 import UploadVideo from "./pages/consignees/UploadVideo";
 
 import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
@@ -45,6 +44,8 @@ import CreateLiveEvent from "./pages/backoffice/CreateLiveEvent";
 import LiveEventCreated from "./pages/backoffice/LiveEventCreated";
 import LiveEventDeleted from "./pages/backoffice/LiveEventDeleted";
 import LiveEvents from "./pages/backoffice/LiveEvents";
+import UploadLiveEventCover from "./pages/backoffice/UploadLiveEventCover";
+import UpdateLiveEvent from "./pages/backoffice/UpdateLiveEvent";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -187,6 +188,14 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
+          <Route
+              path="/admin/remates-vivo/editar/:id"
+              element={
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
+                  <UpdateLiveEvent />
+                </RequireAuth>
+              }
+            />
             <Route
               path="/admin/remates-vivo/:id/upload"
               element={
@@ -412,5 +421,3 @@ function App() {
 }
 
 export default App;
-
-// TO DO: Construir UI de eventos en vivo conectando con los endpoints ya hechos en la API
