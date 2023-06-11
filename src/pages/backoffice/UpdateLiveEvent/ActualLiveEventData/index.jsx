@@ -2,7 +2,7 @@ import "./styles.scss";
 
 function ActualLiveEventData({ liveEvent }) {
   return (
-    <div className="event-data-container">
+    <div className="live-event-data-container">
       <p>
         Título:
         <i> {liveEvent.title}</i>

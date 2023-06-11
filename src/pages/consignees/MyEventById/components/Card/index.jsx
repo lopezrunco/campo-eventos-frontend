@@ -164,7 +164,7 @@ function Card({ myEvent }) {
             </tbody>
           </table>
 
-          <a className="button button-dark me-3">
+          <a className="button button-dark me-3" href={`/consignatarios/mis-eventos/editar/${myEvent.id}`}>
             <i className="fas fa-edit"></i> Editar
           </a>
           <a className="button button-dark me-3" onClick={handleDeleteModal}>

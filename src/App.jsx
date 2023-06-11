@@ -38,6 +38,7 @@ import LotEdited from "./pages/consignees/LotEdited";
 import LotDeleted from "./pages/consignees/LotDeleted";
 import UploadEventCover from "./pages/consignees/UploadEventCover";
 import UploadVideo from "./pages/consignees/UploadVideo";
+import UpdateEvent from "./pages/consignees/UpdateEvent";
 
 import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
 import CreateLiveEvent from "./pages/backoffice/CreateLiveEvent";
@@ -188,10 +189,18 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
-          <Route
-              path="/admin/remates-vivo/editar/:id"
+            <Route
+              path="/consignatarios/mis-eventos/editar/:id"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
+                  <UpdateEvent />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/admin/remates-vivo/editar/:id"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
                   <UpdateLiveEvent />
                 </RequireAuth>
               }
@@ -199,7 +208,7 @@ function App() {
             <Route
               path="/admin/remates-vivo/:id/upload"
               element={
-                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
+                <RequireAuth allowedRoles={["ADMIN"]}>
                   <UploadLiveEventCover />
                 </RequireAuth>
               }
