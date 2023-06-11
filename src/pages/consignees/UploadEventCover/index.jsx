@@ -20,7 +20,7 @@ const FileUpload = (file) => {
   });
 };
 
-const UploadImage = () => {
+const UploadEventCover = () => {
   const [selectedFiles, setSelectedFiles] = useState(undefined);
   const [currentFile, setCurrentFile] = useState(undefined);
   const [message, setMessage] = useState("");
@@ -96,4 +96,4 @@ const UploadImage = () => {
   );
 };
 
-export default UploadImage;
+export default UploadEventCover;

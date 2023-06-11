@@ -36,8 +36,8 @@ import CreateLot from "./pages/consignees/CreateLot";
 import LotCreated from "./pages/consignees/LotCreated";
 import LotEdited from "./pages/consignees/LotEdited";
 import LotDeleted from "./pages/consignees/LotDeleted";
-import UploadImage from "./pages/consignees/UploadImage";
-import UploadImageToLiveEvent from "./pages/consignees/UploadImageToLiveEvent";
+import UploadEventCover from "./pages/consignees/UploadEventCover";
+import UploadLiveEventCover from "./pages/backoffice/UploadLiveEventCover";
 import UploadVideo from "./pages/consignees/UploadVideo";
 
 import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
@@ -191,7 +191,7 @@ function App() {
               path="/admin/remates-vivo/:id/upload"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
-                  <UploadImageToLiveEvent />
+                  <UploadLiveEventCover />
                 </RequireAuth>
               }
             />
@@ -247,7 +247,7 @@ function App() {
               path="/consignatarios/mis-eventos/:id/upload"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
-                  <UploadImage />
+                  <UploadEventCover />
                 </RequireAuth>
               }
             />

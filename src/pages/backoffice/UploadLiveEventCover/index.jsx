@@ -9,7 +9,7 @@ import AppendImage from "./components/AppendImage";
 
 import "./styles.scss";
 
-const FileUpload = (file) => {
+const UploadLiveEventCover = (file) => {
   let formData = new FormData();
   formData.append("file", file);
 
@@ -35,7 +35,7 @@ const UploadImageToLiveEvent = () => {
     let currentFile = selectedFiles[0];
     setCurrentFile(currentFile);
 
-    FileUpload(currentFile, () => {
+    UploadLiveEventCover(currentFile, () => {
       setMessage("Uploading file");
     })
       .then((response) => {
