@@ -202,6 +202,12 @@ function LotCard({ lot }) {
         <a className="button button-dark me-3" onClick={handleClick}>
           <i className="fas fa-comments-dollar"></i> Preofertas
         </a>
+        <a
+          className="button button-dark me-3"
+          href={`/consignatarios/mis-eventos/lotes/editar/${lot.id}`}
+        >
+          <i className="fas fa-edit"></i> Editar lote
+        </a>
         <a className="button button-dark" onClick={handleDeleteModal}>
           <i className="fas fa-trash"></i> Eliminar
         </a>

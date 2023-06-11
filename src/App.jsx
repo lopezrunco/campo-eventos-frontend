@@ -39,6 +39,7 @@ import LotDeleted from "./pages/consignees/LotDeleted";
 import UploadEventCover from "./pages/consignees/UploadEventCover";
 import UploadVideo from "./pages/consignees/UploadVideo";
 import UpdateEvent from "./pages/consignees/UpdateEvent";
+import UpdateLot from "./pages/consignees/UpdateLot";
 
 import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
 import CreateLiveEvent from "./pages/backoffice/CreateLiveEvent";
@@ -189,6 +190,14 @@ function App() {
           </motion.div>
           <ScrollOnNav />
           <Routes>
+            <Route
+              path="/consignatarios/mis-eventos/lotes/editar/:id"
+              element={
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
+                  <UpdateLot />
+                </RequireAuth>
+              }
+            />
             <Route
               path="/consignatarios/mis-eventos/editar/:id"
               element={
