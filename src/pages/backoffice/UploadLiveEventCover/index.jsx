@@ -43,8 +43,6 @@ const UploadImageToLiveEvent = () => {
         setAppendImageToEvent(true);
       })
       .catch((error) => {
-        console.log(error.response.data.message)
-        // setMessage("Could not upload the file");
         setMessage(error.response.data.message);
         setCurrentFile(undefined);
       });

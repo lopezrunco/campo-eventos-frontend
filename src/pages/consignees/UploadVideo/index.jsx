@@ -43,8 +43,9 @@ const UploadVideo = () => {
         setMessage(response.data.message);
         setAppendVideoToEvent(true);
       })
-      .catch(() => {
-        setMessage("Could not upload the file");
+      .catch((error) => {
+        // TO DO: Manejar mejor este error para reconocer si es de conexión o de video repetido
+        setMessage(error.code === "ERR_NETWORK" ? "Error al subir el video. Compruebe su conexión. Si el error persiste, intente cambiar el nombre del video y súbalo de nuevo. " : "Error al subir el video, intente nuevamente más tarde.");
         setCurrentFile(undefined);
       });
 
