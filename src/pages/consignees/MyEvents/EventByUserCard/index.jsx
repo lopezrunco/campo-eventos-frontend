@@ -1,4 +1,5 @@
 import React from "react";
+
 import FetchImage from "../../../../components/FetchImage";
 
 function EventByUserCard({ event }) {

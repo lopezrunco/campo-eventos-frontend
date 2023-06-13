@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
 
 import { LOGIN } from "../../../utils/action-types";
 import { apiUrl } from "../../../utils/api-url";

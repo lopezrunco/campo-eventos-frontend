@@ -3,8 +3,9 @@ import React from "react";
 
 import { getMonth } from "../../../../utils/get-month";
 
-import "./styles.scss";
 import FetchImage from "../../../../components/FetchImage";
+
+import "./styles.scss";
 
 function LiveEventCard({ liveEvent }) {
   const nowTimeStamp = Date.now();

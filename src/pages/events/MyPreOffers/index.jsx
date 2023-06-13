@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import React, { useContext, useEffect, useReducer } from "react";
 
+import { AuthContext } from "../../../App";
+import { apiUrl } from "../../../utils/api-url";
+import { refreshToken } from "../../../utils/refresh-token";
+import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import {
   GET_MY_PREOFFERS_FAILURE,
   GET_MY_PREOFFERS_REQUEST,
@@ -8,13 +13,8 @@ import {
 } from "../action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
-import { AuthContext } from "../../../App";
-import { useNavigate } from "react-router-dom";
-import { apiUrl } from "../../../utils/api-url";
-import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
-import { refreshToken } from "../../../utils/refresh-token";
-import { Loader } from "../../../components/Loader";
 import MyPreofferCard from "./components/MyPreofferCard";
+import { Loader } from "../../../components/Loader";
 
 const initialState = {
   preoffersList: [],
@@ -107,7 +107,6 @@ function MyPreOffers() {
   ]);
 
   return (
-    // TO DO: Cuando se crea la preoferta que sea undefined, hasta que el consignatario la acepte o rechaze
     <React.Fragment>
       <motion.div
         initial={{ opacity: 0, y: 20 }}

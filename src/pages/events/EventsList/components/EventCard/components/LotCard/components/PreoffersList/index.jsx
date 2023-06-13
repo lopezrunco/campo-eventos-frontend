@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { useContext, useReducer } from "react";
+
+import { apiUrl } from "../../../../../../../../../utils/api-url";
+import { refreshToken } from "../../../../../../../../../utils/refresh-token";
 import { AuthContext } from "../../../../../../../../../App";
 import {
   CREATE_PREOFFER_FAILURE,
@@ -6,9 +10,6 @@ import {
   CREATE_PREOFFER_SUCCESS,
   FORM_INPUT_CHANGE,
 } from "../../../../../../../action-types";
-import { useNavigate } from "react-router-dom";
-import { apiUrl } from "../../../../../../../../../utils/api-url";
-import { refreshToken } from "../../../../../../../../../utils/refresh-token";
 
 const initialState = {
   userId: undefined,

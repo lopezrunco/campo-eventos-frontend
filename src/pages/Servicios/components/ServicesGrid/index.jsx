@@ -1,4 +1,5 @@
 import { servicesData, videosData } from '../../../../data/services'
+
 import './styles.scss'
 
 export const ServicesGrid = () => {

@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import React, { useContext, useEffect, useReducer } from "react";
 
-import { HIDE_LOADER, SHOW_LOADER } from "../../utils/action-types";
 import { apiUrl } from "../../utils/api-url";
 import { AuthContext } from "../../App";
+import { HIDE_LOADER, SHOW_LOADER } from "../../utils/action-types";
 import {
   FETCH_LIVE_EVENT_FAILURE,
   FETCH_LIVE_EVENT_REQUEST,
