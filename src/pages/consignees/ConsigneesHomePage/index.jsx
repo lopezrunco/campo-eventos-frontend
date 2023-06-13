@@ -17,7 +17,7 @@ function ConsigneesHomePage() {
     <section className="container">
       <article className="row">
         <div className="col">
-          <a href="/consignatarios/mis-eventos" className="button button-dark">Mis remates</a>
+          <a href="/consignatarios/mis-remates" className="button button-dark">Mis remates</a>
         </div>
       </article>
     </section>

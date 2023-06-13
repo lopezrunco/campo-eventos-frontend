@@ -94,7 +94,7 @@ function YouTubeVideo({ lotId }) {
           type: EDIT_LOT_SUCCESS,
           payload: data,
         });
-        navigate(`/consignatarios/mis-eventos/${lotId}/lote-editado`);
+        navigate(`/consignatarios/mis-remates/${lotId}/lote-editado`);
       })
       .catch((error) => {
         if (error.status === 401) {

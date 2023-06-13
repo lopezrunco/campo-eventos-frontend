@@ -195,7 +195,7 @@ function LotCard({ lot }) {
 
         <a
           className="button button-dark me-3"
-          href={`/consignatarios/mis-eventos/lotes/${lot.id}/upload`}
+          href={`/consignatarios/mis-remates/lotes/${lot.id}/upload`}
         >
           <i className="fas fa-video"></i> Agregar / cambiar video
         </a>
@@ -204,7 +204,7 @@ function LotCard({ lot }) {
         </a>
         <a
           className="button button-dark me-3"
-          href={`/consignatarios/mis-eventos/lotes/editar/${lot.id}`}
+          href={`/consignatarios/mis-remates/lotes/editar/${lot.id}`}
         >
           <i className="fas fa-edit"></i> Editar lote
         </a>

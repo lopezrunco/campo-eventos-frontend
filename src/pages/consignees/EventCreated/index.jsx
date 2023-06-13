@@ -35,7 +35,7 @@ function EventCreated() {
                 <i className="fas fa-home"></i> Volver a inicio
               </a>
               <a
-                href="/consignatarios/mis-eventos"
+                href="/consignatarios/mis-remates"
                 className="button button-dark"
               >
                 <i className="fas fa-gavel"></i> Volver a mis remates

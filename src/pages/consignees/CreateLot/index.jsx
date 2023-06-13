@@ -138,7 +138,7 @@ function CreateLot() {
           payload: data,
         });
 
-        navigate(`/consignatarios/mis-eventos/${id}/lote-creado`);
+        navigate(`/consignatarios/mis-remates/${id}/lote-creado`);
       })
       .catch((error) => {
         console.error("Error al crear el lote", error);

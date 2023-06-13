@@ -73,7 +73,7 @@ function DeleteLotModal({ lotId, closeFunction }) {
           type: DELETE_LOT_SUCCESS,
           payload: data,
         });
-        navigate("/consignatarios/mis-eventos/lote-borrado");
+        navigate("/consignatarios/mis-remates/lote-borrado");
       })
       .catch((error) => {
         console.error("Error trying to delete the lot", error);

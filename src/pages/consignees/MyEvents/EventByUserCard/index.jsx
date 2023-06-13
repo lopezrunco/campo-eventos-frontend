@@ -27,7 +27,7 @@ function EventByUserCard({ event }) {
 
               <a
                 className="button button-dark me-3"
-                href={`/consignatarios/mis-eventos/${event.id}`}
+                href={`/consignatarios/mis-remates/${event.id}`}
               >
                 <i className="fas fa-eye"></i> Ver más
               </a>

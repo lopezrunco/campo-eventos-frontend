@@ -191,7 +191,7 @@ function App() {
           <ScrollOnNav />
           <Routes>
             <Route
-              path="/consignatarios/mis-eventos/lotes/editar/:id"
+              path="/consignatarios/mis-remates/lotes/editar/:id"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <UpdateLot />
@@ -199,7 +199,7 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios/mis-eventos/editar/:id"
+              path="/consignatarios/mis-remates/editar/:id"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <UpdateEvent />
@@ -263,7 +263,7 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios/mis-eventos/lotes/:id/upload"
+              path="/consignatarios/mis-remates/lotes/:id/upload"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <UploadVideo />
@@ -271,7 +271,7 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios/mis-eventos/:id/upload"
+              path="/consignatarios/mis-remates/:id/upload"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <UploadEventCover />
@@ -279,7 +279,7 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios/mis-eventos/preoferta-borrada"
+              path="/consignatarios/mis-remates/preoferta-borrada"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <PreofferDeleted />
@@ -287,7 +287,7 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios/mis-eventos/evento-borrado"
+              path="/consignatarios/mis-remates/remate-borrado"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <EventDeleted />
@@ -295,7 +295,7 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios/mis-eventos/lote-borrado"
+              path="/consignatarios/mis-remates/lote-borrado"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <LotDeleted />
@@ -303,7 +303,7 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios/mis-eventos/:id/lote-editado"
+              path="/consignatarios/mis-remates/:id/lote-editado"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <LotEdited />
@@ -311,7 +311,7 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios/mis-eventos/:id/lote-creado"
+              path="/consignatarios/mis-remates/:id/lote-creado"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <LotCreated />
@@ -319,7 +319,7 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios/mis-eventos/:id/crear-lote"
+              path="/consignatarios/mis-remates/:id/crear-lote"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <CreateLot />
@@ -351,7 +351,7 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios/mis-eventos/:id"
+              path="/consignatarios/mis-remates/:id"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <MyEventById />
@@ -359,7 +359,7 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios/mis-eventos"
+              path="/consignatarios/mis-remates"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <MyEvents />

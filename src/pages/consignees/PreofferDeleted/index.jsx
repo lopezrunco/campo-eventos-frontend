@@ -34,7 +34,7 @@ function PreofferDeleted() {
                 <i className="fas fa-home"></i> Volver a inicio
               </a>
               <a
-                href="/consignatarios/mis-eventos"
+                href="/consignatarios/mis-remates"
                 className="button button-dark me-3"
               >
                 <i className="fas fa-gavel"></i> Volver a mis remates

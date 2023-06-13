@@ -12,7 +12,7 @@ function EventDeleted() {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Evento eliminado"} />
+        <Breadcrumbs location={"Remate eliminado"} />
       </motion.div>
       <section className="container">
         <motion.div
@@ -24,18 +24,18 @@ function EventDeleted() {
           <article className="row">
             <div className="col-lg-9">
               <h2>Exito!</h2>
-              <h3>El evento ha sido eliminado</h3>
+              <h3>El remate ha sido eliminado</h3>
               <div className="separator"></div>
               <p>
-                El evento ha sido eliminado con éxito, para crear un nuevo
-                evento, click en Mis remates.
+                El remate ha sido eliminado con éxito, para crear un nuevo
+                remate, click en Mis remates.
               </p>
 
               <a href="/" className="button button-light me-3">
                 <i className="fas fa-home"></i> Volver a inicio
               </a>
               <a
-                href="/consignatarios/mis-eventos"
+                href="/consignatarios/mis-remates"
                 className="button button-dark me-3"
               >
                 <i className="fas fa-gavel"></i> Volver a mis remates

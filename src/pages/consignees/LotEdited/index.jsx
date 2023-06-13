@@ -37,7 +37,7 @@ function LotEdited() {
                 <i className="fas fa-gavel"></i> Volver a inicio
               </a>
               <a
-                href="/consignatarios/mis-eventos"
+                href="/consignatarios/mis-remates"
                 className="button button-light me-3"
               >
                 <i className="fas fa-gavel"></i> Volver a mis remates

@@ -58,7 +58,7 @@ const UploadImageToLiveEvent = () => {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Afiche del evento"} />
+        <Breadcrumbs location={"Afiche del remate"} />
       </motion.div>
       <section className="upload-file-page">
         <article className="container">
@@ -69,7 +69,7 @@ const UploadImageToLiveEvent = () => {
                 <div className="separator"></div>
                 <p>
                   Seleccione una imagen desde su dispositivo para usar como
-                  afiche del evento a transmitir.
+                  afiche del remate a transmitir.
                 </p>
                 <label className="btn btn-default">
                   <input type="file" onChange={selectFile} />

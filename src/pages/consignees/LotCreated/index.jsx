@@ -35,13 +35,13 @@ function LotCreated() {
               </p>
 
               <a
-                href="/consignatarios/mis-eventos"
+                href="/consignatarios/mis-remates"
                 className="button button-light me-3"
               >
                 <i className="fas fa-gavel"></i> Volver a mis remates
               </a>
               <a
-                href={`/consignatarios/mis-eventos/${id}`}
+                href={`/consignatarios/mis-remates/${id}`}
                 className="button button-dark"
               >
                 <i className="fas fa-gavel"></i> Volver a remate

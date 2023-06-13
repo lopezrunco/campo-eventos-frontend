@@ -91,7 +91,7 @@ function AppendImage({ liveEventId, imageName }) {
   return (
     <React.Fragment>
       <p>
-        El archivo <i>{imageName}</i> se usará como afiche del evento a transmitir.
+        El archivo <i>{imageName}</i> se usará como afiche del remate a transmitir.
       </p>
       <a className="button button-dark" onClick={handleSubmit}>
         <i className="fas fa-check"></i> Aceptar

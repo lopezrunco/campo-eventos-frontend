@@ -72,7 +72,7 @@ function DeleteEventModal({ eventId, closeFunction }) {
           type: DELETE_EVENT_SUCCESS,
           payload: data,
         });
-        navigate("/consignatarios/mis-eventos/evento-borrado");
+        navigate("/consignatarios/mis-remates/remate-borrado");
       })
       .catch((error) => {
         console.error("Error trying to delete the event", error);

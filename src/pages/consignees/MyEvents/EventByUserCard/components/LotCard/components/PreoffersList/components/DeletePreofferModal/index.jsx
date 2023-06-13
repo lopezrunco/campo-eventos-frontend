@@ -72,7 +72,7 @@ function DeleteLotModal({ preofferId, closeFunction }) {
           type: DELETE_PREOFFER_SUCCESS,
           payload: data,
         });
-        navigate("/consignatarios/mis-eventos/preoferta-borrada");
+        navigate("/consignatarios/mis-remates/preoferta-borrada");
       })
       .catch((error) => {
         console.error("Error trying to delete the preoffer", error);

@@ -29,14 +29,6 @@ export const BackOfficeHome = () => {
               </a>
             </div>
           </div>
-          <div className="row">
-            <h3>Usuarios</h3>
-            <div className="col-lg-3">
-              <a href="/admin/usuarios" className="card p-3 mb-3">
-                Ver usuarios activos
-              </a>
-            </div>
-          </div>
         </article>
       </section>
     </React.Fragment>

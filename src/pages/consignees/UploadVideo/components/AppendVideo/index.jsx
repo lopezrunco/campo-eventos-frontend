@@ -73,7 +73,7 @@ function AppendVideo({ lotId, videoName }) {
           type: EDIT_LOT_SUCCESS,
           payload: data,
         });
-        navigate(`/consignatarios/mis-eventos`);
+        navigate(`/consignatarios/mis-remates`);
       })
       .catch((error) => {
         if (error.status === 401) {

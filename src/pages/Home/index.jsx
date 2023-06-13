@@ -154,8 +154,8 @@ export const Home = () => {
       <section className="live-events-list">
         <article className="container">
           <Title
-            title="Cartelera de eventos"
-            subtitle="Estos son los próximos eventos en los que estaremos trabajado."
+            title="Cartelera de remates"
+            subtitle="Estos son los próximos remates que estaremos transmitiendo en vivo."
           />
           <div className="row">
             <div className="col-12">

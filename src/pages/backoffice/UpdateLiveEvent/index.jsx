@@ -209,7 +209,7 @@ function UpdateLiveEvent() {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Editar evento en vivo"} />
+        <Breadcrumbs location={"Editar remate en vivo"} />
       </motion.div>
       <section className="update-live-event-page">
         <article className="container">

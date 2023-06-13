@@ -118,7 +118,7 @@ function Card({ myEvent }) {
           )}
           <a
             className="button button-dark me-3"
-            href={`/consignatarios/mis-eventos/${myEvent.id}/upload`}
+            href={`/consignatarios/mis-remates/${myEvent.id}/upload`}
           >
             <i className="fas fa-camera"></i> Cambiar imagen
           </a>
@@ -164,7 +164,7 @@ function Card({ myEvent }) {
             </tbody>
           </table>
 
-          <a className="button button-dark me-3" href={`/consignatarios/mis-eventos/editar/${myEvent.id}`}>
+          <a className="button button-dark me-3" href={`/consignatarios/mis-remates/editar/${myEvent.id}`}>
             <i className="fas fa-edit"></i> Editar
           </a>
           <a className="button button-dark me-3" onClick={handleDeleteModal}>
@@ -184,7 +184,7 @@ function Card({ myEvent }) {
                 </div>
                 <a
                   className="button button-dark me-3"
-                  href={`/consignatarios/mis-eventos/${myEvent.id}/crear-lote`}
+                  href={`/consignatarios/mis-remates/${myEvent.id}/crear-lote`}
                 >
                   <i className="fas fa-plus"></i> Crear nuevo lote
                 </a>

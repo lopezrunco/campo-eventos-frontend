@@ -189,7 +189,7 @@ function UpdateLot() {
           type: EDIT_LOT_SUCCESS,
           payload: data,
         });
-        navigate(`/consignatarios/mis-eventos`);
+        navigate(`/consignatarios/mis-remates`);
       })
       .catch((error) => {
         console.error("Error al editar el lote.", error);
