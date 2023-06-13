@@ -42,8 +42,8 @@ const UploadEventCover = () => {
         setMessage(response.data.message);
         setAppendImageToEvent(true);
       })
-      .catch(() => {
-        setMessage("Could not upload the file");
+      .catch((error) => {
+        setMessage(error.response.data.message);
         setCurrentFile(undefined);
       });
 
