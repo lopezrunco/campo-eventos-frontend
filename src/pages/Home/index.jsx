@@ -174,7 +174,7 @@ export const Home = () => {
                         />
                       ))
                     ) : (
-                      <p>En este momento, no hay remates en vivo.</p>
+                      <p>En este momento, no hay remates en previstos.</p>
                     )}
                   </React.Fragment>
                 )}
