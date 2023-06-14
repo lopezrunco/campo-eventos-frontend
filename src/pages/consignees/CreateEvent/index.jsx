@@ -13,8 +13,7 @@ import {
 } from "../action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
-
-import "./styles.scss";
+import { Title } from "../../../components/Title";
 
 const initialState = {
   title: "",
@@ -142,11 +141,15 @@ function CreateEvent() {
       </motion.div>
       <section>
         <article className="container">
+          <Title
+            title="Crear remate"
+            subtitle="Los campos marcados con * son obligatorios"
+          />
           <div className="row">
             <div className="col-12">
-              <div className="create-event-container">
+              <div className="form-container row">
                 <label htmlFor="title">
-                  Título
+                  Título *
                   <input
                     required
                     type="text"
@@ -159,68 +162,75 @@ function CreateEvent() {
 
                 <label htmlFor="description">
                   Descripción
-                  <input
-                    required
-                    type="text"
+                  <textarea
                     value={state.description}
                     onChange={handleInputChange}
                     name="description"
                     id="description"
-                  />
+                    cols="10"
+                    rows="7"
+                    maxLength="600"
+                  ></textarea>
                 </label>
 
-                <label htmlFor="company">
-                  Rematador
-                  <input
-                    required
-                    type="text"
-                    value={state.company}
-                    onChange={handleInputChange}
-                    name="company"
-                    id="company"
-                  />
-                </label>
+                <div className="col-6">
+                  <label htmlFor="company">
+                    Rematador *
+                    <input
+                      required
+                      type="text"
+                      value={state.company}
+                      onChange={handleInputChange}
+                      name="company"
+                      id="company"
+                    />
+                  </label>
+                </div>
 
-                <label htmlFor="organizer">
-                  Organizador
-                  <input
-                    required
-                    type="text"
-                    value={state.organizer}
-                    onChange={handleInputChange}
-                    name="organizer"
-                    id="organizer"
-                  />
-                </label>
+                <div className="col-6">
+                  <label htmlFor="organizer">
+                    Organizador *
+                    <input
+                      required
+                      type="text"
+                      value={state.organizer}
+                      onChange={handleInputChange}
+                      name="organizer"
+                      id="organizer"
+                    />
+                  </label>
+                </div>
 
-                <label htmlFor="funder">
-                  Financiación
-                  <input
-                    required
-                    type="text"
-                    value={state.funder}
-                    onChange={handleInputChange}
-                    name="funder"
-                    id="funder"
-                  />
-                </label>
+                <div className="col-6">
+                  <label htmlFor="funder">
+                    Financiación
+                    <input
+                      type="text"
+                      value={state.funder}
+                      onChange={handleInputChange}
+                      name="funder"
+                      id="funder"
+                    />
+                  </label>
+                </div>
 
-                <label htmlFor="location">
-                  Lugar
-                  <input
-                    required
-                    type="text"
-                    value={state.location}
-                    onChange={handleInputChange}
-                    name="location"
-                    id="location"
-                  />
-                </label>
+                <div className="col-6">
+                  <label htmlFor="location">
+                    Lugar *
+                    <input
+                      required
+                      type="text"
+                      value={state.location}
+                      onChange={handleInputChange}
+                      name="location"
+                      id="location"
+                    />
+                  </label>
+                </div>
 
                 <label htmlFor="broadcastLink">
                   Enlace a transmisión en vivo
                   <input
-                    required
                     type="text"
                     value={state.broadcastLink}
                     onChange={handleInputChange}
