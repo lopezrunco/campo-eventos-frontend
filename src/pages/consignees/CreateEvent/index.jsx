@@ -173,7 +173,7 @@ function CreateEvent() {
                   ></textarea>
                 </label>
 
-                <div className="col-6">
+                <div className="col-lg-6">
                   <label htmlFor="company">
                     Rematador *
                     <input
@@ -187,7 +187,7 @@ function CreateEvent() {
                   </label>
                 </div>
 
-                <div className="col-6">
+                <div className="col-lg-6">
                   <label htmlFor="organizer">
                     Organizador *
                     <input
@@ -201,7 +201,7 @@ function CreateEvent() {
                   </label>
                 </div>
 
-                <div className="col-6">
+                <div className="col-lg-6">
                   <label htmlFor="funder">
                     Financiación
                     <input
@@ -214,7 +214,7 @@ function CreateEvent() {
                   </label>
                 </div>
 
-                <div className="col-6">
+                <div className="col-lg-6">
                   <label htmlFor="location">
                     Lugar *
                     <input
