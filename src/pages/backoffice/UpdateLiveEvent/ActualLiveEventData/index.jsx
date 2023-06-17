@@ -1,39 +1,16 @@
-import "./styles.scss";
-
 function ActualLiveEventData({ liveEvent }) {
   return (
-    <div className="live-event-data-container">
+    <div className="existing-data">
+      <h3 className="mb-3">Datos actuales:</h3>
       <p>
-        Título:
-        <i> {liveEvent.title}</i>
-      </p>
-      <p>
-        Día:
-        <i> {liveEvent.day}</i>
-      </p>
-      <p>
-        Mes:
-        <i> {liveEvent.month}</i>
-      </p>
-      <p>
-        Hora de inicio:
-        <i> {liveEvent.beginHour}</i>
-      </p>
-      <p>
-        Hora de finalización:
-        <i> {liveEvent.endHour}</i>
-      </p>
-      <p>
-        Lugar:
-        <i> {liveEvent.location}</i>
-      </p>
-      <p>
-        Organización:
-        <i> {liveEvent.organizer}</i>
-      </p>
-      <p>
-        Link de la transmisión (YouTube):
-        <i> {liveEvent.broadcastLinkId}</i>
+        <b>Título:</b> {liveEvent.title} <br />
+        <b>Día:</b> {liveEvent.day} <br />
+        <b>Mes:</b> {liveEvent.month} <br />
+        <b>Hora inicio:</b> {liveEvent.beginHour} <br />
+        <b>Hora cierre:</b> {liveEvent.endHour} <br />
+        <b>Lugar:</b> {liveEvent.location} <br />
+        <b>Organización:</b> {liveEvent.organizer} <br />
+        <b>Link transmisión:</b> {liveEvent.broadcastLinkId}
       </p>
     </div>
   );

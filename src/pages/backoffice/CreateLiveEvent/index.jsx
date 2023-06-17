@@ -248,7 +248,7 @@ function CreateLiveEvent() {
                   </label>
                 </div>
                 <label htmlFor="broadcastLinkId">
-                  Link de la transmisión (YouTube)
+                  Link transmisión
                   <input
                     type="text"
                     value={state.broadcastLinkId}

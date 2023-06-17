@@ -21,6 +21,7 @@ import {
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import ActualLiveEventData from "./ActualLiveEventData";
+import { Title } from "../../../components/Title";
 
 import "./styles.scss";
 
@@ -213,12 +214,15 @@ function UpdateLiveEvent() {
       </motion.div>
       <section className="update-live-event-page">
         <article className="container">
+          <Title
+            title="Editar remate en vivo"
+            subtitle="Los campos marcados con * son obligatorios"
+          />
           <div className="row">
             <div className="col-lg-7">
-              <h3>Ingrese la nueva información</h3>
-              <div className="update-live-event-container">
+              <div className="form-container row">
                 <label htmlFor="title">
-                  Título
+                  Título *
                   <input
                     required
                     type="text"
@@ -228,74 +232,86 @@ function UpdateLiveEvent() {
                     id="title"
                   />
                 </label>
-                <label htmlFor="day">
-                  Día
-                  <input
-                    required
-                    type="text"
-                    value={state.day}
-                    onChange={handleInputChange}
-                    name="day"
-                    id="day"
-                  />
-                </label>
-                <label htmlFor="month">
-                  Mes
-                  <input
-                    required
-                    type="text"
-                    value={state.month}
-                    onChange={handleInputChange}
-                    name="month"
-                    id="month"
-                  />
-                </label>
-                <label htmlFor="beginHour">
-                  Hora de inicio
-                  <input
-                    required
-                    type="text"
-                    value={state.beginHour}
-                    onChange={handleInputChange}
-                    name="beginHour"
-                    id="beginHour"
-                  />
-                </label>
-                <label htmlFor="endHour">
-                  Hora de finalización
-                  <input
-                    required
-                    type="text"
-                    value={state.endHour}
-                    onChange={handleInputChange}
-                    name="endHour"
-                    id="endHour"
-                  />
-                </label>
-                <label htmlFor="location">
-                  Lugar
-                  <input
-                    required
-                    type="text"
-                    value={state.location}
-                    onChange={handleInputChange}
-                    name="location"
-                    id="location"
-                  />
-                </label>
-                <label htmlFor="organizer">
-                  Organización
-                  <input
-                    required
-                    type="text"
-                    value={state.organizer}
-                    onChange={handleInputChange}
-                    name="organizer"
-                    id="organizer"
-                  />
-                </label>
+                <div className="col-6">
+                  <label htmlFor="day">
+                    Día *
+                    <input
+                      required
+                      type="text"
+                      value={state.day}
+                      onChange={handleInputChange}
+                      name="day"
+                      id="day"
+                    />
+                  </label>
+                </div>
+                <div className="col-6">
+                  <label htmlFor="month">
+                    Mes *
+                    <input
+                      required
+                      type="text"
+                      value={state.month}
+                      onChange={handleInputChange}
+                      name="month"
+                      id="month"
+                    />
+                  </label>
+                </div>
+                <div className="col-6">
+                  <label htmlFor="beginHour">
+                    Hora inicio *
+                    <input
+                      required
+                      type="text"
+                      value={state.beginHour}
+                      onChange={handleInputChange}
+                      name="beginHour"
+                      id="beginHour"
+                    />
+                  </label>
+                </div>
+                <div className="col-6">
+                  <label htmlFor="endHour">
+                    Hora cierre *
+                    <input
+                      required
+                      type="text"
+                      value={state.endHour}
+                      onChange={handleInputChange}
+                      name="endHour"
+                      id="endHour"
+                    />
+                  </label>
+                </div>
+                <div className="col-6">
+                  <label htmlFor="location">
+                    Lugar *
+                    <input
+                      required
+                      type="text"
+                      value={state.location}
+                      onChange={handleInputChange}
+                      name="location"
+                      id="location"
+                    />
+                  </label>
+                </div>
+                <div className="col-6">
+                  <label htmlFor="organizer">
+                    Organización *
+                    <input
+                      required
+                      type="text"
+                      value={state.organizer}
+                      onChange={handleInputChange}
+                      name="organizer"
+                      id="organizer"
+                    />
+                  </label>
+                </div>
                 <label htmlFor="broadcastLinkId">
-                  Link de la transmisión (YouTube)
+                  Link transmisión
                   <input
                     required
                     type="text"
@@ -320,7 +336,6 @@ function UpdateLiveEvent() {
               </div>
             </div>
             <div className="col-lg-5">
-              <h3>Datos actuales:</h3>
               <ActualLiveEventData liveEvent={state.liveEvent} />
             </div>
           </div>

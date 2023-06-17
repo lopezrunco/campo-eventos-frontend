@@ -28,7 +28,7 @@ function ActualEventData({ event }) {
         <i> {event.location}</i>
       </p>
       <p>
-        Link de la transmisión (YouTube):
+        Link transmisión:
         <i> {event.broadcastLink}</i>
       </p>
     </div>

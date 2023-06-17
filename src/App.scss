@@ -90,6 +90,12 @@ img {
   }
 }
 
+.existing-data {
+  background-color: $medium-light-color;
+  border-radius: $sm-border-radius;
+  padding: 2rem;
+}
+
 // Buttons
 .button {
   display: inline-block;
