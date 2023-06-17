@@ -1,35 +1,27 @@
-import "./styles.scss";
-
 function ActualEventData({ event }) {
   return (
-    <div className="event-data-container">
+    <div className="existing-data">
+      <h3>Datos actuales:</h3>
       <p>
-        Título:
-        <i> {event.title}</i>
+        <b>Título:</b> {event.title}
       </p>
       <p>
-        Descripción:
-        <i> {event.description}</i>
+        <b>Descripción:</b> {event.description}
       </p>
       <p>
-        Rematador:
-        <i> {event.company}</i>
+        <b>Rematador:</b> {event.company}
       </p>
       <p>
-        Organizador:
-        <i> {event.organizer}</i>
+        <b>Organizador:</b> {event.organizer}
       </p>
       <p>
-        Financiación:
-        <i> {event.funder}</i>
+        <b>Financiación:</b> {event.funder}
       </p>
       <p>
-        Lugar:
-        <i> {event.location}</i>
+        <b>Lugar:</b> {event.location}
       </p>
       <p>
-        Link transmisión:
-        <i> {event.broadcastLink}</i>
+        <b>Link transmisión:</b> {event.broadcastLink}
       </p>
     </div>
   );
