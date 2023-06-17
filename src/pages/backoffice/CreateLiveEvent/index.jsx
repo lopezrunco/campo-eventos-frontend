@@ -14,6 +14,7 @@ import {
 } from "../action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
+import { Title } from "../../../components/Title";
 
 import "./styles.scss";
 
@@ -146,11 +147,15 @@ function CreateLiveEvent() {
       </motion.div>
       <section className="create-live-event-page">
         <article className="container">
+          <Title
+            title="Crear remate en vivo"
+            subtitle="Los campos marcados con * son obligatorios"
+          />
           <div className="row">
             <div className="col-12">
-              <div className="create-live-event-container">
+              <div className="form-container row">
                 <label htmlFor="title">
-                  Título
+                  Título *
                   <input
                     required
                     type="text"
@@ -160,76 +165,91 @@ function CreateLiveEvent() {
                     id="title"
                   />
                 </label>
-                <label htmlFor="day">
-                  Día
-                  <input
-                    required
-                    type="text"
-                    value={state.day}
-                    onChange={handleInputChange}
-                    name="day"
-                    id="day"
-                  />
-                </label>
-                <label htmlFor="month">
-                  Mes
-                  <input
-                    required
-                    type="text"
-                    value={state.month}
-                    onChange={handleInputChange}
-                    name="month"
-                    id="month"
-                  />
-                </label>
-                <label htmlFor="beginHour">
-                  Hora de inicio
-                  <input
-                    required
-                    type="text"
-                    value={state.beginHour}
-                    onChange={handleInputChange}
-                    name="beginHour"
-                    id="beginHour"
-                  />
-                </label>
-                <label htmlFor="endHour">
-                  Hora de finalización
-                  <input
-                    required
-                    type="text"
-                    value={state.endHour}
-                    onChange={handleInputChange}
-                    name="endHour"
-                    id="endHour"
-                  />
-                </label>
-                <label htmlFor="location">
-                  Lugar
-                  <input
-                    required
-                    type="text"
-                    value={state.location}
-                    onChange={handleInputChange}
-                    name="location"
-                    id="location"
-                  />
-                </label>
-                <label htmlFor="organizer">
-                  Organización
-                  <input
-                    required
-                    type="text"
-                    value={state.organizer}
-                    onChange={handleInputChange}
-                    name="organizer"
-                    id="organizer"
-                  />
-                </label>
+                <div className="col-3">
+                  <label htmlFor="day">
+                    Día *
+                    <input
+                      required
+                      type="text"
+                      value={state.day}
+                      onChange={handleInputChange}
+                      name="day"
+                      id="day"
+                      placeholder="Ej: 07, 15, 29"
+                    />
+                  </label>
+                </div>
+                <div className="col-3">
+                  <label htmlFor="month">
+                    Mes *
+                    <input
+                      required
+                      type="text"
+                      value={state.month}
+                      onChange={handleInputChange}
+                      name="month"
+                      id="month"
+                      placeholder="Ej: 09, 12"
+                    />
+                  </label>
+                </div>
+                <div className="col-3">
+                  <label htmlFor="beginHour">
+                    Hora inicio *
+                    <input
+                      required
+                      type="text"
+                      value={state.beginHour}
+                      onChange={handleInputChange}
+                      name="beginHour"
+                      id="beginHour"
+                      placeholder="Ej: 09:00, 18:00"
+                    />
+                  </label>
+                </div>
+                <div className="col-3">
+                  <label htmlFor="endHour">
+                    Hora cierre *
+                    <input
+                      required
+                      type="text"
+                      value={state.endHour}
+                      onChange={handleInputChange}
+                      name="endHour"
+                      id="endHour"
+                      placeholder="Ej: 09:00, 18:00"
+                    />
+                  </label>
+                </div>
+                <div className="col-6">
+                  <label htmlFor="location">
+                    Lugar *
+                    <input
+                      required
+                      type="text"
+                      value={state.location}
+                      onChange={handleInputChange}
+                      name="location"
+                      id="location"
+                    />
+                  </label>
+                </div>
+                <div className="col-6">
+                  <label htmlFor="organizer">
+                    Organización *
+                    <input
+                      required
+                      type="text"
+                      value={state.organizer}
+                      onChange={handleInputChange}
+                      name="organizer"
+                      id="organizer"
+                    />
+                  </label>
+                </div>
                 <label htmlFor="broadcastLinkId">
                   Link de la transmisión (YouTube)
                   <input
-                    required
                     type="text"
                     value={state.broadcastLinkId}
                     onChange={handleInputChange}
@@ -243,7 +263,7 @@ function CreateLiveEvent() {
                   disabled={state.isSubmitting}
                 >
                   <i className="fas fa-plus"></i>
-                  {state.isSubmitting ? "Por favor, espere..." : "Crear remate"}
+                  {state.isSubmitting ? "Por favor, espere..." : "Crear"}
                 </button>
 
                 {state.errorMessage && (

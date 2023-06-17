@@ -1,5 +1,7 @@
 import { getMonth } from "../../../utils/get-month";
 
+import FetchImage from "../../../components/FetchImage";
+
 import "./styles.scss";
 
 function Card({ liveEvent }) {
@@ -16,8 +18,10 @@ function Card({ liveEvent }) {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>
+            ) : (liveEvent.coverImgName) ? (
+              <FetchImage name={liveEvent.coverImgName} />
             ) : (
-              <img src={`${liveEvent.coverImgName}`} alt={liveEvent.title} />
+              <img src="../../src/assets/no-img.jpg" width="100%" />
             )}
           </div>
           <div className="col-md-7 event-description">

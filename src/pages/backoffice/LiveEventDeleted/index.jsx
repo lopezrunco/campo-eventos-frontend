@@ -26,14 +26,12 @@ function LiveEventDeleted() {
               <h2>Exito!</h2>
               <h3>El remate en vivo ha sido borrado</h3>
               <div className="separator"></div>
-              <p>
-                El remate ha sido borrado exitosamente.
-              </p>
+              <p>El remate ha sido borrado exitosamente.</p>
               <a href="/" className="button button-light me-3">
                 <i className="fas fa-signal"></i> Ir a Vivo
               </a>
-              <a href="/admin" className="button button-dark">
-                <i className="fas fa-users-cog"></i> Volver a la administración
+              <a href="/admin/remates-vivo" className="button button-dark">
+                <i className="fas fa-gavel"></i> Volver a remates en vivo
               </a>
             </div>
             <div className="col-lg-3 d-flex justify-content-center align-items-center">
