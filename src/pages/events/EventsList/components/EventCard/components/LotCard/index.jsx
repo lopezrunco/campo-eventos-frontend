@@ -139,7 +139,7 @@ function LotCard({ lot }) {
           <i className="fas fa-comments-dollar"></i> Preofertas
         </a>
         {state.showPreoffers && (
-          <PreoffersList preoffers={state.data} lotId={lot.id} />
+          <PreoffersList preoffers={state.data} lotId={lot.id} currency={lot.currency} />
         )}
       </div>
     </React.Fragment>

@@ -10,8 +10,6 @@ import {
   EDIT_PREOFFER_SUCCESS,
 } from "../../../../../../../../action-types";
 
-import "./styles.scss";
-
 const initialState = {
   isSending: false,
   hasError: false,
@@ -94,13 +92,13 @@ function RefuseAcceptPreoffer({ preoffer }) {
 
   if (preoffer.accepted) {
     return (
-      <span className="tag acepted-preoffer" onClick={handleClick}>
+      <span className="acepted" role="button" onClick={handleClick}>
         Aceptada
       </span>
     );
   } else {
     return (
-      <span className="tag refused-preoffer" onClick={handleClick}>
+      <span className="refused" role="button" onClick={handleClick}>
         No aceptada
       </span>
     );

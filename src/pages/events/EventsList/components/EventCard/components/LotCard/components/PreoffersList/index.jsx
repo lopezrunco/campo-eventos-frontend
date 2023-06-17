@@ -15,7 +15,7 @@ const initialState = {
   userId: undefined,
   amount: undefined,
   accepted: false,
-  date: "Viernes",
+  date: undefined,
   isSending: false,
   hasError: false,
 };
@@ -51,7 +51,7 @@ const reducer = (state, action) => {
   }
 };
 
-function PreoffersList({ preoffers, lotId }) {
+function PreoffersList({ preoffers, lotId, currency }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -79,7 +79,7 @@ function PreoffersList({ preoffers, lotId }) {
       },
       body: JSON.stringify({
         userId: authState.user.id,
-        date: state.date,
+        date: Date.now(),
         amount: state.amount,
         accepted: state.accepted,
         lotId: lotId,
@@ -120,24 +120,23 @@ function PreoffersList({ preoffers, lotId }) {
     <div className="col-12 preoffers-container border p-4">
       <div className="container">
         <div className="row">
-          <div className="col-lg-9">
-            <h3>Preofertas:</h3>
+          <div className="col-lg-6">
+            <h3>Preofertas({currency}): </h3>
             {preoffers.map((preoffer) => {
               return (
-                <p key={preoffer.id}>
-                  <b>Monto: {preoffer.amount}</b> {preoffer.date}{" "}
+                <div className="preoffer mb-1" key={preoffer.id}>
+                  {preoffer.amount}
                   {preoffer.accepted ? (
-                    <span className="tag acepted-preoffer">Aceptada</span>
+                    <span className="acepted">Aceptada</span>
                   ) : (
-                    <span className="tag refused-preoffer">No aceptada</span>
+                    <span className="refused">No aceptada</span>
                   )}
-                </p>
+                </div>
               );
             })}
           </div>
-          <div className="col-lg-3">
+          <div className="col-lg-6">
             <h3>Hacer Preoferta:</h3>
-
             <input
               type="number"
               onChange={handleInputChange}
@@ -146,7 +145,7 @@ function PreoffersList({ preoffers, lotId }) {
               id="quantity"
               placeholder="Ingrese cantidad"
             />
-
+            <br />
             <button
               className="button button-light-outline"
               onClick={handleFormSubmit}
@@ -154,7 +153,6 @@ function PreoffersList({ preoffers, lotId }) {
             >
               {state.isSubmitting ? "Espere..." : "Preofertar"}
             </button>
-
             {state.errorMessage && (
               <span className="form-error">{state.errorMessage}</span>
             )}

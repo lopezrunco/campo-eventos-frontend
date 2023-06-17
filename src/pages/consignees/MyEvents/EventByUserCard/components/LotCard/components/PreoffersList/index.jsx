@@ -4,7 +4,7 @@ import RefuseAcceptPreoffer from "./components/RefuseAcceptPreoffer";
 import DeletePreofferModal from "./components/DeletePreofferModal";
 import UserDetails from "./components/UserDetails";
 
-function PreoffersList({ preoffers }) {
+function PreoffersList({ preoffers, currency }) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleDeleteModal = () => {
@@ -17,47 +17,26 @@ function PreoffersList({ preoffers }) {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h3>Preofertas:</h3>
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Monto</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {preoffers.map((preoffer) => {
-                    return (
-                      <tr key={preoffer.id}>
-                        <td>{preoffer.amount}</td>
-                        <td>{preoffer.date}</td>
-                        <td>
-                          <RefuseAcceptPreoffer preoffer={preoffer} />
-                        </td>
-                        <td>
-                          <UserDetails userId={preoffer.userId} />
-                        </td>
-                        <td>
-                          <i
-                            className="fas fa-times"
-                            id="nav-close"
-                            onClick={handleDeleteModal}
-                          ></i>
-                          {showDeleteModal ? (
-                            <DeletePreofferModal
-                              preofferId={preoffer.id}
-                              closeFunction={handleDeleteModal}
-                            />
-                          ) : null}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <h3>Preofertas ({currency}):</h3>
+              {preoffers.map((preoffer) => {
+                return (
+                  <div key={preoffer.id} className="preoffer">
+                    <span>{preoffer.amount}</span>
+                    <RefuseAcceptPreoffer preoffer={preoffer} />
+                    <UserDetails userId={preoffer.userId} />
+                    <span role="button" onClick={handleDeleteModal}>
+                      Eliminar
+                      <i className="ms-2 fas fa-times" id="nav-close"></i>
+                      {showDeleteModal ? (
+                        <DeletePreofferModal
+                          preofferId={preoffer.id}
+                          closeFunction={handleDeleteModal}
+                        />
+                      ) : null}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

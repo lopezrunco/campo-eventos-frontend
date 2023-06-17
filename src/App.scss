@@ -69,6 +69,27 @@ img {
   font-size: 0.8rem;
 }
 
+.preoffer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+
+  .acepted,
+  .refused {
+    border-radius: $sm-border-radius;
+    padding: 0.3rem 0.6rem;
+    margin: 0 0.3rem;
+    background-color: $medium-light-color;
+    font-size: 0.8rem;
+  }
+
+  .acepted {
+    background-color: $primary-color;
+    color: $light-color;
+  }
+}
+
 // Buttons
 .button {
   display: inline-block;

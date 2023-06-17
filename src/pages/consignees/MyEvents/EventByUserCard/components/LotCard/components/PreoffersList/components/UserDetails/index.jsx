@@ -114,7 +114,7 @@ function UserDetails({ userId }) {
 
   return (
     <React.Fragment>
-      <a onClick={handleClick}>
+      <a onClick={handleClick} role="button">
         Ver usuario <i className="fas fa-user"></i>
       </a>
       {state.showUserDetails && (

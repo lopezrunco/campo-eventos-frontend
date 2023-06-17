@@ -212,7 +212,7 @@ function LotCard({ lot }) {
           <i className="fas fa-trash"></i> Eliminar
         </a>
         {state.showPreoffers && (
-          <PreoffersList preoffers={state.data} lotId={lot.id} />
+          <PreoffersList preoffers={state.data} lotId={lot.id} currency={lot.currency} />
         )}
       </div>
       {state.showDeleteModal && (
