@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useReducer } from "react";
 
 import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import { refreshToken } from "../../../utils/refresh-token";
+import { getYoutubeId } from "../../../utils/getYoutubeID";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 import {
@@ -16,6 +17,7 @@ import {
   GET_LOT_SUCCESS,
 } from "../action-types";
 
+import { Title } from "../../../components/Title";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import ActualLotData from "./components/ActualLotData";
 
@@ -175,6 +177,10 @@ function UpdateLot() {
         certificate: state.certificate,
         type: state.type,
         currency: state.currency,
+        YTVideoSrc:
+          state.YTVideoSrc === undefined
+            ? undefined
+            : getYoutubeId(state.YTVideoSrc),
       }),
     })
       .then((response) => {
@@ -219,164 +225,197 @@ function UpdateLot() {
       </motion.div>
       <section className="edit-lot-page">
         <article className="container">
+          <Title
+            title="Editar lote"
+            subtitle="Los campos marcados con * son obligatorios"
+          />
           <div className="row">
             <div className="col-lg-7">
-              <h3>Ingrese la nueva información</h3>
-              <div className="edit-lot-container">
-                <label htmlFor="title">
-                  Título
-                  <input
-                    required
-                    type="text"
-                    value={state.title}
-                    onChange={handleInputChange}
-                    name="title"
-                    id="title"
-                  />
-                </label>
+              <div className="form-container row">
+                <div className="col-lg-6">
+                  <label htmlFor="title">
+                    Título *
+                    <input
+                      required
+                      type="text"
+                      value={state.title}
+                      onChange={handleInputChange}
+                      name="title"
+                      id="title"
+                    />
+                  </label>
+                </div>
 
-                <label htmlFor="category">
-                  Categoría
-                  <input
-                    required
-                    type="text"
-                    value={state.category}
-                    onChange={handleInputChange}
-                    name="category"
-                    id="category"
-                  />
-                </label>
+                <div className="col-lg-6">
+                  <label htmlFor="category">
+                    Categoría *
+                    <input
+                      required
+                      type="text"
+                      value={state.category}
+                      onChange={handleInputChange}
+                      name="category"
+                      id="category"
+                    />
+                  </label>
+                </div>
 
                 <label htmlFor="description">
                   Descripción
-                  <input
-                    required
-                    type="text"
+                  <textarea
                     value={state.description}
                     onChange={handleInputChange}
                     name="description"
                     id="description"
-                  />
+                    cols="10"
+                    rows="7"
+                    maxLength="600"
+                  ></textarea>
                 </label>
 
-                <label htmlFor="animals">
-                  Cantidad de animales
-                  <input
-                    required
-                    type="number"
-                    value={state.animals}
-                    onChange={handleInputChange}
-                    name="animals"
-                    id="animals"
-                  />
-                </label>
+                <div className="col-lg-3">
+                  <label htmlFor="animals">
+                    Cantidad
+                    <input
+                      type="number"
+                      value={state.animals}
+                      onChange={handleInputChange}
+                      name="animals"
+                      id="animals"
+                    />
+                  </label>
+                </div>
 
-                <label htmlFor="weight">
-                  Peso
-                  <input
-                    required
-                    type="number"
-                    value={state.weight}
-                    onChange={handleInputChange}
-                    name="weight"
-                    id="weight"
-                  />
-                </label>
+                <div className="col-lg-3">
+                  <label htmlFor="weight">
+                    Peso
+                    <input
+                      type="number"
+                      value={state.weight}
+                      onChange={handleInputChange}
+                      name="weight"
+                      id="weight"
+                    />
+                  </label>
+                </div>
 
-                <label htmlFor="age">
-                  Edad
-                  <input
-                    required
-                    type="number"
-                    value={state.age}
-                    onChange={handleInputChange}
-                    name="age"
-                    id="age"
-                  />
-                </label>
+                <div className="col-lg-3">
+                  <label htmlFor="age">
+                    Edad
+                    <input
+                      type="number"
+                      value={state.age}
+                      onChange={handleInputChange}
+                      name="age"
+                      id="age"
+                    />
+                  </label>
+                </div>
 
-                <label htmlFor="class">
-                  Clase
-                  <input
-                    required
-                    type="text"
-                    value={state.class}
-                    onChange={handleInputChange}
-                    name="class"
-                    id="class"
-                  />
-                </label>
+                <div className="col-lg-3">
+                  <label htmlFor="class">
+                    Clase
+                    <input
+                      type="text"
+                      value={state.class}
+                      onChange={handleInputChange}
+                      name="class"
+                      id="class"
+                    />
+                  </label>
+                </div>
 
-                <label htmlFor="state">
-                  Estado
-                  <input
-                    required
-                    type="text"
-                    value={state.state}
-                    onChange={handleInputChange}
-                    name="state"
-                    id="state"
-                  />
-                </label>
+                <div className="col-lg-3">
+                  <label htmlFor="state">
+                    Estado
+                    <input
+                      type="text"
+                      value={state.state}
+                      onChange={handleInputChange}
+                      name="state"
+                      id="state"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-3">
+                  <label htmlFor="race">
+                    Raza
+                    <input
+                      type="text"
+                      value={state.race}
+                      onChange={handleInputChange}
+                      name="race"
+                      id="race"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-3">
+                  <label htmlFor="certificate">
+                    Certificado
+                    <input
+                      type="text"
+                      value={state.certificate}
+                      onChange={handleInputChange}
+                      name="certificate"
+                      id="certificate"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-3">
+                  <label htmlFor="type">
+                    Tipo
+                    <input
+                      required
+                      type="text"
+                      value={state.type}
+                      onChange={handleInputChange}
+                      name="type"
+                      id="type"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-3">
+                  <label htmlFor="currency">
+                    Moneda *
+                    <input
+                      required
+                      type="text"
+                      value={state.currency}
+                      onChange={handleInputChange}
+                      name="currency"
+                      id="currency"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-9">
+                  <label htmlFor="ytvideo">
+                    Enlace (YouTube)
+                    <input
+                      type="text"
+                      value={state.YTVideoSrc}
+                      onChange={handleInputChange}
+                      name="YTVideoSrc"
+                      id="ytvideo"
+                    />
+                  </label>
+                </div>
 
                 <label htmlFor="observations">
                   Observaciones
-                  <input
-                    required
-                    type="text"
+                  <textarea
                     value={state.observations}
                     onChange={handleInputChange}
                     name="observations"
                     id="observations"
-                  />
-                </label>
-
-                <label htmlFor="race">
-                  Raza
-                  <input
-                    required
-                    type="text"
-                    value={state.race}
-                    onChange={handleInputChange}
-                    name="race"
-                    id="race"
-                  />
-                </label>
-
-                <label htmlFor="certificate">
-                  Certificado
-                  <input
-                    required
-                    type="text"
-                    value={state.certificate}
-                    onChange={handleInputChange}
-                    name="certificate"
-                    id="certificate"
-                  />
-                </label>
-
-                <label htmlFor="type">
-                  Tipo
-                  <input
-                    required
-                    type="text"
-                    value={state.type}
-                    onChange={handleInputChange}
-                    name="type"
-                    id="type"
-                  />
-                </label>
-
-                <label htmlFor="currency">
-                  Moneda
-                  <input
-                    required
-                    type="text"
-                    value={state.currency}
-                    onChange={handleInputChange}
-                    name="currency"
-                    id="currency"
-                  />
+                    cols="10"
+                    rows="7"
+                    maxLength="600"
+                  ></textarea>
                 </label>
 
                 <button
@@ -385,7 +424,7 @@ function UpdateLot() {
                   disabled={state.isSubmitting}
                 >
                   <i className="fas fa-sync-alt"></i>
-                  {state.isSubmitting ? "Por favor, espere..." : "Editar lote"}
+                  {state.isSubmitting ? "Por favor, espere..." : "Actualizar"}
                 </button>
 
                 {state.errorMessage && (
@@ -394,7 +433,6 @@ function UpdateLot() {
               </div>
             </div>
             <div className="col-lg-5">
-              <h3>Datos actuales:</h3>
               <ActualLotData lot={state.lot} />
             </div>
           </div>

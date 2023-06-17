@@ -1,59 +1,21 @@
-import "./styles.scss";
-
 function ActualLotData({ lot }) {
   return (
-    <div className="lot-data-container">
+    <div className="existing-data">
+      <h3 className="mb-3">Datos actuales:</h3>
       <p>
-        Título:
-        <i> {lot.title}</i>
-      </p>
-      <p>
-        Categoría:
-        <i> {lot.category}</i>
-      </p>
-      <p>
-        Descripción:
-        <i> {lot.description}</i>
-      </p>
-      <p>
-        Cantidad de animales:
-        <i> {lot.animals}</i>
-      </p>
-      <p>
-        Peso:
-        <i> {lot.weight}</i>
-      </p>
-      <p>
-        Edad:
-        <i> {lot.age}</i>
-      </p>
-      <p>
-        Clase:
-        <i> {lot.class}</i>
-      </p>
-      <p>
-        Estado:
-        <i> {lot.state}</i>
-      </p>
-      <p>
-        Observaciones:
-        <i> {lot.observations}</i>
-      </p>
-      <p>
-        Raza:
-        <i> {lot.race}</i>
-      </p>
-      <p>
-        Certificado:
-        <i> {lot.certificate}</i>
-      </p>
-      <p>
-        Tipo:
-        <i> {lot.type}</i>
-      </p>
-      <p>
-        Moneda:
-        <i> {lot.currency}</i>
+        <b>Título:</b> {lot.title} <br />
+        <b>Categoría:</b> {lot.category} <br />
+        <b>Descripción:</b> {lot.description} <br />
+        <b>Cantidad:</b> {lot.animals} <br />
+        <b>Peso:</b> {lot.weight} <br />
+        <b>Edad:</b> {lot.age} <br />
+        <b>Clase:</b> {lot.class} <br />
+        <b>Estado:</b> {lot.state} <br />
+        <b>Observaciones:</b> {lot.observations} <br />
+        <b>Raza:</b> {lot.race} <br />
+        <b>Certificado:</b> {lot.certificate} <br />
+        <b>Tipo:</b> {lot.type} <br />
+        <b>Moneda:</b> {lot.currency} <br />
       </p>
     </div>
   );
