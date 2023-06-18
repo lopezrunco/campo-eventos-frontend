@@ -1,6 +1,8 @@
 @import '../../Variables.scss';
 
 .broadcast-section {
+    border-bottom: 1px solid $medium-light-color;
+
     iframe {
         width: 100%;
         height: 200px;

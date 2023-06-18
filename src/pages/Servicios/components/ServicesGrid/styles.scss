@@ -1,6 +1,8 @@
 @import '../../../../Variables.scss';
 
 .services-grid {
+    border-bottom: 1px solid $medium-light-color;
+
     .item {
         overflow: hidden;
         text-align: center;
@@ -18,7 +20,6 @@
 }
 
 .video-service {
-    background-color: $medium-light-color;
     overflow: hidden;
 
     .title {

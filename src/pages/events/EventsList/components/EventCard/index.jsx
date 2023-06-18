@@ -1,17 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useReducer } from "react";
 
+import { refreshToken } from "../../../../../utils/refresh-token";
+import { apiUrl } from "../../../../../utils/api-url";
+import { AuthContext } from "../../../../../App";
 import {
   GET_LOTS_REQUEST,
   GET_LOTS_FAILURE,
   GET_LOTS_SUCCESS,
 } from "../../../action-types";
-import { refreshToken } from "../../../../../utils/refresh-token";
-import { apiUrl } from "../../../../../utils/api-url";
-import { AuthContext } from "../../../../../App";
+
+import FetchImage from "../../../../../components/FetchImage";
 
 import "./styles.scss";
-import FetchImage from "../../../../../components/FetchImage";
 
 const initialState = {
   data: undefined,
@@ -98,33 +99,28 @@ function EventCard({ event }) {
   return (
     <React.Fragment>
       <div className="col-12 event-card">
-        <div className="border mb-3 p-4">
+        <div className="border mb-3">
           <div className="row">
             <div className="col-lg-9">
-              <h1>{event.title}</h1>
-              <small>{event.id}</small>
-              <p>{event.description}</p>
-              <p>
-                <b>Remata:</b> {event.company}
-              </p>
-              <p>
-                <b>Organiza:</b> {event.organizer}
-              </p>
-              <p>
-                <b>Lugar:</b> {event.location}
-              </p>
-              <p>
-                <b>Enlace vivo:</b> {event.broadcastLink}
-              </p>
-              <p>
-                <b>Financiación:</b> {event.funder}
-              </p>
-              <p>
-                <b>Video de los lotes:</b> {event.videoLink}
-              </p>
-              <a className="button button-dark" onClick={handleClick}>
-                <i className="fas fa-layer-group"></i> Ver lotes
-              </a>
+              <div className="p-4">
+                <h6>{event.title}</h6>
+                <div className="separator"></div>
+                <p>
+                  <b>Descripción:</b> {event.description}
+                </p>
+                <p>
+                  <b>Remata:</b> {event.company}︱<b>Organiza:</b>{" "}
+                  {event.organizer}︱<b>Lugar:</b> {event.location}︱
+                  <b>Financiación:</b> {event.funder}︱<b>Enlace vivo:</b>{" "}
+                  {event.broadcastLink}
+                </p>
+
+                {!state.showLots ? (
+                  <a className="button view-more" onClick={handleClick}>
+                    <i className="fas fa-chevron-down"></i> Ver lotes
+                  </a>
+                ) : null}
+              </div>
             </div>
             <div className="col-lg-3">
               {event.imageUrl ? (
@@ -137,20 +133,32 @@ function EventCard({ event }) {
           {state.showLots && (
             <div className="lot-list-container">
               <div className="container">
-                <h3>Lotes:</h3>
+                <h4>
+                  <i className="fas fa-layer-group me-2"></i> Lotes de{" "}
+                  {event.title}:
+                </h4>
                 <div className="row">
+                  {state.data.length === 0
+                    ? "Aún no hay lotes en este remate"
+                    : null}
                   {state.data.map((lot) => {
                     return (
                       <React.Fragment key={lot.id}>
-                        <div className="col-lg-4">
-                          <div className="border mb-3 p-3">
-                            <h4>{lot.title}</h4>
-                            <p>Animales: {lot.animals}</p>
+                        <div className="col-lg-4 my-3">
+                          <div className="lot-card">
+                            <div className="title-animals">
+                              <h4>{lot.title}</h4>
+                              <p>
+                                <i className="fas fa-horse-head"></i>{" "}
+                                {lot.animals}
+                              </p>
+                            </div>
                             <a
-                              className="button button-dark"
+                              className="button button-dark mt-0"
                               href={`/lotes/${lot.id}`}
                             >
-                              Ver lote
+                              Ver lote{" "}
+                              <i className="fas fa-chevron-right ms-2"></i>
                             </a>
                           </div>
                         </div>

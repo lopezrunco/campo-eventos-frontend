@@ -45,10 +45,6 @@ button {
   outline: none;
 }
 
-img {
-  border-radius: .5rem;
-}
-
 .container {
   max-width: 1140px;
 }
@@ -132,7 +128,7 @@ img {
   }
 
   &.button-dark-outline {
-    background-color: $medium-light-color;
+    background-color: $light-color;
     color: $primary-color;
     border: 2px solid $primary-color;
 
@@ -154,6 +150,11 @@ img {
       border: 2px solid $primary-medium-dark-color;
     }
   }
+}
+
+.view-more {
+  background-color: $medium-light-color;
+  border-radius: $sm-border-radius;
 }
 
 // Forms
@@ -180,6 +181,12 @@ img {
   &:hover {
     color: $primary-color;
   }
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 // Headings
