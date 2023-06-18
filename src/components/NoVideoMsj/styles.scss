@@ -1,0 +1,15 @@
+@import '../../Variables.scss';
+
+.no-video-msj {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid $medium-light-color;
+    padding: 4rem 1rem;
+
+    i {
+        font-size: 3rem;
+    }
+}

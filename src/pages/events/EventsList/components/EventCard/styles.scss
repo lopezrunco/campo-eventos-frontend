@@ -1,11 +1,11 @@
 @import '../../../../../Variables.scss';
 
 .lot-list-container {
-    background: $medium-light-color;
+    background: $gray-color;
     padding: 2rem 1rem;
 
     .lot-card {
-        background-color: darken($color: $medium-light-color, $amount: 3);
+        background-color: darken($color: $gray-color, $amount: 3);
         padding: 1rem;
         border-radius: $sm-border-radius;
 

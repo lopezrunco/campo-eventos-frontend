@@ -114,10 +114,8 @@ function LotById() {
       <section>
         <article className="container">
           <div className="row">
-            <div className="col-12">
               {state.lot && <LotCard lot={state.lot} />}
               {state.hasError && <p>Error al obtener el lote</p>}
-            </div>
           </div>
         </article>
       </section>

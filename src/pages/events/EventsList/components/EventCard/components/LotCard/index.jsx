@@ -12,8 +12,7 @@ import { refreshToken } from "../../../../../../../utils/refresh-token";
 
 import FetchVideo from "../../../../../../../components/FetchVideo";
 import PreoffersList from "./components/PreoffersList";
-
-import "./styles.scss";
+import NoVideoMsj from "../../../../../../../components/NoVideoMsj";
 
 const initialState = {
   data: undefined,
@@ -99,31 +98,32 @@ function LotCard({ lot }) {
 
   return (
     <React.Fragment>
-      <div className="col-12 border mb-3 p-4 lot-card">
-        <div className="container">
-          <h3>{lot.title}</h3>
-          <p>
-            <b>Categoria:</b> {lot.category}
-          </p>
-          <p>{lot.description}</p>
-          <p>
-            <b>Animales:</b> {lot.animals} | <b>Peso:</b> {lot.weight} |{" "}
-            <b>Edad:</b> {lot.age}
-            <b>Clase:</b> {lot.class} | <b>Estado:</b> {lot.state} |{" "}
-            <b>Raza:</b> {lot.race} | <b>Certificado:</b> {lot.certificate} |{" "}
-            <b>Tipo:</b> {lot.type} | <b>Moneda:</b> {lot.currency} |{" "}
-            <b>Abierto:</b> {lot.open ? "Si" : "No"} | <b>Vendido:</b>{" "}
-            {lot.sold ? "Si" : "No"} | <b>Completado:</b>{" "}
-            {lot.completed ? "Si" : "No"}
-          </p>
-          <p>
-            <b>Observaciones:</b> {lot.observations}
-          </p>
-        </div>
+      <div className="col-lg-7">
+        <h3>
+          <i className="fas fa-layer-group me-3"></i> {lot.title}
+        </h3>
+        <div className="category-tag">{lot.category}</div>
+        <p>
+          <b>Descripción:</b> {lot.description}
+        </p>
+        <p>
+          <b>Animales:</b> {lot.animals} | <b>Peso(Kg):</b> {lot.weight} |{" "}
+          <b>Edad:</b> {lot.age} | <b>Clase:</b> {lot.class} | <b>Estado:</b>{" "}
+          {lot.state} | <b>Raza:</b> {lot.race} | <b>Certificado:</b>{" "}
+          {lot.certificate} | <b>Tipo:</b> {lot.type} | <b>Moneda:</b>{" "}
+          {lot.currency} | <b>Abierto:</b> {lot.open ? "Si" : "No"} |{" "}
+          <b>Vendido:</b> {lot.sold ? "Si" : "No"} | <b>Completado:</b>{" "}
+          {lot.completed ? "Si" : "No"}
+        </p>
+        <p>
+          <b>Observaciones:</b> {lot.observations}
+        </p>
+      </div>
+      <div className="col-lg-5">
         {lot.YTVideoSrc ? (
           <iframe
-            width="560"
-            height="315"
+            width="100%"
+            height="300"
             src={`https://www.youtube.com/embed/${lot.YTVideoSrc}`}
             title="YouTube video player"
             frameBorder="0"
@@ -133,15 +133,22 @@ function LotCard({ lot }) {
         ) : lot.videoSrc ? (
           <FetchVideo name={lot.videoSrc} />
         ) : (
-          <p>Este lote no tiene video</p>
-        )}
-        <a className="button button-dark" onClick={handleClick}>
-          <i className="fas fa-comments-dollar"></i> Preofertas
-        </a>
-        {state.showPreoffers && (
-          <PreoffersList preoffers={state.data} lotId={lot.id} currency={lot.currency} />
+          <NoVideoMsj msj='Este lote aún no tiene video.' />
         )}
       </div>
+      {!state.showPreoffers && (
+
+        <a className="button view-more" onClick={handleClick}>
+        <i className="fas fa-chevron-down"></i> Ver preofertas
+      </a>
+        )}
+      {state.showPreoffers && (
+        <PreoffersList
+          preoffers={state.data}
+          lotId={lot.id}
+          currency={lot.currency}
+        />
+      )}
     </React.Fragment>
   );
 }

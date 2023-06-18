@@ -11,6 +11,8 @@ import {
   FORM_INPUT_CHANGE,
 } from "../../../../../../../action-types";
 
+import "./styles.scss";
+
 const initialState = {
   userId: undefined,
   amount: undefined,
@@ -117,15 +119,19 @@ function PreoffersList({ preoffers, lotId, currency }) {
   };
 
   return (
-    <div className="col-12 preoffers-container border p-4">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6">
-            <h3>Preofertas({currency}): </h3>
+    <div className="col-12 preoffers-container mt-3 p-4">
+      <div className="container p-0">
+        <div className="row justify-content-between">
+          <div className="col-lg-4 mb-5 mb-lg-0">
+            <h4 className="mb-4">
+              <i className="fas fa-comments-dollar me-2"></i> Preofertas(
+              {currency}):{" "}
+            </h4>
+            {preoffers.length === 0 && <p>Aún no hay preofertas en este lote.</p>}
             {preoffers.map((preoffer) => {
               return (
-                <div className="preoffer mb-1" key={preoffer.id}>
-                  {preoffer.amount}
+                <div className="preoffer mb-2" key={preoffer.id}>
+                  <b>{preoffer.amount}</b>
                   {preoffer.accepted ? (
                     <span className="acepted">Aceptada</span>
                   ) : (
@@ -135,27 +141,30 @@ function PreoffersList({ preoffers, lotId, currency }) {
               );
             })}
           </div>
-          <div className="col-lg-6">
-            <h3>Hacer Preoferta:</h3>
-            <input
-              type="number"
-              onChange={handleInputChange}
-              min="1"
-              name="quantity"
-              id="quantity"
-              placeholder="Ingrese cantidad"
-            />
-            <br />
-            <button
-              className="button button-light-outline"
-              onClick={handleFormSubmit}
-              disabled={state.isSubmitting}
-            >
-              {state.isSubmitting ? "Espere..." : "Preofertar"}
-            </button>
-            {state.errorMessage && (
-              <span className="form-error">{state.errorMessage}</span>
-            )}
+          <div className="col-lg-5">
+            <h4 className="mb-4">
+              <i className="fas fa-comment-dollar me-2"></i> Hacer Preoferta:
+            </h4>
+            <div className="make-preoffer-container">
+              <input
+                type="number"
+                onChange={handleInputChange}
+                min="1"
+                name="quantity"
+                id="quantity"
+                placeholder="Ingrese cantidad"
+              />
+              <button
+                className="button button-light-outline"
+                onClick={handleFormSubmit}
+                disabled={state.isSubmitting}
+              >
+                {state.isSubmitting ? "Espere..." : "Preofertar"}
+              </button>
+              {state.errorMessage && (
+                <span className="form-error">{state.errorMessage}</span>
+              )}
+            </div>
           </div>
         </div>
       </div>

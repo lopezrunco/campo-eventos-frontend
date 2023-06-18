@@ -27,12 +27,12 @@ function PreOfferDone() {
               <h3>Su preoferta a sido realizada correctamente.</h3>
               <div className="separator"></div>
               <p>
-                El usuario administrador revisará su oferta y la aceptará o
+                El consignatario revisará su oferta y la aceptará o
                 rechazará.
               </p>
               <p>
-                En caso de aceptarla, será contactado por el consignatario por
-                alguna de las vías de contacto facilitadas por usted.
+                En caso de aceptarla, será contactado mediante
+                alguna de las vías de contacto facilitadas.
               </p>
               <a href="/" className="button button-light me-3">
                 <i className="fas fa-home"></i> Volver a inicio

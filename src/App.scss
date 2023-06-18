@@ -65,6 +65,14 @@ button {
   font-size: 0.8rem;
 }
 
+.category-tag {
+  border-radius: $sm-border-radius;
+  padding: 0.3rem 0.6rem;
+  margin: 1rem 0;
+  background-color: $accent-color;
+  width: max-content;
+}
+
 .preoffer {
   display: flex;
   flex-direction: row;
@@ -153,8 +161,12 @@ button {
 }
 
 .view-more {
-  background-color: $medium-light-color;
+  background-color: $gray-color;
   border-radius: $sm-border-radius;
+}
+
+.preoffers-container {
+  background-color: $gray-color;
 }
 
 // Forms

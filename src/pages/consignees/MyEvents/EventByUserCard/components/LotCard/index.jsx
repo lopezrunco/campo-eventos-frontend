@@ -14,8 +14,6 @@ import PreoffersList from "./components/PreoffersList";
 import FetchVideo from "../../../../../../components/FetchVideo";
 import DeleteLotModal from "./components/DeleteLotModal";
 
-import "./styles.scss";
-
 const initialState = {
   data: undefined,
   isSending: false,
