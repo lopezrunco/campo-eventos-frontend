@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import React from "react";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
+import { Title } from "../../../components/Title";
+
+import './styles.scss'
 
 export const BackOfficeHome = () => {
   return (
@@ -16,20 +19,21 @@ export const BackOfficeHome = () => {
       </motion.div>
       <section className="backoffice-home-page">
         <article className="container">
+          <Title title='¿Qué desea hacer?' />
           <div className="row">
-            <div className="col-lg-4">
-              <a href="/admin/crear-remate-vivo" className="card p-3 mb-3">
-                Crear remate en vivo
+            <div className="col-12 col-lg-4 offset-lg-4 admin-home-card">
+              <a href="/admin/crear-remate-vivo">
+              <i className="fas fa-signal me-2"></i> Crear remate en vivo
               </a>
             </div>
-            <div className="col-lg-4">
-              <a href="/admin/remates-vivo" className="card p-3 mb-3">
-                Ver remates en vivo
+            <div className="col-12 col-lg-4 offset-lg-4 admin-home-card">
+              <a href="/admin/remates-vivo">
+              <i className="fas fa-signal me-2"></i>Ver remates en vivo
               </a>
             </div>
-            <div className="col-lg-4">
-              <a href="/admin/usuarios" className="card p-3 mb-3">
-                Ver usuarios activos
+            <div className="col-12 col-lg-4 offset-lg-4 admin-home-card">
+              <a href="/admin/usuarios">
+              <i className="fas fa-users me-2"></i>Ver usuarios activos
               </a>
             </div>
           </div>
