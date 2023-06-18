@@ -48,6 +48,7 @@ import LiveEventDeleted from "./pages/backoffice/LiveEventDeleted";
 import LiveEvents from "./pages/backoffice/LiveEvents";
 import UploadLiveEventCover from "./pages/backoffice/UploadLiveEventCover";
 import UpdateLiveEvent from "./pages/backoffice/UpdateLiveEvent";
+import UserList from "./pages/backoffice/UserList";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -203,6 +204,14 @@ function App() {
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <UpdateEvent />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/admin/usuarios"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <UserList />
                 </RequireAuth>
               }
             />

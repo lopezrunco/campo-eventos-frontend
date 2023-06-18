@@ -17,15 +17,19 @@ export const BackOfficeHome = () => {
       <section className="backoffice-home-page">
         <article className="container">
           <div className="row">
-            <h3>Remates</h3>
-            <div className="col-lg-3">
+            <div className="col-lg-4">
               <a href="/admin/crear-remate-vivo" className="card p-3 mb-3">
                 Crear remate en vivo
               </a>
             </div>
-            <div className="col-lg-3">
+            <div className="col-lg-4">
               <a href="/admin/remates-vivo" className="card p-3 mb-3">
                 Ver remates en vivo
+              </a>
+            </div>
+            <div className="col-lg-4">
+              <a href="/admin/usuarios" className="card p-3 mb-3">
+                Ver usuarios activos
               </a>
             </div>
           </div>
