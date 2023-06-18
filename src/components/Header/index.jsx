@@ -17,7 +17,6 @@ export const Header = () => {
   return (
     <header className="header" id="inicio">
       <h1 className="main-logo">Campo Eventos</h1>
-      <img className="logo" src="../src/assets/logo.png" alt="Campo Eventos" />
       <i
         className="fas fa-bars header-toggle"
         id="nav-toggle"

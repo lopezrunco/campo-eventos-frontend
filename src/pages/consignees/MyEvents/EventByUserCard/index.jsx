@@ -2,36 +2,33 @@ import React from "react";
 
 import FetchImage from "../../../../components/FetchImage";
 
+import "./styles.scss";
+
 function EventByUserCard({ event }) {
   return (
     <React.Fragment>
-      <div className="col-lg-4 event-card">
-        <div className="border mb-3 p-4">
-          <div className="row">
-            <div className="col-12">
-              {event.imageUrl ? (
-                <FetchImage name={event.imageUrl} />
-              ) : (
-                <img src="../../src/assets/no-img.jpg" width='100%' />
-              )}
-              <h3>{event.title}</h3>
-              <small># {event.id}</small>
-              <p>
-                <b>Remata: </b>
-                {event.company}
-              </p>
-              <p>
-                <b>Organiza: </b>
-                {event.organizer}
-              </p>
-
-              <a
-                className="button button-dark me-3"
-                href={`/consignatarios/mis-remates/${event.id}`}
-              >
-                <i className="fas fa-eye"></i> Ver más
-              </a>
-            </div>
+      <div className="col-lg-4">
+        <div className="my-event-card">
+          {event.imageUrl ? (
+            <FetchImage name={event.imageUrl} />
+          ) : (
+            <img src="../../src/assets/no-img.jpg" width="100%" />
+          )}
+          <div className="content">
+            <h4>{event.title}</h4>
+            <p>
+              <b>Remata: </b>
+              {event.company}
+              <br />
+              <b>Organiza: </b>
+              {event.organizer}
+            </p>
+            <a
+              className="button button-dark-outline me-3"
+              href={`/consignatarios/mis-remates/${event.id}`}
+            >
+              Ver más <i className="fas fa-chevron-right ms-2"></i>
+            </a>
           </div>
         </div>
       </div>

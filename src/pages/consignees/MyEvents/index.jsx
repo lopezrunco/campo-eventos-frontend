@@ -15,6 +15,7 @@ import {
 import { Loader } from "../../../components/Loader";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import EventByUserCard from "./EventByUserCard";
+import { Title } from "../../../components/Title";
 
 const initialState = {
   eventsList: [],
@@ -133,13 +134,22 @@ function MyEvents() {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Mis remates"} />
+        <Breadcrumbs location={"Consignatarios"} />
       </motion.div>
       <section className="container">
+        <Title
+          title="Mis remates"
+          subtitle="Gestione preofertas, cree, edite y elimine remates."
+        />
         <article className="row">
-          <a className="button button-dark me-3" href="/consignatarios/crear-remate">
-            <i className="fas fa-plus"></i> Crear nuevo remate
-          </a>
+          <div className="col-lg-12 d-flex justify-content-end">
+            <a
+              className="button button-dark"
+              href="/consignatarios/crear-remate"
+            >
+              <i className="fas fa-plus"></i> Crear remate
+            </a>
+          </div>
           {state.isFetching ? (
             <Loader />
           ) : state.hasError ? (

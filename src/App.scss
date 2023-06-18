@@ -94,6 +94,18 @@ button {
   }
 }
 
+@media screen and (max-width: 900px) {
+  .preoffer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $medium-light-color;
+    border-radius: $sm-border-radius;
+    margin-bottom: 1rem;
+    padding: .5rem;
+  }
+}
+
 .existing-data {
   background-color: $medium-light-color;
   border-radius: $sm-border-radius;
@@ -257,6 +269,62 @@ h6 {
   .separator {
     margin: 1rem auto 1rem;
   }
+}
+
+.sm-border-radius {
+  border-radius: $sm-border-radius;
+}
+
+.options-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: .5rem;
+}
+
+.rounded-icon {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $light-color;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &.primary {
+    background-color: $primary-color;
+
+    &:hover {
+      background-color: darken($color: $primary-color, $amount: 10);
+      color: $light-color;
+    }
+  }
+
+  &.accent {
+    background-color: $accent-color;
+
+    &:hover {
+      background-color: darken($color: $accent-color, $amount: 10);
+      color: $light-color;
+    }
+  }
+
+  &.danger {
+    background-color: $danger-color;
+
+    &:hover {
+      background-color: darken($color: $danger-color, $amount: 10);
+      color: $light-color;
+    }
+  }
+
+  &.over-top {
+    position: absolute;
+    margin: -1.5rem 1rem;
+  }
+
 }
 
 // Bootstrap overrides

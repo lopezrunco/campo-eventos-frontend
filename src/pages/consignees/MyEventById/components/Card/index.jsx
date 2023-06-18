@@ -110,88 +110,105 @@ function Card({ myEvent }) {
   return (
     <React.Fragment>
       <div className="row">
-        <div className="col-lg-3">
+        <div className="col-lg-3 mb-5">
           {myEvent.imageUrl ? (
-            <FetchImage name={myEvent.imageUrl} />
+            <div className="sm-border-radius overflow-hidden">
+              <FetchImage name={myEvent.imageUrl} />
+            </div>
           ) : (
-            <img src="../../src/assets/no-img.jpg" width="100%" />
+            <img
+              className="sm-border-radius"
+              src="../../src/assets/no-img.jpg"
+              width="100%"
+            />
           )}
           <a
-            className="button button-dark me-3"
+            className="rounded-icon primary over-top"
             href={`/consignatarios/mis-remates/${myEvent.id}/upload`}
           >
-            <i className="fas fa-camera"></i> Cambiar imagen
+            <i className="fas fa-camera"></i>
           </a>
         </div>
         <div className="col-lg-9">
-          <p>
-            <b>{myEvent.title}</b> <small># {myEvent.id}</small>
-          </p>
-
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">Remata</th>
-                <th scope="col">Organiza</th>
-                <th scope="col">Lugar</th>
-                <th scope="col">Financiación</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{myEvent.company}</td>
-                <td>{myEvent.organizer}</td>
-                <td>{myEvent.location}</td>
-                <td>{myEvent.funder}</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">Enlace vivo</th>
-                <th scope="col">Video de los lotes</th>
-                <th scope="col">Descripción</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{myEvent.broadcastLink}</td>
-                <td>{myEvent.videoLink}</td>
-                <td>{myEvent.description}</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <a className="button button-dark me-3" href={`/consignatarios/mis-remates/editar/${myEvent.id}`}>
-            <i className="fas fa-edit"></i> Editar
-          </a>
-          <a className="button button-dark me-3" onClick={handleDeleteModal}>
-            <i className="fas fa-trash"></i> Eliminar
-          </a>
-          <a className="button button-dark me-3" onClick={handleClick}>
-            <i className="fas fa-layer-group"></i> Ver lotes
-          </a>
-          {state.showLots && (
-            <div className="col-12">
-              <div className="container">
-                <h3>Lotes:</h3>
-                <div className="row">
-                  {state.data.map((lot) => {
-                    return <LotCard key={lot.id} lot={lot} />;
-                  })}
-                </div>
-                <a
-                  className="button button-dark me-3"
-                  href={`/consignatarios/mis-remates/${myEvent.id}/crear-lote`}
-                >
-                  <i className="fas fa-plus"></i> Crear nuevo lote
-                </a>
-              </div>
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <h4 className="mb-0">{myEvent.title}</h4>
+            <div className="options-buttons">
+              <a
+                className="rounded-icon primary"
+                href={`/consignatarios/mis-remates/editar/${myEvent.id}`}
+              >
+                <i className="fas fa-pen"></i>
+              </a>
+              <a className="rounded-icon danger" onClick={handleDeleteModal}>
+                <i className="fas fa-trash"></i>
+              </a>
             </div>
+          </div>
+          <div className="row">
+            <div className="col-12">
+              <p>
+                <b>Descripción: </b>
+                {myEvent.description}
+              </p>
+            </div>
+            <div className="col-lg-4">
+              <p>
+                <b>Remata: </b>
+                {myEvent.company}
+              </p>
+              <p>
+                <b>Financiación: </b>
+                {myEvent.funder}
+              </p>
+            </div>
+            <div className="col-lg-4">
+              <p>
+                <b>Organiza: </b>
+                {myEvent.organizer}
+              </p>
+              <p>
+                <b>Enlace vivo: </b>
+                {myEvent.broadcastLink}
+              </p>
+            </div>
+            <div className="col-lg-4">
+              <p>
+                <b>Lugar: </b>
+                {myEvent.location}
+              </p>
+            </div>
+          </div>
+          {!state.showLots && (
+            <a className="button view-more" onClick={handleClick}>
+              <i className="fas fa-chevron-down"></i> Ver lotes
+            </a>
           )}
         </div>
+
+        {state.showLots && (
+          <div className="col-12">
+            <div className="container">
+              <h4 className="mb-4 mt-5">
+                <i class="fas fa-layer-group me-2"></i> Lotes de {myEvent.title}
+                :
+              </h4>
+              <div className="row">
+                {state.data.length === 0
+                  ? "Aún no hay lotes en este remate"
+                  : null}
+                {state.data.map((lot) => {
+                  return <LotCard key={lot.id} lot={lot} />;
+                })}
+              </div>
+              <a
+                className="button button-dark me-3"
+                href={`/consignatarios/mis-remates/${myEvent.id}/crear-lote`}
+              >
+                <i className="fas fa-plus"></i> Crear nuevo lote
+              </a>
+            </div>
+          </div>
+        )}
       </div>
       {state.showDeleteModal && (
         <DeleteEventModal

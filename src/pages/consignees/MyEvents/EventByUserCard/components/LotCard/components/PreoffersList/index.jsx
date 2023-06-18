@@ -13,15 +13,15 @@ function PreoffersList({ preoffers, currency }) {
 
   return (
     <React.Fragment>
-      <div className="col-12 preoffers-container border p-4">
+      <div className="col-12 preoffers-container mt-4 p-0 p-lg-4">
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h3>Preofertas ({currency}):</h3>
+              <h4 className="mb-4 mt-4 mt-lg-0"><i className="fas fa-comments-dollar me-2"></i> Preofertas ({currency}):</h4>
               {preoffers.map((preoffer) => {
                 return (
-                  <div key={preoffer.id} className="preoffer">
-                    <span>{preoffer.amount}</span>
+                  <div key={preoffer.id} className="preoffer mb-2">
+                    <span>Monto: <b>{preoffer.amount}</b></span>
                     <RefuseAcceptPreoffer preoffer={preoffer} />
                     <UserDetails userId={preoffer.userId} />
                     <span role="button" onClick={handleDeleteModal}>

@@ -126,22 +126,20 @@ function LotCard({ lot }) {
             height="300"
             src={`https://www.youtube.com/embed/${lot.YTVideoSrc}`}
             title="YouTube video player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           ></iframe>
         ) : lot.videoSrc ? (
           <FetchVideo name={lot.videoSrc} />
         ) : (
-          <NoVideoMsj msj='Este lote aún no tiene video.' />
+          <NoVideoMsj msj="Este lote aún no tiene video." />
         )}
       </div>
       {!state.showPreoffers && (
-
         <a className="button view-more" onClick={handleClick}>
-        <i className="fas fa-chevron-down"></i> Ver preofertas
-      </a>
-        )}
+          <i className="fas fa-chevron-down"></i> Ver preofertas
+        </a>
+      )}
       {state.showPreoffers && (
         <PreoffersList
           preoffers={state.data}

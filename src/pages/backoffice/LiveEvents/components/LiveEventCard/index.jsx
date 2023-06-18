@@ -26,7 +26,7 @@ function LiveEventCard({ liveEvent }) {
           <div className="col-lg-6">
             <h3>{liveEvent.title}</h3>
             <p className="event-date">
-              <i className="fas fa-calendar-alt"></i>
+              <i className="fas fa-calendar-alt me-2"></i>
               {`${liveEvent.day} de ${getMonth(liveEvent.month)}, ${
                 liveEvent.beginHour
               } hs.`}

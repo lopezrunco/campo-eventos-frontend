@@ -38,3 +38,9 @@
         color: $primary-color;
     }
 }
+
+@media screen and (max-width: 900px) {
+    .register-container {
+        width: 100%;
+    }
+}
