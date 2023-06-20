@@ -1,9 +1,11 @@
+import imgUrl from '../../assets/hero-logo.png'
+
 import './styles.scss'
 
 export const Intro = () => {
   return (
     <div className="intro">
-        <img src='../src/assets/hero-logo.png' alt='Campo Eventos' />
+        <img src={imgUrl} alt='Campo Eventos' />
     </div>
   )
 }
