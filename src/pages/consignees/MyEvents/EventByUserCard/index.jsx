@@ -1,5 +1,7 @@
 import React from "react";
 
+import imgUrl from '../../../../assets/no-img.jpg'
+
 import FetchImage from "../../../../components/FetchImage";
 
 import "./styles.scss";
@@ -12,7 +14,7 @@ function EventByUserCard({ event }) {
           {event.imageUrl ? (
             <FetchImage name={event.imageUrl} />
           ) : (
-            <img src="../../src/assets/no-img.jpg" width="100%" />
+            <img src={imgUrl} width="100%" />
           )}
           <div className="content">
             <h4>{event.title}</h4>

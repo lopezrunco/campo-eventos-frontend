@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { getMonth } from "../../../../../utils/get-month";
 
+import imgUrl from '../../../../../assets/no-img.jpg"'
+
 import DeleteLiveEventModal from "./components/DeleteLiveEventModal";
 import FetchImage from "../../../../../components/FetchImage";
 
@@ -20,7 +22,7 @@ function LiveEventCard({ liveEvent }) {
             {liveEvent.coverImgName ? (
               <FetchImage name={liveEvent.coverImgName} />
             ) : (
-              <img src="../../src/assets/no-img.jpg" width="100%" />
+              <img src={imgUrl} width="100%" />
             )}
           </div>
           <div className="col-lg-6">

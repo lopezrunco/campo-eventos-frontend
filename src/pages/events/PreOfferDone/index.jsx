@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import React from "react";
 
+import imgUrl from '../../../assets/success.gif'
+
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 
 function PreOfferDone() {
@@ -42,7 +44,7 @@ function PreOfferDone() {
               </a>
             </div>
             <div className="col-lg-3 d-flex justify-content-center align-items-center">
-              <img src="./src/assets/success.gif" alt="" />
+              <img src={imgUrl} alt="" />
             </div>
           </article>
         </motion.div>

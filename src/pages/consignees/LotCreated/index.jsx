@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import React from "react";
 
+import imgUrl from '../../../assets/success.gif'
+
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 
 function LotCreated() {
@@ -48,7 +50,7 @@ function LotCreated() {
               </a>
             </div>
             <div className="col-lg-3 d-flex justify-content-center align-items-center">
-              <img src="./src/assets/success.gif" alt="" />
+              <img src={imgUrl} alt="" />
             </div>
           </article>
         </motion.div>

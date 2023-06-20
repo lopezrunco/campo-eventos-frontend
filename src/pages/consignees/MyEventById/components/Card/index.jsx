@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useReducer } from "react";
 
+import imgUrl from '../../../../../assets/no-img.jpg'
+
 import { refreshToken } from "../../../../../utils/refresh-token";
 import { apiUrl } from "../../../../../utils/api-url";
 import { AuthContext } from "../../../../../App";
@@ -118,7 +120,7 @@ function Card({ myEvent }) {
           ) : (
             <img
               className="sm-border-radius"
-              src="../../src/assets/no-img.jpg"
+              src={imgUrl}
               width="100%"
             />
           )}

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-import imgUrl from '../../../assets/hero-logo.png'
+import imgUrl from '../../../assets/success.gif'
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 

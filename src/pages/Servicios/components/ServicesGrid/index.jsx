@@ -1,3 +1,5 @@
+import imgBaseUrl from '../../../../assets'
+
 import { servicesData, videosData } from '../../../../data/services'
 
 import './styles.scss'
@@ -11,7 +13,7 @@ export const ServicesGrid = () => {
             {servicesData.map(servicesEl =>
               <div className='col-md-4' key={servicesEl.id}>
                 <div className='item'>
-                  <img src={`../src/assets/${servicesEl.icon}`} alt={servicesEl.title} />
+                  <img src={`${imgBaseUrl}/${servicesEl.icon}`} alt={servicesEl.title} />
                   <h3>{servicesEl.title}</h3>
                 </div>
               </div>
@@ -23,7 +25,7 @@ export const ServicesGrid = () => {
         <article className='container'>
           <div className='row'>
             <div className='col title'>
-              <img src={`../src/assets/${videosData.icon}`} alt={videosData.title} />
+              <img src={`${imgBaseUrl}/${videosData.icon}`} alt={videosData.title} />
               <h3>{videosData.title}</h3>
               <div className='separator'></div>
             </div>
