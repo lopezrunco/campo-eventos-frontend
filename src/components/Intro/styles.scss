@@ -9,8 +9,6 @@
         display: inline-block;
         overflow: hidden;
         width: 100%;
-        height: 250px;
-        // background-image: url('../src/assets/campo-bg.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: top;
@@ -22,7 +20,8 @@
         animation-delay: .6s;
 
         img {
-            height: 100%;
+            width: 100%;
+            height: auto;
             animation: scale 1.5s ease;
         }
     }
