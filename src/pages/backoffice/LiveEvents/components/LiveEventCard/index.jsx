@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { getMonth } from "../../../../../utils/get-month";
 
-import imgUrl from '../../../../../assets/no-img.jpg"'
+import imgUrl from '../../../../../assets/no-img.jpg'
 
 import DeleteLiveEventModal from "./components/DeleteLiveEventModal";
 import FetchImage from "../../../../../components/FetchImage";

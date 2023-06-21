@@ -1,6 +1,9 @@
-import imgBaseUrl from '../../../../assets'
-
 import { servicesData, videosData } from '../../../../data/services'
+
+import streamImg from '../../../../assets/stream.svg'
+import megaphoneImg from '../../../../assets/megaphone.svg'
+import monitorImg from '../../../../assets/monitor.svg'
+import videoImg from '../../../../assets/stream.svg'
 
 import './styles.scss'
 
@@ -13,7 +16,15 @@ export const ServicesGrid = () => {
             {servicesData.map(servicesEl =>
               <div className='col-md-4' key={servicesEl.id}>
                 <div className='item'>
-                  <img src={`${imgBaseUrl}/${servicesEl.icon}`} alt={servicesEl.title} />
+                  {(servicesEl.icon === 'stream.svg' && (
+                    <img src={streamImg} alt={servicesEl.title} />
+                  ))}
+                  {(servicesEl.icon === 'megaphone.svg' && (
+                    <img src={megaphoneImg} alt={servicesEl.title} />
+                  ))}
+                  {(servicesEl.icon === 'monitor.svg' && (
+                    <img src={monitorImg} alt={servicesEl.title} />
+                  ))}
                   <h3>{servicesEl.title}</h3>
                 </div>
               </div>
@@ -25,7 +36,7 @@ export const ServicesGrid = () => {
         <article className='container'>
           <div className='row'>
             <div className='col title'>
-              <img src={`${imgBaseUrl}/${videosData.icon}`} alt={videosData.title} />
+              <img src={videoImg} alt={videosData.title} />
               <h3>{videosData.title}</h3>
               <div className='separator'></div>
             </div>
