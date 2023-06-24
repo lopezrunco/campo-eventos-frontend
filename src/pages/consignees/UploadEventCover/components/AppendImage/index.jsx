@@ -90,10 +90,8 @@ function AppendImage({ eventId, imageName }) {
 
   return (
     <React.Fragment>
-      <p>
-        El archivo <i>{imageName}</i> se usará como afiche del remate.
-      </p>
-      <a className="button button-dark" onClick={handleSubmit}>
+      <p>Este archivo se usará como afiche del remate.</p>
+      <a className="button button-dark me-3" onClick={handleSubmit}>
         <i className="fas fa-check"></i> Aceptar
       </a>
     </React.Fragment>

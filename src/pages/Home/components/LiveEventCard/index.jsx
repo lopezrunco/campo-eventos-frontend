@@ -1,11 +1,9 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-import imgUrl from '../../../../assets/no-img.jpg'
+import imgUrl from "../../../../assets/no-img.jpg";
 
 import { getMonth } from "../../../../utils/get-month";
-
-import FetchImage from "../../../../components/FetchImage";
 
 import "./styles.scss";
 
@@ -29,7 +27,7 @@ function LiveEventCard({ liveEvent }) {
             <div className="content">
               <div className="thumb">
                 {liveEvent.coverImgName ? (
-                  <FetchImage name={liveEvent.coverImgName} />
+                  <img src={liveEvent.coverImgName} width="100%" />
                 ) : (
                   <img src={imgUrl} width="100%" />
                 )}

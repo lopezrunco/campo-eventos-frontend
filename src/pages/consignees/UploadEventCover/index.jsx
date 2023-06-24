@@ -2,91 +2,81 @@ import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import React, { useState } from "react";
 
-import http from "../../../utils/http-common";
+import { CLOUDINARY_ID } from "../../../config";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
+import { Title } from "../../../components/Title";
 import AppendImage from "./components/AppendImage";
 
-import "./styles.scss";
-
-const FileUpload = (file) => {
-  let formData = new FormData();
-  formData.append("file", file);
-
-  return http.post("/image-upload", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
-};
-
 const UploadEventCover = () => {
-  const [selectedFiles, setSelectedFiles] = useState(undefined);
-  const [currentFile, setCurrentFile] = useState(undefined);
-  const [message, setMessage] = useState("");
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
   const [appendImageToEvent, setAppendImageToEvent] = useState(false);
   const { id } = useParams();
 
-  const selectFile = (event) => {
-    setSelectedFiles(event.target.files);
-  };
+  // TO DO: Improve this code using reducer
+  // TO DO: Make this component reusable to avoid repeat code
+  // TO DO: Show a list of existing files and allow the user to select
+  // TO DO: Limit the file size
+  // TO DO: Delete unused code of upload images in frontend and backend
 
-  const upload = () => {
-    let currentFile = selectedFiles[0];
-    setCurrentFile(currentFile);
+  const uploadImage = () => {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "campoeventos");
+    data.append("cloud_name", "dvkq2sewj");
 
-    FileUpload(currentFile, () => {
-      setMessage("Uploading file");
+    fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_ID}/image/upload`, {
+      method: "post",
+      body: data,
     })
-      .then((response) => {
-        setMessage(response.data.message);
+      .then((resp) => resp.json())
+      .then((data) => {
+        setUrl(data.url);
         setAppendImageToEvent(true);
       })
-      .catch((error) => {
-        setMessage(error.response.data.message);
-        setCurrentFile(undefined);
-      });
-
-    setSelectedFiles(undefined);
+      .catch((err) => console.log(err));
   };
 
   return (
     <React.Fragment>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Afiche del remate"} />
+        <Breadcrumbs location={"Subir imagen"} />
       </motion.div>
       <section className="upload-file-page">
         <article className="container">
+          <Title
+            title="Subir nueva imagen"
+            subtitle="El archivo no puede pesar más de 10 megabytes"
+          />
           <div className="row">
             <div className="col-12">
-              <div className="card p-5">
-                <h3>Subir imagen</h3>
-                <div className="separator"></div>
-                <p>
-                  Seleccione una imagen desde su dispositivo para usar como
-                  afiche del remate.
-                </p>
-                <label className="btn btn-default">
-                  <input type="file" onChange={selectFile} />
-                </label>
-                <button
-                  className="btn btn-success"
-                  disabled={!selectedFiles}
-                  onClick={upload}
-                >
-                  <i className="fas fa-upload"></i> Subir archivo
-                </button>
-
-                <div className="p-3">{message}</div>
-
+              <div className="select-file">
+                <input
+                  type="file"
+                  onChange={(e) => setImage(e.target.files[0])}
+                ></input>
+                <a className="button button-dark" onClick={uploadImage}>
+                  <i className="fas fa-upload"></i>
+                  Subir
+                </a>
+              </div>
+              <div className="file-preview">
+                <img src={url} />
                 {appendImageToEvent && (
-                  <AppendImage eventId={id} imageName={currentFile.name} />
+                  <AppendImage eventId={id} imageName={url} />
                 )}
+                <a
+                  className="button button-dark"
+                  href={`/consignatarios/mis-remates/${id}`}
+                >
+                  <i className="fas fa-times"></i> Cancelar
+                </a>
               </div>
             </div>
           </div>

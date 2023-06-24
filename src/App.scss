@@ -207,6 +207,39 @@ button {
   }
 }
 
+.upload-file-page {
+
+  img {
+    width: 100%;
+    border-radius: $sm-border-radius;
+  }
+
+  .select-file,
+  .file-preview {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .select-file {
+    background: $gray-color;
+    border-radius: $sm-border-radius;
+    border: 1px solid $medium-light-color;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .upload-file-page {
+    .select-file {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+
 .pagination {
   display: flex;
   flex-direction: row;

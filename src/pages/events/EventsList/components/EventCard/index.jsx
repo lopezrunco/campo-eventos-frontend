@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useReducer } from "react";
 
-import imgUrl from '../../../../../assets/no-img.jpg'
+import imgUrl from "../../../../../assets/no-img.jpg";
 
 import { refreshToken } from "../../../../../utils/refresh-token";
 import { apiUrl } from "../../../../../utils/api-url";
@@ -11,8 +11,6 @@ import {
   GET_LOTS_FAILURE,
   GET_LOTS_SUCCESS,
 } from "../../../action-types";
-
-import FetchImage from "../../../../../components/FetchImage";
 
 import "./styles.scss";
 
@@ -126,7 +124,7 @@ function EventCard({ event }) {
             </div>
             <div className="col-lg-3">
               {event.imageUrl ? (
-                <FetchImage name={event.imageUrl} />
+                <img src={event.imageUrl} width="100%" />
               ) : (
                 <img src={imgUrl} width="100%" />
               )}

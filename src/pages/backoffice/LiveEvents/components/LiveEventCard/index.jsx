@@ -2,10 +2,9 @@ import React, { useState } from "react";
 
 import { getMonth } from "../../../../../utils/get-month";
 
-import imgUrl from '../../../../../assets/no-img.jpg'
+import imgUrl from "../../../../../assets/no-img.jpg";
 
 import DeleteLiveEventModal from "./components/DeleteLiveEventModal";
-import FetchImage from "../../../../../components/FetchImage";
 
 function LiveEventCard({ liveEvent }) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -20,7 +19,7 @@ function LiveEventCard({ liveEvent }) {
         <div className="row">
           <div className="col-lg-3">
             {liveEvent.coverImgName ? (
-              <FetchImage name={liveEvent.coverImgName} />
+              <img src={liveEvent.coverImgName} width="100%" />
             ) : (
               <img src={imgUrl} width="100%" />
             )}

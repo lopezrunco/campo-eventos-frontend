@@ -1,8 +1,6 @@
 import React from "react";
 
-import imgUrl from '../../../../assets/no-img.jpg'
-
-import FetchImage from "../../../../components/FetchImage";
+import imgUrl from "../../../../assets/no-img.jpg";
 
 import "./styles.scss";
 
@@ -12,7 +10,7 @@ function EventByUserCard({ event }) {
       <div className="col-lg-4">
         <div className="my-event-card">
           {event.imageUrl ? (
-            <FetchImage name={event.imageUrl} />
+            <img src={event.imageUrl} width="100%" />
           ) : (
             <img src={imgUrl} width="100%" />
           )}

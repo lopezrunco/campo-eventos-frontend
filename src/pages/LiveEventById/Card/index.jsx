@@ -1,8 +1,6 @@
-import imgUrl from '../../../assets/no-img.jpg'
+import imgUrl from "../../../assets/no-img.jpg";
 
 import { getMonth } from "../../../utils/get-month";
-
-import FetchImage from "../../../components/FetchImage";
 
 import "./styles.scss";
 
@@ -20,8 +18,8 @@ function Card({ liveEvent }) {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               ></iframe>
-            ) : (liveEvent.coverImgName) ? (
-              <FetchImage name={liveEvent.coverImgName} />
+            ) : liveEvent.coverImgName ? (
+              <img src={liveEvent.coverImgName} width="100%" />
             ) : (
               <img src={imgUrl} width="100%" />
             )}

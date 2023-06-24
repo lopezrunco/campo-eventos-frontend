@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useReducer } from "react";
 
-import imgUrl from '../../../../../assets/no-img.jpg'
+import imgUrl from "../../../../../assets/no-img.jpg";
 
 import { refreshToken } from "../../../../../utils/refresh-token";
 import { apiUrl } from "../../../../../utils/api-url";
@@ -13,7 +13,6 @@ import {
 } from "../../../../events/action-types";
 
 import LotCard from "../../../MyEvents/EventByUserCard/components/LotCard";
-import FetchImage from "../../../../../components/FetchImage";
 import DeleteEventModal from "./components/DeleteEventModal";
 
 const initialState = {
@@ -114,15 +113,9 @@ function Card({ myEvent }) {
       <div className="row">
         <div className="col-lg-3 mb-5">
           {myEvent.imageUrl ? (
-            <div className="sm-border-radius overflow-hidden">
-              <FetchImage name={myEvent.imageUrl} />
-            </div>
+            <img src={myEvent.imageUrl} width="100%" />
           ) : (
-            <img
-              className="sm-border-radius"
-              src={imgUrl}
-              width="100%"
-            />
+            <img src={imgUrl} width="100%" />
           )}
           <a
             className="rounded-icon primary over-top"
