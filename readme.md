@@ -9,7 +9,6 @@
   </p>
 </div>
 
-
 ### Built With
 
 ![image](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
@@ -25,12 +24,13 @@
 ![image](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 ### Prerequisites
 
-* node.js
-* npm
+- node.js
+- npm
 
 ### Installation
 
@@ -44,13 +44,14 @@
    ```
 3. Create .env file with environment variables.
    ```
-    VITE_API_URL=http://localhost:3000
+    VITE_API_URL = http://localhost:3000
+    VITE_CLOUDINARY_ID = your_cloudinary_id
    ```
 4. Start development server
    ```sh
     npm run dev
    ```
 5. Compile to publish in hosting
-    ```sh
-    npm run build
-    ```
+   ```sh
+   npm run build
+   ```

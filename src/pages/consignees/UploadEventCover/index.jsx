@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import React, { useState } from "react";
 
-import { CLOUDINARY_ID } from "../../../config";
+const  CLOUDINARY_ID = import.meta.env.VITE_CLOUDINARY_ID
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
