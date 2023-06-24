@@ -184,7 +184,7 @@ function Card({ myEvent }) {
           <div className="col-12">
             <div className="container">
               <h4 className="mb-4 mt-5">
-                <i class="fas fa-layer-group me-2"></i> Lotes de {myEvent.title}
+                <i className="fas fa-layer-group me-2"></i> Lotes de {myEvent.title}
                 :
               </h4>
               <div className="row">

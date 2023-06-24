@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import React, { useState } from "react";
 
-const  CLOUDINARY_ID = import.meta.env.VITE_CLOUDINARY_ID
+const CLOUDINARY_ID = import.meta.env.VITE_CLOUDINARY_ID;
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
@@ -18,7 +18,9 @@ const UploadEventCover = () => {
   // TO DO: Make this component reusable to avoid repeat code
   // TO DO: Show a list of existing files and allow the user to select
   // TO DO: Limit the file size
-  // TO DO: Delete unused code of upload images in frontend and backend
+  // TO DO: Delete unused code of upload images in frontend and backend (FetchImg component for example)
+  // TO DO: Check if the user is not uploading anything and show message
+  // TO DO: Filter to allow the user to only upload this kind of file
 
   const uploadImage = () => {
     const data = new FormData();
@@ -57,10 +59,12 @@ const UploadEventCover = () => {
           <div className="row">
             <div className="col-12">
               <div className="select-file">
-                <input
-                  type="file"
-                  onChange={(e) => setImage(e.target.files[0])}
-                ></input>
+                <label>
+                  <input
+                    type="file"
+                    onChange={(e) => setImage(e.target.files[0])}
+                  ></input>
+                </label>
                 <a className="button button-dark" onClick={uploadImage}>
                   <i className="fas fa-upload"></i>
                   Subir

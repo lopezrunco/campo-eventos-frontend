@@ -110,13 +110,9 @@ function YouTubeVideo({ lotId }) {
   };
 
   return (
-    <div className="col-12">
-      <div className="card p-5 mb-5">
-        <h3>Usar video de Youtube</h3>
-        <p>
-          Si cuenta con video subido a la plataforma de YouTube, péguelo a
-          continuación.
-        </p>
+    <div className="col-12 upload-file-page">
+      <div className="select-file youtube">
+        <h3>Enlace de Youtube</h3>
         <label htmlFor="YTVideoSrc">
           <input
             required
@@ -125,7 +121,7 @@ function YouTubeVideo({ lotId }) {
             onChange={handleInputChange}
             name="YTVideoSrc"
             id="YTVideoSrc"
-            placeholder="Ej: www.youtube.com/su-video"
+            placeholder="www.youtube.com/su-video"
           />
         </label>
         <button
@@ -133,8 +129,8 @@ function YouTubeVideo({ lotId }) {
           onClick={handleSubmit}
           disabled={state.isSubmitting}
         >
-          <i className="fab fa-youtube"></i>
-          {state.isSubmitting ? "Por favor, espere..." : "Usar video"}
+          <i className="fas fa-check"></i>
+          {state.isSubmitting ? "Por favor, espere..." : "Aceptar"}
         </button>
 
         {state.errorMessage && (

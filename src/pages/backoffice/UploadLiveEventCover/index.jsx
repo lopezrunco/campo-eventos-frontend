@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import React, { useState } from "react";
 
-const  CLOUDINARY_ID = import.meta.env.VITE_CLOUDINARY_ID
+const CLOUDINARY_ID = import.meta.env.VITE_CLOUDINARY_ID;
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import AppendImage from "./components/AppendImage";
@@ -51,10 +51,12 @@ const UploadLiveEventCover = () => {
           <div className="row">
             <div className="col-12">
               <div className="select-file">
-                <input
-                  type="file"
-                  onChange={(e) => setImage(e.target.files[0])}
-                ></input>
+                <label>
+                  <input
+                    type="file"
+                    onChange={(e) => setImage(e.target.files[0])}
+                  ></input>
+                </label>
                 <a className="button button-dark" onClick={uploadImage}>
                   <i className="fas fa-upload"></i>
                   Subir

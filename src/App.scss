@@ -45,6 +45,10 @@ button {
   outline: none;
 }
 
+input[type="file"] {
+  cursor: pointer;
+}
+
 .container {
   max-width: 1140px;
 }
@@ -208,7 +212,6 @@ button {
 }
 
 .upload-file-page {
-
   img {
     width: 100%;
     border-radius: $sm-border-radius;
@@ -216,9 +219,17 @@ button {
 
   .select-file,
   .file-preview {
-    max-width: 500px;
+    max-width: 700px;
     margin: 0 auto;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
+
+    h3 {
+      margin-bottom: 2rem;
+    }
   }
 
   .select-file {
@@ -226,16 +237,31 @@ button {
     border-radius: $sm-border-radius;
     border: 1px solid $medium-light-color;
     margin-bottom: 1rem;
+
+    input {
+      width: 100%;
+    }
+
+    &.youtube {
+      background: $success-color;
+    }
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (min-width: 768px) {
   .upload-file-page {
+
+    .select-file,
+    .file-preview {
+      align-items: center;
+    }
+
     .select-file {
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      label {
+        min-width: 400px;
+        background-color: $medium-light-color;
+        border-radius: $sm-border-radius;
+      }
     }
   }
 }

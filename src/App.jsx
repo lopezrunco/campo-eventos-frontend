@@ -37,7 +37,7 @@ import LotCreated from "./pages/consignees/LotCreated";
 import LotEdited from "./pages/consignees/LotEdited";
 import LotDeleted from "./pages/consignees/LotDeleted";
 import UploadEventCover from "./pages/consignees/UploadEventCover";
-import UploadVideo from "./pages/consignees/UploadVideo";
+import AddVideoToLot from "./pages/consignees/AddVideoToLot";
 import UpdateEvent from "./pages/consignees/UpdateEvent";
 import UpdateLot from "./pages/consignees/UpdateLot";
 
@@ -275,7 +275,7 @@ function App() {
               path="/consignatarios/mis-remates/lotes/:id/upload"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
-                  <UploadVideo />
+                  <AddVideoToLot />
                 </RequireAuth>
               }
             />

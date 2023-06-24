@@ -10,7 +10,6 @@ import { AuthContext } from "../../../../../../App";
 import { apiUrl } from "../../../../../../utils/api-url";
 import { refreshToken } from "../../../../../../utils/refresh-token";
 
-import FetchVideo from "../../../../../../components/FetchVideo";
 import NoVideoMsj from "../../../../../../components/NoVideoMsj";
 import PreoffersList from "./components/PreoffersList";
 import DeleteLotModal from "./components/DeleteLotModal";
@@ -161,9 +160,11 @@ function LotCard({ lot }) {
               allowFullScreen
             ></iframe>
           ) : lot.videoSrc ? (
-            <FetchVideo name={lot.videoSrc} />
+            <video width="100%" height="auto" controls>
+              <source src={lot.videoSrc} type="video/mp4" />
+            </video>
           ) : (
-            <NoVideoMsj msj='Este lote no tiene video' />
+            <NoVideoMsj msj="Este lote no tiene video" />
           )}
           <a
             className="rounded-icon primary over-top"
