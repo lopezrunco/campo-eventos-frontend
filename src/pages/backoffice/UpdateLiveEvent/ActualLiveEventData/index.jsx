@@ -10,7 +10,20 @@ function ActualLiveEventData({ liveEvent }) {
         <b>Hora cierre:</b> {liveEvent.endHour} <br />
         <b>Lugar:</b> {liveEvent.location} <br />
         <b>Organización:</b> {liveEvent.organizer} <br />
-        <b>Link transmisión:</b> {liveEvent.broadcastLinkId}
+        <b>Enlace transmisión: </b>
+        {liveEvent.broadcastLinkId === null ||
+        liveEvent.broadcastLinkId === undefined ||
+        liveEvent.broadcastLinkId === "" ? (
+          "No existe"
+        ) : (
+          <a
+            href={`https://www.youtube.com/watch/${liveEvent.broadcastLinkId}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {`https://www.youtube.com/watch/${liveEvent.broadcastLinkId}`}
+          </a>
+        )}
       </p>
     </div>
   );

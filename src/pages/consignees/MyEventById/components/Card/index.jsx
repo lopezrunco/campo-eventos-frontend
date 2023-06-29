@@ -162,20 +162,25 @@ function Card({ myEvent }) {
                 {myEvent.organizer}
               </p>
               <p>
-                <b>Enlace vivo: </b>
-                {myEvent.broadcastLink}
-              </p>
-            </div>
-            <div className="col-lg-4">
-              <p>
                 <b>Lugar: </b>
                 {myEvent.location}
               </p>
             </div>
           </div>
+          {/* TO DO: Dejar boton Ver mas visible para permitir ocultar modal de lotes */}
           {!state.showLots && (
-            <a className="button view-more" onClick={handleClick}>
+            <a className="button view-more me-3" onClick={handleClick}>
               <i className="fas fa-chevron-down"></i> Ver lotes
+            </a>
+          )}
+          {myEvent.broadcastLink && (
+            <a
+              className="button view-more"
+              href={`https://www.youtube.com/watch/${myEvent.broadcastLink}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="fas fa-play"></i> Enlace transmisión
             </a>
           )}
         </div>
@@ -184,8 +189,8 @@ function Card({ myEvent }) {
           <div className="col-12">
             <div className="container">
               <h4 className="mb-4 mt-5">
-                <i className="fas fa-layer-group me-2"></i> Lotes de {myEvent.title}
-                :
+                <i className="fas fa-layer-group me-2"></i> Lotes de{" "}
+                {myEvent.title}:
               </h4>
               <div className="row">
                 {state.data.length === 0

@@ -449,4 +449,12 @@ function App() {
 
 export default App;
 
+// TO DO: Ver porque si se agregan espacios antes de los textos, en los textareas o inputs da error
+// TO DO: Poner menswaje de Wait cuando esta subiendo el video o img y deshabilitar el boton
 // TO DO: Que usuario ponga telefono al loguearse y se muestre en la preoferta
+// TO DO: Ver problema de _id entre recien registrados y logueados 
+// TO DO: Chequear paginacion en todos los listados de entidades
+// TO DO: Solucionar warning de missing props validation
+// TO DO: Que los formularios de edicion carguen los datos viejos directamente en los campos y no a la derecha
+// TO DO: En la seccion home- en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision
+// TO DO: Poner fecha a todos los remates y poner los mas nuevos primero

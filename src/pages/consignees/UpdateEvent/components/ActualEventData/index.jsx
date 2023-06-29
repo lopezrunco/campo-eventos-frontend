@@ -9,7 +9,12 @@ function ActualEventData({ event }) {
         <b>Organizador:</b> {event.organizer} <br />
         <b>Financiación:</b> {event.funder} <br />
         <b>Lugar:</b> {event.location} <br />
-        <b>Link transmisión:</b> {event.broadcastLink} <br />
+        <b>ID enlace transmisión:</b>{" "}
+        {event.broadcastLink === null ||
+        event.broadcastLink === undefined ||
+        event.broadcastLink === ""
+          ? "No existe"
+          : event.broadcastLink}
       </p>
     </div>
   );

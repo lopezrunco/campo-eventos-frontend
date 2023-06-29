@@ -111,15 +111,25 @@ function EventCard({ event }) {
                 <p>
                   <b>Remata:</b> {event.company}︱<b>Organiza:</b>{" "}
                   {event.organizer}︱<b>Lugar:</b> {event.location}︱
-                  <b>Financiación:</b> {event.funder}︱<b>Enlace vivo:</b>{" "}
-                  {event.broadcastLink}
+                  <b>Financiación:</b> {event.funder}
                 </p>
 
                 {!state.showLots ? (
-                  <a className="button view-more" onClick={handleClick}>
+                  <a className="button view-more me-3" onClick={handleClick}>
                     <i className="fas fa-chevron-down"></i> Ver lotes
                   </a>
                 ) : null}
+
+                {event.broadcastLink && (
+                  <a
+                    className="button view-more"
+                    href={`https://www.youtube.com/watch/${event.broadcastLink}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <i className="fas fa-play"></i> Enlace transmisión
+                  </a>
+                )}
               </div>
             </div>
             <div className="col-lg-3">

@@ -17,7 +17,7 @@ function LiveEventCard({ liveEvent }) {
     <React.Fragment>
       <div className="col-12 mb-3 live-event-card">
         <div className="row">
-          <div className="col-lg-3">
+          <div className="col-lg-3 mb-3">
             {liveEvent.coverImgName ? (
               <img src={liveEvent.coverImgName} width="100%" />
             ) : (
@@ -41,8 +41,20 @@ function LiveEventCard({ liveEvent }) {
               {liveEvent.organizer}
             </p>
             <p>
-              <b>ID de transmisión (Youtube): </b>
-              {liveEvent.broadcastLinkId}
+              <b>Enlace transmisión: </b>
+              {liveEvent.broadcastLinkId === null ||
+              liveEvent.broadcastLinkId === undefined ||
+              liveEvent.broadcastLinkId === "" ? (
+                "No existe"
+              ) : (
+                <a
+                  href={`https://www.youtube.com/watch/${liveEvent.broadcastLinkId}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {`https://www.youtube.com/watch/${liveEvent.broadcastLinkId}`}
+                </a>
+              )}
             </p>
           </div>
           <div className="col-lg-3">

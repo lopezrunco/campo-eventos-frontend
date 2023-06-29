@@ -35,7 +35,7 @@ const initialState = {
   location: "",
   organizer: "",
   coverImgName: undefined,
-  broadcastLinkId: "",
+  broadcastLinkId: undefined,
   isSending: false,
   hasError: false,
 };
@@ -166,7 +166,7 @@ function UpdateLiveEvent() {
         coverImgName: state.coverImgName,
         broadcastLinkId:
           state.broadcastLinkId === undefined
-            ? undefined
+            ? null
             : getYoutubeId(state.broadcastLinkId),
       }),
     })
@@ -311,7 +311,7 @@ function UpdateLiveEvent() {
                   </label>
                 </div>
                 <label htmlFor="broadcastLinkId">
-                  Link transmisión
+                  Enlace transmisión
                   <input
                     required
                     type="text"

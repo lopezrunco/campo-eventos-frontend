@@ -14,6 +14,7 @@ import {
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
+import { getYoutubeId } from "../../../utils/getYoutubeID";
 
 const initialState = {
   title: "",
@@ -92,7 +93,10 @@ function CreateEvent() {
         organizer: state.organizer,
         funder: state.funder,
         location: state.location,
-        broadcastLink: state.broadcastLink,
+        broadcastLink: 
+          state.broadcastLink === undefined
+            ? undefined
+            : getYoutubeId(state.broadcastLink),
         imageUrl: state.imageUrl,
         userId: authState.user.id,
       }),
@@ -229,7 +233,7 @@ function CreateEvent() {
                 </div>
 
                 <label htmlFor="broadcastLink">
-                  Enlace a transmisión en vivo
+                  Enlace transmisión
                   <input
                     type="text"
                     value={state.broadcastLink}

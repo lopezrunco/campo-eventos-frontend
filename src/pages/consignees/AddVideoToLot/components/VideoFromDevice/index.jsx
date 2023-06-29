@@ -10,11 +10,11 @@ function VideoFromDevice() {
   const [appendVideoToLot, setAppendVideoToLot] = useState(false);
   const { id } = useParams();
 
-  // TO DO: Show a list of existing files and allow the user to select
-  // TO DO: Limit the file size
   // TO DO: Delete unused code of upload videos in frontend and backend (FetchVideo component for example)
-  // TO DO: Check if the user is not uploading anything and show message
   // TO DO: Filter to allow the user to only upload this kind of file
+  // TO DO: Limit the file size
+  // TO DO: Check if the user is not uploading anything and show message
+  // TO DO: Show a list of existing files and allow the user to select
 
   const upload = () => {
     const data = new FormData();

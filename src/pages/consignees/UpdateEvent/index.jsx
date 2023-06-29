@@ -31,7 +31,7 @@ const initialState = {
   organizer: "",
   funder: "",
   location: "",
-  broadcastLink: "",
+  broadcastLink: undefined,
   isSending: false,
   hasError: false,
 };
@@ -160,7 +160,7 @@ function UpdateEvent() {
         location: state.location,
         broadcastLink:
           state.broadcastLink === undefined
-            ? undefined
+            ? null
             : getYoutubeId(state.broadcastLink),
       }),
     })
@@ -297,7 +297,7 @@ function UpdateEvent() {
                 </div>
 
                 <label htmlFor="broadcastLink">
-                  Link transmisión
+                  Enlace transmisión
                   <input
                     required
                     type="text"
