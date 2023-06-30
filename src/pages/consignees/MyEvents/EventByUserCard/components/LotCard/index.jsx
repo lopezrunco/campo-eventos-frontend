@@ -159,10 +159,6 @@ function LotCard({ lot }) {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe>
-          ) : lot.videoSrc ? (
-            <video width="100%" height="auto" controls>
-              <source src={lot.videoSrc} type="video/mp4" />
-            </video>
           ) : (
             <NoVideoMsj msj="Este lote no tiene video" />
           )}

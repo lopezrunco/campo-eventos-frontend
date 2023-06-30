@@ -18,7 +18,6 @@ const UploadEventCover = () => {
   // TO DO: Make this component reusable to avoid repeat code
   // TO DO: Show a list of existing files and allow the user to select
   // TO DO: Limit the file size
-  // TO DO: Delete unused code of upload images in frontend and backend (FetchImg component for example)
   // TO DO: Check if the user is not uploading anything and show message
   // TO DO: Filter to allow the user to only upload this kind of file
 

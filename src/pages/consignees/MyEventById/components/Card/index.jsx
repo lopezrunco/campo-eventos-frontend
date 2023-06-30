@@ -167,7 +167,6 @@ function Card({ myEvent }) {
               </p>
             </div>
           </div>
-          {/* TO DO: Dejar boton Ver mas visible para permitir ocultar modal de lotes */}
           {!state.showLots && (
             <a className="button view-more me-3" onClick={handleClick}>
               <i className="fas fa-chevron-down"></i> Ver lotes

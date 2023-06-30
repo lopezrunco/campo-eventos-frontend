@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import React from "react";
 
-import VideoFromDevice from "./components/VideoFromDevice";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import YouTubeVideo from "./components/YouTubeVideo";
 import { Title } from "../../../components/Title";
@@ -28,7 +27,6 @@ const AddVideoToLot = () => {
           />
           <div className="row">
             <YouTubeVideo lotId={id} />
-            <VideoFromDevice />
           </div>
         </article>
       </section>

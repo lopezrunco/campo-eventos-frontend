@@ -15,6 +15,7 @@ import {
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
 import { getYoutubeId } from "../../../utils/getYoutubeID";
+import { cleanTextareas } from "../../../utils/cleanTextareas";
 
 const initialState = {
   title: "",
@@ -89,6 +90,7 @@ function CreateEvent() {
       body: JSON.stringify({
         title: state.title,
         description: state.description,
+        // description: cleanTextareas(state.description),
         company: state.company,
         organizer: state.organizer,
         funder: state.funder,

@@ -449,8 +449,8 @@ function App() {
 
 export default App;
 
-// TO DO: Ver porque si se agregan espacios antes de los textos, en los textareas o inputs da error
-// TO DO: Poner menswaje de Wait cuando esta subiendo el video o img y deshabilitar el boton
+// TO DO: Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
+// TO DO: Poner mensaje de Wait cuando esta subiendo el video o img y deshabilitar el boton
 // TO DO: Que usuario ponga telefono al loguearse y se muestre en la preoferta
 // TO DO: Ver problema de _id entre recien registrados y logueados 
 // TO DO: Chequear paginacion en todos los listados de entidades
@@ -458,3 +458,19 @@ export default App;
 // TO DO: Que los formularios de edicion carguen los datos viejos directamente en los campos y no a la derecha
 // TO DO: En la seccion home- en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision
 // TO DO: Poner fecha a todos los remates y poner los mas nuevos primero
+// TO DO: Sacar campo de token
+// TO DO: Area de los botones solo es clickeable el texto pero no el padding
+// TO DO: Chequear manejo de errores en los formularios
+// TO DO: Que las preofertas se muestren directamente
+// TO DO: El boton de "Ver lotes" que diga "Ver lotes y preofertar". En el lot card que el boton "Ver lote" sea "Detalles y ofertar". Tambien que se muestre el nombre del lote, la miniatura del video, categoria, cantidad y nombre (en el caso de caballo), ubicacion (porque dependiendo del lote puede variar la ubicacion) y la ultima preoferta aceptada (opcional, si no hay preofertas que lo diga)
+// TO DO: Sacar campo de moneda, que sea todo dolares
+// TO DO: Agregar "Categoria: " en la etiqueta de categoria
+// TO DO: En la parte de consignatarios en vez de "Crear lote" que sea "Subir lote"
+// TO DO: Cuando se crea el remate que de la opcion de Tipo de remate: Equinos, Bovinos, Ovinos y Remate por pantalla. Dependiendo del tipo de remate es el formulario que se mostrara al consignatario y la info que se mostrara al usuario.
+// TO DO: En Mis preofertas, que se muestre de una el Titulo del Remate y el Nombre del lote con miniatura del video y lo que ya esta (Monto, si esta aceptado y Link al lote)
+// TO DO: En cosignatarios - mis remates que el desplegable se elimine, que se muestren los lotes de una y que el boton de "Subir lote"
+// TO DO: En cosignatarios - mis remates - lotes que los desplegables de ver lote y ver preofertas se muestren de una
+// TO DO: Que al aceptar preoferta haya un mensaje de confirmacion
+// TO DO: Chequear los textos de los mensajes de exito al terminar una accion
+// TO DO: Cuando un usuario va a hacer la prefoerta que el sistema le pida el tel fijo (opcional), celular y la direccion
+// TO DO: Tratar de que al crear remate en vivo se pueda subir imagen en el mismo lugar

@@ -111,7 +111,7 @@ function YouTubeVideo({ lotId }) {
 
   return (
     <div className="col-12 upload-file-page">
-      <div className="select-file youtube">
+      <div className="select-file">
         <h3>Enlace de Youtube</h3>
         <label htmlFor="YTVideoSrc">
           <input
