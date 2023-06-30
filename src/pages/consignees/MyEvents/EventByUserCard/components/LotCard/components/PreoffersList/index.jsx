@@ -17,11 +17,16 @@ function PreoffersList({ preoffers, currency }) {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h4 className="mb-4 mt-4 mt-lg-0"><i className="fas fa-comments-dollar me-2"></i> Preofertas ({currency}):</h4>
+              <h4 className="mb-4 mt-4 mt-lg-0">
+                <i className="fas fa-comments-dollar me-2"></i> Preofertas (
+                {currency}):
+              </h4>
               {preoffers.map((preoffer) => {
                 return (
                   <div key={preoffer.id} className="preoffer mb-2">
-                    <span>Monto: <b>{preoffer.amount}</b></span>
+                    <span>
+                      Monto: <b>{preoffer.amount}</b>
+                    </span>
                     <RefuseAcceptPreoffer preoffer={preoffer} />
                     <UserDetails userId={preoffer.userId} />
                     <span role="button" onClick={handleDeleteModal}>

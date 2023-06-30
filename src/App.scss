@@ -379,7 +379,33 @@ h6 {
     position: absolute;
     margin: -1.5rem 1rem;
   }
+}
 
+.confirmation-modal {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  background-color: $modal-bg;
+  z-index: 999;
+
+  .container {
+    height: 100%;
+
+    .row {
+      height: 100%;
+
+      .content-wrap {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+    }
+  }
 }
 
 // Bootstrap overrides
