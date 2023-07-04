@@ -9,12 +9,16 @@ import {
   CREATE_PREOFFER_REQUEST,
   CREATE_PREOFFER_SUCCESS,
   FORM_INPUT_CHANGE,
+  GET_USER_BY_ID_FAILURE,
+  GET_USER_BY_ID_REQUEST,
+  GET_USER_BY_ID_SUCCESS,
 } from "../../../../../../../action-types";
 
 import "./styles.scss";
 
 const initialState = {
   userId: undefined,
+  user: undefined,
   amount: undefined,
   accepted: false,
   date: undefined,
@@ -48,6 +52,24 @@ const reducer = (state, action) => {
         isSending: false,
         hasError: true,
       };
+    case GET_USER_BY_ID_REQUEST:
+      return {
+        ...state,
+        isSending: true,
+        hasError: false,
+      };
+    case GET_USER_BY_ID_SUCCESS:
+      return {
+        ...state,
+        isSending: false,
+        user: action.payload.user,
+      };
+    case GET_USER_BY_ID_FAILURE:
+      return {
+        ...state,
+        isSending: false,
+        hasError: true,
+      };
     default:
       return state;
   }
@@ -58,6 +80,43 @@ function PreoffersList({ preoffers, lotId, currency }) {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  // On input focus, check the user info in the DB
+  const checkUserInfo = () => {
+    console.log("Checking user data...");
+    fetch(apiUrl(`/admin/users/${authState.id}`), {
+      headers: {
+        Authorization: authState.token,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw response;
+        }
+      })
+      .then((data) => {
+        dispatch({
+          type: GET_USER_BY_ID_SUCCESS,
+          payload: data,
+        });
+      })
+      .catch((error) => {
+        console.error("Error trying to fetch the user", error);
+        if (error.status === 401) {
+          refreshToken(authState.refreshToken, authDispatch, navigate);
+        } else if (error.status === 403) {
+          navigate("/forbidden");
+        } else {
+          dispatch({
+            type: GET_USER_BY_ID_FAILURE,
+          });
+        }
+      });
+  };
+
+  // On input change, set the value in state
   const handleInputChange = (event) => {
     dispatch({
       type: FORM_INPUT_CHANGE,
@@ -69,53 +128,58 @@ function PreoffersList({ preoffers, lotId, currency }) {
   };
 
   const handleFormSubmit = () => {
-    dispatch({
-      type: CREATE_PREOFFER_REQUEST,
-    });
-
-    fetch(apiUrl("/preoffers/create"), {
-      method: "POST",
-      headers: {
-        Authorization: authState.token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userId: authState.user.id,
-        date: Date.now(),
-        amount: state.amount,
-        accepted: state.accepted,
-        lotId: lotId,
-      }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw response;
-        }
-      })
-      .then((data) => {
-        dispatch({
-          type: CREATE_PREOFFER_SUCCESS,
-          payload: data,
-        });
-        navigate("/preoffer-done");
-      })
-      .catch((error) => {
-        console.error("Error creating the preoffer", error);
-
-        if (error.status === 401) {
-          refreshToken(authState.refreshToken, authDispatch, navigate, () =>
-            handleFormSubmit()
-          );
-        } else if (error.status === 403) {
-          navigate("/forbidden");
-        } else {
-          dispatch({
-            type: CREATE_PREOFFER_FAILURE,
-          });
-        }
+    // On submit, check if the user info has address and phone. If not, redirect to update user page. If yes, do the preoffer.
+    if (state.user.address || state.user.phone) {
+      dispatch({
+        type: CREATE_PREOFFER_REQUEST,
       });
+
+      fetch(apiUrl("/preoffers/create"), {
+        method: "POST",
+        headers: {
+          Authorization: authState.token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          userId: authState.user.id,
+          date: Date.now(),
+          amount: state.amount,
+          accepted: state.accepted,
+          lotId: lotId,
+        }),
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else {
+            throw response;
+          }
+        })
+        .then((data) => {
+          dispatch({
+            type: CREATE_PREOFFER_SUCCESS,
+            payload: data,
+          });
+          navigate("/preoffer-done");
+        })
+        .catch((error) => {
+          console.error("Error creating the preoffer", error);
+
+          if (error.status === 401) {
+            refreshToken(authState.refreshToken, authDispatch, navigate, () =>
+              handleFormSubmit()
+            );
+          } else if (error.status === 403) {
+            navigate("/forbidden");
+          } else {
+            dispatch({
+              type: CREATE_PREOFFER_FAILURE,
+            });
+          }
+        });
+    } else {
+      navigate("/actualizar-usuario");
+    }
   };
 
   return (
@@ -127,7 +191,9 @@ function PreoffersList({ preoffers, lotId, currency }) {
               <i className="fas fa-comments-dollar me-2"></i> Preofertas(
               {currency}):{" "}
             </h4>
-            {preoffers.length === 0 && <p>Aún no hay preofertas en este lote.</p>}
+            {preoffers.length === 0 && (
+              <p>Aún no hay preofertas en este lote.</p>
+            )}
             {preoffers.map((preoffer) => {
               return (
                 <div className="preoffer mb-2" key={preoffer.id}>
@@ -148,6 +214,7 @@ function PreoffersList({ preoffers, lotId, currency }) {
             <div className="make-preoffer-container">
               <input
                 type="number"
+                onFocus={checkUserInfo}
                 onChange={handleInputChange}
                 min="1"
                 name="quantity"

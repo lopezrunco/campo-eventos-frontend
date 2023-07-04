@@ -22,6 +22,8 @@ import MyPreOffers from "./pages/events/MyPreOffers";
 import Login from "./pages/security/Login";
 import Register from "./pages/security/Register";
 import { NotFound } from "./pages/access/NotFound";
+import UpdateUserInfo from "./pages/security/UpdateUserInfo";
+import UserUpdated from "./pages/security/UserUpdated";
 import { Forbidden } from "./pages/access/Forbidden";
 
 import ConsigneesHomePage from "./pages/consignees/ConsigneesHomePage";
@@ -68,6 +70,7 @@ const initialState = {
   user: JSON.parse(localStorage.getItem("user")),
   role: localStorage.getItem("role"),
   token: localStorage.getItem("token"),
+  id: localStorage.getItem("id"),
   refreshToken: localStorage.getItem("refreshToken"),
   showingLoader: false,
 };
@@ -80,6 +83,7 @@ const reducer = (state, action) => {
       localStorage.setItem("user", JSON.stringify(action.payload.user));
       localStorage.setItem("role", action.payload.user.role);
       localStorage.setItem("token", action.payload.user.token);
+      localStorage.setItem("id", action.payload.user.id);
       localStorage.setItem("refreshToken", action.payload.user.refreshToken);
 
       // Return new state
@@ -89,6 +93,7 @@ const reducer = (state, action) => {
         user: action.payload.user,
         role: action.payload.user.role,
         token: action.payload.user.token,
+        id: action.payload.user.id,
         refreshToken: action.payload.user.refreshToken,
       };
 
@@ -112,6 +117,7 @@ const reducer = (state, action) => {
         user: null,
         role: null,
         token: null,
+        id: null,
         refreshToken: null,
       };
 
@@ -416,6 +422,22 @@ function App() {
               }
             />
             <Route
+              path="/usuario-actualizado"
+              element={
+                <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
+                  <UserUpdated />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/actualizar-usuario"
+              element={
+                <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
+                  <UpdateUserInfo />
+                </RequireAuth>
+              }
+            />
+            <Route
               path="/forbidden"
               element={
                 <>
@@ -450,19 +472,20 @@ function App() {
 export default App;
 
 // Cambios prioritarios:
-// TO DO: Cuando un usuario va a hacer la prefoerta que el sistema le pida el tel fijo (opcional), celular y la direccion
-// TO DO: Ver problema de _id entre recien registrados y logueados 
+// TO DO: Chequear la paginacion de preofertas porque no las esta mostrando todas.
+// TO DO: Ver problema de _id entre recien registrados y logueados
 // TO DO: Chequear paginacion en todos los listados de entidades
 // TO DO: Que los formularios de edicion carguen los datos viejos directamente en los campos y no a la derecha
 // TO DO: Poner fecha a todos los remates y poner los mas nuevos primero
 // TO DO: Que las preofertas se muestren directamente
 // TO DO: Sacar campo de moneda, que sea todo dolares
 // TO DO: El boton de "Ver lotes" que diga "Ver lotes y preofertar". En el lot card que el boton "Ver lote" sea "Detalles y ofertar". Tambien que se muestre el nombre del lote, la miniatura del video, categoria, cantidad y nombre (en el caso de caballo), ubicacion (porque dependiendo del lote puede variar la ubicacion) y la ultima preoferta aceptada (opcional, si no hay preofertas que lo diga)
-// TO DO: Cuando se crea el remate que de la opcion de Tipo de remate: Equinos, Bovinos, Ovinos y Remate por pantalla. Dependiendo del tipo de remate es el formulario que se mostrara al consignatario y la info que se mostrara al usuario.
 // TO DO: En Mis preofertas, que se muestre de una el Titulo del Remate y el Nombre del lote con miniatura del video y lo que ya esta (Monto, si esta aceptado y Link al lote)
 // TO DO: En cosignatarios - mis remates que el desplegable se elimine, que se muestren los lotes de una y que el boton de "Subir lote"
 // TO DO: En cosignatarios - mis remates - lotes que los desplegables de ver lote y ver preofertas se muestren de una
 
+// TO DO: Cuando se crea el remate que de la opcion de Tipo de remate: Equinos, Bovinos, Ovinos y Remate por pantalla. Dependiendo del tipo de remate es el formulario que se mostrara al consignatario y la info que se mostrara al usuario.
+// Actualizacion instruccion nestor 1 jul: Los campos que actualmente hay en los formularios de creacion de remate que sean solo para Remates por pantalla. Los datos siguientes que sean para los demas Remates(ovinos, bovinos, equinos): "Nombre: / R.P.: / Categoría: / Peso: / Fecha de nacimiento: / Pedigree: / Cabaña: / Otro dato:""
 
 // Cambios secundarios:
 // TO DO: En la parte de consignatarios en vez de "Crear lote" que sea "Subir lote"
@@ -478,3 +501,7 @@ export default App;
 // TO DO: Tratar de que al crear remate en vivo se pueda subir imagen en el mismo lugar
 // TO DO: Al terminar todo, ajustar UI en celulares
 // TO DO: Que las cajas sean clickeables en su totalidad, no solo los botones de "Ver más"
+// TO DO: Chequear validaciones de usuarios tanto en front como backend
+// TO DO: Que el usuario pueda subir foto de perfil o por defecto mostrar una imagen generica
+// TO DO: Reforzar seguridad
+// TO DO: Testing

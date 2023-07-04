@@ -133,6 +133,24 @@ function UserDetails({ userId }) {
                     <b>Email: </b>
                     {state.user.email}
                   </p>
+                  {state.user.phone && (
+                    <p>
+                      <b>Teléfono celular: </b>
+                      {state.user.phone}
+                    </p>
+                  )}
+                  {state.user.telephone && (
+                    <p>
+                      <b>Teléfono fijo: </b>
+                      {state.user.telephone}
+                    </p>
+                  )}
+                  {state.user.address && (
+                    <p>
+                      <b>Dirección: </b>
+                      {state.user.address}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
