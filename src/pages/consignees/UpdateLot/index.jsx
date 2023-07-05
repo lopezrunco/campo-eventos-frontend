@@ -19,12 +19,10 @@ import {
 
 import { Title } from "../../../components/Title";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
-import ActualLotData from "./components/ActualLotData";
 
 import "./styles.scss";
 
 const initialState = {
-  lot: "",
   title: "",
   category: "",
   description: "",
@@ -42,7 +40,6 @@ const initialState = {
   sold: false,
   completed: false,
   YTVideoSrc: undefined,
-  videoSrc: undefined,
   eventId: "",
   isSending: false,
   hasError: false,
@@ -65,7 +62,20 @@ const reducer = (state, action) => {
       return {
         ...state,
         isSending: false,
-        lot: action.payload.lot,
+        title: action.payload.lot.title,
+        category: action.payload.lot.category,
+        description: action.payload.lot.description,
+        animals: action.payload.lot.animals,
+        weight: action.payload.lot.weight,
+        age: action.payload.lot.age,
+        class: action.payload.lot.class,
+        state: action.payload.lot.state,
+        observations: action.payload.lot.observations,
+        race: action.payload.lot.race,
+        certificate: action.payload.lot.certificate,
+        type: action.payload.lot.type,
+        currency: action.payload.lot.currency,
+        YTVideoSrc: `https://www.youtube.com/watch/${action.payload.lot.YTVideoSrc}`
       };
     case GET_LOT_FAILURE:
       return {
@@ -102,7 +112,7 @@ function UpdateLot() {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // On component mount, fetch the lot
+  // On component mount, fetch the lot and set data in the form
   useEffect(() => {
     authDispatch({
       type: SHOW_LOADER,
@@ -163,7 +173,6 @@ function UpdateLot() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        lot: state.lot,
         title: state.title,
         category: state.category,
         description: state.description,
@@ -230,7 +239,7 @@ function UpdateLot() {
             subtitle="Los campos marcados con * son obligatorios"
           />
           <div className="row">
-            <div className="col-lg-7">
+            <div className="col-12">
               <div className="form-container row">
                 <div className="col-lg-6">
                   <label htmlFor="title">
@@ -431,9 +440,6 @@ function UpdateLot() {
                   <span className="form-error">{state.errorMessage}</span>
                 )}
               </div>
-            </div>
-            <div className="col-lg-5">
-              <ActualLotData lot={state.lot} />
             </div>
           </div>
         </article>

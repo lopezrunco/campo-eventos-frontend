@@ -472,7 +472,6 @@ function App() {
 export default App;
 
 // Cambios prioritarios:
-// TO DO: Que los formularios de edicion carguen los datos viejos directamente en los campos y no a la derecha
 // TO DO: Poner fecha a todos los remates y poner los mas nuevos primero
 // TO DO: Ver problema de _id entre recien registrados y logueados
 // TO DO: Chequear paginacion en todos los listados de entidades
@@ -482,6 +481,7 @@ export default App;
 // TO DO: En Mis preofertas, que se muestre de una el Titulo del Remate y el Nombre del lote con miniatura del video y lo que ya esta (Monto, si esta aceptado y Link al lote)
 // TO DO: En cosignatarios - mis remates que el desplegable se elimine, que se muestren los lotes de una y que el boton de "Subir lote"
 // TO DO: En cosignatarios - mis remates - lotes que los desplegables de ver lote y ver preofertas se muestren de una
+// TO DO: En la parte de consignatarios en vez de "Crear lote" que sea "Subir lote"
 
 // TO DO: Cuando se crea el remate que de la opcion de Tipo de remate: Equinos, Bovinos, Ovinos y Remate por pantalla. Dependiendo del tipo de remate es el formulario que se mostrara al consignatario y la info que se mostrara al usuario.
 // Actualizacion instruccion nestor 1 jul: Los campos que actualmente hay en los formularios de creacion de remate que sean solo para Remates por pantalla. Los datos siguientes que sean para los demas Remates(ovinos, bovinos, equinos): "Nombre: / R.P.: / Categoría: / Peso: / Fecha de nacimiento: / Pedigree: / Cabaña: / Otro dato:""
@@ -489,7 +489,6 @@ export default App;
 // -------------------------------------------------------------------
 
 // Cambios secundarios:
-// TO DO: En la parte de consignatarios en vez de "Crear lote" que sea "Subir lote"
 // TO DO: Poner mensaje de Wait cuando esta subiendo el video o img y deshabilitar el boton
 // TO DO: Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
 // TO DO: Solucionar warning de missing props validation
