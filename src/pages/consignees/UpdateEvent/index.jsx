@@ -18,13 +18,11 @@ import {
 } from "../action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
-import ActualEventData from "./components/ActualEventData";
-
-import "./styles.scss";
 import { Title } from "../../../components/Title";
 
+import "./styles.scss";
+
 const initialState = {
-  event: "",
   title: "",
   description: "",
   company: "",
@@ -53,7 +51,13 @@ const reducer = (state, action) => {
       return {
         ...state,
         isSending: false,
-        event: action.payload.event,
+        title: action.payload.event.title,
+        description: action.payload.event.description,
+        company: action.payload.event.company,
+        organizer: action.payload.event.organizer,
+        funder: action.payload.event.funder,
+        location: action.payload.event.location,
+        broadcastLink: `https://www.youtube.com/watch/${action.payload.event.broadcastLink}`,
       };
     case GET_MY_EVENT_FAILURE:
       return {
@@ -90,7 +94,7 @@ function UpdateEvent() {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // On component mount, fetch the event
+  // On component mount, fetch the event and set data in the form
   useEffect(() => {
     authDispatch({
       type: SHOW_LOADER,
@@ -213,7 +217,7 @@ function UpdateEvent() {
             subtitle="Los campos marcados con * son obligatorios"
           />
           <div className="row">
-            <div className="col-lg-7">
+            <div className="col-12">
               <div className="form-container row">
                 <label htmlFor="title">
                   Título *
@@ -321,9 +325,6 @@ function UpdateEvent() {
                   <span className="form-error">{state.errorMessage}</span>
                 )}
               </div>
-            </div>
-            <div className="col-lg-5">
-              <ActualEventData event={state.event} />
             </div>
           </div>
         </article>
