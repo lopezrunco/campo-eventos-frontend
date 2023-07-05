@@ -472,11 +472,10 @@ function App() {
 export default App;
 
 // Cambios prioritarios:
-// TO DO: Chequear la paginacion de preofertas porque no las esta mostrando todas.
-// TO DO: Ver problema de _id entre recien registrados y logueados
-// TO DO: Chequear paginacion en todos los listados de entidades
 // TO DO: Que los formularios de edicion carguen los datos viejos directamente en los campos y no a la derecha
 // TO DO: Poner fecha a todos los remates y poner los mas nuevos primero
+// TO DO: Ver problema de _id entre recien registrados y logueados
+// TO DO: Chequear paginacion en todos los listados de entidades
 // TO DO: Que las preofertas se muestren directamente
 // TO DO: Sacar campo de moneda, que sea todo dolares
 // TO DO: El boton de "Ver lotes" que diga "Ver lotes y preofertar". En el lot card que el boton "Ver lote" sea "Detalles y ofertar". Tambien que se muestre el nombre del lote, la miniatura del video, categoria, cantidad y nombre (en el caso de caballo), ubicacion (porque dependiendo del lote puede variar la ubicacion) y la ultima preoferta aceptada (opcional, si no hay preofertas que lo diga)
@@ -486,6 +485,8 @@ export default App;
 
 // TO DO: Cuando se crea el remate que de la opcion de Tipo de remate: Equinos, Bovinos, Ovinos y Remate por pantalla. Dependiendo del tipo de remate es el formulario que se mostrara al consignatario y la info que se mostrara al usuario.
 // Actualizacion instruccion nestor 1 jul: Los campos que actualmente hay en los formularios de creacion de remate que sean solo para Remates por pantalla. Los datos siguientes que sean para los demas Remates(ovinos, bovinos, equinos): "Nombre: / R.P.: / Categoría: / Peso: / Fecha de nacimiento: / Pedigree: / Cabaña: / Otro dato:""
+
+// -------------------------------------------------------------------
 
 // Cambios secundarios:
 // TO DO: En la parte de consignatarios en vez de "Crear lote" que sea "Subir lote"
@@ -503,5 +504,6 @@ export default App;
 // TO DO: Que las cajas sean clickeables en su totalidad, no solo los botones de "Ver más"
 // TO DO: Chequear validaciones de usuarios tanto en front como backend
 // TO DO: Que el usuario pueda subir foto de perfil o por defecto mostrar una imagen generica
+// TO DO: Arreglar los meta count en los endpoints y mostrarlos segun el caso
 // TO DO: Reforzar seguridad
 // TO DO: Testing

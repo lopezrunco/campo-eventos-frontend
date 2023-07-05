@@ -20,13 +20,11 @@ import {
 } from "../../action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
-import ActualLiveEventData from "./ActualLiveEventData";
 import { Title } from "../../../components/Title";
 
 import "./styles.scss";
 
 const initialState = {
-  liveEvent: "",
   title: "",
   day: "",
   month: "",
@@ -57,7 +55,14 @@ const reducer = (state, action) => {
       return {
         ...state,
         isSending: false,
-        liveEvent: action.payload.event,
+        title: action.payload.event.title,
+        day: action.payload.event.day,
+        month: action.payload.event.month,
+        beginHour: action.payload.event.beginHour,
+        endHour: action.payload.event.endHour,
+        location: action.payload.event.location,
+        organizer: action.payload.event.organizer,
+        broadcastLinkId: `https://www.youtube.com/watch/${action.payload.event.broadcastLinkId}`
       };
     case FETCH_LIVE_EVENT_FAILURE:
       return {
@@ -94,7 +99,7 @@ function UpdateLiveEvent() {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // On component mount, fetch the event
+  // On component mount, fetch the event and set data in the form
   useEffect(() => {
     authDispatch({
       type: SHOW_LOADER,
@@ -219,7 +224,7 @@ function UpdateLiveEvent() {
             subtitle="Los campos marcados con * son obligatorios"
           />
           <div className="row">
-            <div className="col-lg-7">
+            <div className="col-12">
               <div className="form-container row">
                 <label htmlFor="title">
                   Título *
@@ -334,9 +339,6 @@ function UpdateLiveEvent() {
                   <span className="form-error">{state.errorMessage}</span>
                 )}
               </div>
-            </div>
-            <div className="col-lg-5">
-              <ActualLiveEventData liveEvent={state.liveEvent} />
             </div>
           </div>
         </article>
