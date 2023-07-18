@@ -110,10 +110,33 @@ input[type="file"] {
   }
 }
 
-.existing-data {
-  background-color: $medium-light-color;
+.date {
+  background-color: $primary-color;
   border-radius: $sm-border-radius;
-  padding: 2rem;
+  color: $light-color;
+  margin: 1rem 0;
+  padding: 0.2rem 0.8rem;
+  width: fit-content;
+}
+
+.editable-data {
+  border: 1px solid $medium-light-color;
+  padding: 1rem;
+  border-radius: $sm-border-radius;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .edit-icon {
+    cursor: pointer;
+  }
 }
 
 // Buttons

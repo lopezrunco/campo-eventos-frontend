@@ -25,6 +25,8 @@ const initialState = {
   funder: "",
   location: "",
   broadcastLink: "",
+  eventDate: "",
+  eventHour: "",
   imageUrl: undefined,
   userId: "",
   isSending: false,
@@ -76,6 +78,10 @@ function CreateEvent() {
     });
   };
 
+  const getTimeStamp = (date, hour) => {
+    return new Date(`${date}T${hour}`).getTime();
+  };
+
   const handleFormSubmit = () => {
     dispatch({
       type: CREATE_EVENT_REQUEST,
@@ -95,10 +101,11 @@ function CreateEvent() {
         organizer: state.organizer,
         funder: state.funder,
         location: state.location,
-        broadcastLink: 
+        broadcastLink:
           state.broadcastLink === undefined
             ? undefined
             : getYoutubeId(state.broadcastLink),
+        eventTimestamp: getTimeStamp(state.eventDate, state.eventHour),
         imageUrl: state.imageUrl,
         userId: authState.user.id,
       }),
@@ -244,6 +251,35 @@ function CreateEvent() {
                     id="broadcastLink"
                   />
                 </label>
+
+                <div className="col-lg-6">
+                  <label htmlFor="eventDate">
+                    Fecha
+                    <input
+                      type="date"
+                      id="eventDate"
+                      name="eventDate"
+                      // value={state.eventDate}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-6">
+                  <label htmlFor="eventHour">
+                    Hora
+                    <input
+                      type="time"
+                      id="eventHour"
+                      name="eventHour"
+                      pattern="[0-9]{2}:[0-9]{2}"
+                      // value={state.eventHour}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </label>
+                </div>
 
                 <button
                   className="button button-dark"

@@ -4,6 +4,7 @@ import React, { useContext, useReducer } from "react";
 import imgUrl from "../../../../../assets/no-img.jpg";
 
 import { refreshToken } from "../../../../../utils/refresh-token";
+import { getDate } from "../../../../../utils/get-date";
 import { apiUrl } from "../../../../../utils/api-url";
 import { AuthContext } from "../../../../../App";
 import {
@@ -126,7 +127,12 @@ function Card({ myEvent }) {
         </div>
         <div className="col-lg-9">
           <div className="d-flex justify-content-between align-items-center mb-4">
-            <h4 className="mb-0">{myEvent.title}</h4>
+            <div>
+              <h4 className="mb-0">{myEvent.title}</h4>
+              {myEvent.eventTimestamp && (
+                <p className="mt-2 mb-0">{getDate(myEvent.eventTimestamp)}</p>
+              )}
+            </div>
             <div className="options-buttons">
               <a
                 className="rounded-icon primary"

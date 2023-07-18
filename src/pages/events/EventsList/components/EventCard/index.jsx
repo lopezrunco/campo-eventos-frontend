@@ -4,6 +4,7 @@ import React, { useContext, useReducer } from "react";
 import imgUrl from "../../../../../assets/no-img.jpg";
 
 import { refreshToken } from "../../../../../utils/refresh-token";
+import { getDate } from "../../../../../utils/get-date";
 import { apiUrl } from "../../../../../utils/api-url";
 import { AuthContext } from "../../../../../App";
 import {
@@ -104,7 +105,9 @@ function EventCard({ event }) {
             <div className="col-lg-9">
               <div className="p-4">
                 <h6>{event.title}</h6>
-                <div className="separator"></div>
+                {event.eventTimestamp && (
+                  <p className="date">{getDate(event.eventTimestamp)}</p>
+                )}
                 <p>
                   <b>Descripción:</b> {event.description}
                 </p>

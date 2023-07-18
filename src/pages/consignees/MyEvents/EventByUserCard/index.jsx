@@ -2,6 +2,8 @@ import React from "react";
 
 import imgUrl from "../../../../assets/no-img.jpg";
 
+import { getDate } from "../../../../utils/get-date";
+
 import "./styles.scss";
 
 function EventByUserCard({ event }) {
@@ -16,6 +18,9 @@ function EventByUserCard({ event }) {
           )}
           <div className="content">
             <h4>{event.title}</h4>
+            {event.eventTimestamp && (
+              <p className="date">{getDate(event.eventTimestamp)}</p>
+            )}
             <p>
               <b>Remata: </b>
               {event.company}

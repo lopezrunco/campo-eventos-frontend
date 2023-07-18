@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate, useParams } from "react-router-dom";
-import React, { useContext, useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 
 import { refreshToken } from "../../../utils/refresh-token";
 import { getYoutubeId } from "../../../utils/getYoutubeID";
@@ -30,6 +30,9 @@ const initialState = {
   funder: "",
   location: "",
   broadcastLink: undefined,
+  eventDate: "",
+  eventHour: "",
+  eventTimestamp: "",
   isSending: false,
   hasError: false,
 };
@@ -58,6 +61,15 @@ const reducer = (state, action) => {
         funder: action.payload.event.funder,
         location: action.payload.event.location,
         broadcastLink: `https://www.youtube.com/watch/${action.payload.event.broadcastLink}`,
+        eventTimestamp: action.payload.event.eventTimestamp,
+        eventDate: action.payload.event.eventTimestamp.split("T")[0],
+        eventHour: new Date(action.payload.event.eventTimestamp).toLocaleString(
+          "es-uy",
+          {
+            hour: "2-digit",
+            minute: "2-digit",
+          }
+        ),
       };
     case GET_MY_EVENT_FAILURE:
       return {
@@ -92,7 +104,23 @@ function UpdateEvent() {
   const { id } = useParams();
   const [state, dispatch] = useReducer(reducer, initialState);
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
+  const [editDate, setEditDate] = useState(false);
+  const [editHour, setEditHour] = useState(false);
   const navigate = useNavigate();
+
+  let actualDate = state.eventTimestamp.split("T")[0];
+  let actualHour = new Date(state.eventTimestamp).toLocaleString("es-uy", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  const handleEditDateClick = () => {
+    setEditDate(true);
+  };
+
+  const handleEditHourClick = () => {
+    setEditHour(true);
+  };
 
   // On component mount, fetch the event and set data in the form
   useEffect(() => {
@@ -143,6 +171,10 @@ function UpdateEvent() {
     });
   };
 
+  const getTimeStamp = (date, hour) => {
+    return new Date(`${date}T${hour}`).getTime();
+  };
+
   // On form submit, call the update event endpoint
   const handleFormSubmit = () => {
     dispatch({
@@ -166,6 +198,7 @@ function UpdateEvent() {
           state.broadcastLink === undefined
             ? null
             : getYoutubeId(state.broadcastLink),
+        eventTimestamp: getTimeStamp(state.eventDate, state.eventHour),
       }),
     })
       .then((response) => {
@@ -311,6 +344,60 @@ function UpdateEvent() {
                     id="broadcastLink"
                   />
                 </label>
+
+
+                <div className="col-lg-6">
+                  <label htmlFor="eventDate">
+                    Fecha
+                    {!editDate && (
+                      <span className="editable-data">
+                        <div className="content">
+                          <i className="fas fa-calendar"></i>
+                          {actualDate}
+                        </div>
+                        <i
+                          className="fas fa-pencil-alt edit-icon"
+                          onClick={handleEditDateClick}
+                        ></i>
+                      </span>
+                    )}
+                    <input
+                      hidden={!editDate ? "hidden" : null}
+                      type="date"
+                      id="eventDate"
+                      name="eventDate"
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-6">
+                  <label htmlFor="eventHour">
+                    Hora
+                    {!editHour && (
+                      <span className="editable-data">
+                        <div className="content">
+                          <i className="fas fa-clock"></i>
+                          {actualHour}
+                        </div>
+                        <i
+                          className="fas fa-pencil-alt edit-icon"
+                          onClick={handleEditHourClick}
+                        ></i>
+                      </span>
+                    )}
+                    <input
+                      hidden={!editHour ? "hidden" : null}
+                      type="time"
+                      id="eventHour"
+                      name="eventHour"
+                      pattern="[0-9]{2}:[0-9]{2}"
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </label>
+                </div>
 
                 <button
                   className="button button-dark"

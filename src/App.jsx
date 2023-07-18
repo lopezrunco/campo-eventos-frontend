@@ -506,3 +506,4 @@ export default App;
 // TO DO: Arreglar los meta count en los endpoints y mostrarlos segun el caso
 // TO DO: Reforzar seguridad
 // TO DO: Testing
+// TO DO: Notificaciones a usuarios mediante email, sms o wapp
