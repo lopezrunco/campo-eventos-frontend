@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useReducer } from "react";
 
 import { HIDE_LOADER, SHOW_LOADER } from "../../utils/action-types";
-import { getMonth } from "../../utils/get-month";
 import { apiUrl } from "../../utils/api-url";
 import { AuthContext } from "../../App";
 import {
@@ -17,6 +16,7 @@ import { Intro } from "../../components/Intro";
 import { Title } from "../../components/Title";
 
 import "./styles.scss";
+import { getDate } from "../../utils/get-date";
 
 const initialState = {
   liveEventsList: [],
@@ -53,8 +53,7 @@ const reducer = (state, action) => {
 export const Home = () => {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
-  let currentDate = new Date();
-  const currentTimeStamp = currentDate.getTime();
+  let currentDate = new Date().toJSON()
 
   useEffect(() => {
     authDispatch({
@@ -100,15 +99,10 @@ export const Home = () => {
         <div className="container">
           <div className="row">
             {state.liveEventsList.map((el, i) => {
-              let beginDate = Date.parse(
-                `2023-${el.month}-${el.day}T${el.beginHour}`
-              );
-              let finishDate = Date.parse(
-                `2023-${el.month}-${el.day}T${el.endHour}`
-              );
+              let finishDate = new Date(new Date(el.startBroadcastTimestamp).setHours(new Date(el.startBroadcastTimestamp).getHours() + el.duration)).toJSON()
 
-              return beginDate < currentTimeStamp &&
-                finishDate > currentTimeStamp ? (
+              return el.startBroadcastTimestamp < currentDate &&
+                finishDate > currentDate ? (
                 <div key={i} className="col-12 items-container">
                   {i === 0 ? <Title title="En vivo" /> : null}
                   <div className="item">
@@ -123,9 +117,7 @@ export const Home = () => {
                       <h2>{el.title}</h2>
                       <span className="event-date">
                         <i className="fas fa-calendar-alt"></i>{" "}
-                        {`${el.day} de ${getMonth(el.month)} - ${
-                          el.beginHour
-                        } hs.`}
+                        {getDate(el.startBroadcastTimestamp)}
                       </span>
                       <span>
                         <b>Lugar: </b>

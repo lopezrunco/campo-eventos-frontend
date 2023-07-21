@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate, useParams } from "react-router-dom";
-import React, { useContext, useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 
 import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import { refreshToken } from "../../../utils/refresh-token";
@@ -26,10 +26,10 @@ import "./styles.scss";
 
 const initialState = {
   title: "",
-  day: "",
-  month: "",
-  beginHour: "",
-  endHour: "",
+  eventDate: "",
+  eventHour: "",
+  startBroadcastTimestamp: "",
+  duration: "",
   location: "",
   organizer: "",
   coverImgName: undefined,
@@ -56,13 +56,18 @@ const reducer = (state, action) => {
         ...state,
         isSending: false,
         title: action.payload.event.title,
-        day: action.payload.event.day,
-        month: action.payload.event.month,
-        beginHour: action.payload.event.beginHour,
-        endHour: action.payload.event.endHour,
+        startBroadcastTimestamp: action.payload.event.startBroadcastTimestamp,
+        eventDate: action.payload.event.startBroadcastTimestamp.split("T")[0],
+        eventHour: new Date(
+          action.payload.event.startBroadcastTimestamp
+        ).toLocaleString("es-uy", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+        duration: action.payload.event.duration,
         location: action.payload.event.location,
         organizer: action.payload.event.organizer,
-        broadcastLinkId: `https://www.youtube.com/watch/${action.payload.event.broadcastLinkId}`
+        broadcastLinkId: `https://www.youtube.com/watch/${action.payload.event.broadcastLinkId}`,
       };
     case FETCH_LIVE_EVENT_FAILURE:
       return {
@@ -97,7 +102,26 @@ function UpdateLiveEvent() {
   const { id } = useParams();
   const [state, dispatch] = useReducer(reducer, initialState);
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
+  const [editDate, setEditDate] = useState(false);
+  const [editHour, setEditHour] = useState(false);
   const navigate = useNavigate();
+
+  let actualDate = state.startBroadcastTimestamp.split("T")[0];
+  let actualHour = new Date(state.startBroadcastTimestamp).toLocaleString(
+    "es-uy",
+    {
+      hour: "2-digit",
+      minute: "2-digit",
+    }
+  );
+
+  const handleEditDateClick = () => {
+    setEditDate(true);
+  };
+
+  const handleEditHourClick = () => {
+    setEditHour(true);
+  };
 
   // On component mount, fetch the event and set data in the form
   useEffect(() => {
@@ -148,6 +172,10 @@ function UpdateLiveEvent() {
     });
   };
 
+  const getTimeStamp = (date, hour) => {
+    return new Date(`${date}T${hour}`).getTime();
+  };
+
   // On form submit, call the update event endpoint
   const handleFormSubmit = () => {
     dispatch({
@@ -162,10 +190,7 @@ function UpdateLiveEvent() {
       },
       body: JSON.stringify({
         title: state.title,
-        day: state.day,
-        month: state.month,
-        beginHour: state.beginHour,
-        endHour: state.endHour,
+        duration: state.duration,
         location: state.location,
         organizer: state.organizer,
         coverImgName: state.coverImgName,
@@ -173,6 +198,7 @@ function UpdateLiveEvent() {
           state.broadcastLinkId === undefined
             ? null
             : getYoutubeId(state.broadcastLinkId),
+        startBroadcastTimestamp: getTimeStamp(state.eventDate, state.eventHour),
       }),
     })
       .then((response) => {
@@ -238,58 +264,6 @@ function UpdateLiveEvent() {
                   />
                 </label>
                 <div className="col-6">
-                  <label htmlFor="day">
-                    Día *
-                    <input
-                      required
-                      type="text"
-                      value={state.day}
-                      onChange={handleInputChange}
-                      name="day"
-                      id="day"
-                    />
-                  </label>
-                </div>
-                <div className="col-6">
-                  <label htmlFor="month">
-                    Mes *
-                    <input
-                      required
-                      type="text"
-                      value={state.month}
-                      onChange={handleInputChange}
-                      name="month"
-                      id="month"
-                    />
-                  </label>
-                </div>
-                <div className="col-6">
-                  <label htmlFor="beginHour">
-                    Hora inicio *
-                    <input
-                      required
-                      type="text"
-                      value={state.beginHour}
-                      onChange={handleInputChange}
-                      name="beginHour"
-                      id="beginHour"
-                    />
-                  </label>
-                </div>
-                <div className="col-6">
-                  <label htmlFor="endHour">
-                    Hora cierre *
-                    <input
-                      required
-                      type="text"
-                      value={state.endHour}
-                      onChange={handleInputChange}
-                      name="endHour"
-                      id="endHour"
-                    />
-                  </label>
-                </div>
-                <div className="col-6">
                   <label htmlFor="location">
                     Lugar *
                     <input
@@ -315,17 +289,87 @@ function UpdateLiveEvent() {
                     />
                   </label>
                 </div>
-                <label htmlFor="broadcastLinkId">
-                  Enlace transmisión
-                  <input
-                    required
-                    type="text"
-                    value={state.broadcastLinkId}
-                    onChange={handleInputChange}
-                    name="broadcastLinkId"
-                    id="broadcastLinkId"
-                  />
-                </label>
+                <div className="col-lg-6">
+                  <label htmlFor="broadcastLinkId">
+                    Enlace transmisión
+                    <input
+                      required
+                      type="text"
+                      value={state.broadcastLinkId}
+                      onChange={handleInputChange}
+                      name="broadcastLinkId"
+                      id="broadcastLinkId"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-6">
+                  <label htmlFor="duration">
+                    Duración
+                    <input
+                      required
+                      type="number"
+                      value={state.duration}
+                      onChange={handleInputChange}
+                      name="duration"
+                      id="duration"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-6">
+                  <label htmlFor="eventDate">
+                    Fecha
+                    {!editDate && (
+                      <span className="editable-data">
+                        <div className="content">
+                          <i className="fas fa-calendar"></i>
+                          {actualDate}
+                        </div>
+                        <i
+                          className="fas fa-pencil-alt edit-icon"
+                          onClick={handleEditDateClick}
+                        ></i>
+                      </span>
+                    )}
+                    <input
+                      hidden={!editDate ? "hidden" : null}
+                      type="date"
+                      id="eventDate"
+                      name="eventDate"
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-6">
+                  <label htmlFor="eventHour">
+                    Hora
+                    {!editHour && (
+                      <span className="editable-data">
+                        <div className="content">
+                          <i className="fas fa-clock"></i>
+                          {actualHour}
+                        </div>
+                        <i
+                          className="fas fa-pencil-alt edit-icon"
+                          onClick={handleEditHourClick}
+                        ></i>
+                      </span>
+                    )}
+                    <input
+                      hidden={!editHour ? "hidden" : null}
+                      type="time"
+                      id="eventHour"
+                      name="eventHour"
+                      pattern="[0-9]{2}:[0-9]{2}"
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </label>
+                </div>
+
                 <button
                   className="button button-dark"
                   onClick={handleFormSubmit}

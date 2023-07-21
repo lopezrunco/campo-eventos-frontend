@@ -20,10 +20,9 @@ import "./styles.scss";
 
 const initialState = {
   title: "",
-  day: "",
-  month: "",
-  beginHour: "",
-  endHour: "",
+  eventDate: "",
+  eventHour: "",
+  duration: "",
   location: "",
   organizer: "",
   coverImgName: undefined,
@@ -77,6 +76,10 @@ function CreateLiveEvent() {
     });
   };
 
+  const getTimeStamp = (date, hour) => {
+    return new Date(`${date}T${hour}`).getTime();
+  };
+
   const handleFormSubmit = () => {
     dispatch({
       type: CREATE_LIVE_EVENT_REQUEST,
@@ -90,10 +93,8 @@ function CreateLiveEvent() {
       },
       body: JSON.stringify({
         title: state.title,
-        day: state.day,
-        month: state.month,
-        beginHour: state.beginHour,
-        endHour: state.endHour,
+        startBroadcastTimestamp: getTimeStamp(state.eventDate, state.eventHour),
+        duration: state.duration,
         location: state.location,
         organizer: state.organizer,
         coverImgName: state.coverImgName,
@@ -165,62 +166,6 @@ function CreateLiveEvent() {
                     id="title"
                   />
                 </label>
-                <div className="col-3">
-                  <label htmlFor="day">
-                    Día *
-                    <input
-                      required
-                      type="text"
-                      value={state.day}
-                      onChange={handleInputChange}
-                      name="day"
-                      id="day"
-                      placeholder="Ej: 07, 15, 29"
-                    />
-                  </label>
-                </div>
-                <div className="col-3">
-                  <label htmlFor="month">
-                    Mes *
-                    <input
-                      required
-                      type="text"
-                      value={state.month}
-                      onChange={handleInputChange}
-                      name="month"
-                      id="month"
-                      placeholder="Ej: 09, 12"
-                    />
-                  </label>
-                </div>
-                <div className="col-3">
-                  <label htmlFor="beginHour">
-                    Hora inicio *
-                    <input
-                      required
-                      type="text"
-                      value={state.beginHour}
-                      onChange={handleInputChange}
-                      name="beginHour"
-                      id="beginHour"
-                      placeholder="Ej: 09:00, 18:00"
-                    />
-                  </label>
-                </div>
-                <div className="col-3">
-                  <label htmlFor="endHour">
-                    Hora cierre *
-                    <input
-                      required
-                      type="text"
-                      value={state.endHour}
-                      onChange={handleInputChange}
-                      name="endHour"
-                      id="endHour"
-                      placeholder="Ej: 09:00, 18:00"
-                    />
-                  </label>
-                </div>
                 <div className="col-6">
                   <label htmlFor="location">
                     Lugar *
@@ -257,6 +202,47 @@ function CreateLiveEvent() {
                     id="broadcastLinkId"
                   />
                 </label>
+
+                <div className="col-lg-4">
+                  <label htmlFor="eventDate">
+                    Fecha
+                    <input
+                      type="date"
+                      id="eventDate"
+                      name="eventDate"
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-4">
+                  <label htmlFor="eventHour">
+                    Hora
+                    <input
+                      type="time"
+                      id="eventHour"
+                      name="eventHour"
+                      pattern="[0-9]{2}:[0-9]{2}"
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </label>
+                </div>
+
+                <div className="col-4">
+                <label htmlFor="duration">
+                    Duración
+                    <input
+                      type="number"
+                      id="duration"
+                      name="duration"
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </label>
+                </div>
+
                 <button
                   className="button button-dark"
                   onClick={handleFormSubmit}

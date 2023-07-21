@@ -1,6 +1,6 @@
 import imgUrl from "../../../assets/no-img.jpg";
 
-import { getMonth } from "../../../utils/get-month";
+import { getDate } from "../../../utils/get-date";
 
 import "./styles.scss";
 
@@ -28,9 +28,7 @@ function Card({ liveEvent }) {
             <h2>{liveEvent.title}</h2>
             <span className="event-date">
               <i className="fas fa-calendar-alt"></i>{" "}
-              {`${liveEvent.day} de ${getMonth(liveEvent.month)}, ${
-                liveEvent.beginHour
-              } hs.`}
+              {getDate(liveEvent.startBroadcastTimestamp)}
             </span>
             <span>
               <b>Lugar: </b>

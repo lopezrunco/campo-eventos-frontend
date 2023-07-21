@@ -5,6 +5,7 @@ import { getMonth } from "../../../../../utils/get-month";
 import imgUrl from "../../../../../assets/no-img.jpg";
 
 import DeleteLiveEventModal from "./components/DeleteLiveEventModal";
+import { getDate } from "../../../../../utils/get-date";
 
 function LiveEventCard({ liveEvent }) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -28,9 +29,7 @@ function LiveEventCard({ liveEvent }) {
             <h3>{liveEvent.title}</h3>
             <p className="event-date">
               <i className="fas fa-calendar-alt me-2"></i>
-              {`${liveEvent.day} de ${getMonth(liveEvent.month)}, ${
-                liveEvent.beginHour
-              } hs.`}
+              {getDate(liveEvent.startBroadcastTimestamp)}
             </p>
             <p>
               <b>Lugar: </b>

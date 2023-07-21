@@ -472,7 +472,7 @@ function App() {
 export default App;
 
 // Cambios prioritarios:
-// TO DO: Poner fecha a todos los remates y poner los mas nuevos primero
+// TO DO: Poner fecha a los remates vivo y poner los mas nuevos primero
 // TO DO: Ver problema de _id entre recien registrados y logueados
 // TO DO: Chequear paginacion en todos los listados de entidades
 // TO DO: Que las preofertas se muestren directamente

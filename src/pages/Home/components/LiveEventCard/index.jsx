@@ -3,16 +3,13 @@ import React from "react";
 
 import imgUrl from "../../../../assets/no-img.jpg";
 
-import { getMonth } from "../../../../utils/get-month";
+import { getDate } from "../../../../utils/get-date";
 
 import "./styles.scss";
 
 function LiveEventCard({ liveEvent }) {
-  const nowTimeStamp = Date.now();
-  const liveEventTimeStamp = new Date(
-    `2023-${liveEvent.month}-${liveEvent.day}T${liveEvent.beginHour}`
-  ).valueOf();
-  let showLiveEvent = liveEventTimeStamp > nowTimeStamp;
+  let showLiveEvent =
+    liveEvent.startBroadcastTimestamp > new Date().toISOString();
 
   return (
     showLiveEvent && (
@@ -36,9 +33,7 @@ function LiveEventCard({ liveEvent }) {
                 <h3>{liveEvent.title}</h3>
                 <small>Lugar: {liveEvent.location}</small>
                 <small>Organiza: {liveEvent.organizer}</small>
-                <p className="date">{`${liveEvent.day} de ${getMonth(
-                  liveEvent.month
-                )}, ${liveEvent.beginHour} hrs.`}</p>
+                <p className="date">{getDate(liveEvent.startBroadcastTimestamp)}</p>
                 <a
                   className="button button-dark-outline"
                   href={`/remates-vivo/${liveEvent.id}`}
