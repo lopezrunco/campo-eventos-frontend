@@ -119,7 +119,7 @@ function EventCard({ event }) {
 
                 {!state.showLots ? (
                   <a className="button view-more me-3" onClick={handleClick}>
-                    <i className="fas fa-chevron-down"></i> Ver lotes
+                    <i className="fas fa-chevron-down"></i> Ver lotes / Preofertar
                   </a>
                 ) : null}
 
@@ -170,7 +170,7 @@ function EventCard({ event }) {
                               className="button button-dark mt-0"
                               href={`/lotes/${lot.id}`}
                             >
-                              Ver lote{" "}
+                              Detalles / preofertar{" "}
                               <i className="fas fa-chevron-right ms-2"></i>
                             </a>
                           </div>

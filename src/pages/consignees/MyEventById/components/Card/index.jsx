@@ -209,7 +209,7 @@ function Card({ myEvent }) {
                 className="button button-dark me-3"
                 href={`/consignatarios/mis-remates/${myEvent.id}/crear-lote`}
               >
-                <i className="fas fa-plus"></i> Crear nuevo lote
+                <i className="fas fa-plus"></i> Subir lote
               </a>
             </div>
           </div>

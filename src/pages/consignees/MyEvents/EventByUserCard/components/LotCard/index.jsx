@@ -127,7 +127,7 @@ function LotCard({ lot }) {
           </div>
         </div>
         <div className="col-lg-7">
-          <div className="category-tag mt-0">{lot.category}</div>
+          <div className="category-tag mt-0"><b>Categoría:</b> {lot.category}</div>
           <p>
             <b>Descripción:</b> {lot.description}
           </p>

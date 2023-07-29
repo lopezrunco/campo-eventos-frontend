@@ -101,7 +101,7 @@ function LotCard({ lot }) {
         <h3>
           <i className="fas fa-layer-group me-3"></i> {lot.title}
         </h3>
-        <div className="category-tag">{lot.category}</div>
+        <div className="category-tag"><b>Categoría:</b> {lot.category}</div>
         <p>
           <b>Descripción:</b> {lot.description}
         </p>

@@ -164,12 +164,12 @@ function CreateLot() {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Crear lote"} />
+        <Breadcrumbs location={"Subir lote"} />
       </motion.div>
       <section>
         <article className="container">
           <Title
-            title="Crear lote"
+            title="Subir lote"
             subtitle="Los campos marcados con * son obligatorios"
           />
           <div className="row">
@@ -365,7 +365,7 @@ function CreateLot() {
                   disabled={state.isSubmitting}
                 >
                   <i className="fas fa-plus"></i>
-                  {state.isSubmitting ? "Por favor, espere..." : "Crear lote"}
+                  {state.isSubmitting ? "Por favor, espere..." : "Subir lote"}
                 </button>
 
                 {state.errorMessage && (
