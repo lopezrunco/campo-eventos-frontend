@@ -106,7 +106,7 @@ function UpdateLiveEvent() {
   const [editHour, setEditHour] = useState(false);
   const navigate = useNavigate();
 
-  let actualDate = state.startBroadcastTimestamp.split("T")[0];
+  let actualDate = new Date(state.startBroadcastTimestamp).toLocaleDateString("es-uy");
   let actualHour = new Date(state.startBroadcastTimestamp).toLocaleString(
     "es-uy",
     {
@@ -332,6 +332,7 @@ function UpdateLiveEvent() {
                         ></i>
                       </span>
                     )}
+                    {/* TO DO: Chequear si en uruguay se muestra en formato DD MM YYYY */}
                     <input
                       hidden={!editDate ? "hidden" : null}
                       type="date"

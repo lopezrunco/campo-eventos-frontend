@@ -472,7 +472,6 @@ function App() {
 export default App;
 
 // Cambios prioritarios:
-// TO DO: Poner fecha a los remates vivo y poner los mas nuevos primero
 // TO DO: Ver problema de _id entre recien registrados y logueados
 // TO DO: Chequear paginacion en todos los listados de entidades
 // TO DO: Que las preofertas se muestren directamente
@@ -507,3 +506,4 @@ export default App;
 // TO DO: Reforzar seguridad
 // TO DO: Testing
 // TO DO: Notificaciones a usuarios mediante email, sms o wapp
+// TO DO: Chequear toda la logica de errores en los forms

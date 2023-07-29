@@ -108,7 +108,7 @@ function UpdateEvent() {
   const [editHour, setEditHour] = useState(false);
   const navigate = useNavigate();
 
-  let actualDate = state.eventTimestamp.split("T")[0];
+  let actualDate = new Date(state.eventTimestamp).toLocaleDateString("es-uy");
   let actualHour = new Date(state.eventTimestamp).toLocaleString("es-uy", {
     hour: "2-digit",
     minute: "2-digit",
@@ -345,7 +345,6 @@ function UpdateEvent() {
                   />
                 </label>
 
-
                 <div className="col-lg-6">
                   <label htmlFor="eventDate">
                     Fecha
@@ -361,6 +360,7 @@ function UpdateEvent() {
                         ></i>
                       </span>
                     )}
+                    {/* TO DO: Chequear si en uruguay se muestra en formato DD MM YYYY */}
                     <input
                       hidden={!editDate ? "hidden" : null}
                       type="date"
