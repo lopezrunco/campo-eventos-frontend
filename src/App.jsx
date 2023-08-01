@@ -478,8 +478,6 @@ export default App;
 // TO DO: Sacar campo de moneda, que sea todo dolares
 // TO DO: En el lot card que se muestre el nombre del lote, la miniatura del video, categoria, cantidad y nombre (en el caso de caballo), ubicacion (porque dependiendo del lote puede variar la ubicacion) y la ultima preoferta aceptada (opcional, si no hay preofertas que lo diga)
 // TO DO: En Mis preofertas, que se muestre de una el Titulo del Remate y el Nombre del lote con miniatura del video y lo que ya esta (Monto, si esta aceptado y Link al lote)
-// TO DO: En cosignatarios - mis remates que el desplegable se elimine, que se muestren los lotes de una.
-// TO DO: En cosignatarios - mis remates - lotes que los desplegables de ver lote y ver preofertas se muestren de una
 
 // TO DO: Cuando se crea el remate que de la opcion de Tipo de remate: Equinos, Bovinos, Ovinos y Remate por pantalla. Dependiendo del tipo de remate es el formulario que se mostrara al consignatario y la info que se mostrara al usuario.
 // Actualizacion instruccion nestor 1 jul: Los campos que actualmente hay en los formularios de creacion de remate que sean solo para Remates por pantalla. Los datos siguientes que sean para los demas Remates(ovinos, bovinos, equinos): "Nombre: / R.P.: / Categoría: / Peso: / Fecha de nacimiento: / Pedigree: / Cabaña: / Otro dato:""

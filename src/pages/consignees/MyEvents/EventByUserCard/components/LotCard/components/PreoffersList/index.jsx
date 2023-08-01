@@ -17,10 +17,13 @@ function PreoffersList({ preoffers, currency }) {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h4 className="mb-4 mt-4 mt-lg-0">
-                <i className="fas fa-comments-dollar me-2"></i> Preofertas (
-                {currency}):
-              </h4>
+              {preoffers.length === 0 ? (
+                <p>Este lote no tiene preofertas.</p>
+              ) : (
+                <h4 className="mb-4 mt-4 mt-lg-0">
+                  <i className="fas fa-comments-dollar me-2"></i> Preofertas:
+                </h4>
+              )}
               {preoffers.map((preoffer) => {
                 return (
                   <div key={preoffer.id} className="preoffer mb-2">

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 
 import imgUrl from "../../../../../assets/no-img.jpg";
 
@@ -60,7 +60,7 @@ function Card({ myEvent }) {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  useEffect(() => {
     dispatch({
       type: GET_LOTS_REQUEST,
     });
@@ -101,7 +101,13 @@ function Card({ myEvent }) {
           });
         }
       });
-  };
+  }, [
+    authDispatch,
+    authState.refreshToken,
+    authState.token,
+    myEvent.id,
+    navigate,
+  ]);
 
   const handleDeleteModal = () => {
     dispatch({
@@ -173,11 +179,6 @@ function Card({ myEvent }) {
               </p>
             </div>
           </div>
-          {!state.showLots && (
-            <a className="button view-more me-3" onClick={handleClick}>
-              <i className="fas fa-chevron-down"></i> Ver lotes
-            </a>
-          )}
           {myEvent.broadcastLink && (
             <a
               className="button view-more"
@@ -190,17 +191,20 @@ function Card({ myEvent }) {
           )}
         </div>
 
-        {state.showLots && (
+        {state.showLots ? (
           <div className="col-12">
             <div className="container">
-              <h4 className="mb-4 mt-5">
-                <i className="fas fa-layer-group me-2"></i> Lotes de{" "}
-                {myEvent.title}:
-              </h4>
               <div className="row">
-                {state.data.length === 0
-                  ? "Aún no hay lotes en este remate"
-                  : null}
+                {state.data.length === 0 ? (
+                  <div className="col-12 mt-5">
+                    <p>Aún no hay lotes en este remate.</p>
+                  </div>
+                ) : (
+                  <h4 className="mb-4 mt-5">
+                    <i className="fas fa-layer-group me-2"></i> Lotes de{" "}
+                    {myEvent.title}:
+                  </h4>
+                )}
                 {state.data.map((lot) => {
                   return <LotCard key={lot.id} lot={lot} />;
                 })}
@@ -212,6 +216,10 @@ function Card({ myEvent }) {
                 <i className="fas fa-plus"></i> Subir lote
               </a>
             </div>
+          </div>
+        ) : (
+          <div className="col-12 mt-5">
+            <p>Cargando lotes...</p>
           </div>
         )}
       </div>
