@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 
 import {
   GET_PREOFFERS_REQUEST,
@@ -52,7 +52,7 @@ function LotCard({ lot }) {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  useEffect(() => {
     dispatch({
       type: GET_PREOFFERS_REQUEST,
     });
@@ -93,7 +93,7 @@ function LotCard({ lot }) {
           });
         }
       });
-  };
+  }, [authDispatch, authState.refreshToken, authState.token, lot.id, navigate]);
 
   return (
     <React.Fragment>
@@ -101,7 +101,9 @@ function LotCard({ lot }) {
         <h3>
           <i className="fas fa-layer-group me-3"></i> {lot.title}
         </h3>
-        <div className="category-tag"><b>Categoría:</b> {lot.category}</div>
+        <div className="category-tag">
+          <b>Categoría:</b> {lot.category}
+        </div>
         <p>
           <b>Descripción:</b> {lot.description}
         </p>
@@ -132,17 +134,16 @@ function LotCard({ lot }) {
           <NoVideoMsj msj="Este lote aún no tiene video." />
         )}
       </div>
-      {!state.showPreoffers && (
-        <a className="button view-more" onClick={handleClick}>
-          <i className="fas fa-chevron-down"></i> Ver preofertas
-        </a>
-      )}
-      {state.showPreoffers && (
+      {state.showPreoffers ? (
         <PreoffersList
           preoffers={state.data}
           lotId={lot.id}
           currency={lot.currency}
         />
+      ) : (
+        <div className="col-12 mt-5">
+          <p>Cargando preofertas...</p>
+        </div>
       )}
     </React.Fragment>
   );

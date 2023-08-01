@@ -474,7 +474,6 @@ export default App;
 // Cambios prioritarios:
 // TO DO: Ver problema de _id entre recien registrados y logueados
 // TO DO: Chequear paginacion en todos los listados de entidades
-// TO DO: Que las preofertas se muestren directamente
 // TO DO: Sacar campo de moneda, que sea todo dolares
 // TO DO: En el lot card que se muestre el nombre del lote, la miniatura del video, categoria, cantidad y nombre (en el caso de caballo), ubicacion (porque dependiendo del lote puede variar la ubicacion) y la ultima preoferta aceptada (opcional, si no hay preofertas que lo diga)
 // TO DO: En Mis preofertas, que se muestre de una el Titulo del Remate y el Nombre del lote con miniatura del video y lo que ya esta (Monto, si esta aceptado y Link al lote)
@@ -502,3 +501,4 @@ export default App;
 // TO DO: Reforzar seguridad
 // TO DO: Testing
 // TO DO: Notificaciones a usuarios mediante email, sms o wapp
+// TO DO: Que loader en la home no tape todo
