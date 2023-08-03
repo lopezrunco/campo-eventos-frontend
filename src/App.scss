@@ -176,6 +176,16 @@ input[type="file"] {
     }
   }
 
+  &.button-green-grey {
+    background-color: $primary-medium-dark-color;
+    color: $medium-light-color;
+
+    &:hover {
+      background-color: $primary-dark-color;
+      color: $medium-light-color;
+    }
+  }
+
   &.button-light {
     background-color: $accent-color;
     color: $light-color;

@@ -28,6 +28,7 @@ const initialState = {
   observations: "",
   race: "",
   certificate: "",
+  location: "",
   type: "",
   open: true,
   sold: false,
@@ -110,6 +111,7 @@ function CreateLot() {
         observations: state.observations,
         race: state.race,
         certificate: state.certificate,
+        location: state.location,
         type: state.type,
         open: state.open,
         sold: state.sold,
@@ -318,7 +320,20 @@ function CreateLot() {
                   </label>
                 </div>
 
-                <div className="col-12">
+                <div className="col-lg-3">
+                  <label htmlFor="location">
+                    Lugar
+                    <input
+                      type="text"
+                      value={state.location}
+                      onChange={handleInputChange}
+                      name="location"
+                      id="location"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-9">
                   <label htmlFor="ytvideo">
                     Enlace (YouTube)
                     <input

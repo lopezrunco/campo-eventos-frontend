@@ -474,7 +474,7 @@ export default App;
 // Cambios prioritarios:
 // TO DO: Ver problema de _id entre recien registrados y logueados
 // TO DO: Chequear paginacion en todos los listados de entidades
-// TO DO: En el lot card que se muestre el nombre del lote, la miniatura del video, categoria, cantidad y nombre (en el caso de caballo), ubicacion (porque dependiendo del lote puede variar la ubicacion) y la ultima preoferta aceptada (opcional, si no hay preofertas que lo diga)
+// TO DO: En el caso de los caballos agregar el campo "Nombre"
 
 // -------------------------------------------------------------------
 

@@ -13,6 +13,8 @@ import {
   GET_LOTS_SUCCESS,
 } from "../../../action-types";
 
+import LotPreview from "./components/LotPreview";
+
 import "./styles.scss";
 
 const initialState = {
@@ -204,36 +206,22 @@ function EventCard({ event }) {
           {state.showLots && (
             <div className="lot-list-container">
               <div className="container">
-                <h4>
-                  <i className="fas fa-layer-group me-2"></i> Lotes de{" "}
-                  {event.title}:
-                </h4>
                 <div className="row">
                   {state.data.length === 0
                     ? "Aún no hay lotes en este remate"
                     : null}
                   {state.data.map((lot) => {
                     return (
-                      <React.Fragment key={lot.id}>
-                        <div className="col-lg-4 my-3">
-                          <div className="lot-card">
-                            <div className="title-animals">
-                              <h4>{lot.title}</h4>
-                              <p>
-                                <i className="fas fa-horse-head"></i>{" "}
-                                {lot.animals}
-                              </p>
-                            </div>
-                            <a
-                              className="button button-dark mt-0"
-                              href={`/lotes/${lot.id}`}
-                            >
-                              Detalles / preofertar{" "}
-                              <i className="fas fa-chevron-right ms-2"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </React.Fragment>
+                      <LotPreview
+                        key={lot.id}
+                        lotId={lot.id}
+                        lotTitle={lot.title}
+                        lotvideoId={lot.YTVideoSrc}
+                        lotCategory={lot.category}
+                        animals={lot.animals}
+                        animalName={lot.name}
+                        location={lot.location}
+                      />
                     );
                   })}
                 </div>

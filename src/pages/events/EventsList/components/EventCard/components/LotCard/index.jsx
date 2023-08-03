@@ -20,7 +20,6 @@ const initialState = {
   showPreoffers: false,
 };
 
-// Handle preoffers state
 const reducer = (state, action) => {
   switch (action.type) {
     case GET_PREOFFERS_REQUEST:
@@ -81,7 +80,7 @@ function LotCard({ lot }) {
         });
       })
       .catch((error) => {
-        console.error("Error trying to get the lots", error);
+        console.error("Error trying to get the preoffers", error);
 
         if (error.status === 401) {
           refreshToken(authState.refreshToken, authDispatch, navigate);
@@ -111,7 +110,7 @@ function LotCard({ lot }) {
           <b>Animales:</b> {lot.animals} | <b>Peso(Kg):</b> {lot.weight} |{" "}
           <b>Edad:</b> {lot.age} | <b>Clase:</b> {lot.class} | <b>Estado:</b>{" "}
           {lot.state} | <b>Raza:</b> {lot.race} | <b>Certificado:</b>{" "}
-          {lot.certificate} | <b>Tipo:</b> {lot.type} | <b>Abierto:</b> {lot.open ? "Si" : "No"} |{" "}
+          {lot.certificate} | <b>Lugar:</b> {lot.location} | <b>Tipo:</b> {lot.type} | <b>Abierto:</b> {lot.open ? "Si" : "No"} |{" "}
           <b>Vendido:</b> {lot.sold ? "Si" : "No"} | <b>Completado:</b>{" "}
           {lot.completed ? "Si" : "No"}
         </p>

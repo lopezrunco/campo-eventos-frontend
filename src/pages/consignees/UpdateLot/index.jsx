@@ -34,6 +34,7 @@ const initialState = {
   observations: "",
   race: "",
   certificate: "",
+  location: "",
   type: "",
   open: true,
   sold: false,
@@ -72,8 +73,9 @@ const reducer = (state, action) => {
         observations: action.payload.lot.observations,
         race: action.payload.lot.race,
         certificate: action.payload.lot.certificate,
+        location: action.payload.lot.location,
         type: action.payload.lot.type,
-        YTVideoSrc: `https://www.youtube.com/watch/${action.payload.lot.YTVideoSrc}`
+        YTVideoSrc: `https://www.youtube.com/watch/${action.payload.lot.YTVideoSrc}`,
       };
     case GET_LOT_FAILURE:
       return {
@@ -182,6 +184,7 @@ function UpdateLot() {
         observations: state.observations,
         race: state.race,
         certificate: state.certificate,
+        location: state.location,
         type: state.type,
         YTVideoSrc:
           state.YTVideoSrc === undefined
@@ -384,7 +387,20 @@ function UpdateLot() {
                   </label>
                 </div>
 
-                <div className="col-12">
+                <div className="col-lg-3">
+                  <label htmlFor="location">
+                    Lugar
+                    <input
+                      type="text"
+                      value={state.location}
+                      onChange={handleInputChange}
+                      name="location"
+                      id="location"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-9">
                   <label htmlFor="ytvideo">
                     Enlace (YouTube)
                     <input

@@ -137,7 +137,7 @@ function LotCard({ lot }) {
             <b>Animales:</b> {lot.animals} | <b>Peso(Kg):</b> {lot.weight} |{" "}
             <b>Edad:</b> {lot.age} | <b>Clase:</b> {lot.class} | <b>Estado:</b>{" "}
             {lot.state} | <b>Raza:</b> {lot.race} | <b>Certificado:</b>{" "}
-            {lot.certificate} | <b>Tipo:</b> {lot.type} | <b>Abierto:</b> {lot.open ? "Si" : "No"} |{" "}
+            {lot.certificate} | <b>Lugar:</b> {lot.location} | <b>Tipo:</b> {lot.type} | <b>Abierto:</b> {lot.open ? "Si" : "No"} |{" "}
             <b>Vendido:</b> {lot.sold ? "Si" : "No"} | <b>Completado:</b>{" "}
             {lot.completed ? "Si" : "No"}
           </p>

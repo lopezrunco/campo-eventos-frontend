@@ -1,20 +1,7 @@
 @import '../../../../../Variables.scss';
 
 .lot-list-container {
-    background: $gray-color;
+    background: $primary-color;
+    color: $medium-light-color;
     padding: 2rem 1rem;
-
-    .lot-card {
-        background-color: darken($color: $gray-color, $amount: 3);
-        padding: 1rem;
-        border-radius: $sm-border-radius;
-
-        .title-animals {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            gap: 1rem;
-            color: $primary-color;
-        }
-    }
 }
