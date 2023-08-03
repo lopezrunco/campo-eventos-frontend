@@ -119,6 +119,7 @@ function Card({ myEvent }) {
     <React.Fragment>
       <div className="row">
         <div className="col-lg-3 mb-5">
+          <span className="event-type-tag">{myEvent.eventType}</span>
           {myEvent.imageUrl ? (
             <img src={myEvent.imageUrl} width="100%" />
           ) : (
@@ -135,9 +136,7 @@ function Card({ myEvent }) {
           <div className="d-flex justify-content-between align-items-center mb-4">
             <div>
               <h4 className="mb-0">{myEvent.title}</h4>
-              {myEvent.eventTimestamp && (
-                <p className="mt-2 mb-0">{getDate(myEvent.eventTimestamp)}</p>
-              )}
+              <p className="mt-2 mb-0">{getDate(myEvent.eventTimestamp)}</p>
             </div>
             <div className="options-buttons">
               <a
@@ -152,32 +151,88 @@ function Card({ myEvent }) {
             </div>
           </div>
           <div className="row">
-            <div className="col-12">
-              <p>
-                <b>Descripción: </b>
-                {myEvent.description}
-              </p>
+            {myEvent.description && (
+              <div className="col-12">
+                <p>
+                  <b>Descripción: </b>
+                  {myEvent.description}
+                </p>
+              </div>
+            )}
+            <div className="col-lg-4">
+              {myEvent.company && (
+                <p>
+                  <b>Remata: </b>
+                  {myEvent.company}
+                </p>
+              )}
+              {myEvent.funder && (
+                <p>
+                  <b>Financiación: </b>
+                  {myEvent.funder}
+                </p>
+              )}
+              {myEvent.rp && (
+                <p>
+                  <b>RP: </b>
+                  {myEvent.rp}
+                </p>
+              )}
+              {myEvent.category && (
+                <p>
+                  <b>Categoría: </b>
+                  {myEvent.category}
+                </p>
+              )}
             </div>
             <div className="col-lg-4">
-              <p>
-                <b>Remata: </b>
-                {myEvent.company}
-              </p>
-              <p>
-                <b>Financiación: </b>
-                {myEvent.funder}
-              </p>
+              {myEvent.organizer && (
+                <p>
+                  <b>Organiza: </b>
+                  {myEvent.organizer}
+                </p>
+              )}
+              {myEvent.location && (
+                <p>
+                  <b>Lugar: </b>
+                  {myEvent.location}
+                </p>
+              )}
+              {myEvent.weight && (
+                <p>
+                  <b>Peso: </b>
+                  {myEvent.weight}
+                </p>
+              )}
+              {myEvent.birthDate && (
+                <p>
+                  <b>Nacimiento: </b>
+                  {myEvent.birthDate}
+                </p>
+              )}
             </div>
             <div className="col-lg-4">
-              <p>
-                <b>Organiza: </b>
-                {myEvent.organizer}
-              </p>
-              <p>
-                <b>Lugar: </b>
-                {myEvent.location}
-              </p>
+              {myEvent.pedigree && (
+                <p>
+                  <b>Pedigree: </b>
+                  {myEvent.pedigree}
+                </p>
+              )}
+              {myEvent.breeder && (
+                <p>
+                  <b>Cabaña: </b>
+                  {myEvent.breeder}
+                </p>
+              )}
             </div>
+            {myEvent.other && (
+              <div className="col-12">
+                <p>
+                  <b>Otro dato: </b>
+                  {myEvent.other}
+                </p>
+              </div>
+            )}
           </div>
           {myEvent.broadcastLink && (
             <a

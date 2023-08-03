@@ -75,7 +75,7 @@ const initialState = {
   showingLoader: false,
 };
 
-// Reducer to manage actions of login type
+// Reducer to manage login type actions 
 const reducer = (state, action) => {
   switch (action.type) {
     case LOGIN:
@@ -474,11 +474,8 @@ export default App;
 // Cambios prioritarios:
 // TO DO: Ver problema de _id entre recien registrados y logueados
 // TO DO: Chequear paginacion en todos los listados de entidades
-// TO DO: Sacar campo de moneda, que sea todo dolares
 // TO DO: En el lot card que se muestre el nombre del lote, la miniatura del video, categoria, cantidad y nombre (en el caso de caballo), ubicacion (porque dependiendo del lote puede variar la ubicacion) y la ultima preoferta aceptada (opcional, si no hay preofertas que lo diga)
-
-// TO DO: Cuando se crea el remate que de la opcion de Tipo de remate: Equinos, Bovinos, Ovinos y Remate por pantalla. Dependiendo del tipo de remate es el formulario que se mostrara al consignatario y la info que se mostrara al usuario.
-// Actualizacion instruccion nestor 1 jul: Los campos que actualmente hay en los formularios de creacion de remate que sean solo para Remates por pantalla. Los datos siguientes que sean para los demas Remates(ovinos, bovinos, equinos): "Nombre: / R.P.: / Categoría: / Peso: / Fecha de nacimiento: / Pedigree: / Cabaña: / Otro dato:""
+// TO DO: Sacar campo de moneda, que sea todo dolares
 
 // -------------------------------------------------------------------
 

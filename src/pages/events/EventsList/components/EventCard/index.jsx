@@ -105,21 +105,78 @@ function EventCard({ event }) {
             <div className="col-lg-9">
               <div className="p-4">
                 <h6>{event.title}</h6>
-                {event.eventTimestamp && (
-                  <p className="date">{getDate(event.eventTimestamp)}</p>
+                <p className="date">{getDate(event.eventTimestamp)}</p>
+                {event.description && (
+                  <p>
+                    <b>Descripción:</b> {event.description}
+                  </p>
                 )}
                 <p>
-                  <b>Descripción:</b> {event.description}
+                  {event.company && (
+                    <>
+                      <b>Remata:</b> {event.company}
+                    </>
+                  )}
+                  {event.organizer && (
+                    <>
+                      ︱<b>Organiza:</b> {event.organizer}
+                    </>
+                  )}
+                  {event.location && (
+                    <>
+                      ︱<b>Lugar:</b> {event.location}
+                    </>
+                  )}
+                  {event.funder && (
+                    <>
+                      ︱<b>Financiación:</b> {event.funder}
+                    </>
+                  )}
                 </p>
+
                 <p>
-                  <b>Remata:</b> {event.company}︱<b>Organiza:</b>{" "}
-                  {event.organizer}︱<b>Lugar:</b> {event.location}︱
-                  <b>Financiación:</b> {event.funder}
+                  {event.rp && (
+                    <>
+                      <b>RP:</b> {event.rp}
+                    </>
+                  )}
+                  {event.category && (
+                    <>
+                      ︱<b>Categoría:</b> {event.category}
+                    </>
+                  )}
+                  {event.weight && (
+                    <>
+                      ︱<b>Peso:</b> {event.weight}
+                    </>
+                  )}
+                  {event.birthDate && (
+                    <>
+                      ︱<b>Nacimiento:</b> {event.birthDate}
+                    </>
+                  )}
+                  {event.pedigree && (
+                    <>
+                      ︱<b>Pedigree:</b> {event.pedigree}
+                    </>
+                  )}
+                  {event.breeder && (
+                    <>
+                      ︱<b>Cabaña:</b> {event.breeder}
+                    </>
+                  )}
                 </p>
+
+                {event.other && (
+                  <p>
+                    <b>Otro dato:</b> {event.other}
+                  </p>
+                )}
 
                 {!state.showLots ? (
                   <a className="button view-more me-3" onClick={handleClick}>
-                    <i className="fas fa-chevron-down"></i> Ver lotes / Preofertar
+                    <i className="fas fa-chevron-down"></i> Ver lotes /
+                    Preofertar
                   </a>
                 ) : null}
 
@@ -136,6 +193,7 @@ function EventCard({ event }) {
               </div>
             </div>
             <div className="col-lg-3">
+              <span className="event-type-tag">{event.eventType}</span>
               {event.imageUrl ? (
                 <img src={event.imageUrl} width="100%" />
               ) : (
