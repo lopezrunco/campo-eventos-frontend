@@ -29,7 +29,6 @@ const initialState = {
   race: "",
   certificate: "",
   type: "",
-  currency: "",
   open: true,
   sold: false,
   completed: false,
@@ -112,7 +111,6 @@ function CreateLot() {
         race: state.race,
         certificate: state.certificate,
         type: state.type,
-        currency: state.currency,
         open: state.open,
         sold: state.sold,
         completed: state.completed,
@@ -320,20 +318,7 @@ function CreateLot() {
                   </label>
                 </div>
 
-                <div className="col-lg-3">
-                  <label htmlFor="currency">
-                    Moneda *
-                    <input
-                      type="text"
-                      value={state.currency}
-                      onChange={handleInputChange}
-                      name="currency"
-                      id="currency"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-9">
+                <div className="col-12">
                   <label htmlFor="ytvideo">
                     Enlace (YouTube)
                     <input

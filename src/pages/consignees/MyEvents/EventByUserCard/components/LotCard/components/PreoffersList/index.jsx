@@ -4,7 +4,7 @@ import RefuseAcceptPreoffer from "./components/RefuseAcceptPreoffer";
 import DeletePreofferModal from "./components/DeletePreofferModal";
 import UserDetails from "./components/UserDetails";
 
-function PreoffersList({ preoffers, currency }) {
+function PreoffersList({ preoffers }) {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleDeleteModal = () => {
@@ -28,7 +28,7 @@ function PreoffersList({ preoffers, currency }) {
                 return (
                   <div key={preoffer.id} className="preoffer mb-2">
                     <span>
-                      Monto: <b>{preoffer.amount}</b>
+                      <b>U$S {preoffer.amount}</b>
                     </span>
                     <RefuseAcceptPreoffer preoffer={preoffer} />
                     <UserDetails userId={preoffer.userId} />

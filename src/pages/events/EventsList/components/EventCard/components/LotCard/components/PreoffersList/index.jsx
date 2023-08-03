@@ -75,7 +75,7 @@ const reducer = (state, action) => {
   }
 };
 
-function PreoffersList({ preoffers, lotId, currency }) {
+function PreoffersList({ preoffers, lotId }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -188,8 +188,7 @@ function PreoffersList({ preoffers, lotId, currency }) {
         <div className="row justify-content-between">
           <div className="col-lg-4 mb-5 mb-lg-0">
             <h4 className="mb-4">
-              <i className="fas fa-comments-dollar me-2"></i> Preofertas(
-              {currency}):{" "}
+              <i className="fas fa-comments-dollar me-2"></i> Preofertas:
             </h4>
             {preoffers.length === 0 && (
               <p>Aún no hay preofertas en este lote.</p>
@@ -197,7 +196,7 @@ function PreoffersList({ preoffers, lotId, currency }) {
             {preoffers.map((preoffer) => {
               return (
                 <div className="preoffer mb-2" key={preoffer.id}>
-                  <b>{preoffer.amount}</b>
+                  <b>U$S {preoffer.amount}</b>
                   {preoffer.accepted ? (
                     <span className="acepted">Aceptada</span>
                   ) : (
@@ -209,7 +208,7 @@ function PreoffersList({ preoffers, lotId, currency }) {
           </div>
           <div className="col-lg-5">
             <h4 className="mb-4">
-              <i className="fas fa-comment-dollar me-2"></i> Hacer Preoferta:
+              <i className="fas fa-comment-dollar me-2"></i> Hacer Preoferta (U$S):
             </h4>
             <div className="make-preoffer-container">
               <input

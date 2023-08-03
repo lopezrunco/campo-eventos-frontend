@@ -232,7 +232,7 @@ function CreateLiveEvent() {
 
                 <div className="col-4">
                 <label htmlFor="duration">
-                    Duración
+                    Duración (hs.)
                     <input
                       type="number"
                       id="duration"

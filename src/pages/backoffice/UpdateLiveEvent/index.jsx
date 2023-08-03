@@ -305,7 +305,7 @@ function UpdateLiveEvent() {
 
                 <div className="col-lg-6">
                   <label htmlFor="duration">
-                    Duración
+                    Duración (hs.)
                     <input
                       required
                       type="number"

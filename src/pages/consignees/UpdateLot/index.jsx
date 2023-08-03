@@ -35,7 +35,6 @@ const initialState = {
   race: "",
   certificate: "",
   type: "",
-  currency: "",
   open: true,
   sold: false,
   completed: false,
@@ -74,7 +73,6 @@ const reducer = (state, action) => {
         race: action.payload.lot.race,
         certificate: action.payload.lot.certificate,
         type: action.payload.lot.type,
-        currency: action.payload.lot.currency,
         YTVideoSrc: `https://www.youtube.com/watch/${action.payload.lot.YTVideoSrc}`
       };
     case GET_LOT_FAILURE:
@@ -185,7 +183,6 @@ function UpdateLot() {
         race: state.race,
         certificate: state.certificate,
         type: state.type,
-        currency: state.currency,
         YTVideoSrc:
           state.YTVideoSrc === undefined
             ? undefined
@@ -387,21 +384,7 @@ function UpdateLot() {
                   </label>
                 </div>
 
-                <div className="col-lg-3">
-                  <label htmlFor="currency">
-                    Moneda *
-                    <input
-                      required
-                      type="text"
-                      value={state.currency}
-                      onChange={handleInputChange}
-                      name="currency"
-                      id="currency"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-9">
+                <div className="col-12">
                   <label htmlFor="ytvideo">
                     Enlace (YouTube)
                     <input
