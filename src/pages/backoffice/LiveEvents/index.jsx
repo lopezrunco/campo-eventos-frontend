@@ -21,6 +21,7 @@ import {
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Loader } from "../../../components/Loader";
 import LiveEventCard from "./components/LiveEventCard";
+import Pagination from "../../../components/Pagination";
 
 // Create context to manage live events
 export const LiveEventsContext = createContext();
@@ -64,8 +65,7 @@ function LiveEvents() {
 
   // Handle pagination
   const [currentPage, setCurentPage] = useState(1);
-  const itemsPerPage = 9;
-
+  const itemsPerPage = 12;
   function prevPage() {
     setCurentPage(currentPage - 1);
   }
@@ -166,26 +166,12 @@ function LiveEvents() {
                 )}
               </div>
             </div>
-            <div className="col-12">
-              <div className="pagination">
-                {currentPage > 1 && (
-                  <button
-                    className="button button-light me-3"
-                    onClick={() => prevPage()}
-                  >
-                    <i className="fa fa-chevron-left"></i> Anterior
-                  </button>
-                )}
-                {currentPage < state.liveEventsList.length && (
-                  <button
-                    className="button button-light"
-                    onClick={() => nextPage()}
-                  >
-                    Siguiente <i className="fa fa-chevron-right"></i>
-                  </button>
-                )}
-              </div>
-            </div>
+            <Pagination
+              elementList={state.liveEventsList}
+              currentPage={currentPage}
+              prevPageFunction={prevPage}
+              nextPageFunction={nextPage}
+            />
           </div>
         </article>
       </section>

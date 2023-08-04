@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 
 import { AuthContext } from "../../../App";
 import { apiUrl } from "../../../utils/api-url";
@@ -15,6 +15,7 @@ import {
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import MyPreofferCard from "./components/MyPreofferCard";
 import { Loader } from "../../../components/Loader";
+import Pagination from "../../../components/Pagination";
 
 const initialState = {
   preoffersList: [],
@@ -52,6 +53,16 @@ function MyPreOffers() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
 
+  // Handle pagination
+  const [currentPage, setCurentPage] = useState(1);
+  const itemsPerPage = 9;
+  function prevPage() {
+    setCurentPage(currentPage - 1);
+  }
+  function nextPage() {
+    setCurentPage(currentPage + 1);
+  }
+
   useEffect(() => {
     if (authState.token) {
       authDispatch({
@@ -61,12 +72,17 @@ function MyPreOffers() {
         type: GET_MY_PREOFFERS_REQUEST,
       });
 
-      fetch(apiUrl(`/preoffers/user/${authState.user.id}`), {
-        headers: {
-          Authorization: authState.token,
-          "Content-Type": "application/json",
-        },
-      })
+      fetch(
+        apiUrl(
+          `/preoffers/user/${authState.user.id}?page=${currentPage}&itemsPerPage=${itemsPerPage}`
+        ),
+        {
+          headers: {
+            Authorization: authState.token,
+            "Content-Type": "application/json",
+          },
+        }
+      )
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -103,6 +119,7 @@ function MyPreOffers() {
     authState.refreshToken,
     authState.token,
     authState.user.id,
+    currentPage,
     navigate,
   ]);
 
@@ -134,6 +151,12 @@ function MyPreOffers() {
                 )}
               </React.Fragment>
             )}
+            <Pagination
+              elementList={state.preoffersList}
+              currentPage={currentPage}
+              prevPageFunction={prevPage}
+              nextPageFunction={nextPage}
+            />
           </div>
         </article>
       </section>

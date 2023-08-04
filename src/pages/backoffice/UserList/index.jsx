@@ -15,6 +15,7 @@ import {
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Loader } from "../../../components/Loader";
 import UserCard from "./components/UserCard";
+import Pagination from "../../../components/Pagination";
 
 const initialState = {
   users: [],
@@ -52,9 +53,9 @@ function UserList() {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // Pagination
+  // Handle pagination
   const [currentPage, setCurentPage] = useState(1);
-  const itemsPerPage = 30;
+  const itemsPerPage = 12;
   function prevPage() {
     setCurentPage(currentPage - 1);
   }
@@ -134,7 +135,10 @@ function UserList() {
           <div className="row">
             <div className="col-12">
               {!state.hasError && (
-                <h3 className="mb-4"><i className="fas fa-user me-3"></i> Usuarios activos: {state.users.length}</h3>
+                <h3 className="mb-4">
+                  <i className="fas fa-user me-3"></i> Usuarios activos:{" "}
+                  {state.users.length}
+                </h3>
               )}
             </div>
           </div>
@@ -154,26 +158,12 @@ function UserList() {
                 )}
               </>
             )}
-            <div className="col-12">
-              <div className="pagination">
-                {currentPage > 1 && (
-                  <button
-                    className="button button-light me-3"
-                    onClick={() => prevPage()}
-                  >
-                    <i className="fa fa-chevron-left"></i> Anterior
-                  </button>
-                )}
-                {currentPage < state.users.length && (
-                  <button
-                    className="button button-light"
-                    onClick={() => nextPage()}
-                  >
-                    Siguiente <i className="fa fa-chevron-right"></i>
-                  </button>
-                )}
-              </div>
-            </div>
+            <Pagination
+              elementList={state.users}
+              currentPage={currentPage}
+              prevPageFunction={prevPage}
+              nextPageFunction={nextPage}
+            />
           </div>
         </article>
       </section>

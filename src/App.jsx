@@ -471,13 +471,8 @@ function App() {
 
 export default App;
 
-// Cambios prioritarios:
+
 // TO DO: Ver problema de _id entre recien registrados y logueados
-// TO DO: Chequear paginacion en todos los listados de entidades
-
-// -------------------------------------------------------------------
-
-// Cambios secundarios:
 // TO DO: Poner mensaje de Wait cuando esta subiendo el video o img y deshabilitar el boton
 // TO DO: Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
 // TO DO: Solucionar warning de missing props validation
@@ -496,3 +491,4 @@ export default App;
 // TO DO: Testing
 // TO DO: Notificaciones a usuarios mediante email, sms o wapp
 // TO DO: Que loader en la home no tape todo
+// TO DO: Redondear todas las imagenes & iframes

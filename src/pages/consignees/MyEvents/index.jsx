@@ -16,6 +16,7 @@ import { Loader } from "../../../components/Loader";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import EventByUserCard from "./EventByUserCard";
 import { Title } from "../../../components/Title";
+import Pagination from "../../../components/Pagination";
 
 const initialState = {
   eventsList: [],
@@ -54,9 +55,9 @@ function MyEvents() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
 
+  // Handle pagination
   const [currentPage, setCurentPage] = useState(1);
-  const itemsPerPage = 9;
-
+  const itemsPerPage = 12;
   function prevPage() {
     setCurentPage(currentPage - 1);
   }
@@ -166,26 +167,12 @@ function MyEvents() {
             </>
           )}
 
-          <div className="col-12">
-            <div className="pagination">
-              {currentPage > 1 && (
-                <button
-                  className="button button-light me-3"
-                  onClick={() => prevPage()}
-                >
-                  <i className="fa fa-chevron-left"></i> Anterior
-                </button>
-              )}
-              {currentPage < state.eventsList.length && (
-                <button
-                  className="button button-light"
-                  onClick={() => nextPage()}
-                >
-                  Siguiente <i className="fa fa-chevron-right"></i>
-                </button>
-              )}
-            </div>
-          </div>
+          <Pagination
+            elementList={state.eventsList}
+            currentPage={currentPage}
+            prevPageFunction={prevPage}
+            nextPageFunction={nextPage}
+          />
         </article>
       </section>
     </React.Fragment>

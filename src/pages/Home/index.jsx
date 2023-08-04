@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 
 import { HIDE_LOADER, SHOW_LOADER } from "../../utils/action-types";
+import { getDate } from "../../utils/get-date";
 import { apiUrl } from "../../utils/api-url";
 import { AuthContext } from "../../App";
 import {
@@ -14,9 +15,9 @@ import LiveEventCard from "./components/LiveEventCard";
 import { Loader } from "../../components/Loader";
 import { Intro } from "../../components/Intro";
 import { Title } from "../../components/Title";
+import Pagination from "../../components/Pagination";
 
 import "./styles.scss";
-import { getDate } from "../../utils/get-date";
 
 const initialState = {
   liveEventsList: [],
@@ -53,7 +54,17 @@ const reducer = (state, action) => {
 export const Home = () => {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
-  let currentDate = new Date().toJSON()
+  let currentDate = new Date().toJSON();
+
+  // Handle pagination
+  const [currentPage, setCurentPage] = useState(1);
+  const itemsPerPage = 9;
+  function prevPage() {
+    setCurentPage(currentPage - 1);
+  }
+  function nextPage() {
+    setCurentPage(currentPage + 1);
+  }
 
   useEffect(() => {
     authDispatch({
@@ -63,7 +74,9 @@ export const Home = () => {
       type: FETCH_LIVE_EVENTS_REQUEST,
     });
 
-    fetch(apiUrl(`live-events`))
+    fetch(
+      apiUrl(`live-events?page=${currentPage}&itemsPerPage=${itemsPerPage}`)
+    )
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -90,7 +103,7 @@ export const Home = () => {
           type: HIDE_LOADER,
         });
       });
-  }, [authDispatch]);
+  }, [authDispatch, currentPage]);
 
   return (
     <React.Fragment>
@@ -99,7 +112,11 @@ export const Home = () => {
         <div className="container">
           <div className="row">
             {state.liveEventsList.map((el, i) => {
-              let finishDate = new Date(new Date(el.startBroadcastTimestamp).setHours(new Date(el.startBroadcastTimestamp).getHours() + el.duration)).toJSON()
+              let finishDate = new Date(
+                new Date(el.startBroadcastTimestamp).setHours(
+                  new Date(el.startBroadcastTimestamp).getHours() + el.duration
+                )
+              ).toJSON();
 
               return el.startBroadcastTimestamp < currentDate &&
                 finishDate > currentDate ? (
@@ -172,6 +189,12 @@ export const Home = () => {
                 )}
               </div>
             </div>
+            <Pagination
+              elementList={state.liveEventsList}
+              currentPage={currentPage}
+              prevPageFunction={prevPage}
+              nextPageFunction={nextPage}
+            />
           </div>
         </article>
       </section>

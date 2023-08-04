@@ -21,6 +21,7 @@ import {
 import EventCard from "./components/EventCard";
 import { Loader } from "../../../components/Loader";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
+import Pagination from "../../../components/Pagination";
 
 // Create context to manage events
 export const EventsContext = createContext();
@@ -53,7 +54,7 @@ const reducer = (state, action) => {
         hasError: true,
         isFetching: false,
       };
-    case 'SET_EVENT':
+    case "SET_EVENT":
       return {
         ...state,
         selectedEventId: action.payload,
@@ -70,8 +71,7 @@ function EventsList() {
 
   // Handle pagination
   const [currentPage, setCurentPage] = useState(1);
-  const itemsPerPage = 9;
-
+  const itemsPerPage = 6;
   function prevPage() {
     setCurentPage(currentPage - 1);
   }
@@ -166,27 +166,12 @@ function EventsList() {
                 )}
               </div>
             </div>
-
-            <div className="col-12">
-              <div className="pagination">
-                {currentPage > 1 && (
-                  <button
-                    className="button button-light me-3"
-                    onClick={() => prevPage()}
-                  >
-                    <i className="fa fa-chevron-left"></i> Anterior
-                  </button>
-                )}
-                {currentPage < state.eventsList.length && (
-                  <button
-                    className="button button-light"
-                    onClick={() => nextPage()}
-                  >
-                    Siguiente <i className="fa fa-chevron-right"></i>
-                  </button>
-                )}
-              </div>
-            </div>
+            <Pagination
+              elementList={state.eventsList}
+              currentPage={currentPage}
+              prevPageFunction={prevPage}
+              nextPageFunction={nextPage}
+            />
           </div>
         </article>
       </section>
