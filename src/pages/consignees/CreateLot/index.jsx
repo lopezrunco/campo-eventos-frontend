@@ -19,6 +19,7 @@ import { Title } from "../../../components/Title";
 const initialState = {
   title: "",
   category: "",
+  name: "",
   description: "",
   animals: "",
   weight: "",
@@ -102,6 +103,7 @@ function CreateLot() {
       body: JSON.stringify({
         title: state.title,
         category: state.category,
+        name: state.name,
         description: state.description,
         animals: state.animals,
         weight: state.weight,
@@ -175,7 +177,7 @@ function CreateLot() {
           <div className="row">
             <div className="col-12">
               <div className="form-container row">
-                <div className="col-lg-6">
+                <div className="col-12">
                   <label htmlFor="title">
                     Título *
                     <input
@@ -199,6 +201,19 @@ function CreateLot() {
                       onChange={handleInputChange}
                       name="category"
                       id="category"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-6">
+                  <label htmlFor="name">
+                    Nombre
+                    <input
+                      type="text"
+                      value={state.name}
+                      onChange={handleInputChange}
+                      name="name"
+                      id="name"
                     />
                   </label>
                 </div>

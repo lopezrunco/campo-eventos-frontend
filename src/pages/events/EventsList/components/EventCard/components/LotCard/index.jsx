@@ -100,23 +100,28 @@ function LotCard({ lot }) {
         <h3>
           <i className="fas fa-layer-group me-3"></i> {lot.title}
         </h3>
-        <div className="category-tag">
-          <b>Categoría:</b> {lot.category}
-        </div>
+        {lot.category && (
+          <div className="category-tag">
+            <b>Categoría:</b> {lot.category}
+          </div>
+        )}
+        {lot.description && (<p><b>Descripción:</b> {lot.description}</p>)}
         <p>
-          <b>Descripción:</b> {lot.description}
+          {lot.animals && (<><b>Cantidad:</b> {lot.animals}</>)}
+          {lot.name && (<> | <b>Nombre:</b> {lot.name}</>)}
+          {lot.weight && (<> | <b>Peso(Kg):</b> {lot.weight}</>)}
+          {lot.age && (<> | <b>Edad:</b> {lot.age}</>)}
+          {lot.class && (<> | <b>Clase:</b> {lot.class}</>)}
+          {lot.state && (<> | <b>Estado:</b> {lot.state}</>)}
+          {lot.race && (<> | <b>Raza:</b> {lot.race}</>)}
+          {lot.certificate && (<> | <b>Certificado:</b> {lot.certificate}</>)}
+          {lot.location && (<> | <b>Ubicación:</b> {lot.location}</>)}
+          {lot.type && (<> | <b>Tipo:</b> {lot.type}</>)}
+          {lot.open && (<> | <b>Abierto:</b> {lot.open ? "Si" : "No"}</>)}
+          {lot.sold && (<> | <b>Vendido:</b> {lot.sold ? "Si" : "No"}</>)}
+          {lot.completed && (<> | <b>Completado:</b> {lot.completed ? "Si" : "No"}</>)}
         </p>
-        <p>
-          <b>Animales:</b> {lot.animals} | <b>Peso(Kg):</b> {lot.weight} |{" "}
-          <b>Edad:</b> {lot.age} | <b>Clase:</b> {lot.class} | <b>Estado:</b>{" "}
-          {lot.state} | <b>Raza:</b> {lot.race} | <b>Certificado:</b>{" "}
-          {lot.certificate} | <b>Lugar:</b> {lot.location} | <b>Tipo:</b> {lot.type} | <b>Abierto:</b> {lot.open ? "Si" : "No"} |{" "}
-          <b>Vendido:</b> {lot.sold ? "Si" : "No"} | <b>Completado:</b>{" "}
-          {lot.completed ? "Si" : "No"}
-        </p>
-        <p>
-          <b>Observaciones:</b> {lot.observations}
-        </p>
+        {lot.observations && (<p><b>Observaciones:</b> {lot.observations}</p>)}
       </div>
       <div className="col-lg-5">
         {lot.YTVideoSrc ? (
@@ -133,10 +138,7 @@ function LotCard({ lot }) {
         )}
       </div>
       {state.showPreoffers ? (
-        <PreoffersList
-          preoffers={state.data}
-          lotId={lot.id}
-        />
+        <PreoffersList preoffers={state.data} lotId={lot.id} />
       ) : (
         <div className="col-12 mt-5">
           <p>Cargando preofertas...</p>
