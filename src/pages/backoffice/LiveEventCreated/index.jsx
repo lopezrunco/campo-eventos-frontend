@@ -29,8 +29,8 @@ function LiveEventCreated() {
               <h3>El remate en vivo ha sido creado</h3>
               <div className="separator"></div>
               <p>
-                El remate ha sido creado, el mismo se emitirá a la dia y hora
-                especificados en la página Vivo.
+                El remate ha sido creado, el mismo se emitirá el día y hora
+                especificados.
               </p>
               <a href="/" className="button button-light me-3">
                 <i className="fas fa-signal"></i> Ir a Vivo

@@ -29,8 +29,7 @@ function PreOfferEdited() {
               <h3>La preoferta a sido editada.</h3>
               <div className="separator"></div>
               <p>
-                El usuario que realizó la preoferta será notificado con un
-                mensaje especificando si la misma fue aceptada o rechazada.
+                La preoferta a sido editada con exito.
               </p>
 
               <a href="/" className="button button-light me-3">

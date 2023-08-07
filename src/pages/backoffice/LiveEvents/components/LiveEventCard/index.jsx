@@ -40,7 +40,7 @@ function LiveEventCard({ liveEvent }) {
               {liveEvent.organizer}
             </p>
             <p>
-              <b>Enlace transmisión: </b>
+              <b>ID transmisión: </b>
               {liveEvent.broadcastLinkId === null ||
               liveEvent.broadcastLinkId === undefined ||
               liveEvent.broadcastLinkId === "" ? (
@@ -51,7 +51,7 @@ function LiveEventCard({ liveEvent }) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  {`https://www.youtube.com/watch/${liveEvent.broadcastLinkId}`}
+                  {liveEvent.broadcastLinkId}
                 </a>
               )}
             </p>

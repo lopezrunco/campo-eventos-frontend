@@ -303,7 +303,7 @@ function UpdateEvent() {
                     ></textarea>
                   </label>
 
-                  <div className="col-6">
+                  <div className="col-lg-6">
                     <label htmlFor="company">
                       Rematador
                       <input
@@ -316,7 +316,7 @@ function UpdateEvent() {
                     </label>
                   </div>
 
-                  <div className="col-6">
+                  <div className="col-lg-6">
                     <label htmlFor="organizer">
                       Organizador
                       <input
@@ -329,7 +329,7 @@ function UpdateEvent() {
                     </label>
                   </div>
 
-                  <div className="col-6">
+                  <div className="col-lg-6">
                     <label htmlFor="funder">
                       Financiación
                       <input
@@ -342,7 +342,7 @@ function UpdateEvent() {
                     </label>
                   </div>
 
-                  <div className="col-6">
+                  <div className="col-lg-6">
                     <label htmlFor="location">
                       Lugar
                       <input

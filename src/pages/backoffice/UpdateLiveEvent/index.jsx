@@ -263,7 +263,7 @@ function UpdateLiveEvent() {
                     id="title"
                   />
                 </label>
-                <div className="col-6">
+                <div className="col-lg-6">
                   <label htmlFor="location">
                     Lugar *
                     <input
@@ -276,7 +276,7 @@ function UpdateLiveEvent() {
                     />
                   </label>
                 </div>
-                <div className="col-6">
+                <div className="col-lg-6">
                   <label htmlFor="organizer">
                     Organización *
                     <input

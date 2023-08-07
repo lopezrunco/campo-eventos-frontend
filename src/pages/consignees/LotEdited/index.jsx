@@ -33,7 +33,7 @@ function LotEdited() {
               <div className="separator"></div>
               <p>
                 El lote ha sido editado con éxito, para seguir editando o
-                agregar más lotes, vuelva a mis remates.
+                agregar más lotes, vuelva a Mis remates.
               </p>
               <a href={`/`} className="button button-dark me-3">
                 <i className="fas fa-gavel"></i> Volver a inicio

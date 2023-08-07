@@ -32,10 +32,6 @@ function PreOfferDone() {
                 El consignatario revisará su oferta y la aceptará o
                 rechazará.
               </p>
-              <p>
-                En caso de aceptarla, será contactado mediante
-                alguna de las vías de contacto facilitadas.
-              </p>
               <a href="/" className="button button-light me-3">
                 <i className="fas fa-home"></i> Volver a inicio
               </a>

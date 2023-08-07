@@ -471,24 +471,24 @@ function App() {
 
 export default App;
 
-
-// TO DO: Ver problema de _id entre recien registrados y logueados
-// TO DO: Poner mensaje de Wait cuando esta subiendo el video o img y deshabilitar el boton
-// TO DO: Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
-// TO DO: Solucionar warning de missing props validation
-// TO DO: En la seccion home- en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision
-// TO DO: Sacar campo de token
-// TO DO: Area de los botones solo es clickeable el texto pero no el padding
-// TO DO: Chequear manejo de errores en los formularios
-// TO DO: Chequear los textos de los mensajes de exito al terminar una accion
-// TO DO: Tratar de que al crear remate en vivo se pueda subir imagen en el mismo lugar
-// TO DO: Al terminar todo, ajustar UI en celulares
-// TO DO: Que las cajas sean clickeables en su totalidad, no solo los botones de "Ver más"
-// TO DO: Chequear validaciones de usuarios tanto en front como backend
-// TO DO: Que el usuario pueda subir foto de perfil o por defecto mostrar una imagen generica
-// TO DO: Arreglar los meta count en los endpoints y mostrarlos segun el caso
-// TO DO: Reforzar seguridad
-// TO DO: Testing
-// TO DO: Notificaciones a usuarios mediante email, sms o wapp
-// TO DO: Que loader en la home no tape todo
-// TO DO: Redondear todas las imagenes & iframes
+// TO DO:
+// - Ver problema de _id entre recien registrados y logueados
+// - Poner mensaje de Wait cuando esta subiendo una img y deshabilitar el boton
+// - Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
+// - Solucionar warning de missing props validation
+// - En la seccion home - en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision
+// - Sacar campo de token
+// - Area de los botones solo es clickeable el texto pero no el padding
+// - Chequear manejo de errores en los formularios
+// - Tratar de que al crear remate en vivo se pueda subir imagen en el mismo lugar
+// - Que las cajas sean clickeables en su totalidad, no solo los botones de "Ver más"
+// - Chequear validaciones de usuarios tanto en front como backend
+// - Que el usuario pueda subir foto de perfil o por defecto mostrar una imagen generica
+// - Arreglar los meta count en los endpoints y mostrarlos segun el caso
+// - Ajustar estilos Desktop y celulares (Redondear todas las imagenes & iframes)
+// - Permitir fetchear imgs de cloudinary y elegir de ahi para no subir img repetidas
+// - Pasar todas las actions types a un solo archivo
+// - Abstraer mensaje de exito o error al Crear lote, remate, editar etc
+// - Reforzar seguridad
+// - Testing
+// - Notificaciones a usuarios mediante email, sms o wapp

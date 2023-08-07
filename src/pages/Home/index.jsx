@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
 
-import { HIDE_LOADER, SHOW_LOADER } from "../../utils/action-types";
 import { getDate } from "../../utils/get-date";
 import { apiUrl } from "../../utils/api-url";
 import { AuthContext } from "../../App";
@@ -12,7 +11,7 @@ import {
 
 import { ScrollTop } from "../../components/ScrollTop";
 import LiveEventCard from "./components/LiveEventCard";
-import { Loader } from "../../components/Loader";
+import LoadingMessage from "../../components/LoadingMessage";
 import { Intro } from "../../components/Intro";
 import { Title } from "../../components/Title";
 import Pagination from "../../components/Pagination";
@@ -67,13 +66,9 @@ export const Home = () => {
   }
 
   useEffect(() => {
-    authDispatch({
-      type: SHOW_LOADER,
-    });
     dispatch({
       type: FETCH_LIVE_EVENTS_REQUEST,
     });
-
     fetch(
       apiUrl(`live-events?page=${currentPage}&itemsPerPage=${itemsPerPage}`)
     )
@@ -97,11 +92,6 @@ export const Home = () => {
             type: FETCH_LIVE_EVENTS_FAILURE,
           });
         }
-      })
-      .finally(() => {
-        authDispatch({
-          type: HIDE_LOADER,
-        });
       });
   }, [authDispatch, currentPage]);
 
@@ -170,7 +160,10 @@ export const Home = () => {
             <div className="col-12">
               <div className="row">
                 {state.isFetching ? (
-                  <Loader />
+                  <LoadingMessage
+                    title="Cargando eventos..."
+                    message="Esto puede tardar un poco dependiendo de la cantidad de eventos en nuestro sistema."
+                  />
                 ) : state.hasError ? (
                   <p>Error al obtener los datos</p>
                 ) : (

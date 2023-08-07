@@ -166,7 +166,7 @@ function CreateLiveEvent() {
                     id="title"
                   />
                 </label>
-                <div className="col-6">
+                <div className="col-lg-6">
                   <label htmlFor="location">
                     Lugar *
                     <input
@@ -179,7 +179,7 @@ function CreateLiveEvent() {
                     />
                   </label>
                 </div>
-                <div className="col-6">
+                <div className="col-lg-6">
                   <label htmlFor="organizer">
                     Organización *
                     <input
@@ -230,7 +230,7 @@ function CreateLiveEvent() {
                   </label>
                 </div>
 
-                <div className="col-4">
+                <div className="col-lg-4">
                 <label htmlFor="duration">
                     Duración (hs.)
                     <input
