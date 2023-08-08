@@ -1,29 +1,74 @@
 import { motion } from "framer-motion";
-import { useParams } from "react-router-dom";
-import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import React, { useContext, useReducer } from "react";
 
 const CLOUDINARY_ID = import.meta.env.VITE_CLOUDINARY_ID;
+import { refreshToken } from "../../../utils/refresh-token";
+import { AuthContext } from "../../../App";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
 import AppendImage from "./components/AppendImage";
 
+const initialState = {
+  image: "",
+  url: "",
+  appendImageToEvent: false,
+  isSending: false,
+  hasError: false,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "UPLOAD_INPUT_CHANGE":
+      return {
+        ...state,
+        image: action.payload,
+      };
+    case "UPLOAD_IMAGE_REQUEST":
+      return {
+        ...state,
+        isSending: true,
+        hasError: false,
+      };
+    case "UPLOAD_IMAGE_SUCCESS":
+      return {
+        ...state,
+        url: action.payload.url,
+        appendImageToEvent: true,
+        isSending: false,
+      };
+    case "UPLOAD_IMAGE_FAILURE":
+      return {
+        ...state,
+        isSending: false,
+        hasError: true,
+      };
+    default:
+      return state;
+  }
+};
+
 const UploadEventCover = () => {
-  const [image, setImage] = useState("");
-  const [url, setUrl] = useState("");
-  const [appendImageToEvent, setAppendImageToEvent] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
   const { id } = useParams();
+  const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  // TO DO: Improve this code using reducer
-  // TO DO: Make this component reusable to avoid repeat code
-  // TO DO: Show a list of existing files and allow the user to select
-  // TO DO: Limit the file size
-  // TO DO: Check if the user is not uploading anything and show message
-  // TO DO: Filter to allow the user to only upload this kind of file
+  const handleUploadInputChange = (imgElement) => {
+    dispatch({
+      type: "UPLOAD_INPUT_CHANGE",
+      payload: imgElement,
+    });
+  };
 
-  const uploadImage = () => {
+  const handleImageSubmit = () => {
+    dispatch({
+      type: "UPLOAD_IMAGE_REQUEST",
+    });
+
     const data = new FormData();
-    data.append("file", image);
+    data.append("file", state.image);
     data.append("upload_preset", "campoeventos");
     data.append("cloud_name", "dvkq2sewj");
 
@@ -31,13 +76,40 @@ const UploadEventCover = () => {
       method: "post",
       body: data,
     })
-      .then((resp) => resp.json())
-      .then((data) => {
-        setUrl(data.url);
-        setAppendImageToEvent(true);
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw response;
+        }
       })
-      .catch((err) => console.log(err));
+      .then((data) => {
+        dispatch({
+          type: "UPLOAD_IMAGE_SUCCESS",
+          payload: data,
+        });
+      })
+      .catch((error) => {
+        console.error("Error uploading the image: ", error);
+        if (error.status === 401) {
+          refreshToken(authState.refreshToken, authDispatch, navigate, () =>
+            handleImageSubmit()
+          );
+        } else if (error.status === 403) {
+          navigate("/forbidden");
+        } else {
+          dispatch({
+            type: "UPLOAD_IMAGE_FAILURE",
+          });
+        }
+      });
   };
+
+  // TO DO: Make this component reusable to avoid repeat code
+  // TO DO: Show a list of existing files and allow the user to select
+  // TO DO: Limit the file size
+  // TO DO: Check if the user is not uploading anything and show message
+  // TO DO: Filter to allow the user to only upload this kind of file
 
   return (
     <React.Fragment>
@@ -61,21 +133,27 @@ const UploadEventCover = () => {
                 <label>
                   <input
                     type="file"
-                    onChange={(e) => setImage(e.target.files[0])}
+                    onChange={(e) => handleUploadInputChange(e.target.files[0])}
                   ></input>
                 </label>
-                <a className="button button-dark" onClick={uploadImage}>
+                <button
+                  className="button button-dark"
+                  onClick={handleImageSubmit}
+                  disabled={state.isSending}
+                >
                   <i className="fas fa-upload"></i>
-                  Subir
-                </a>
+                  {state.isSending ? "Subiendo..." : "Subir"}
+                </button>
               </div>
               <div className="file-preview">
-                <img src={url} />
-                {appendImageToEvent && (
-                  <AppendImage eventId={id} imageName={url} />
+                {state.url !== "" && (
+                  <img src={state.url} />
+                )}
+                {state.appendImageToEvent && (
+                  <AppendImage eventId={id} imageName={state.url} />
                 )}
                 <a
-                  className="button button-dark"
+                  className="button button-dark-outline"
                   href={`/consignatarios/mis-remates/${id}`}
                 >
                   <i className="fas fa-times"></i> Cancelar

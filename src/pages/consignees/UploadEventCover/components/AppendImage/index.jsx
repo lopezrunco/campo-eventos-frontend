@@ -73,7 +73,7 @@ function AppendImage({ eventId, imageName }) {
           type: EDIT_EVENT_SUCCESS,
           payload: data,
         });
-        navigate(`/consignatarios/mis-remates`);
+        navigate(`/consignatarios/mis-remates/${eventId}`);
       })
       .catch((error) => {
         if (error.status === 401) {
@@ -90,8 +90,8 @@ function AppendImage({ eventId, imageName }) {
 
   return (
     <React.Fragment>
-      <p>Este archivo se usará como afiche del remate.</p>
-      <a className="button button-dark me-3" onClick={handleSubmit}>
+      <p>¿Usar este archivo como afiche del remate?</p>
+      <a className="button button-dark mb-0" onClick={handleSubmit}>
         <i className="fas fa-check"></i> Aceptar
       </a>
     </React.Fragment>

@@ -473,7 +473,6 @@ export default App;
 
 // TO DO:
 // - Ver problema de _id entre recien registrados y logueados
-// - Poner mensaje de Wait cuando esta subiendo una img y deshabilitar el boton
 // - Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
 // - Solucionar warning de missing props validation
 // - En la seccion home - en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision
@@ -486,9 +485,10 @@ export default App;
 // - Que el usuario pueda subir foto de perfil o por defecto mostrar una imagen generica
 // - Arreglar los meta count en los endpoints y mostrarlos segun el caso
 // - Ajustar estilos Desktop y celulares (Redondear todas las imagenes & iframes)
-// - Permitir fetchear imgs de cloudinary y elegir de ahi para no subir img repetidas
 // - Pasar todas las actions types a un solo archivo
 // - Abstraer mensaje de exito o error al Crear lote, remate, editar etc
+// - Chequear las redirecciones de los mensajes de exito.
+// - Si no hay preofertas aceptadas, no poner campo de Ultima preoferta aceptada.
 // - Reforzar seguridad
 // - Testing
 // - Notificaciones a usuarios mediante email, sms o wapp
