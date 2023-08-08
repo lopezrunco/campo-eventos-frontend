@@ -138,7 +138,7 @@ function UpdateUserInfo() {
               <div className="form-container row">
                 <div className="col-lg-6">
                   <label htmlFor="phone">
-                    Teléfono *
+                    Teléfono (Sin espacios o guiones) *
                     <input
                       required
                       type="number"

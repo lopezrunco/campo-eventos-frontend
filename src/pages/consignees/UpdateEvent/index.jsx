@@ -238,7 +238,7 @@ function UpdateEvent() {
           payload: data,
         });
 
-        navigate(`/consignatarios/mis-remates/${id}`);
+        navigate('/remate-editado');
       })
       .catch((error) => {
         console.error("Error al editar el remate.", error);

@@ -26,7 +26,6 @@ function Login() {
 
   const [data, setData] = useState(initialState);
 
-  // Set all state data at one time
   const handleInputChange = (event) => {
     setData({
       ...data,
@@ -34,7 +33,6 @@ function Login() {
     });
   };
 
-  // Send data to the API
   const handleFormSubmit = () => {
     setData({
       ...data,
@@ -45,7 +43,6 @@ function Login() {
     fetch(apiUrl("login"), {
       method: "POST",
       headers: {
-        // Declare type of content sended to the API
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -62,7 +59,6 @@ function Login() {
         }
       })
       .then((data) => {
-        // Dispatch the data sended by the API
         dispatch({
           type: LOGIN,
           payload: data,

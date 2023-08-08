@@ -1,16 +1,16 @@
 import SuccessMessage from "../../../components/SuccessMessage";
 
-function LiveEventCreated() {
+function LiveEventUpdated() {
   return (
     <SuccessMessage
-      title="Remate en vivo creado"
-      message="El remate se emitirá el día y hora especificados."
+      title="¡Exito!"
+      message="El remate ha sido actualizado exitosamente."
       redirectingMessage="Redirigiendo a Listado de remates en vivo..."
       duration="5000"
-      breadcrumbsLocation="Remate en vivo creado"
+      breadcrumbsLocation="Remate en vivo actualizado"
       navigateTo="/admin/remates-vivo"
     />
   );
 }
 
-export default LiveEventCreated;
+export default LiveEventUpdated;

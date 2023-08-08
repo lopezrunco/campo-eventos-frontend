@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
 import React, { useContext, useState } from "react";
 
-import { LOGIN } from "../../../utils/action-types";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 
@@ -57,13 +56,8 @@ function Register() {
           throw response;
         }
       })
-      .then((data) => {
-        // Login type dispatch with the data sent by the API
-        dispatch({
-          type: LOGIN,
-          payload: data,
-        });
-        navigate("/");
+      .then(() => {
+        navigate("/user-created");
       })
       .catch((error) => {
         console.error(error);

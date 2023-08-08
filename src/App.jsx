@@ -21,6 +21,7 @@ import MyPreOffers from "./pages/events/MyPreOffers";
 
 import Login from "./pages/security/Login";
 import Register from "./pages/security/Register";
+import UserCreated from "./pages/security/UserCreated";
 import { NotFound } from "./pages/access/NotFound";
 import UpdateUserInfo from "./pages/security/UpdateUserInfo";
 import UserUpdated from "./pages/security/UserUpdated";
@@ -46,6 +47,7 @@ import UpdateLot from "./pages/consignees/UpdateLot";
 import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
 import CreateLiveEvent from "./pages/backoffice/CreateLiveEvent";
 import LiveEventCreated from "./pages/backoffice/LiveEventCreated";
+import LiveEventUpdated from "./pages/backoffice/LiveEventUpdated";
 import LiveEventDeleted from "./pages/backoffice/LiveEventDeleted";
 import LiveEvents from "./pages/backoffice/LiveEvents";
 import UploadLiveEventCover from "./pages/backoffice/UploadLiveEventCover";
@@ -60,6 +62,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 import "./App.scss";
+import EventUpdated from "./pages/consignees/EventUpdated";
 
 // Create context to manage authentication data type
 export const AuthContext = createContext();
@@ -75,7 +78,7 @@ const initialState = {
   showingLoader: false,
 };
 
-// Reducer to manage login type actions 
+// Reducer to manage login type actions
 const reducer = (state, action) => {
   switch (action.type) {
     case LOGIN:
@@ -246,6 +249,14 @@ function App() {
               }
             />
             <Route
+              path="/admin/remate-vivo-editado"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <LiveEventUpdated />
+                </RequireAuth>
+              }
+            />
+            <Route
               path="/admin/remate-vivo-creado"
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
@@ -342,6 +353,14 @@ function App() {
               }
             />
             <Route
+              path="/remate-editado"
+              element={
+                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
+                  <EventUpdated />
+                </RequireAuth>
+              }
+            />
+            <Route
               path="/remate-creado"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
@@ -398,7 +417,7 @@ function App() {
               }
             />
             <Route
-              path="/preoffer-done"
+              path="/preoferta-hecha"
               element={
                 <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
                   <PreOfferDone />
@@ -448,6 +467,7 @@ function App() {
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="//user-created" element={<UserCreated />} />
             <Route path="/remates-vivo/:id" element={<LiveEventById />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<NotFound />} />
@@ -472,7 +492,6 @@ function App() {
 export default App;
 
 // TO DO:
-// - Ver problema de _id entre recien registrados y logueados
 // - Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
 // - Solucionar warning de missing props validation
 // - En la seccion home - en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision
@@ -489,6 +508,8 @@ export default App;
 // - Abstraer mensaje de exito o error al Crear lote, remate, editar etc
 // - Chequear las redirecciones de los mensajes de exito.
 // - Si no hay preofertas aceptadas, no poner campo de Ultima preoferta aceptada.
+// - Mejorar mensajes de Exito, editado, borrado, llevando a URL del elemento afectado
+// - Uniformizar fade effect 
 // - Reforzar seguridad
 // - Testing
 // - Notificaciones a usuarios mediante email, sms o wapp

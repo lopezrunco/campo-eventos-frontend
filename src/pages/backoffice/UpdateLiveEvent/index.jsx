@@ -214,7 +214,7 @@ function UpdateLiveEvent() {
           payload: data,
         });
 
-        navigate("/admin/");
+        navigate("/admin/remate-vivo-editado");
       })
       .catch((error) => {
         console.error("Error al editar el remate en vivo", error);

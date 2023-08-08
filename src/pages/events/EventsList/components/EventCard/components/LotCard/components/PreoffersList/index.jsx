@@ -160,7 +160,7 @@ function PreoffersList({ preoffers, lotId }) {
             type: CREATE_PREOFFER_SUCCESS,
             payload: data,
           });
-          navigate("/preoffer-done");
+          navigate("/preoferta-hecha");
         })
         .catch((error) => {
           console.error("Error creating the preoffer", error);
@@ -208,7 +208,8 @@ function PreoffersList({ preoffers, lotId }) {
           </div>
           <div className="col-lg-5">
             <h4 className="mb-4">
-              <i className="fas fa-comment-dollar me-2"></i> Hacer Preoferta (U$S):
+              <i className="fas fa-comment-dollar me-2"></i> Hacer Preoferta
+              (U$S):
             </h4>
             <div className="make-preoffer-container">
               <input
