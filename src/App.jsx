@@ -493,7 +493,6 @@ export default App;
 
 // TO DO:
 // - Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
-// - Solucionar warning de missing props validation
 // - En la seccion home - en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision
 // - Sacar campo de token
 // - Area de los botones solo es clickeable el texto pero no el padding
