@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 
 import imgUrl from "../../../../assets/no-img.jpg";
@@ -8,13 +9,17 @@ import { getDate } from "../../../../utils/get-date";
 import "./styles.scss";
 
 function LiveEventCard({ liveEvent }) {
+  const navigate = useNavigate();
   let showLiveEvent =
     liveEvent.startBroadcastTimestamp > new Date().toISOString();
 
   return (
     showLiveEvent && (
       <React.Fragment>
-        <div className="item col-lg-4">
+        <div
+          className="item col-lg-4"
+          onClick={() => navigate(`/remates-vivo/${liveEvent.id}`)}
+        >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -33,13 +38,10 @@ function LiveEventCard({ liveEvent }) {
                 <h3>{liveEvent.title}</h3>
                 <small>Lugar: {liveEvent.location}</small>
                 <small>Organiza: {liveEvent.organizer}</small>
-                <p className="date">{getDate(liveEvent.startBroadcastTimestamp)}</p>
-                <a
-                  className="button button-dark-outline"
-                  href={`/remates-vivo/${liveEvent.id}`}
-                >
-                  Ver más
-                </a>
+                <p className="date">
+                  {getDate(liveEvent.startBroadcastTimestamp)}
+                </p>
+                <a className="button button-dark-outline">Ver más</a>
               </div>
             </div>
           </motion.div>
