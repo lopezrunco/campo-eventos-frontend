@@ -65,7 +65,16 @@ function LotPreview({
     preoffersList.map((preoffer) => {
       if (preoffer.accepted) amountList.push(preoffer.amount);
     });
-    return amountList.sort((a, b) => a - b).reverse()[0];
+    if (amountList.length === 0) {
+      return null;
+    } else {
+      return (
+        <b>
+          Mayor preoferta aceptada:{" "}
+          {amountList.sort((a, b) => a - b).reverse()[0]}
+        </b>
+      );
+    }
   };
 
   useEffect(() => {
@@ -158,10 +167,7 @@ function LotPreview({
             )}
             {state.data ? (
               state.data.length > 0 ? (
-                <b>
-                  Última preoferta aceptada:{" "}
-                  {getLastAcceptedPreoffer(state.data)}
-                </b>
+                getLastAcceptedPreoffer(state.data)
               ) : (
                 <b>Sin preofertas</b>
               )

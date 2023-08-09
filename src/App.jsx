@@ -503,14 +503,13 @@ export default App;
 // - Arreglar los meta count en los endpoints y mostrarlos segun el caso
 // - Ajustar estilos Desktop y celulares (Redondear todas las imagenes & iframes)
 // - Pasar todas las actions types a un solo archivo
-// - Si no hay preofertas aceptadas, no poner campo de Ultima preoferta aceptada.
 // - Reforzar seguridad
 // - Testing
 // - Notificaciones a usuarios mediante email, sms o wapp
-// - Chequear que logica de subir img en evento sea la misma que evento en vivo
 
 // - Manejar cuando el remate esta completado
 // - Que boton de siguiente no se muestre cuando no hay mas paginas
 // - Que listado de remates de Administrador sea igual que el de consignatarios
 // - Mejorar mensajes de Exito, editado, borrado, llevando a URL del elemento afectado
 // - Uniformizar fade effect 
+// - Reducir codigo repetido
