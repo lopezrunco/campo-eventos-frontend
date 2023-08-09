@@ -28,7 +28,7 @@ export const BackOfficeHome = () => {
             </div>
             <div className="col-12 col-lg-4 offset-lg-4 admin-home-card">
               <a href="/admin/remates-vivo">
-              <i className="fas fa-signal me-2"></i>Ver remates en vivo
+              <i className="fas fa-list me-2"></i>Ver remates en vivo
               </a>
             </div>
             <div className="col-12 col-lg-4 offset-lg-4 admin-home-card">

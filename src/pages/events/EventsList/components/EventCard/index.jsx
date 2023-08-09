@@ -8,10 +8,10 @@ import { getDate } from "../../../../../utils/get-date";
 import { apiUrl } from "../../../../../utils/api-url";
 import { AuthContext } from "../../../../../App";
 import {
-  GET_LOTS_REQUEST,
   GET_LOTS_FAILURE,
+  GET_LOTS_REQUEST,
   GET_LOTS_SUCCESS,
-} from "../../../action-types";
+} from "../../../../../utils/action-types";
 
 import LotPreview from "./components/LotPreview";
 

@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useContext, useEffect, useReducer, useState } from "react";
 
-import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import { refreshToken } from "../../../utils/refresh-token";
 import { getYoutubeId } from "../../../utils/getYoutubeID";
 import { apiUrl } from "../../../utils/api-url";
@@ -11,13 +10,13 @@ import {
   EDIT_LIVE_EVENT_FAILURE,
   EDIT_LIVE_EVENT_REQUEST,
   EDIT_LIVE_EVENT_SUCCESS,
-  FORM_INPUT_CHANGE,
-} from "../action-types";
-import {
   FETCH_LIVE_EVENT_FAILURE,
   FETCH_LIVE_EVENT_REQUEST,
   FETCH_LIVE_EVENT_SUCCESS,
-} from "../../action-types";
+  FORM_INPUT_CHANGE,
+  HIDE_LOADER,
+  SHOW_LOADER,
+} from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
@@ -106,7 +105,9 @@ function UpdateLiveEvent() {
   const [editHour, setEditHour] = useState(false);
   const navigate = useNavigate();
 
-  let actualDate = new Date(state.startBroadcastTimestamp).toLocaleDateString("es-uy");
+  let actualDate = new Date(state.startBroadcastTimestamp).toLocaleDateString(
+    "es-uy"
+  );
   let actualHour = new Date(state.startBroadcastTimestamp).toLocaleString(
     "es-uy",
     {

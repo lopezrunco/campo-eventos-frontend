@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useEffect, useReducer, useState } from "react";
 
-import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import { refreshToken } from "../../../utils/refresh-token";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
@@ -10,13 +9,15 @@ import {
   FETCH_EVENTS_FAILURE,
   FETCH_EVENTS_REQUEST,
   FETCH_EVENTS_SUCCESS,
-} from "../../events/action-types";
+  HIDE_LOADER,
+  SHOW_LOADER,
+} from "../../../utils/action-types";
 
-import { Loader } from "../../../components/Loader";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
-import EventByUserCard from "./EventByUserCard";
-import { Title } from "../../../components/Title";
 import Pagination from "../../../components/Pagination";
+import { Loader } from "../../../components/Loader";
+import { Title } from "../../../components/Title";
+import EventByUserCard from "./EventByUserCard";
 
 const initialState = {
   eventsList: [],

@@ -11,7 +11,7 @@ import {
   CREATE_LOT_REQUEST,
   CREATE_LOT_SUCCESS,
   FORM_INPUT_CHANGE,
-} from "../action-types";
+} from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";

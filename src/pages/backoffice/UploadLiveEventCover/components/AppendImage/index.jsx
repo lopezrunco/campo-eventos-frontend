@@ -8,7 +8,7 @@ import {
   EDIT_LIVE_EVENT_FAILURE,
   EDIT_LIVE_EVENT_REQUEST,
   EDIT_LIVE_EVENT_SUCCESS,
-} from "../../../action-types";
+} from "../../../../../utils/action-types";
 
 const initialState = {
   coverImgName: "",

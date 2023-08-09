@@ -6,7 +6,6 @@ import { refreshToken } from "../../../utils/refresh-token";
 import { getYoutubeId } from "../../../utils/getYoutubeID";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
-import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import {
   EDIT_EVENT_FAILURE,
   EDIT_EVENT_REQUEST,
@@ -15,7 +14,9 @@ import {
   GET_MY_EVENT_FAILURE,
   GET_MY_EVENT_REQUEST,
   GET_MY_EVENT_SUCCESS,
-} from "../action-types";
+  HIDE_LOADER,
+  SHOW_LOADER,
+} from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
@@ -238,7 +239,7 @@ function UpdateEvent() {
           payload: data,
         });
 
-        navigate('/remate-editado');
+        navigate("/remate-editado");
       })
       .catch((error) => {
         console.error("Error al editar el remate.", error);

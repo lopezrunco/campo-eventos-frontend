@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useContext, useEffect, useReducer } from "react";
 
-import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import { refreshToken } from "../../../utils/refresh-token";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
@@ -10,7 +9,9 @@ import {
   GET_MY_EVENT_FAILURE,
   GET_MY_EVENT_REQUEST,
   GET_MY_EVENT_SUCCESS,
-} from "../action-types";
+  HIDE_LOADER,
+  SHOW_LOADER,
+} from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import Card from "./components/Card";

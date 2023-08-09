@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useContext, useEffect, useReducer } from "react";
 
-import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import { refreshToken } from "../../../utils/refresh-token";
 import { getYoutubeId } from "../../../utils/getYoutubeID";
 import { apiUrl } from "../../../utils/api-url";
@@ -15,10 +14,12 @@ import {
   GET_LOT_FAILURE,
   GET_LOT_REQUEST,
   GET_LOT_SUCCESS,
-} from "../action-types";
+  HIDE_LOADER,
+  SHOW_LOADER,
+} from "../../../utils/action-types";
 
-import { Title } from "../../../components/Title";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
+import { Title } from "../../../components/Title";
 
 import "./styles.scss";
 

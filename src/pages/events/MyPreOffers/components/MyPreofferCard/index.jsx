@@ -8,7 +8,7 @@ import {
   GET_LOT_FAILURE,
   GET_LOT_REQUEST,
   GET_LOT_SUCCESS,
-} from "../../../action-types";
+} from "../../../../../utils/action-types";
 
 import PreofferDetails from "./components/PreofferDetails";
 
@@ -107,17 +107,17 @@ function MyPreofferCard({ preoffer }) {
               <span className="refused">No aceptada</span>
             )}
           </div>
-        {state.lot ? (
-          <PreofferDetails
-            lotTitle={state.lot.title}
-            lotId={preoffer.lotId}
-            YTVideoSrc={state.lot.YTVideoSrc}
-            lotEventId={state.lot.eventId}
-          />
+          {state.lot ? (
+            <PreofferDetails
+              lotTitle={state.lot.title}
+              lotId={preoffer.lotId}
+              YTVideoSrc={state.lot.YTVideoSrc}
+              lotEventId={state.lot.eventId}
+            />
           ) : (
             <p>Cargando información...</p>
-            )}
-            </div>
+          )}
+        </div>
       </div>
     </div>
   );

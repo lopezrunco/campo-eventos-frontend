@@ -11,7 +11,7 @@ import {
   CREATE_LIVE_EVENT_REQUEST,
   CREATE_LIVE_EVENT_SUCCESS,
   FORM_INPUT_CHANGE,
-} from "../action-types";
+} from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
@@ -231,7 +231,7 @@ function CreateLiveEvent() {
                 </div>
 
                 <div className="col-lg-4">
-                <label htmlFor="duration">
+                  <label htmlFor="duration">
                     Duración (hs.)
                     <input
                       type="number"

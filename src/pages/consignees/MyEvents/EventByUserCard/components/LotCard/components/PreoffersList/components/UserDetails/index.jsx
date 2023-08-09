@@ -8,8 +8,6 @@ import {
   FETCH_USER_FAILURE,
   FETCH_USER_REQUEST,
   FETCH_USER_SUCCESS,
-} from "../../../../../../../../action-types";
-import {
   HIDE_LOADER,
   SHOW_LOADER,
 } from "../../../../../../../../../../utils/action-types";

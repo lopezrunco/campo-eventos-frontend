@@ -8,7 +8,7 @@ import {
   DELETE_EVENT_FAILURE,
   DELETE_EVENT_REQUEST,
   DELETE_EVENT_SUCCESS,
-} from "../../../../../action-types";
+} from "../../../../../../../utils/action-types";
 
 import "./styles.scss";
 

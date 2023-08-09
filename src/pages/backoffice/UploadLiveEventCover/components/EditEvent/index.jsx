@@ -8,7 +8,7 @@ import {
   EDIT_EVENT_FAILURE,
   EDIT_EVENT_REQUEST,
   EDIT_EVENT_SUCCESS,
-} from "../../../action-types";
+} from "../../../../../utils/action-types";
 
 const initialState = {
   imageUrl: "",

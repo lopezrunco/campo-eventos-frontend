@@ -12,7 +12,7 @@ import {
   GET_USER_BY_ID_FAILURE,
   GET_USER_BY_ID_REQUEST,
   GET_USER_BY_ID_SUCCESS,
-} from "../../../../../../../action-types";
+} from "../../../../../../../../../utils/action-types";
 
 import "./styles.scss";
 

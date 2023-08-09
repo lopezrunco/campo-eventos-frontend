@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useContext, useReducer } from "react";
 
 import { refreshToken } from "../../../utils/refresh-token";
@@ -10,7 +10,7 @@ import {
   EDIT_USER_REQUEST,
   EDIT_USER_SUCCESS,
   FORM_INPUT_CHANGE,
-} from "../../action-types";
+} from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";

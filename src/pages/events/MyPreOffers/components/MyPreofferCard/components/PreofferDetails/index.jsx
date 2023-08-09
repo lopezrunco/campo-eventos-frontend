@@ -8,7 +8,7 @@ import {
   FETCH_EVENT_FAILURE,
   FETCH_EVENT_REQUEST,
   FETCH_EVENT_SUCCESS,
-} from "../../../../../../action-types";
+} from "../../../../../../../utils/action-types";
 
 const initialState = {
   event: undefined,

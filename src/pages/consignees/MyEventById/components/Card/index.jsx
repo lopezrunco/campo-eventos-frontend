@@ -11,7 +11,7 @@ import {
   GET_LOTS_FAILURE,
   GET_LOTS_REQUEST,
   GET_LOTS_SUCCESS,
-} from "../../../../events/action-types";
+} from "../../../../../utils/action-types";
 
 import LotCard from "../../../MyEvents/EventByUserCard/components/LotCard";
 import DeleteEventModal from "./components/DeleteEventModal";

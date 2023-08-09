@@ -10,13 +10,14 @@ import { useNavigate } from "react-router-dom";
 
 import { apiUrl } from "../../../utils/api-url";
 import { refreshToken } from "../../../utils/refresh-token.js";
-import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import { AuthContext } from "../../../App";
 import {
   FETCH_EVENTS_FAILURE,
   FETCH_EVENTS_REQUEST,
   FETCH_EVENTS_SUCCESS,
-} from "../action-types";
+  HIDE_LOADER,
+  SHOW_LOADER,
+} from "../../../utils/action-types";
 
 import EventCard from "./components/EventCard";
 import { Loader } from "../../../components/Loader";

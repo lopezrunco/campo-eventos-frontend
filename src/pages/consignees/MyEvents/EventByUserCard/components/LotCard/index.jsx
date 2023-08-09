@@ -1,18 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useEffect, useReducer } from "react";
 
+import { refreshToken } from "../../../../../../utils/refresh-token";
+import { apiUrl } from "../../../../../../utils/api-url";
+import { AuthContext } from "../../../../../../App";
+
+import NoVideoMsj from "../../../../../../components/NoVideoMsj";
+import DeleteLotModal from "./components/DeleteLotModal";
+import PreoffersList from "./components/PreoffersList";
 import {
   GET_PREOFFERS_FAILURE,
   GET_PREOFFERS_REQUEST,
   GET_PREOFFERS_SUCCESS,
-} from "../../../../../events/action-types";
-import { AuthContext } from "../../../../../../App";
-import { apiUrl } from "../../../../../../utils/api-url";
-import { refreshToken } from "../../../../../../utils/refresh-token";
-
-import NoVideoMsj from "../../../../../../components/NoVideoMsj";
-import PreoffersList from "./components/PreoffersList";
-import DeleteLotModal from "./components/DeleteLotModal";
+} from "../../../../../../utils/action-types";
 
 import "./styles.scss";
 
@@ -138,19 +138,83 @@ function LotCard({ lot }) {
             </p>
           )}
           <p>
-            {lot.animals && (<><b>Cantidad:</b> {lot.animals}</>)}
-            {lot.name && (<> | <b>Nombre:</b> {lot.name}</>)}
-            {lot.weight && (<> | <b>Peso(Kg):</b> {lot.weight}</>)}
-            {lot.age && (<> | <b>Edad:</b> {lot.age}</>)}
-            {lot.class && (<> | <b>Clase:</b> {lot.class}</>)}
-            {lot.state && (<> | <b>Estado:</b> {lot.state}</>)}
-            {lot.race && (<> | <b>Raza:</b> {lot.race}</>)}
-            {lot.certificate && (<> | <b>Certificado:</b> {lot.certificate}</>)}
-            {lot.location && (<> | <b>Ubicación:</b> {lot.location}</>)}
-            {lot.type && (<> | <b>Tipo:</b> {lot.type}</>)}
-            {lot.open && (<> | <b>Abierto:</b> {lot.open ? "Si" : "No"}</>)}
-            {lot.sold && (<> | <b>Vendido:</b> {lot.sold ? "Si" : "No"}</>)}
-            {lot.completed && (<> | <b>Completado:</b> {lot.completed ? "Si" : "No"}</>)}
+            {lot.animals && (
+              <>
+                <b>Cantidad:</b> {lot.animals}
+              </>
+            )}
+            {lot.name && (
+              <>
+                {" "}
+                | <b>Nombre:</b> {lot.name}
+              </>
+            )}
+            {lot.weight && (
+              <>
+                {" "}
+                | <b>Peso(Kg):</b> {lot.weight}
+              </>
+            )}
+            {lot.age && (
+              <>
+                {" "}
+                | <b>Edad:</b> {lot.age}
+              </>
+            )}
+            {lot.class && (
+              <>
+                {" "}
+                | <b>Clase:</b> {lot.class}
+              </>
+            )}
+            {lot.state && (
+              <>
+                {" "}
+                | <b>Estado:</b> {lot.state}
+              </>
+            )}
+            {lot.race && (
+              <>
+                {" "}
+                | <b>Raza:</b> {lot.race}
+              </>
+            )}
+            {lot.certificate && (
+              <>
+                {" "}
+                | <b>Certificado:</b> {lot.certificate}
+              </>
+            )}
+            {lot.location && (
+              <>
+                {" "}
+                | <b>Ubicación:</b> {lot.location}
+              </>
+            )}
+            {lot.type && (
+              <>
+                {" "}
+                | <b>Tipo:</b> {lot.type}
+              </>
+            )}
+            {lot.open && (
+              <>
+                {" "}
+                | <b>Abierto:</b> {lot.open ? "Si" : "No"}
+              </>
+            )}
+            {lot.sold && (
+              <>
+                {" "}
+                | <b>Vendido:</b> {lot.sold ? "Si" : "No"}
+              </>
+            )}
+            {lot.completed && (
+              <>
+                {" "}
+                | <b>Completado:</b> {lot.completed ? "Si" : "No"}
+              </>
+            )}
           </p>
           <p>
             <b>Observaciones:</b> {lot.observations}

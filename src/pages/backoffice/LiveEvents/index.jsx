@@ -11,12 +11,13 @@ import React, {
 import { AuthContext } from "../../../App";
 import { apiUrl } from "../../../utils/api-url";
 import { refreshToken } from "../../../utils/refresh-token";
-import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import {
   FETCH_LIVE_EVENTS_FAILURE,
   FETCH_LIVE_EVENTS_REQUEST,
   FETCH_LIVE_EVENTS_SUCCESS,
-} from "../action-types";
+  HIDE_LOADER,
+  SHOW_LOADER,
+} from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Loader } from "../../../components/Loader";

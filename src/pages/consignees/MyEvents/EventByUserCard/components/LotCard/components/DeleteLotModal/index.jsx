@@ -5,13 +5,12 @@ import { refreshToken } from "../../../../../../../../utils/refresh-token";
 import { apiUrl } from "../../../../../../../../utils/api-url";
 import { AuthContext } from "../../../../../../../../App";
 import {
-    DELETE_LOT_FAILURE,
-    DELETE_LOT_REQUEST,
-    DELETE_LOT_SUCCESS,
-  } from "../../../../../../action-types";
+  DELETE_LOT_FAILURE,
+  DELETE_LOT_REQUEST,
+  DELETE_LOT_SUCCESS,
+} from "../../../../../../../../utils/action-types";
 
 import "./styles.scss";
-
 
 const initialState = {
   lot: undefined,

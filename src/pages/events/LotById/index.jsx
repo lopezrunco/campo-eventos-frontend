@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useContext, useEffect, useReducer } from "react";
 
-import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
 import { refreshToken } from "../../../utils/refresh-token";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
@@ -10,7 +9,9 @@ import {
   GET_LOT_FAILURE,
   GET_LOT_REQUEST,
   GET_LOT_SUCCESS,
-} from "../action-types";
+  HIDE_LOADER,
+  SHOW_LOADER,
+} from "../../../utils/action-types";
 
 import LotCard from "../EventsList/components/EventCard/components/LotCard";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
@@ -114,8 +115,8 @@ function LotById() {
       <section>
         <article className="container">
           <div className="row">
-              {state.lot && <LotCard lot={state.lot} />}
-              {state.hasError && <p>Error al obtener el lote</p>}
+            {state.lot && <LotCard lot={state.lot} />}
+            {state.hasError && <p>Error al obtener el lote</p>}
           </div>
         </article>
       </section>

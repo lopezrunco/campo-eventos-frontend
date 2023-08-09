@@ -4,12 +4,13 @@ import React, { useContext, useEffect, useReducer } from "react";
 
 import { apiUrl } from "../../utils/api-url";
 import { AuthContext } from "../../App";
-import { HIDE_LOADER, SHOW_LOADER } from "../../utils/action-types";
 import {
   FETCH_LIVE_EVENT_FAILURE,
   FETCH_LIVE_EVENT_REQUEST,
   FETCH_LIVE_EVENT_SUCCESS,
-} from "../action-types";
+  HIDE_LOADER,
+  SHOW_LOADER,
+} from "../../utils/action-types";
 
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import Card from "./Card";

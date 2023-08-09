@@ -2,20 +2,21 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useEffect, useReducer, useState } from "react";
 
-import { AuthContext } from "../../../App";
-import { apiUrl } from "../../../utils/api-url";
 import { refreshToken } from "../../../utils/refresh-token";
-import { HIDE_LOADER, SHOW_LOADER } from "../../../utils/action-types";
+import { apiUrl } from "../../../utils/api-url";
+import { AuthContext } from "../../../App";
 import {
   FETCH_USERS_FAILURE,
   FETCH_USERS_REQUEST,
   FETCH_USERS_SUCCESS,
-} from "../action-types";
+  HIDE_LOADER,
+  SHOW_LOADER,
+} from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
+import Pagination from "../../../components/Pagination";
 import { Loader } from "../../../components/Loader";
 import UserCard from "./components/UserCard";
-import Pagination from "../../../components/Pagination";
 
 const initialState = {
   users: [],

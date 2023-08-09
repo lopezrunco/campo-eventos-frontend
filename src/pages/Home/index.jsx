@@ -7,7 +7,7 @@ import {
   FETCH_LIVE_EVENTS_FAILURE,
   FETCH_LIVE_EVENTS_REQUEST,
   FETCH_LIVE_EVENTS_SUCCESS,
-} from "../backoffice/action-types";
+} from "../../utils/action-types";
 
 import { ScrollTop } from "../../components/ScrollTop";
 import LiveEventCard from "./components/LiveEventCard";

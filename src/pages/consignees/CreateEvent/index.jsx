@@ -2,7 +2,9 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useReducer } from "react";
 
+// import { cleanTextareas } from "../../../utils/cleanTextareas";
 import { refreshToken } from "../../../utils/refresh-token";
+import { getYoutubeId } from "../../../utils/getYoutubeID";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 import {
@@ -11,12 +13,10 @@ import {
   CREATE_EVENT_SUCCESS,
   FORM_INPUT_CHANGE,
   TAB_CHANGE,
-} from "../action-types";
+} from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
-import { getYoutubeId } from "../../../utils/getYoutubeID";
-import { cleanTextareas } from "../../../utils/cleanTextareas";
 
 const initialState = {
   title: "",

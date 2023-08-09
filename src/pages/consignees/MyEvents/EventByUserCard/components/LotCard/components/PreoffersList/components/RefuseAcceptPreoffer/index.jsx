@@ -8,7 +8,7 @@ import {
   EDIT_PREOFFER_FAILURE,
   EDIT_PREOFFER_REQUEST,
   EDIT_PREOFFER_SUCCESS,
-} from "../../../../../../../../action-types";
+} from "../../../../../../../../../../utils/action-types";
 
 const initialState = {
   isSending: false,

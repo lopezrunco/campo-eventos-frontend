@@ -8,7 +8,7 @@ import {
   GET_PREOFFERS_FAILURE,
   GET_PREOFFERS_REQUEST,
   GET_PREOFFERS_SUCCESS,
-} from "../../../../../action-types";
+} from "../../../../../../../utils/action-types";
 
 import NoVideoMsj from "../../../../../../../components/NoVideoMsj";
 

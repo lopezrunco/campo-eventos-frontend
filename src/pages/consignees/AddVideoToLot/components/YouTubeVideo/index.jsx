@@ -10,7 +10,7 @@ import {
   EDIT_LOT_REQUEST,
   EDIT_LOT_SUCCESS,
   FORM_INPUT_CHANGE,
-} from "../../../action-types";
+} from "../../../../../utils/action-types";
 
 const initialState = {
   YTVideoSrc: undefined,

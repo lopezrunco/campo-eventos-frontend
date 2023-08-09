@@ -493,16 +493,15 @@ export default App;
 
 // TO DO:
 
+// - Tratar de que al crear remate en vivo se pueda subir imagen en el mismo lugar
 // - Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
 // - En la seccion home - en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision
 // - Sacar campo de token
 // - Chequear manejo de errores en los formularios
-// - Tratar de que al crear remate en vivo se pueda subir imagen en el mismo lugar
 // - Chequear validaciones de usuarios tanto en front como backend
 // - Que el usuario pueda subir foto de perfil o por defecto mostrar una imagen generica
 // - Arreglar los meta count en los endpoints y mostrarlos segun el caso
 // - Ajustar estilos Desktop y celulares (Redondear todas las imagenes & iframes)
-// - Pasar todas las actions types a un solo archivo
 // - Reforzar seguridad
 // - Testing
 // - Notificaciones a usuarios mediante email, sms o wapp
