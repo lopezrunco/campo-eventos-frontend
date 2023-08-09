@@ -5,6 +5,12 @@ import React, { useContext, useReducer } from "react";
 const CLOUDINARY_ID = import.meta.env.VITE_CLOUDINARY_ID;
 import { refreshToken } from "../../../utils/refresh-token";
 import { AuthContext } from "../../../App";
+import {
+  UPLOAD_IMAGE_FAILURE,
+  UPLOAD_IMAGE_REQUEST,
+  UPLOAD_IMAGE_SUCCESS,
+  UPLOAD_INPUT_CHANGE,
+} from "../../action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
@@ -20,25 +26,25 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "UPLOAD_INPUT_CHANGE":
+    case UPLOAD_INPUT_CHANGE:
       return {
         ...state,
         image: action.payload,
       };
-    case "UPLOAD_IMAGE_REQUEST":
+    case UPLOAD_IMAGE_REQUEST:
       return {
         ...state,
         isSending: true,
         hasError: false,
       };
-    case "UPLOAD_IMAGE_SUCCESS":
+    case UPLOAD_IMAGE_SUCCESS:
       return {
         ...state,
         url: action.payload.url,
         appendImageToEvent: true,
         isSending: false,
       };
-    case "UPLOAD_IMAGE_FAILURE":
+    case UPLOAD_IMAGE_FAILURE:
       return {
         ...state,
         isSending: false,
@@ -57,14 +63,14 @@ const UploadEventCover = () => {
 
   const handleUploadInputChange = (imgElement) => {
     dispatch({
-      type: "UPLOAD_INPUT_CHANGE",
+      type: UPLOAD_INPUT_CHANGE,
       payload: imgElement,
     });
   };
 
   const handleImageSubmit = () => {
     dispatch({
-      type: "UPLOAD_IMAGE_REQUEST",
+      type: UPLOAD_IMAGE_REQUEST,
     });
 
     const data = new FormData();
@@ -85,7 +91,7 @@ const UploadEventCover = () => {
       })
       .then((data) => {
         dispatch({
-          type: "UPLOAD_IMAGE_SUCCESS",
+          type: UPLOAD_IMAGE_SUCCESS,
           payload: data,
         });
       })
@@ -99,7 +105,7 @@ const UploadEventCover = () => {
           navigate("/forbidden");
         } else {
           dispatch({
-            type: "UPLOAD_IMAGE_FAILURE",
+            type: UPLOAD_IMAGE_FAILURE,
           });
         }
       });
@@ -146,9 +152,7 @@ const UploadEventCover = () => {
                 </button>
               </div>
               <div className="file-preview">
-                {state.url !== "" && (
-                  <img src={state.url} />
-                )}
+                {state.url !== "" && <img src={state.url} />}
                 {state.appendImageToEvent && (
                   <AppendImage eventId={id} imageName={state.url} />
                 )}
