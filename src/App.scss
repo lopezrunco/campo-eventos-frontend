@@ -254,6 +254,24 @@ input[type="file"] {
   }
 }
 
+.error-message {
+  background-color: lighten($color: $danger-color, $amount: 20);
+  color: $light-color;
+  padding: 1rem;
+  border-radius: $sm-border-radius;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+
+  &::before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f071";
+    font-weight: 900;
+    font-size: 2rem;
+  }
+}
+
 .close-icon {
   position: absolute;
   top: 1rem;

@@ -64,7 +64,7 @@ function Register() {
         setData({
           ...data,
           isSubmitting: false,
-          errorMessage: "Invalid credentials",
+          errorMessage: "Sus datos son incorrectos. Intente nuevamente.",
         });
       });
   };
@@ -131,7 +131,7 @@ function Register() {
                 </button>
 
                 {data.errorMessage && (
-                  <span className="form-error">{data.errorMessage}</span>
+                  <span className="error-message">{data.errorMessage}</span>
                 )}
               </div>
 

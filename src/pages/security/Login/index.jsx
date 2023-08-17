@@ -70,7 +70,7 @@ function Login() {
         setData({
           ...data,
           isSubmitting: false,
-          errorMessage: "Invalid credentials",
+          errorMessage: "Sus datos son incorrectos. Intente nuevamente.",
         });
       });
   };
@@ -116,17 +116,6 @@ function Login() {
                   Contraseña *
                 </label>
 
-                <label htmlFor="token">
-                  <input
-                    type="password"
-                    value={data.token}
-                    onChange={handleInputChange}
-                    name="token"
-                    id="token"
-                  />
-                  Token
-                </label>
-
                 <button
                   onClick={handleFormSubmit}
                   disabled={data.isSubmitting}
@@ -137,7 +126,7 @@ function Login() {
                 </button>
 
                 {data.errorMessage && (
-                  <span className="form-error">{data.errorMessage}</span>
+                  <span className="error-message">{data.errorMessage}</span>
                 )}
               </div>
 
