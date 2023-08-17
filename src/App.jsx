@@ -494,7 +494,6 @@ export default App;
 // TO DO:
 
 // - Darle al administrador poder de eliminar cualquier remate independientemente de su creador
-// - Permitir registro de usuarios con espacios
 // - Tratar de que al crear remate en vivo se pueda subir imagen en el mismo lugar
 // - Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
 // - En la seccion home - en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision

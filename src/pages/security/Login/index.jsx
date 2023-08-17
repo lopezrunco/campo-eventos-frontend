@@ -92,7 +92,7 @@ function Login() {
               <div className="login-container">
                 <h1>Iniciar sesión</h1>
                 <div className="separator"></div>
-                <p>Inicie sesión para acceder a la plataforma de preofertas.</p>
+                <p className="text-center">Inicie sesión para acceder a la plataforma de preofertas.</p>
 
                 <label htmlFor="nickname">
                   <input

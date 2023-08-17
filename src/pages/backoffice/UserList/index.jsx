@@ -20,6 +20,7 @@ import UserCard from "./components/UserCard";
 
 const initialState = {
   users: [],
+  usercount: 0,
   isFetching: false,
   hasError: false,
 };
@@ -37,6 +38,7 @@ const reducer = (state, action) => {
         ...state,
         isFetching: false,
         users: action.payload.users,
+        usercount: action.payload.meta.count,
       };
     case FETCH_USERS_FAILURE:
       return {
@@ -138,7 +140,7 @@ function UserList() {
               {!state.hasError && (
                 <h3 className="mb-4">
                   <i className="fas fa-user me-3"></i> Usuarios activos:{" "}
-                  {state.users.length}
+                  {state.usercount}
                 </h3>
               )}
             </div>

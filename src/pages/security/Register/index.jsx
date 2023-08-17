@@ -1,16 +1,14 @@
 import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import { apiUrl } from "../../../utils/api-url";
-import { AuthContext } from "../../../App";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 
 import "./style.scss";
 
 function Register() {
-  const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const initialState = {
@@ -86,7 +84,7 @@ function Register() {
               <div className="register-container">
                 <h1>Registrarme</h1>
                 <div className="separator"></div>
-                <p>Regístrese para acceder a la plataforma de preofertas.</p>
+                <p className="text-center">Regístrese para acceder a la plataforma de preofertas.</p>
 
                 <label htmlFor="nickname">
                   <input
@@ -96,7 +94,7 @@ function Register() {
                     name="nickname"
                     id="nickname"
                   />
-                  Nombre de usuario *
+                  Nombre de usuario (Sólo números y letras) *
                 </label>
 
                 <label htmlFor="email">
