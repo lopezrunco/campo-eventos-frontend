@@ -89,6 +89,14 @@ input[type="file"] {
   text-transform: capitalize;
 }
 
+.last-preoffer-tag {
+  color: $accent-color;
+  padding: 0.4rem 1.6rem;
+  background-color: $primary-medium-dark-color;
+  border-radius: $sm-border-radius;
+  width: max-content;
+}
+
 .preoffer {
   display: flex;
   flex-direction: row;

@@ -493,7 +493,6 @@ export default App;
 
 // TO DO:
 
-// - Chequear que no deja preofertar con nuevo usuario
 // - Averiguar como dar opcion a recuperar contraseña
 // - Cuando se elimina el remate la preoferta queda colgada. Separar entre preofertas activas (remates que existen) y preofertas no activas (remates terminados o eliminados). Que preofertas en grupo de no activas tengan la opcion de ser elimiadas (por el usuario que las hizo) 
 // - Que se permita al usuario editar sus datos de contacto
@@ -505,7 +504,6 @@ export default App;
 // - En formulario de Crear lote que solo el titulo sea obligatorio 
 // - En formulario de crear lote agregar campo de RP y pedigree (con bastante espacio)
 // - En Crear remate que no sean desplegables los formularios, ya que sera uno comun para todos. Y que el usuario escriba el tipo de remate manualmente.
-// - Que el boton de Ultima preoferta aceptada este destacado
 // - Darle al administrador poder de eliminar cualquier remate independientemente de su creador
 
 // - Terminar codigo de cleaningTextareas para evitar errores al hacer break lines

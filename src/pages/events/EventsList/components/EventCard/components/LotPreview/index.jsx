@@ -69,10 +69,10 @@ function LotPreview({
       return null;
     } else {
       return (
-        <b>
-          Mayor preoferta aceptada:{" "}
-          {amountList.sort((a, b) => a - b).reverse()[0]}
-        </b>
+        <span className="last-preoffer-tag">
+          Mayor preoferta:{" "}
+          <b>U$S {amountList.sort((a, b) => a - b).reverse()[0]}</b>
+        </span>
       );
     }
   };
@@ -165,16 +165,16 @@ function LotPreview({
                 <br />
               </>
             )}
-            {state.data ? (
-              state.data.length > 0 ? (
-                getLastAcceptedPreoffer(state.data)
-              ) : (
-                <b>Sin preofertas</b>
-              )
-            ) : (
-              "Cargando..."
-            )}
           </p>
+          {state.data ? (
+            state.data.length > 0 ? (
+              getLastAcceptedPreoffer(state.data)
+            ) : (
+              <b>Sin preofertas</b>
+            )
+          ) : (
+            "Cargando..."
+          )}
           <a className="button button-green-grey " href={`/lotes/${lotId}`}>
             Detalles / preofertar <i className="fas fa-chevron-right ms-2"></i>
           </a>
