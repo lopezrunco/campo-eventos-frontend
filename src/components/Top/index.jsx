@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 
-import { aboutData } from "../../data/about";
 import { LOGOUT } from "../../utils/action-types";
 import { AuthContext } from "../../App";
 
@@ -21,19 +20,12 @@ export const Top = () => {
       <div className="container">
         <div className="row">
           <div className="content-wrapper">
-            <div className="social">
-              {aboutData.social.map((socialEl, socialIdx) => (
-                <div className="item" key={socialIdx}>
-                  <a
-                    href={socialEl.link}
-                    title={socialEl.info}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i className={socialEl.iconClassname}></i>
-                  </a>
-                </div>
-              ))}
+            <div className="user-info">
+              {authState.user && (
+                <small>
+                  <i className="fas fa-user"></i> {authState.user.nickname}
+                </small>
+              )}
             </div>
             <div className="user-links">
               {authState.user ? (

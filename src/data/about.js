@@ -14,18 +14,6 @@ export const aboutData = {
         link: 'mailto:campoeventos@gmail.com'
     }],
     social: [{
-        iconClassname: 'fab fa-instagram icon',
-        info: 'Instagram',
-        link: 'https://www.instagram.com/'
-    }, {
-        iconClassname: 'fab fa-facebook-f icon',
-        info: 'Facebook',
-        link: 'https://www.facebook.com/'
-    }, {
-        iconClassname: 'fab fa-twitter icon',
-        info: 'Twitter',
-        link: 'https://twitter.com/'
-    }, {
         iconClassname: 'fab fa-youtube icon',
         info: '@CampoEventos',
         link: 'https://www.youtube.com/@CampoEventos'

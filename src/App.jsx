@@ -493,8 +493,21 @@ export default App;
 
 // TO DO:
 
+// - Chequear que no deja preofertar con nuevo usuario
+// - Averiguar como dar opcion a recuperar contraseña
+// - Cuando se elimina el remate la preoferta queda colgada. Separar entre preofertas activas (remates que existen) y preofertas no activas (remates terminados o eliminados). Que preofertas en grupo de no activas tengan la opcion de ser elimiadas (por el usuario que las hizo) 
+// - Que se permita al usuario editar sus datos de contacto
+// - En Crear remate que los campos de todos (equinos, bovinos, etc) sean los que ahora estan en Remate por pantalla Y agregar Cabaña.
+// - Si se puede que se cargue el afiche desde el formulario de creacion de remate o de inmediato
+// - Que los remates en vivo y los remates preofertas sean una sola entidad. Unir "En vivo" y "Remates" en "Cartelera" y que se muestren todos ahi. "Consignatarios" que sea "Mis remates".
+// - En Administradores - Ver remates que se vean TODOS los remates de TODOS los consignatarios
+// - En el formulario de Crear remate que la categoria sea opcional
+// - En formulario de Crear lote que solo el titulo sea obligatorio 
+// - En formulario de crear lote agregar campo de RP y pedigree (con bastante espacio)
+// - En Crear remate que no sean desplegables los formularios, ya que sera uno comun para todos. Y que el usuario escriba el tipo de remate manualmente.
+// - Que el boton de Ultima preoferta aceptada este destacado
 // - Darle al administrador poder de eliminar cualquier remate independientemente de su creador
-// - Tratar de que al crear remate en vivo se pueda subir imagen en el mismo lugar
+
 // - Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
 // - En la seccion home - en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision
 // - Chequear manejo de errores en los formularios
@@ -505,6 +518,7 @@ export default App;
 // - Reforzar seguridad
 // - Testing
 // - Notificaciones a usuarios mediante email, sms o wapp
+// - A estudiar, pero no hacerlo aún: Administrador que se pueda Aceptar o Rechazar preoferta de cualquiera
 
 // - Manejar cuando el remate esta completado
 // - Que boton de siguiente no se muestre cuando no hay mas paginas
