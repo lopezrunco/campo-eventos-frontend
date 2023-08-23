@@ -11,7 +11,6 @@ export const HIDE_LOADER = 'HIDE_LOADER'
 
 export const FORM_INPUT_CHANGE = 'FORM_INPUT_CHANGE'
 export const UPLOAD_INPUT_CHANGE = 'UPLOAD_INPUT_CHANGE'
-export const TAB_CHANGE = 'TAB_CHANGE'
 
 // File transfer
 

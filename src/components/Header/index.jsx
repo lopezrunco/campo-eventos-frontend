@@ -34,6 +34,9 @@ export const Header = () => {
             <ul className="nav-list">
 
               {/* Public menu */}
+              <li className={`navigation-bar-item ${activeLink === '/remates' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                <a href="/remates" className="nav-link-item" title="Cartelera">Cartelera</a>
+              </li>
               <li className={`navigation-bar-item ${activeLink === '/' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
                 <a href='/' className="nav-link-item" title='En vivo'>En vivo</a>
               </li>
@@ -45,11 +48,8 @@ export const Header = () => {
               {/* Basic users */}
               {authState.user && ( 
                 <React.Fragment>
-                  <li className={`navigation-bar-item ${activeLink === '/remates' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
-                    <a href="/remates" className="nav-link-item" title="Remates">Remates</a>
-                  </li>
-                    <li className={`navigation-bar-item ${activeLink === '/mis-preofertas' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
-                    <a href="/mis-preofertas" className="nav-link-item" title="Mis preofertas">Mis preofertas</a>
+                  <li className={`navigation-bar-item ${activeLink === '/mis-preofertas' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                  <a href="/mis-preofertas" className="nav-link-item" title="Mis preofertas">Mis preofertas</a>
                   </li>
                 </React.Fragment>
               )}

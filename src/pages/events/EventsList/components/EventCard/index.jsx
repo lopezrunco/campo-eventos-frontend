@@ -55,6 +55,7 @@ function EventCard({ event }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const navigate = useNavigate();
+  let showLiveEvent = event.startBroadcastTimestamp > new Date().toISOString();
 
   const handleClick = () => {
     dispatch({
@@ -100,137 +101,117 @@ function EventCard({ event }) {
   };
 
   return (
-    <React.Fragment>
-      <div className="col-12 event-card">
-        <div className="border mb-3">
-          <div className="row">
-            <div className="col-lg-9">
-              <div className="p-4">
-                <h6>{event.title}</h6>
-                <p className="date">{getDate(event.eventTimestamp)}</p>
-                {event.description && (
-                  <p>
-                    <b>Descripción:</b> {event.description}
+    showLiveEvent && (
+      <React.Fragment>
+        <div className="col-12 event-card">
+          <div className="border mb-3">
+            <div className="row">
+              <div className="col-lg-9">
+                <div className="p-4">
+                  <h6>{event.title}</h6>
+                  <p className="date">
+                    {getDate(event.startBroadcastTimestamp)}
                   </p>
-                )}
-                <p>
-                  {event.company && (
-                    <>
-                      <b>Remata:</b> {event.company}
-                    </>
+                  {event.description && (
+                    <p>
+                      <b>Descripción:</b> {event.description}
+                    </p>
                   )}
-                  {event.organizer && (
-                    <>
-                      ︱<b>Organiza:</b> {event.organizer}
-                    </>
-                  )}
-                  {event.location && (
-                    <>
-                      ︱<b>Lugar:</b> {event.location}
-                    </>
-                  )}
-                  {event.funder && (
-                    <>
-                      ︱<b>Financiación:</b> {event.funder}
-                    </>
-                  )}
-                </p>
-
-                <p>
-                  {event.rp && (
-                    <>
-                      <b>RP:</b> {event.rp}
-                    </>
-                  )}
-                  {event.category && (
-                    <>
-                      ︱<b>Categoría:</b> {event.category}
-                    </>
-                  )}
-                  {event.weight && (
-                    <>
-                      ︱<b>Peso:</b> {event.weight}
-                    </>
-                  )}
-                  {event.birthDate && (
-                    <>
-                      ︱<b>Nacimiento:</b> {event.birthDate}
-                    </>
-                  )}
-                  {event.pedigree && (
-                    <>
-                      ︱<b>Pedigree:</b> {event.pedigree}
-                    </>
-                  )}
-                  {event.breeder && (
-                    <>
-                      ︱<b>Cabaña:</b> {event.breeder}
-                    </>
-                  )}
-                </p>
-
-                {event.other && (
                   <p>
-                    <b>Otro dato:</b> {event.other}
+                    {event.category && (
+                      <>
+                        <b>Categoría:</b> {event.category}
+                      </>
+                    )}
+                    {event.company && (
+                      <>
+                        ︱<b>Remata:</b> {event.company}
+                      </>
+                    )}
+                    {event.organizer && (
+                      <>
+                        ︱<b>Organiza:</b> {event.organizer}
+                      </>
+                    )}
+                    {event.breeder && (
+                      <>
+                        ︱<b>Cabaña:</b> {event.breeder}
+                      </>
+                    )}
+                    {event.funder && (
+                      <>
+                        ︱<b>Financiación:</b> {event.funder}
+                      </>
+                    )}
+                    {event.location && (
+                      <>
+                        ︱<b>Lugar:</b> {event.location}
+                      </>
+                    )}
+                    {event.duration && (
+                      <>
+                        ︱<b>Duración:</b> {event.duration} hs.
+                      </>
+                    )}
                   </p>
-                )}
 
-                {!state.showLots ? (
-                  <a className="button view-more me-3" onClick={handleClick}>
-                    <i className="fas fa-chevron-down"></i> Ver lotes /
-                    Preofertar
-                  </a>
-                ) : null}
+                  {!state.showLots ? (
+                    <a className="button view-more me-3" onClick={handleClick}>
+                      <i className="fas fa-chevron-down"></i> Ver lotes /
+                      Preofertar
+                    </a>
+                  ) : null}
 
-                {event.broadcastLink && (
-                  <a
-                    className="button view-more"
-                    href={`https://www.youtube.com/watch/${event.broadcastLink}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i className="fas fa-play"></i> Enlace transmisión
-                  </a>
-                )}
-              </div>
-            </div>
-            <div className="col-lg-3">
-              <span className="event-type-tag">{event.eventType}</span>
-              {event.imageUrl ? (
-                <img src={event.imageUrl} width="100%" />
-              ) : (
-                <img src={imgUrl} width="100%" />
-              )}
-            </div>
-          </div>
-          {state.showLots && (
-            <div className="lot-list-container">
-              <div className="container">
-                <div className="row">
-                  {state.data.length === 0
-                    ? "Aún no hay lotes en este remate"
-                    : null}
-                  {state.data.map((lot) => {
-                    return (
-                      <LotPreview
-                        key={lot.id}
-                        lotId={lot.id}
-                        lotTitle={lot.title}
-                        lotvideoId={lot.YTVideoSrc}
-                        lotCategory={lot.category}
-                        animals={lot.animals}
-                        animalName={lot.name}
-                        location={lot.location}
-                      />
-                    );
-                  })}
+                  {event.broadcastLinkId && (
+                    <a
+                      className="button view-more"
+                      href={`https://www.youtube.com/watch/${event.broadcastLinkId}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <i className="fas fa-play"></i> Enlace transmisión
+                    </a>
+                  )}
                 </div>
               </div>
+              <div className="col-lg-3">
+                <span className="event-type-tag">{event.eventType}</span>
+                {event.coverImgName ? (
+                  <img src={event.coverImgName} width="100%" />
+                ) : (
+                  <img src={imgUrl} width="100%" />
+                )}
+              </div>
             </div>
-          )}
+            {state.showLots && (
+              <div className="lot-list-container">
+                <div className="container">
+                  <div className="row">
+                    {state.data.length === 0
+                      ? "Aún no hay lotes en este remate"
+                      : null}
+                    {state.data.map((lot) => {
+                      return (
+                        <LotPreview
+                          key={lot.id}
+                          lotId={lot.id}
+                          lotTitle={lot.title}
+                          lotvideoId={lot.YTVideoSrc}
+                          lotCategory={lot.category}
+                          animals={lot.animals}
+                          animalName={lot.name}
+                          location={lot.location}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-    </React.Fragment>
+      </React.Fragment>
+    )
   );
 }
 

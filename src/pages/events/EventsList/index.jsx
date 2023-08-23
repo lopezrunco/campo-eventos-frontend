@@ -8,21 +8,21 @@ import {
 } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { apiUrl } from "../../../utils/api-url";
 import { refreshToken } from "../../../utils/refresh-token.js";
+import { getDate } from "../../../utils/get-date";
+import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 import {
   FETCH_EVENTS_FAILURE,
   FETCH_EVENTS_REQUEST,
   FETCH_EVENTS_SUCCESS,
-  HIDE_LOADER,
-  SHOW_LOADER,
 } from "../../../utils/action-types";
 
 import EventCard from "./components/EventCard";
-import { Loader } from "../../../components/Loader";
-import { Breadcrumbs } from "../../../components/Breadcrumbs";
+import { Intro } from "../../../components/Intro";
 import Pagination from "../../../components/Pagination";
+import { Title } from "../../../components/Title";
+import LoadingMessage from "../../../components/LoadingMessage/index.jsx";
 
 // Create context to manage events
 export const EventsContext = createContext();
@@ -70,6 +70,8 @@ function EventsList() {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  let currentDate = new Date().toJSON();
+
   // Handle pagination
   const [currentPage, setCurentPage] = useState(1);
   const itemsPerPage = 6;
@@ -82,9 +84,6 @@ function EventsList() {
 
   useEffect(() => {
     if (authState.token) {
-      authDispatch({
-        type: SHOW_LOADER,
-      });
       dispatch({
         type: FETCH_EVENTS_REQUEST,
       });
@@ -120,11 +119,6 @@ function EventsList() {
               type: FETCH_EVENTS_FAILURE,
             });
           }
-        })
-        .finally(() => {
-          authDispatch({
-            type: HIDE_LOADER,
-          });
         });
     }
   }, [
@@ -143,15 +137,76 @@ function EventsList() {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Remates"} />
+        <Intro />
       </motion.div>
+
+      <div className="broadcast-section">
+        <div className="container">
+          <div className="row">
+            {state.eventsList.map((el, i) => {
+              let finishDate = new Date(
+                new Date(el.startBroadcastTimestamp).setHours(
+                  new Date(el.startBroadcastTimestamp).getHours() + el.duration
+                )
+              ).toJSON();
+
+              return el.startBroadcastTimestamp < currentDate &&
+                finishDate > currentDate ? (
+                <div key={i} className="col-12 items-container">
+                  {i === 0 ? <Title title="En vivo" /> : null}
+                  <div className="item">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${el.broadcastLinkId}`}
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    ></iframe>
+                    <div className="event-description">
+                      <h2>{el.title}</h2>
+                      <span className="event-date">
+                        <i className="fas fa-calendar-alt"></i>{" "}
+                        {getDate(el.startBroadcastTimestamp)}
+                      </span>
+                      <span>
+                        <b>Lugar: </b>
+                        {el.location}
+                      </span>
+                      <span>
+                        <b>Organiza: </b>
+                        {el.organizer}
+                      </span>
+                      <a
+                        className="button button-light-outline"
+                        href={`https://www.youtube.com/watch/${el.broadcastLinkId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <i className="fas fa-play"></i> Ver en vivo
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ) : null;
+            })}
+          </div>
+        </div>
+      </div>
+
       <section className="events">
         <article className="container">
+          <Title
+            title="Cartelera de remates"
+            subtitle="Estos son los próximos remates que estaremos transmitiendo en vivo."
+          />
           <div className="row">
             <div className="col-12">
               <div className="row">
                 {state.isFetching ? (
-                  <Loader />
+                  <LoadingMessage
+                    title="Cargando eventos..."
+                    message="Esto puede tardar un poco dependiendo de la cantidad de eventos en nuestro sistema."
+                  />
                 ) : state.hasError ? (
                   <p>Error al obtener los datos</p>
                 ) : (
