@@ -83,10 +83,10 @@ function EventsList() {
   }
 
   useEffect(() => {
-    if (authState.token) {
-      dispatch({
-        type: FETCH_EVENTS_REQUEST,
-      });
+    // if (authState.token) {
+    //   dispatch({
+    //     type: FETCH_EVENTS_REQUEST,
+    //   });
 
       fetch(apiUrl(`events?page=${currentPage}&itemsPerPage=${itemsPerPage}`), {
         headers: {
@@ -120,7 +120,7 @@ function EventsList() {
             });
           }
         });
-    }
+    // }
   }, [
     authDispatch,
     authState.token,

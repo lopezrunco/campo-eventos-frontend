@@ -34,12 +34,9 @@ export const Header = () => {
             <ul className="nav-list">
 
               {/* Public menu */}
-              <li className={`navigation-bar-item ${activeLink === '/remates' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
-                <a href="/remates" className="nav-link-item" title="Cartelera">Cartelera</a>
+              <li className={`navigation-bar-item ${activeLink === '/' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                <a href="/" className="nav-link-item" title="Cartelera">Cartelera</a>
               </li>
-              {/* <li className={`navigation-bar-item ${activeLink === '/' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
-                <a href='/' className="nav-link-item" title='En vivo'>En vivo</a>
-              </li> */}
 
               <li className={`navigation-bar-item ${activeLink === '/servicios' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
                 <a href='/servicios' className="nav-link-item" title='Servicios'>Servicios</a>

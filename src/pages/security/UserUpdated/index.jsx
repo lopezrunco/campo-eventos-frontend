@@ -5,10 +5,10 @@ function UserUpdated() {
     <SuccessMessage
       title="Datos actualizados"
       message="Ahora podrá hacer preofertas en la plataforma."
-      redirectingMessage="Redirigiendo a Remates..."
+      redirectingMessage="Redirigiendo a Cartelera..."
       duration="5000"
       breadcrumbsLocation="Datos actualizados"
-      navigateTo="/remates"
+      navigateTo="/"
     />
   );
 }

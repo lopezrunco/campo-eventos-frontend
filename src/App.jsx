@@ -433,14 +433,6 @@ function App() {
               }
             />
             <Route
-              path="/remates"
-              element={
-                <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
-                  <EventsList />
-                </RequireAuth>
-              }
-            />
-            <Route
               path="/usuario-actualizado"
               element={
                 <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
@@ -469,7 +461,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="//user-created" element={<UserCreated />} />
             <Route path="/remates-vivo/:id" element={<LiveEventById />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<EventsList />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
@@ -493,10 +485,14 @@ export default App;
 
 // TO DO:
 
-// - Que los remates VIVO y para PREOFERTA sean accesibles a todo publico (Como "Cartelera"), pero que aparezca un boton REGISTRESE/LOGUESE PARA PREOFERTAR y ahi que le pida tambien los datos personales. Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
+// - Inmediatamente despues de que el usuario se registra (o en el mismo momento) que se le pidan los datos personales.
+// - Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
+// - En Administradores - Ver remates que se vean TODOS los remates de TODOS los consignatarios
+// DEPLOY
+
+// - Limpiar logica de remates vivo que ya no se usa
 // - Mis remates que tenga colores mas oscuros tipo administrador
 // - Si se puede que se cargue el afiche desde el formulario de creacion de remate o de inmediato
-// - En Administradores - Ver remates que se vean TODOS los remates de TODOS los consignatarios
 // - Averiguar como dar opcion a recuperar contraseña
 // - Cuando se elimina el remate la preoferta queda colgada. Separar entre preofertas activas (remates que existen) y preofertas no activas (remates terminados o eliminados). Que preofertas en grupo de no activas tengan la opcion de ser elimiadas (por el usuario que las hizo) 
 // - Que se permita al usuario editar sus datos de contacto
@@ -523,3 +519,4 @@ export default App;
 // - Reducir codigo repetido
 // - Implementar sistema de tokens solo para usuarios administradores
 // - Al registrarse, que el usuario no tenga que loguearse (ahora se hace para evi9tar error de id _id)
+// - Arreglar pestañeo de 404 cuando en algunos cambios de pagina

@@ -95,6 +95,13 @@ input[type="file"] {
   background-color: $primary-medium-dark-color;
   border-radius: $sm-border-radius;
   width: max-content;
+
+  // Styles for use as a link
+  &:hover,
+  &:active {
+    color: $accent-color;
+    background-color: darken($color: $primary-medium-dark-color, $amount: 3);
+  }
 }
 
 .preoffer {

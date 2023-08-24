@@ -5,10 +5,10 @@ function PreOfferDone() {
     <SuccessMessage
       title="¡Exito!"
       message="Su preoferta a sido realizada correctamente."
-      redirectingMessage="Redirigiendo a Remates..."
+      redirectingMessage="Redirigiendo a Cartelera..."
       duration="5000"
       breadcrumbsLocation="Preoferta realizada"
-      navigateTo="/remates"
+      navigateTo="/"
     />
   );
 }

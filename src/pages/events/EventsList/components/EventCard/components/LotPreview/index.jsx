@@ -154,9 +154,14 @@ function LotPreview({
           ) : (
             "Cargando..."
           )}
-          <a className="button button-green-grey " href={`/lotes/${lotId}`}>
-            Detalles / preofertar <i className="fas fa-chevron-right ms-2"></i>
-          </a>
+          {authState.token 
+            ? <a className="last-preoffer-tag" href={`/lotes/${lotId}`}>
+                Detalles / preofertar <i className="fas fa-chevron-right ms-2"></i>
+              </a>
+            : <a className="last-preoffer-tag" href={'login'}>
+                Inicie sesión para preofertar <i className="fas fa-chevron-right ms-2"></i>
+              </a>
+          }
         </div>
       </div>
     </div>
