@@ -104,11 +104,11 @@ function EventCard({ event }) {
     showLiveEvent && (
       <React.Fragment>
         <div className="col-12 event-card">
-          <div className="border mb-3">
+          <div className="item mb-3">
             <div className="row">
               <div className="col-lg-9">
                 <div className="p-4">
-                  <h6>{event.title}</h6>
+                  <h2>{event.title}</h2>
                   <p className="date">
                     {getDate(event.startBroadcastTimestamp)}
                   </p>
@@ -121,36 +121,42 @@ function EventCard({ event }) {
                     {event.category && (
                       <>
                         <b>Categoría:</b> {event.category}
+                        {"︱"}
                       </>
                     )}
                     {event.company && (
                       <>
-                        ︱<b>Remata:</b> {event.company}
+                        <b>Remata:</b> {event.company}
+                        {"︱"}
                       </>
                     )}
                     {event.organizer && (
                       <>
-                        ︱<b>Organiza:</b> {event.organizer}
+                        <b>Organiza:</b> {event.organizer}
+                        {"︱"}
                       </>
                     )}
                     {event.breeder && (
                       <>
-                        ︱<b>Cabaña:</b> {event.breeder}
+                        <b>Cabaña:</b> {event.breeder}
+                        {"︱"}
                       </>
                     )}
                     {event.funder && (
                       <>
-                        ︱<b>Financiación:</b> {event.funder}
+                        <b>Financiación:</b> {event.funder}
+                        {"︱"}
                       </>
                     )}
                     {event.location && (
                       <>
-                        ︱<b>Lugar:</b> {event.location}
+                        <b>Lugar:</b> {event.location}
+                        {"︱"}
                       </>
                     )}
                     {event.duration && (
                       <>
-                        ︱<b>Duración:</b> {event.duration} hs.
+                        <b>Duración (hs.):</b> {event.duration} hs.
                       </>
                     )}
                   </p>

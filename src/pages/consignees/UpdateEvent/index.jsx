@@ -388,7 +388,7 @@ function UpdateEvent() {
 
                 <div className="col-lg-6">
                   <label htmlFor="duration">
-                    Duración
+                    Duración (hs.)
                     <input
                       type="number"
                       value={state.duration}

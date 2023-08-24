@@ -120,8 +120,8 @@ function Card({ myEvent }) {
       <div className="row">
         <div className="col-lg-3 mb-5">
           <span className="event-type-tag">{myEvent.eventType}</span>
-          {myEvent.imageUrl ? (
-            <img src={myEvent.imageUrl} width="100%" />
+          {myEvent.coverImgName ? (
+            <img src={myEvent.coverImgName} width="100%" />
           ) : (
             <img src={imgUrl} width="100%" />
           )}
@@ -136,7 +136,9 @@ function Card({ myEvent }) {
           <div className="d-flex justify-content-between align-items-center mb-4">
             <div>
               <h4 className="mb-0">{myEvent.title}</h4>
-              <p className="mt-2 mb-0">{getDate(myEvent.eventTimestamp)}</p>
+              <p className="mt-2 mb-0">
+                {getDate(myEvent.startBroadcastTimestamp)}
+              </p>
             </div>
             <div className="options-buttons">
               <a
@@ -159,85 +161,23 @@ function Card({ myEvent }) {
                 </p>
               </div>
             )}
-            <div className="col-lg-4">
-              {myEvent.company && (
-                <p>
-                  <b>Remata: </b>
-                  {myEvent.company}
-                </p>
-              )}
-              {myEvent.funder && (
-                <p>
-                  <b>Financiación: </b>
-                  {myEvent.funder}
-                </p>
-              )}
-              {myEvent.rp && (
-                <p>
-                  <b>RP: </b>
-                  {myEvent.rp}
-                </p>
-              )}
-              {myEvent.category && (
-                <p>
-                  <b>Categoría: </b>
-                  {myEvent.category}
-                </p>
-              )}
+            <div className="col-12">
+              <p>
+                {myEvent.eventType && <><b>Tipo de evento:</b> {myEvent.eventType}{"︱"}</>}
+                {myEvent.category && <><b>Categoría:</b> {myEvent.category}{"︱"}</>}
+                {myEvent.company && <><b>Remata:</b> {myEvent.company}{"︱"}</>}
+                {myEvent.organizer && <><b>Organiza:</b> {myEvent.organizer}{"︱"}</>}
+                {myEvent.breeder && <><b>Cabaña:</b> {myEvent.breeder}{"︱"}</>}
+                {myEvent.funder && <><b>Financia:</b> {myEvent.funder}{"︱"}</>}
+                {myEvent.location && <><b>Lugar:</b> {myEvent.location}{"︱"}</>}
+                {myEvent.duration && <><b>Duración:</b> {myEvent.duration} hs.</>}
+              </p>
             </div>
-            <div className="col-lg-4">
-              {myEvent.organizer && (
-                <p>
-                  <b>Organiza: </b>
-                  {myEvent.organizer}
-                </p>
-              )}
-              {myEvent.location && (
-                <p>
-                  <b>Lugar: </b>
-                  {myEvent.location}
-                </p>
-              )}
-              {myEvent.weight && (
-                <p>
-                  <b>Peso: </b>
-                  {myEvent.weight}
-                </p>
-              )}
-              {myEvent.birthDate && (
-                <p>
-                  <b>Nacimiento: </b>
-                  {myEvent.birthDate}
-                </p>
-              )}
-            </div>
-            <div className="col-lg-4">
-              {myEvent.pedigree && (
-                <p>
-                  <b>Pedigree: </b>
-                  {myEvent.pedigree}
-                </p>
-              )}
-              {myEvent.breeder && (
-                <p>
-                  <b>Cabaña: </b>
-                  {myEvent.breeder}
-                </p>
-              )}
-            </div>
-            {myEvent.other && (
-              <div className="col-12">
-                <p>
-                  <b>Otro dato: </b>
-                  {myEvent.other}
-                </p>
-              </div>
-            )}
           </div>
-          {myEvent.broadcastLink && (
+          {myEvent.broadcastLinkId && (
             <a
               className="button view-more"
-              href={`https://www.youtube.com/watch/${myEvent.broadcastLink}`}
+              href={`https://www.youtube.com/watch/${myEvent.broadcastLinkId}`}
               target="_blank"
               rel="noreferrer"
             >

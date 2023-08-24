@@ -493,11 +493,12 @@ export default App;
 
 // TO DO:
 
-// - Que los remates VIVO y para PREOFERTA sean accesibles a todo publico (Como "Cartelera"), pero que aparezca un boton REGISTRESE/LOGUESE PARA PREOFERTAR y ahi que le pida tambien los datos personales.
-// - Si se puede que se cargue el afiche desde el formulario de creacion de remate o de inmediato
-// - En Administradores - Ver remates que se vean TODOS los remates de TODOS los consignatarios
 // - En formulario de Crear lote que solo el titulo sea obligatorio 
 // - En formulario de crear lote agregar campo de RP y pedigree (con bastante espacio)
+// - Que los remates VIVO y para PREOFERTA sean accesibles a todo publico (Como "Cartelera"), pero que aparezca un boton REGISTRESE/LOGUESE PARA PREOFERTAR y ahi que le pida tambien los datos personales. Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
+// - Mis remates que tenga colores mas oscuros tipo administrador
+// - Si se puede que se cargue el afiche desde el formulario de creacion de remate o de inmediato
+// - En Administradores - Ver remates que se vean TODOS los remates de TODOS los consignatarios
 // - Averiguar como dar opcion a recuperar contraseña
 // - Cuando se elimina el remate la preoferta queda colgada. Separar entre preofertas activas (remates que existen) y preofertas no activas (remates terminados o eliminados). Que preofertas en grupo de no activas tengan la opcion de ser elimiadas (por el usuario que las hizo) 
 // - Que se permita al usuario editar sus datos de contacto

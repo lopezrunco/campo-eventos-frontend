@@ -1,7 +1,22 @@
 @import '../../../../../Variables.scss';
 
-.lot-list-container {
-    background: $primary-color;
-    color: $medium-light-color;
-    padding: 2rem 1rem;
+.event-card {
+
+    .item {
+        border-radius: $sm-border-radius;
+        border: 1px solid $medium-light-color;
+
+        img {
+            border-radius: 0px $sm-border-radius 0px 0px;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .lot-list-container {
+            background: $primary-color;
+            color: $medium-light-color;
+            padding: 2rem 1rem;
+            border-radius: 0px 0px $sm-border-radius $sm-border-radius;
+        }
+    }
 }

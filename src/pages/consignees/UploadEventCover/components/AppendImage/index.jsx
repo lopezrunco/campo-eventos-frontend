@@ -11,7 +11,7 @@ import {
 } from "../../../../../utils/action-types";
 
 const initialState = {
-  imageUrl: "",
+  coverImgName: "",
   isSending: false,
   hasError: false,
 };
@@ -28,7 +28,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         isSending: false,
-        imageUrl: action.payload.imageUrl,
+        coverImgName: action.payload.coverImgName,
       };
     case EDIT_EVENT_FAILURE:
       return {
@@ -58,7 +58,7 @@ function AppendImage({ eventId, imageName }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        imageUrl: imageName,
+        coverImgName: imageName,
       }),
     })
       .then((response) => {
