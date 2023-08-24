@@ -53,7 +53,7 @@ function LotPreview({
   lotvideoId,
   lotCategory,
   animals,
-  animalName,
+  name,
   location,
 }) {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -140,31 +140,10 @@ function LotPreview({
         <div className="col-lg-8 info-preview">
           {lotTitle && <h4>Lote: {lotTitle}</h4>}
           <p>
-            {lotCategory && (
-              <>
-                <b>Categoría: </b>
-                {lotCategory}
-              </>
-            )}
-            {animals && (
-              <>
-                ︱<b>Cantidad: </b>
-                {animals}
-              </>
-            )}
-            {animalName && (
-              <>
-                ︱<b>Nombre: </b>
-                {animalName}
-              </>
-            )}
-            {location && (
-              <>
-                ︱<b>Ubicación: </b>
-                {location}
-                <br />
-              </>
-            )}
+            {lotCategory && <><b>Categoría: </b>{lotCategory}{"︱"}</>}
+            {name && <><b>Nombre: </b>{name}{"︱"}</>}
+            {animals && <><b>Animales: </b>{animals}{"︱"}</>}
+            {location && <><b>Ubicación: </b>{location}</>}
           </p>
           {state.data ? (
             state.data.length > 0 ? (

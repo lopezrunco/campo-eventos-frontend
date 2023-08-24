@@ -28,6 +28,8 @@ const initialState = {
   category: "",
   name: "",
   description: "",
+  rp: "",
+  pedigree: "",
   animals: "",
   weight: "",
   age: "",
@@ -68,6 +70,8 @@ const reducer = (state, action) => {
         category: action.payload.lot.category,
         name: action.payload.lot.name,
         description: action.payload.lot.description,
+        rp: action.payload.lot.rp,
+        pedigree: action.payload.lot.pedigree,
         animals: action.payload.lot.animals,
         weight: action.payload.lot.weight,
         age: action.payload.lot.age,
@@ -180,6 +184,8 @@ function UpdateLot() {
         category: state.category,
         name: state.name,
         description: state.description,
+        rp: state.rp,
+        pedigree: state.pedigree,
         animals: state.animals,
         weight: state.weight,
         age: state.age,
@@ -261,9 +267,8 @@ function UpdateLot() {
 
                 <div className="col-lg-6">
                   <label htmlFor="category">
-                    Categoría *
+                    Categoría
                     <input
-                      required
                       type="text"
                       value={state.category}
                       onChange={handleInputChange}
@@ -277,7 +282,6 @@ function UpdateLot() {
                   <label htmlFor="name">
                     Nombre
                     <input
-                      required
                       type="text"
                       value={state.name}
                       onChange={handleInputChange}
@@ -301,6 +305,19 @@ function UpdateLot() {
                 </label>
 
                 <div className="col-lg-3">
+                  <label htmlFor="rp">
+                    RP
+                    <input
+                      type="number"
+                      value={state.rp}
+                      onChange={handleInputChange}
+                      name="rp"
+                      id="rp"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-3">
                   <label htmlFor="animals">
                     Cantidad
                     <input
@@ -315,7 +332,7 @@ function UpdateLot() {
 
                 <div className="col-lg-3">
                   <label htmlFor="weight">
-                    Peso
+                    Peso (Kg)
                     <input
                       type="number"
                       value={state.weight}
@@ -379,19 +396,6 @@ function UpdateLot() {
                 </div>
 
                 <div className="col-lg-3">
-                  <label htmlFor="certificate">
-                    Certificado
-                    <input
-                      type="text"
-                      value={state.certificate}
-                      onChange={handleInputChange}
-                      name="certificate"
-                      id="certificate"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-3">
                   <label htmlFor="type">
                     Tipo
                     <input
@@ -405,7 +409,20 @@ function UpdateLot() {
                   </label>
                 </div>
 
-                <div className="col-lg-3">
+                <div className="col-lg-6">
+                  <label htmlFor="pedigree">
+                    Pedigree
+                    <input
+                      type="text"
+                      value={state.pedigree}
+                      onChange={handleInputChange}
+                      name="pedigree"
+                      id="pedigree"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-6">
                   <label htmlFor="location">
                     Lugar
                     <input
@@ -414,6 +431,19 @@ function UpdateLot() {
                       onChange={handleInputChange}
                       name="location"
                       id="location"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-3">
+                  <label htmlFor="certificate">
+                    Certificado
+                    <input
+                      type="text"
+                      value={state.certificate}
+                      onChange={handleInputChange}
+                      name="certificate"
+                      id="certificate"
                     />
                   </label>
                 </div>

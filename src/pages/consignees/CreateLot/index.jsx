@@ -21,6 +21,8 @@ const initialState = {
   category: "",
   name: "",
   description: "",
+  rp: "",
+  pedigree: "",
   animals: "",
   weight: "",
   age: "",
@@ -105,6 +107,8 @@ function CreateLot() {
         category: state.category,
         name: state.name,
         description: state.description,
+        rp: state.rp,
+        pedigree: state.pedigree,
         animals: state.animals,
         weight: state.weight,
         age: state.age,
@@ -193,9 +197,8 @@ function CreateLot() {
 
                 <div className="col-lg-6">
                   <label htmlFor="category">
-                    Categoría *
+                    Categoría
                     <input
-                      required
                       type="text"
                       value={state.category}
                       onChange={handleInputChange}
@@ -230,6 +233,19 @@ function CreateLot() {
                     maxLength="600"
                   ></textarea>
                 </label>
+
+                <div className="col-lg-3">
+                  <label htmlFor="rp">
+                    RP
+                    <input
+                      type="number"
+                      value={state.rp}
+                      onChange={handleInputChange}
+                      name="rp"
+                      id="rp"
+                    />
+                  </label>
+                </div>
 
                 <div className="col-lg-3">
                   <label htmlFor="animals">
@@ -322,6 +338,32 @@ function CreateLot() {
                   </label>
                 </div>
 
+                <div className="col-lg-6">
+                  <label htmlFor="pedigree">
+                    Pedigree
+                    <input
+                      type="text"
+                      value={state.pedigree}
+                      onChange={handleInputChange}
+                      name="pedigree"
+                      id="pedigree"
+                    />
+                  </label>
+                </div>
+
+                <div className="col-lg-6">
+                  <label htmlFor="location">
+                    Lugar
+                    <input
+                      type="text"
+                      value={state.location}
+                      onChange={handleInputChange}
+                      name="location"
+                      id="location"
+                    />
+                  </label>
+                </div>
+
                 <div className="col-lg-3">
                   <label htmlFor="certificate">
                     Certificado
@@ -331,19 +373,6 @@ function CreateLot() {
                       onChange={handleInputChange}
                       name="certificate"
                       id="certificate"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-3">
-                  <label htmlFor="location">
-                    Lugar
-                    <input
-                      type="text"
-                      value={state.location}
-                      onChange={handleInputChange}
-                      name="location"
-                      id="location"
                     />
                   </label>
                 </div>

@@ -205,7 +205,7 @@ function EventCard({ event }) {
                           lotvideoId={lot.YTVideoSrc}
                           lotCategory={lot.category}
                           animals={lot.animals}
-                          animalName={lot.name}
+                          name={lot.name}
                           location={lot.location}
                         />
                       );

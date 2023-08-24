@@ -138,83 +138,17 @@ function LotCard({ lot }) {
             </p>
           )}
           <p>
-            {lot.animals && (
-              <>
-                <b>Cantidad:</b> {lot.animals}
-              </>
-            )}
-            {lot.name && (
-              <>
-                {" "}
-                | <b>Nombre:</b> {lot.name}
-              </>
-            )}
-            {lot.weight && (
-              <>
-                {" "}
-                | <b>Peso(Kg):</b> {lot.weight}
-              </>
-            )}
-            {lot.age && (
-              <>
-                {" "}
-                | <b>Edad:</b> {lot.age}
-              </>
-            )}
-            {lot.class && (
-              <>
-                {" "}
-                | <b>Clase:</b> {lot.class}
-              </>
-            )}
-            {lot.state && (
-              <>
-                {" "}
-                | <b>Estado:</b> {lot.state}
-              </>
-            )}
-            {lot.race && (
-              <>
-                {" "}
-                | <b>Raza:</b> {lot.race}
-              </>
-            )}
-            {lot.certificate && (
-              <>
-                {" "}
-                | <b>Certificado:</b> {lot.certificate}
-              </>
-            )}
-            {lot.location && (
-              <>
-                {" "}
-                | <b>Ubicación:</b> {lot.location}
-              </>
-            )}
-            {lot.type && (
-              <>
-                {" "}
-                | <b>Tipo:</b> {lot.type}
-              </>
-            )}
-            {lot.open && (
-              <>
-                {" "}
-                | <b>Abierto:</b> {lot.open ? "Si" : "No"}
-              </>
-            )}
-            {lot.sold && (
-              <>
-                {" "}
-                | <b>Vendido:</b> {lot.sold ? "Si" : "No"}
-              </>
-            )}
-            {lot.completed && (
-              <>
-                {" "}
-                | <b>Completado:</b> {lot.completed ? "Si" : "No"}
-              </>
-            )}
+            {lot.name && <><b>Nombre:</b> {lot.name}{" | "}</>}
+            {lot.rp && <><b>RP:</b> {lot.rp}{" | "}</>}
+            {lot.pedigree && <><b>Pedigree:</b> {lot.pedigree}{" | "}</>}
+            {lot.animals && <><b>Cantidad:</b> {lot.animals}{" | "}</>}
+            {lot.weight && <><b>Peso(Kg):</b> {lot.weight}{" | "}</>}
+            {lot.age && <><b>Edad:</b> {lot.age}{" | "}</>}
+            {lot.class && <><b>Clase:</b> {lot.class}{" | "}</>}
+            {lot.race && <><b>Raza:</b> {lot.race}{" | "}</>}
+            {lot.location && <><b>Ubicación:</b> {lot.location}{" | "}</>}
+            {lot.certificate && <><b>Certificado:</b> {lot.certificate}{" | "}</>}
+            {lot.type && <><b>Tipo:</b> {lot.type}</>}
           </p>
           <p>
             <b>Observaciones:</b> {lot.observations}
