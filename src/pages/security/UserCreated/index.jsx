@@ -4,11 +4,11 @@ function UserCreated() {
   return (
     <SuccessMessage
       title="Usuario creado"
-      message="Para activarlo, deberá ingresar sus datos nuevamente."
-      redirectingMessage="Redirigiendo a Inicio de sesión..."
+      message="Para que funcione normalmente, recomendamos volver a iniciar sesión."
+      redirectingMessage="Redirigiendo a Cartelera..."
       duration="5000"
       breadcrumbsLocation="Usuario creado"
-      navigateTo="/login"
+      navigateTo="/"
     />
   );
 }

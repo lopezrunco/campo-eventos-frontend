@@ -125,20 +125,20 @@ function UpdateUserInfo() {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Actualizar sus datos"} />
+        <Breadcrumbs location={"Complete sus datos"} />
       </motion.div>
       <section className="update-user-page">
         <article className="container">
           <Title
-            title="Actualizar sus datos"
-            subtitle="Para poder hacer preofertas, debe facilitar sus datos de contacto. Solo deberá hacerlo por esta vez."
+            title="Complete sus datos"
+            subtitle="Para hacer preofertas, debe facilitar sus datos de contacto."
           />
           <div className="row">
             <div className="col-12">
               <div className="form-container row">
                 <div className="col-lg-6">
                   <label htmlFor="phone">
-                    Teléfono (Sin espacios o guiones) *
+                    Teléfono (Sin espacios ni guiones) *
                     <input
                       required
                       type="number"

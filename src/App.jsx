@@ -485,12 +485,12 @@ export default App;
 
 // TO DO:
 
-// - Inmediatamente despues de que el usuario se registra (o en el mismo momento) que se le pidan los datos personales.
+// - Solucionar problema de _id & id
 // - Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
 // - En Administradores - Ver remates que se vean TODOS los remates de TODOS los consignatarios
+// - Limpiar logica de remates vivo que ya no se usa
 // DEPLOY
 
-// - Limpiar logica de remates vivo que ya no se usa
 // - Mis remates que tenga colores mas oscuros tipo administrador
 // - Si se puede que se cargue el afiche desde el formulario de creacion de remate o de inmediato
 // - Averiguar como dar opcion a recuperar contraseña
@@ -518,5 +518,4 @@ export default App;
 // - Uniformizar fade effect 
 // - Reducir codigo repetido
 // - Implementar sistema de tokens solo para usuarios administradores
-// - Al registrarse, que el usuario no tenga que loguearse (ahora se hace para evi9tar error de id _id)
 // - Arreglar pestañeo de 404 cuando en algunos cambios de pagina

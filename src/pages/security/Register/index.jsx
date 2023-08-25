@@ -1,20 +1,25 @@
 import { motion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
+import { LOGIN } from "../../../utils/action-types";
 import { apiUrl } from "../../../utils/api-url";
+import { AuthContext } from "../../../App";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 
 import "./style.scss";
 
 function Register() {
+  const { state, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const initialState = {
     nickname: "",
     email: "",
     password: "",
+    address: "",
+    phone: "",
     isSubmitting: false,
     errorMessage: null,
   };
@@ -45,6 +50,8 @@ function Register() {
         nickname: data.nickname,
         email: data.email,
         password: data.password,
+        address: data.address,
+        phone: data.phone,
       }),
     })
       .then((response) => {
@@ -54,8 +61,12 @@ function Register() {
           throw response;
         }
       })
-      .then(() => {
-        navigate("/user-created");
+      .then((data) => {
+        dispatch({
+          type: LOGIN,
+          payload: data,
+        });
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);
@@ -84,7 +95,9 @@ function Register() {
               <div className="register-container">
                 <h1>Registrarme</h1>
                 <div className="separator"></div>
-                <p className="text-center">Regístrese para acceder a la plataforma de preofertas.</p>
+                <p className="text-center">
+                  Regístrese para acceder a la plataforma de preofertas.
+                </p>
 
                 <label htmlFor="nickname">
                   <input
@@ -95,6 +108,17 @@ function Register() {
                     id="nickname"
                   />
                   Nombre de usuario (Sólo números y letras) *
+                </label>
+
+                <label htmlFor="password">
+                  <input
+                    type="password"
+                    value={data.password}
+                    onChange={handleInputChange}
+                    name="password"
+                    id="password"
+                  />
+                  Contraseña *
                 </label>
 
                 <label htmlFor="email">
@@ -108,15 +132,27 @@ function Register() {
                   Email *
                 </label>
 
-                <label htmlFor="password">
+                <label htmlFor="phone">
                   <input
-                    type="password"
-                    value={data.password}
+                    required
+                    type="tel"
+                    value={data.phone}
                     onChange={handleInputChange}
-                    name="password"
-                    id="password"
+                    name="phone"
+                    id="phone"
                   />
-                  Contraseña *
+                  Celular *
+                </label>
+
+                <label htmlFor="address">
+                  <input
+                    type="text"
+                    value={data.address}
+                    onChange={handleInputChange}
+                    name="address"
+                    id="address"
+                  />
+                  Dirección *
                 </label>
 
                 <button
