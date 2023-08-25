@@ -66,7 +66,7 @@ function Register() {
           type: LOGIN,
           payload: data,
         });
-        navigate("/");
+        navigate("/user-created");
       })
       .catch((error) => {
         console.error(error);

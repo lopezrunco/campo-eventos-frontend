@@ -485,12 +485,12 @@ export default App;
 
 // TO DO:
 
-// - Solucionar problema de _id & id
 // - Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
 // - En Administradores - Ver remates que se vean TODOS los remates de TODOS los consignatarios
 // - Limpiar logica de remates vivo que ya no se usa
 // DEPLOY
 
+// - Solucionar problema de _id & id para que el usuario no inicie sesion despues de registrarse
 // - Mis remates que tenga colores mas oscuros tipo administrador
 // - Si se puede que se cargue el afiche desde el formulario de creacion de remate o de inmediato
 // - Averiguar como dar opcion a recuperar contraseña
