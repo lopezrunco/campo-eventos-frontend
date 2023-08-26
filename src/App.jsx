@@ -53,6 +53,7 @@ import LiveEvents from "./pages/backoffice/LiveEvents";
 import UploadLiveEventCover from "./pages/backoffice/UploadLiveEventCover";
 import UpdateLiveEvent from "./pages/backoffice/UpdateLiveEvent";
 import UserList from "./pages/backoffice/UserList";
+import AllEvents from "./pages/backoffice/AllEvents";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -273,10 +274,10 @@ function App() {
               }
             />
             <Route
-              path="/admin/remates-vivo"
+              path="/admin/remates"
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
-                  <LiveEvents />
+                  <AllEvents />
                 </RequireAuth>
               }
             />
@@ -485,18 +486,14 @@ export default App;
 
 // TO DO:
 
-// - Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
-// - En Administradores - Ver remates que se vean TODOS los remates de TODOS los consignatarios
 // - Limpiar logica de remates vivo que ya no se usa
-// DEPLOY
-
+// - Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
 // - Solucionar problema de _id & id para que el usuario no inicie sesion despues de registrarse
 // - Mis remates que tenga colores mas oscuros tipo administrador
 // - Si se puede que se cargue el afiche desde el formulario de creacion de remate o de inmediato
 // - Averiguar como dar opcion a recuperar contraseña
 // - Cuando se elimina el remate la preoferta queda colgada. Separar entre preofertas activas (remates que existen) y preofertas no activas (remates terminados o eliminados). Que preofertas en grupo de no activas tengan la opcion de ser elimiadas (por el usuario que las hizo) 
 // - Que se permita al usuario editar sus datos de contacto
-// - Darle al administrador poder de eliminar cualquier remate independientemente de su creador
 
 // - Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
 // - En la seccion home - en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision

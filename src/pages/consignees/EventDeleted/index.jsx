@@ -5,10 +5,10 @@ function EventDeleted() {
     <SuccessMessage
       title="Remate eliminado"
       message="El remate ha sido eliminado con éxito."
-      redirectingMessage="Redirigiendo a Mis remates..."
+      redirectingMessage="Redirigiendo a Cartelera..."
       duration="5000"
       breadcrumbsLocation="Remate eliminado"
-      navigateTo="/consignatarios/mis-remates"
+      navigateTo="/"
     />
   );
 }

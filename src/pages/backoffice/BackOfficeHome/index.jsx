@@ -22,13 +22,13 @@ export const BackOfficeHome = () => {
           <Title title='¿Qué desea hacer?' />
           <div className="row">
             <div className="col-12 col-lg-4 offset-lg-4 admin-home-card">
-              <a href="/admin/crear-remate-vivo">
-              <i className="fas fa-signal me-2"></i> Crear remate en vivo
+              <a href="/consignatarios/crear-remate">
+              <i className="fas fa-plus me-2"></i> Crear remate
               </a>
             </div>
             <div className="col-12 col-lg-4 offset-lg-4 admin-home-card">
-              <a href="/admin/remates-vivo">
-              <i className="fas fa-list me-2"></i>Ver remates en vivo
+              <a href="/admin/remates">
+              <i className="fas fa-list me-2"></i>Lista de remates
               </a>
             </div>
             <div className="col-12 col-lg-4 offset-lg-4 admin-home-card">
