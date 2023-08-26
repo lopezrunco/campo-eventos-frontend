@@ -70,11 +70,20 @@ function Register() {
       })
       .catch((error) => {
         console.error(error);
-        setData({
-          ...data,
-          isSubmitting: false,
-          errorMessage: "Sus datos son incorrectos. Intente nuevamente.",
-        });
+        if (error.status === 409) {
+          setData({
+            ...data,
+            isSubmitting: false,
+            errorMessage:
+              "Alguno de estos datos ya existen en nuestro sistema: Email / Nombre de usuario",
+          });
+        } else {
+          setData({
+            ...data,
+            isSubmitting: false,
+            errorMessage: "Sus datos son incorrectos. Intente nuevamente.",
+          });
+        }
       });
   };
 
