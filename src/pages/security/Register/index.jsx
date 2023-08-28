@@ -150,7 +150,7 @@ function Register() {
                     name="phone"
                     id="phone"
                   />
-                  Celular *
+                  Celular (Sólo numeros sin espacios) *
                 </label>
 
                 <label htmlFor="address">

@@ -507,6 +507,7 @@ export default App;
 // - Mejorar la velocidad en la plataforma, ya sea con microoptimizaciones o pagando sevidor mas rapido
 // - Notificaciones a usuarios mediante email, sms o wapp
 // - A estudiar, pero no hacerlo aún: Administrador que se pueda Aceptar o Rechazar preoferta de cualquiera
+// - Que se permitan espacios en registro de numero tel
 
 // - Manejar cuando el remate esta completado
 // - Que boton de siguiente no se muestre cuando no hay mas paginas
