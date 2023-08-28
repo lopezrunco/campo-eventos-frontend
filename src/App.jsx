@@ -11,8 +11,6 @@ import {
   SHOW_LOADER,
 } from "./utils/action-types";
 
-import { Home } from "./pages/Home";
-import LiveEventById from "./pages/LiveEventById";
 import { Servicios } from "./pages/Servicios";
 import EventsList from "./pages/events/EventsList";
 import LotById from "./pages/events/LotById";
@@ -45,13 +43,6 @@ import UpdateEvent from "./pages/consignees/UpdateEvent";
 import UpdateLot from "./pages/consignees/UpdateLot";
 
 import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
-import CreateLiveEvent from "./pages/backoffice/CreateLiveEvent";
-import LiveEventCreated from "./pages/backoffice/LiveEventCreated";
-import LiveEventUpdated from "./pages/backoffice/LiveEventUpdated";
-import LiveEventDeleted from "./pages/backoffice/LiveEventDeleted";
-import LiveEvents from "./pages/backoffice/LiveEvents";
-import UploadLiveEventCover from "./pages/backoffice/UploadLiveEventCover";
-import UpdateLiveEvent from "./pages/backoffice/UpdateLiveEvent";
 import UserList from "./pages/backoffice/UserList";
 import AllEvents from "./pages/backoffice/AllEvents";
 
@@ -222,54 +213,6 @@ function App() {
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
                   <UserList />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/admin/remates-vivo/editar/:id"
-              element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
-                  <UpdateLiveEvent />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/admin/remates-vivo/:id/upload"
-              element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
-                  <UploadLiveEventCover />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/admin/remate-vivo-borrado"
-              element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
-                  <LiveEventDeleted />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/admin/remate-vivo-editado"
-              element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
-                  <LiveEventUpdated />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/admin/remate-vivo-creado"
-              element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
-                  <LiveEventCreated />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/admin/crear-remate-vivo"
-              element={
-                <RequireAuth allowedRoles={["ADMIN"]}>
-                  <CreateLiveEvent />
                 </RequireAuth>
               }
             />
@@ -461,7 +404,6 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="//user-created" element={<UserCreated />} />
-            <Route path="/remates-vivo/:id" element={<LiveEventById />} />
             <Route path="/" element={<EventsList />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -486,7 +428,7 @@ export default App;
 
 // TO DO:
 
-// - Limpiar logica de remates vivo que ya no se usa
+// - Mostrar mensaje de error siempre
 // - Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
 // - Solucionar problema de _id & id para que el usuario no inicie sesion despues de registrarse
 // - Mis remates que tenga colores mas oscuros tipo administrador
