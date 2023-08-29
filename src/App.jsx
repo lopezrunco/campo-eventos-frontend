@@ -428,11 +428,22 @@ export default App;
 
 // TO DO:
 
-// - Mostrar mensaje de error siempre
+// TODAY:
+// permitir simbolos º &
+// Que duracion solo sea de uso interno
+// duracion que sea opcional en frontend y si no hay nada que la muestre todo el dia
+// Tipo de remate que no sea obligatorio
+// Que marque errores en formulario de creacion remate
+// - Cuando el usuario recien registra que mensaje de Usuario creado se amas descriptivo y que el Login lo bloquee para que no pueda salir de ese login (ya que de otra manera da problemas al preofertar).
+// - Revisar campos obligatorios formulario de crear remate
+// - Invertir la estetica en que se presentan los remates en Cartelera / Mis remates. entonces en cartelera para ver los detalles del remate que se haga click en Ver mas y ahi despliega los lotes, preofertas etc
+// - En el preview del remate que solo se muestre Lugar y Organiza (como esta ahora en campoeventos webproject)
+// - Mostrar mensaje de error siempre en formuilarios
+
 // - Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
 // - Solucionar problema de _id & id para que el usuario no inicie sesion despues de registrarse
 // - Mis remates que tenga colores mas oscuros tipo administrador
-// - Si se puede que se cargue el afiche desde el formulario de creacion de remate o de inmediato
+// - Que se cargue el afiche desde el formulario de creacion de remate o de inmediato
 // - Averiguar como dar opcion a recuperar contraseña
 // - Cuando se elimina el remate la preoferta queda colgada. Separar entre preofertas activas (remates que existen) y preofertas no activas (remates terminados o eliminados). Que preofertas en grupo de no activas tengan la opcion de ser elimiadas (por el usuario que las hizo) 
 // - Que se permita al usuario editar sus datos de contacto
