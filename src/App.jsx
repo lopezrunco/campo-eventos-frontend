@@ -403,20 +403,13 @@ function App() {
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="//user-created" element={<UserCreated />} />
+            <Route path="/user-created" element={<UserCreated />} />
             <Route path="/" element={<EventsList />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-        >
           <Footer />
-        </motion.div>
 
         {state.showingLoader && <Loader />}
       </div>
@@ -429,12 +422,10 @@ export default App;
 // TO DO:
 
 // TODAY:
-// - Cuando el usuario recien registra que mensaje de Usuario creado se amas descriptivo y que el Login lo bloquee para que no pueda salir de ese login (ya que de otra manera da problemas al preofertar).
 // - Invertir la estetica en que se presentan los remates en Cartelera / Mis remates. entonces en cartelera para ver los detalles del remate que se haga click en Ver mas y ahi despliega los lotes, preofertas etc
 // - En el preview del remate que solo se muestre Lugar y Organiza (como esta ahora en campoeventos webproject)
-// - Mostrar mensaje de error siempre en formuilarios
 
-// - Revisar campos obligatorios en todos los formularios
+// - Revisar campos obligatorios en todos los formularios y mensajes de error en formularios
 // - Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
 // - Solucionar problema de _id & id para que el usuario no inicie sesion despues de registrarse
 // - Mis remates que tenga colores mas oscuros tipo administrador
