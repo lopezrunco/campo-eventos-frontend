@@ -119,7 +119,7 @@ function Card({ myEvent }) {
     <React.Fragment>
       <div className="row">
         <div className="col-lg-3 mb-5">
-          <span className="event-type-tag">{myEvent.eventType}</span>
+          {myEvent.eventType && <span className="event-type-tag">{myEvent.eventType}</span>}
           {myEvent.coverImgName ? (
             <img src={myEvent.coverImgName} width="100%" />
           ) : (

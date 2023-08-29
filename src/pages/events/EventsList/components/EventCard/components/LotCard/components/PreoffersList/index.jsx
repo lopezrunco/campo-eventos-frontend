@@ -228,8 +228,10 @@ function PreoffersList({ preoffers, lotId }) {
               >
                 {state.isSubmitting ? "Espere..." : "Preofertar"}
               </button>
-              {state.errorMessage && (
-                <span className="form-error">{state.errorMessage}</span>
+              {state.hasError && (
+                (state.errorMessage) 
+                  ? <span className="error-message">{state.errorMessage}</span> 
+                  : <span className="error-message">Ocurrió un error.</span>
               )}
             </div>
           </div>

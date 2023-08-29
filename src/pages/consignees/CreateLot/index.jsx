@@ -412,8 +412,10 @@ function CreateLot() {
                   {state.isSubmitting ? "Por favor, espere..." : "Subir lote"}
                 </button>
 
-                {state.errorMessage && (
-                  <span className="form-error">{state.errorMessage}</span>
+                {state.hasError && (
+                  (state.errorMessage) 
+                    ? <span className="error-message">{state.errorMessage}</span> 
+                    : <span className="error-message">Ocurrió un error. Revise los datos e intente nuevamente.</span>
                 )}
               </div>
             </div>

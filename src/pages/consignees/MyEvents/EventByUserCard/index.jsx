@@ -17,7 +17,7 @@ function EventByUserCard({ event }) {
           className="my-event-card"
           onClick={() => navigate(`/consignatarios/mis-remates/${event.id}`)}
         >
-          <span className="event-type-tag">{event.eventType}</span>
+          {event.eventType && <span className="event-type-tag">{event.eventType}</span>}
           {event.coverImgName ? (
             <img src={event.coverImgName} width="100%" />
           ) : (

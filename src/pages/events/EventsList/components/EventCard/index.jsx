@@ -154,11 +154,6 @@ function EventCard({ event }) {
                         {"︱"}
                       </>
                     )}
-                    {event.duration && (
-                      <>
-                        <b>Duración (hs.):</b> {event.duration} hs.
-                      </>
-                    )}
                   </p>
 
                   {!state.showLots ? (
@@ -181,7 +176,7 @@ function EventCard({ event }) {
                 </div>
               </div>
               <div className="col-lg-3">
-                <span className="event-type-tag">{event.eventType}</span>
+                {event.eventType && <span className="event-type-tag">{event.eventType}</span>}
                 {event.coverImgName ? (
                   <img src={event.coverImgName} width="100%" />
                 ) : (

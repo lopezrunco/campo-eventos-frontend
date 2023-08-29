@@ -24,6 +24,8 @@ import Pagination from "../../../components/Pagination";
 import { Title } from "../../../components/Title";
 import LoadingMessage from "../../../components/LoadingMessage/index.jsx";
 
+import './styles.scss'
+
 // Create context to manage events
 export const EventsContext = createContext();
 
@@ -83,11 +85,6 @@ function EventsList() {
   }
 
   useEffect(() => {
-    // if (authState.token) {
-    //   dispatch({
-    //     type: FETCH_EVENTS_REQUEST,
-    //   });
-
       fetch(apiUrl(`events?page=${currentPage}&itemsPerPage=${itemsPerPage}`), {
         headers: {
           Authorization: authState.token,
@@ -120,7 +117,6 @@ function EventsList() {
             });
           }
         });
-    // }
   }, [
     authDispatch,
     authState.token,
@@ -144,9 +140,10 @@ function EventsList() {
         <div className="container">
           <div className="row">
             {state.eventsList.map((el, i) => {
+              let setEventDuration = (el.duration ? el.duration : 24)
               let finishDate = new Date(
                 new Date(el.startBroadcastTimestamp).setHours(
-                  new Date(el.startBroadcastTimestamp).getHours() + el.duration
+                  new Date(el.startBroadcastTimestamp).getHours() + setEventDuration
                 )
               ).toJSON();
 
@@ -168,14 +165,8 @@ function EventsList() {
                         <i className="fas fa-calendar-alt"></i>{" "}
                         {getDate(el.startBroadcastTimestamp)}
                       </span>
-                      <span>
-                        <b>Lugar: </b>
-                        {el.location}
-                      </span>
-                      <span>
-                        <b>Organiza: </b>
-                        {el.organizer}
-                      </span>
+                      {el.location && <span><b>Lugar: </b>{el.location}</span>}
+                      {el.organizer && <span><b>Organiza: </b>{el.organizer}</span>}
                       <a
                         className="button button-light-outline"
                         href={`https://www.youtube.com/watch/${el.broadcastLinkId}`}

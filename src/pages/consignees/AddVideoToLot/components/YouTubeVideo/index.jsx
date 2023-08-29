@@ -18,6 +18,8 @@ const initialState = {
   hasError: false,
 };
 
+// TO DO: Check usage of this component
+
 const reducer = (state, action) => {
   switch (action.type) {
     case FORM_INPUT_CHANGE:
@@ -133,8 +135,10 @@ function YouTubeVideo({ lotId }) {
           {state.isSubmitting ? "Por favor, espere..." : "Aceptar"}
         </button>
 
-        {state.errorMessage && (
-          <span className="form-error">{state.errorMessage}</span>
+        {state.hasError && (
+          (state.errorMessage) 
+            ? <span className="error-message">{state.errorMessage}</span> 
+            : <span className="error-message">Ocurrió un error. Revise los datos e intente nuevamente.</span>
         )}
       </div>
     </div>
