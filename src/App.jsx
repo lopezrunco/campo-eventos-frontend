@@ -13,6 +13,7 @@ import {
 
 import { Servicios } from "./pages/Servicios";
 import EventsList from "./pages/events/EventsList";
+import EventById from "./pages/events/EventById";
 import LotById from "./pages/events/LotById";
 import PreOfferDone from "./pages/events/PreOfferDone";
 import MyPreOffers from "./pages/events/MyPreOffers";
@@ -404,6 +405,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/user-created" element={<UserCreated />} />
+            <Route path="/remates/:id" element={<EventById />} />
             <Route path="/" element={<EventsList />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -420,10 +422,6 @@ function App() {
 export default App;
 
 // TO DO:
-
-// TODAY:
-// - Invertir la estetica en que se presentan los remates en Cartelera / Mis remates. entonces en cartelera para ver los detalles del remate que se haga click en Ver mas y ahi despliega los lotes, preofertas etc
-// - En el preview del remate que solo se muestre Lugar y Organiza (como esta ahora en campoeventos webproject)
 
 // - Revisar campos obligatorios en todos los formularios y mensajes de error en formularios
 // - Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
@@ -449,6 +447,8 @@ export default App;
 // - Notificaciones a usuarios mediante email, sms o wapp
 // - A estudiar, pero no hacerlo aún: Administrador que se pueda Aceptar o Rechazar preoferta de cualquiera
 // - Que se permitan espacios en registro de numero tel
+// - En listado de remates, al pasar a siguiente que devuelva al top
+// - Chequear las redirecciones de emnsajes de confirmacion. Porque a veces tanto como Consignatario como Admin usan las mismas pantallas-
 
 // - Manejar cuando el remate esta completado
 // - Que boton de siguiente no se muestre cuando no hay mas paginas

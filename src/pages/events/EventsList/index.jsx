@@ -18,11 +18,12 @@ import {
   FETCH_EVENTS_SUCCESS,
 } from "../../../utils/action-types";
 
-import EventCard from "./components/EventCard";
+// import EventCard from "./components/EventCard";
 import { Intro } from "../../../components/Intro";
 import Pagination from "../../../components/Pagination";
 import { Title } from "../../../components/Title";
 import LoadingMessage from "../../../components/LoadingMessage/index.jsx";
+import Card from "./components/Card/index.jsx";
 
 import './styles.scss'
 
@@ -76,7 +77,7 @@ function EventsList() {
 
   // Handle pagination
   const [currentPage, setCurentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 15;
   function prevPage() {
     setCurentPage(currentPage - 1);
   }
@@ -136,6 +137,7 @@ function EventsList() {
         <Intro />
       </motion.div>
 
+      {/* Broadcast section only active at hour of the event */}
       <div className="broadcast-section">
         <div className="container">
           <div className="row">
@@ -184,6 +186,7 @@ function EventsList() {
         </div>
       </div>
 
+      {/* Event list (Cartelera) */}
       <section className="events">
         <article className="container">
           <Title
@@ -204,7 +207,7 @@ function EventsList() {
                   <>
                     {state.eventsList.length > 0 ? (
                       state.eventsList.map((event) => (
-                        <EventCard key={event.id} event={event} />
+                        <Card key={event.id} event={event} />
                       ))
                     ) : (
                       <p>No hay remates para mostrar...</p>

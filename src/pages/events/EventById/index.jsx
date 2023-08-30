@@ -6,37 +6,37 @@ import { refreshToken } from "../../../utils/refresh-token";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 import {
-  GET_LOT_FAILURE,
-  GET_LOT_REQUEST,
-  GET_LOT_SUCCESS,
+  FETCH_EVENT_FAILURE,
+  FETCH_EVENT_REQUEST,
+  FETCH_EVENT_SUCCESS,
   HIDE_LOADER,
   SHOW_LOADER,
 } from "../../../utils/action-types";
 
-import LotCard from "../EventById/components/EventCard/components/LotCard";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
+import EventCard from "./components/EventCard";
 
 const initialState = {
-  lot: undefined,
+  event: undefined,
   isSending: false,
   hasError: false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case GET_LOT_REQUEST:
+    case FETCH_EVENT_REQUEST:
       return {
         ...state,
         isSending: true,
         hasError: false,
       };
-    case GET_LOT_SUCCESS:
+    case FETCH_EVENT_SUCCESS:
       return {
         ...state,
         isSending: false,
-        lot: action.payload.lot,
+        event: action.payload.event,
       };
-    case GET_LOT_FAILURE:
+    case FETCH_EVENT_FAILURE:
       return {
         ...state,
         isSending: false,
@@ -47,7 +47,7 @@ const reducer = (state, action) => {
   }
 };
 
-function LotById() {
+function EventById() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -59,10 +59,10 @@ function LotById() {
         type: SHOW_LOADER,
       });
       dispatch({
-        type: GET_LOT_REQUEST,
+        type: FETCH_EVENT_REQUEST,
       });
 
-      fetch(apiUrl(`/lots/${id}`), {
+      fetch(apiUrl(`/events/${id}`), {
         headers: {
           Authorization: authState.token,
           "Content-Type": "application/json",
@@ -77,12 +77,12 @@ function LotById() {
         })
         .then((data) => {
           dispatch({
-            type: GET_LOT_SUCCESS,
+            type: FETCH_EVENT_SUCCESS,
             payload: data,
           });
         })
         .catch((error) => {
-          console.error("Error trying to fetch the lot", error);
+          console.error("Error trying to fetch the event", error);
 
           if (error.status === 401) {
             refreshToken(authState.refreshToken, authDispatch, navigate);
@@ -90,7 +90,7 @@ function LotById() {
             navigate("/forbidden");
           } else {
             dispatch({
-              type: GET_LOT_FAILURE,
+              type: FETCH_EVENT_FAILURE,
             });
           }
         })
@@ -110,18 +110,16 @@ function LotById() {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Detalles de lote"} />
+        <Breadcrumbs location={"Detalles del remate"} />
       </motion.div>
-      <section>
+      <section className="event-id">
         <article className="container">
-          <div className="row">
-            {state.lot && <LotCard lot={state.lot} />}
-            {state.hasError && <p>Error al obtener el lote</p>}
-          </div>
+          {state.event && <EventCard event={state.event} />}
+          {state.hasError && <p>Error al obtener el remate</p>}
         </article>
       </section>
     </React.Fragment>
   );
 }
 
-export default LotById;
+export default EventById;

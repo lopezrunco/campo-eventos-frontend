@@ -12,29 +12,46 @@ function EventByUserCard({ event }) {
 
   return (
     <React.Fragment>
-      <div className="col-lg-4">
-        <div
-          className="my-event-card"
-          onClick={() => navigate(`/consignatarios/mis-remates/${event.id}`)}
-        >
-          {event.eventType && <span className="event-type-tag">{event.eventType}</span>}
-          {event.coverImgName ? (
-            <img src={event.coverImgName} width="100%" />
-          ) : (
-            <img src={imgUrl} width="100%" />
-          )}
-          <div className="content">
-            <h4>{event.title}</h4>
-            <p className="date">{getDate(event.startBroadcastTimestamp)}</p>
-              <p>
-                {event.company && <><b>Remata: </b>{event.company}<br /></>}
-                {event.organizer && <><b>Organiza: </b>{event.organizer}<br /></>}
-                {event.breeder && <><b>Cabaña: </b>{event.breeder}<br /></>}
-                {event.category && <><b>Categoría: </b>{event.category}</>}
-              </p>
-            <a className="button button-dark-outline me-3">
-              Ver más <i className="fas fa-chevron-right ms-2"></i>
-            </a>
+      <div className="col-12">
+        <div className="my-event-card">
+          <div className="row">
+            <div className="col-lg-9">          
+              <div className="content">
+                <h2>{event.title}</h2>
+                <p className="date">{getDate(event.startBroadcastTimestamp)}</p>
+                {event.description && <p><b>Descripción: </b>{event.description}</p>}
+                <p>
+                  {event.company && <><b>Remata: </b>{event.company} </>}
+                  {event.organizer && <><b>Organiza: </b>{event.organizer} </>}
+                  {event.breeder && <><b>Cabaña: </b>{event.breeder} </>}
+                  {event.category && <><b>Categoría: </b>{event.category}</>}
+                </p>
+                <a 
+                  className="button view-more me-3" 
+                  onClick={() => navigate(`/consignatarios/mis-remates/${event.id}`)}
+                >
+                  Ver más / Editar<i className="fas fa-chevron-right ms-2"></i>
+                </a>
+                {event.broadcastLinkId && (
+                  <a
+                    className="button view-more"
+                    href={`https://www.youtube.com/watch/${event.broadcastLinkId}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <i className="fas fa-play"></i> Enlace transmisión
+                  </a>
+                )}
+              </div>
+            </div>
+            <div className="col-lg-3">
+              {event.eventType && <span className="event-type-tag">{event.eventType}</span>}
+              {event.coverImgName ? (
+                <img src={event.coverImgName} width="100%" />
+              ) : (
+                <img src={imgUrl} width="100%" />
+              )}
+            </div>
           </div>
         </div>
       </div>

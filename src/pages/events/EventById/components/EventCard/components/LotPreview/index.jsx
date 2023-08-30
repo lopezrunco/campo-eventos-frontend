@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useReducer } from "react";
 
 import { refreshToken } from "../../../../../../../utils/refresh-token";
-import { apiUrl } from "../../../../../../../utils/api-url";
+import { apiUrl } from "../../../../..../../../../../utils/api-url";
 import { AuthContext } from "../../../../../../../App";
 import {
   GET_PREOFFERS_FAILURE,
@@ -138,7 +138,7 @@ function LotPreview({
           )}
         </div>
         <div className="col-lg-8 info-preview">
-          {lotTitle && <h4>Lote: {lotTitle}</h4>}
+          {lotTitle && <h4>{lotTitle}</h4>}
           <p>
             {lotCategory && <><b>Categoría: </b>{lotCategory}{"︱"}</>}
             {name && <><b>Nombre: </b>{name}{"︱"}</>}

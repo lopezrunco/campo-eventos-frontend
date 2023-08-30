@@ -1,10 +1,8 @@
 @import '../../../../../Variables.scss';
 
 .event-card {
-
     .item {
         border-radius: $sm-border-radius;
-        border: 1px solid $medium-light-color;
 
         img {
             border-radius: 0px $sm-border-radius 0px 0px;
@@ -17,6 +15,10 @@
             color: $medium-light-color;
             padding: 2rem 1rem;
             border-radius: 0px 0px $sm-border-radius $sm-border-radius;
+
+            h4 {
+                color: $accent-color;
+            }
         }
     }
 }
