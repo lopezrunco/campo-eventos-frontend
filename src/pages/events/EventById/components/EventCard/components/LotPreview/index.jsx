@@ -158,7 +158,7 @@ function LotPreview({
             ? <a className="last-preoffer-tag" href={`/lotes/${lotId}`}>
                 Detalles / preofertar <i className="fas fa-chevron-right ms-2"></i>
               </a>
-            : <a className="last-preoffer-tag" href={'login'}>
+            : <a className="last-preoffer-tag" href='/login'>
                 Inicie sesión para preofertar <i className="fas fa-chevron-right ms-2"></i>
               </a>
           }

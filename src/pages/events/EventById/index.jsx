@@ -54,10 +54,6 @@ function EventById() {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
 
   useEffect(() => {
-    if (authState.token) {
-      authDispatch({
-        type: SHOW_LOADER,
-      });
       dispatch({
         type: FETCH_EVENT_REQUEST,
       });
@@ -99,7 +95,6 @@ function EventById() {
             type: HIDE_LOADER,
           });
         });
-    }
   }, [authDispatch, authState.refreshToken, authState.token, id, navigate]);
 
   return (
