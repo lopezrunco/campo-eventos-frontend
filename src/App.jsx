@@ -423,6 +423,7 @@ export default App;
 
 // TO DO:
 
+// - Reemplazar Bootstrap y fontawesome por bibliotecas locales?
 // - Revisar campos obligatorios en todos los formularios y mensajes de error en formularios
 // - Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
 // - Solucionar problema de _id & id para que el usuario no inicie sesion despues de registrarse
@@ -433,6 +434,7 @@ export default App;
 // - Que se permita al usuario editar sus datos de contacto
 // - En formularios de edicion cuando no hay link que muestre algo diferente a undefined
 // - Generar una bitacora descargable con los datos de remates, lotes, preofertas y clientes. Luego, que al eliminar el remate se eliminen tamb los lotes y las preofertas
+// - Sacar "Sin video"?
 
 // - Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
 // - En la seccion home - en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision
@@ -458,3 +460,5 @@ export default App;
 // - Reducir codigo repetido
 // - Implementar sistema de tokens solo para usuarios administradores
 // - Arreglar pestañeo de 404 cuando en algunos cambios de pagina
+
+// - Ver como funciona este sistema y ver como replicar preoferta por animales dentro del lote: https://juanvera.preofertas.uy/lotes/lotespublicados/remate/21

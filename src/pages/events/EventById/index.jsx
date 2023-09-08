@@ -54,47 +54,47 @@ function EventById() {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
 
   useEffect(() => {
-      dispatch({
-        type: FETCH_EVENT_REQUEST,
-      });
+    dispatch({
+      type: FETCH_EVENT_REQUEST,
+    });
 
-      fetch(apiUrl(`/events/${id}`), {
-        headers: {
-          Authorization: authState.token,
-          "Content-Type": "application/json",
-        },
+    fetch(apiUrl(`/events/${id}`), {
+      headers: {
+        Authorization: authState.token,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw response;
+        }
       })
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw response;
-          }
-        })
-        .then((data) => {
-          dispatch({
-            type: FETCH_EVENT_SUCCESS,
-            payload: data,
-          });
-        })
-        .catch((error) => {
-          console.error("Error trying to fetch the event", error);
-
-          if (error.status === 401) {
-            refreshToken(authState.refreshToken, authDispatch, navigate);
-          } else if (error.status === 403) {
-            navigate("/forbidden");
-          } else {
-            dispatch({
-              type: FETCH_EVENT_FAILURE,
-            });
-          }
-        })
-        .finally(() => {
-          authDispatch({
-            type: HIDE_LOADER,
-          });
+      .then((data) => {
+        dispatch({
+          type: FETCH_EVENT_SUCCESS,
+          payload: data,
         });
+      })
+      .catch((error) => {
+        console.error("Error trying to fetch the event", error);
+
+        if (error.status === 401) {
+          refreshToken(authState.refreshToken, authDispatch, navigate);
+        } else if (error.status === 403) {
+          navigate("/forbidden");
+        } else {
+          dispatch({
+            type: FETCH_EVENT_FAILURE,
+          });
+        }
+      })
+      .finally(() => {
+        authDispatch({
+          type: HIDE_LOADER,
+        });
+      });
   }, [authDispatch, authState.refreshToken, authState.token, id, navigate]);
 
   return (
@@ -109,8 +109,13 @@ function EventById() {
       </motion.div>
       <section className="event-id">
         <article className="container">
-          {state.event && <EventCard event={state.event} />}
-          {state.hasError && <p>Error al obtener el remate</p>}
+          {state.event ? (
+            <EventCard event={state.event} />
+          ) : state.hasError ? (
+            <p>Error al obtener el remate</p>
+          ) : (
+            <p>Cargando detalles del remate...</p>
+          )}
         </article>
       </section>
     </React.Fragment>

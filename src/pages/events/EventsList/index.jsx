@@ -142,7 +142,7 @@ function EventsList() {
         <div className="container">
           <div className="row">
             {state.eventsList.map((el, i) => {
-              let setEventDuration = (el.duration ? el.duration : 24)
+              let setEventDuration = (el.duration ? el.duration : 12)
               let finishDate = new Date(
                 new Date(el.startBroadcastTimestamp).setHours(
                   new Date(el.startBroadcastTimestamp).getHours() + setEventDuration
@@ -169,13 +169,8 @@ function EventsList() {
                       </span>
                       {el.location && <span><b>Lugar: </b>{el.location}</span>}
                       {el.organizer && <span><b>Organiza: </b>{el.organizer}</span>}
-                      <a
-                        className="button button-light-outline"
-                        href={`https://www.youtube.com/watch/${el.broadcastLinkId}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <i className="fas fa-play"></i> Ver en vivo
+                      <a className="button button-light-outline" href={`/remates/${el.id}`}>
+                        <i className="fas fa-play"></i> Ver más
                       </a>
                     </div>
                   </div>
