@@ -347,7 +347,7 @@ function UpdateLot() {
                   <label htmlFor="age">
                     Fecha nac.
                     <input
-                      type="number"
+                      type="text"
                       value={state.age}
                       onChange={handleInputChange}
                       name="age"
