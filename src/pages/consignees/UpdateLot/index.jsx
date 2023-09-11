@@ -345,7 +345,7 @@ function UpdateLot() {
 
                 <div className="col-lg-3">
                   <label htmlFor="age">
-                    Edad
+                    Fecha nac.
                     <input
                       type="number"
                       value={state.age}

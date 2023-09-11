@@ -143,16 +143,18 @@ function LotCard({ lot }) {
             {lot.pedigree && <><b>Pedigree:</b> {lot.pedigree}{" | "}</>}
             {lot.animals && <><b>Cantidad:</b> {lot.animals}{" | "}</>}
             {lot.weight && <><b>Peso(Kg):</b> {lot.weight}{" | "}</>}
-            {lot.age && <><b>Edad:</b> {lot.age}{" | "}</>}
+            {lot.age && <><b>Fecha nac.:</b> {lot.age}{" | "}</>}
             {lot.class && <><b>Clase:</b> {lot.class}{" | "}</>}
             {lot.race && <><b>Raza:</b> {lot.race}{" | "}</>}
             {lot.location && <><b>Ubicación:</b> {lot.location}{" | "}</>}
             {lot.certificate && <><b>Certificado:</b> {lot.certificate}{" | "}</>}
             {lot.type && <><b>Tipo:</b> {lot.type}</>}
           </p>
-          <p>
-            <b>Observaciones:</b> {lot.observations}
-          </p>
+          {lot.observations && (
+            <p>
+              <b>Observaciones:</b> {lot.observations}
+            </p>
+          )}
         </div>
         <div className="col-lg-5">
           {lot.YTVideoSrc ? (

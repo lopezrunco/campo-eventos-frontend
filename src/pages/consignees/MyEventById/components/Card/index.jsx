@@ -188,6 +188,9 @@ function Card({ myEvent }) {
 
         {state.showLots ? (
           <div className="col-12">
+            <a className="button button-dark me-3" href={`/consignatarios/mis-remates/${myEvent.id}/crear-lote`}>
+              <i className="fas fa-plus"></i> Subir lote
+            </a>
             <div className="container">
               <div className="row">
                 {state.data.length === 0 ? (
@@ -204,12 +207,7 @@ function Card({ myEvent }) {
                   return <LotCard key={lot.id} lot={lot} />;
                 })}
               </div>
-              <a
-                className="button button-dark me-3"
-                href={`/consignatarios/mis-remates/${myEvent.id}/crear-lote`}
-              >
-                <i className="fas fa-plus"></i> Subir lote
-              </a>
+
             </div>
           </div>
         ) : (
