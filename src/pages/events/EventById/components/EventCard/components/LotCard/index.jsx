@@ -98,7 +98,7 @@ function LotCard({ lot }) {
     <React.Fragment>
       <div className="col-lg-7">
         <h3>
-          <i className="fas fa-layer-group me-3"></i> {lot.title}
+          <i className="fas fa-layer-group me-3 mb-3"></i> {lot.title}
         </h3>
         {lot.category && (
           <div className="category-tag">
@@ -110,19 +110,17 @@ function LotCard({ lot }) {
             <b>Descripción:</b> {lot.description}
           </p>
         )}
-        <p>
-          {lot.name && <><b>Nombre:</b> {lot.name}{" | "}</>}
-          {lot.rp && <><b>RP:</b> {lot.rp}{" | "}</>}
-          {lot.pedigree && <><b>Pedigree:</b> {lot.pedigree}{" | "}</>}
-          {lot.animals && <><b>Cantidad:</b> {lot.animals}{" | "}</>}
-          {lot.weight && <><b>Peso(Kg):</b> {lot.weight}{" | "}</>}
-          {lot.age && <><b>Fecha nac.:</b> {lot.age}{" | "}</>}
-          {lot.class && <><b>Clase:</b> {lot.class}{" | "}</>}
-          {lot.race && <><b>Raza:</b> {lot.race}{" | "}</>}
-          {lot.location && <><b>Ubicación:</b> {lot.location}{" | "}</>}
-          {lot.certificate && <><b>Certificado:</b> {lot.certificate}{" | "}</>}
-          {lot.type && <><b>Tipo:</b> {lot.type}</>}
-        </p>
+        {lot.name && <p><b>Nombre:</b> {lot.name}</p>}
+        {lot.rp && <p><b>RP:</b> {lot.rp}</p>}
+        {lot.pedigree && <p><b>Pedigree:</b> {lot.pedigree}</p>}
+        {lot.animals && <p><b>Cantidad:</b> {lot.animals}</p>}
+        {lot.weight && <p><b>Peso(Kg):</b> {lot.weight}</p>}
+        {lot.age && <p><b>Fecha nac.:</b> {lot.age}</p>}
+        {lot.class && <p><b>Clase:</b> {lot.class}</p>}
+        {lot.race && <p><b>Raza:</b> {lot.race}</p>}
+        {lot.location && <p><b>Ubicación:</b> {lot.location}</p>}
+        {lot.certificate && <p><b>Certificado:</b> {lot.certificate}</p>}
+        {lot.type && <p><b>Tipo:</b> {lot.type}</p>}
         {lot.observations && (
           <p>
             <b>Observaciones:</b> {lot.observations}

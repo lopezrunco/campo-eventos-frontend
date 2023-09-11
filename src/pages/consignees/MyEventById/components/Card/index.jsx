@@ -162,16 +162,14 @@ function Card({ myEvent }) {
               </div>
             )}
             <div className="col-12">
-              <p>
-                {myEvent.eventType && <><b>Tipo de evento:</b> {myEvent.eventType}{"︱"}</>}
-                {myEvent.category && <><b>Categoría:</b> {myEvent.category}{"︱"}</>}
-                {myEvent.company && <><b>Remata:</b> {myEvent.company}{"︱"}</>}
-                {myEvent.organizer && <><b>Organiza:</b> {myEvent.organizer}{"︱"}</>}
-                {myEvent.breeder && <><b>Cabaña:</b> {myEvent.breeder}{"︱"}</>}
-                {myEvent.funder && <><b>Financia:</b> {myEvent.funder}{"︱"}</>}
-                {myEvent.location && <><b>Lugar:</b> {myEvent.location}{"︱"}</>}
-                {myEvent.duration && <><b>Duración:</b> {myEvent.duration} hs.</>}
-              </p>
+              {myEvent.eventType && <p><b>Tipo de evento:</b> {myEvent.eventType}</p>}
+              {myEvent.category && <p><b>Categoría:</b> {myEvent.category}</p>}
+              {myEvent.company && <p><b>Remata:</b> {myEvent.company}</p>}
+              {myEvent.organizer && <p><b>Organiza:</b> {myEvent.organizer}</p>}
+              {myEvent.breeder && <p><b>Cabaña:</b> {myEvent.breeder}</p>}
+              {myEvent.funder && <p><b>Financia:</b> {myEvent.funder}</p>}
+              {myEvent.location && <p><b>Lugar:</b> {myEvent.location}</p>}
+              {myEvent.duration && <p><b>Duración:</b> {myEvent.duration} hs.</p>}
             </div>
           </div>
           {myEvent.broadcastLinkId && (

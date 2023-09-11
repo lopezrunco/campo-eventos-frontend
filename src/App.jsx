@@ -423,6 +423,8 @@ export default App;
 
 // TO DO:
 
+// - en Crear lote, agregar campo "cabaña"
+// - Mostrar datos con breaklines en vez de lineas verticales
 // - Se eliminaron las validaciones en el backend, habilitarlas para contemplar caracteres espciales y que la validacion tambien se aplique en el update.
 // - Reemplazar Bootstrap y fontawesome por bibliotecas locales?
 // - Revisar campos obligatorios en todos los formularios y mensajes de error en formularios
@@ -439,6 +441,7 @@ export default App;
 // - Que el enlace final del remate sea amigable con el usuario
 // - Dar posiblidad de agregar la hoja del catalogo (o catalogo completo), en vez de completar los datos (tanto link a pdf ya subido como que lo suban de la pc)
 // - Que despues de Lote editado y lote eliminado lleve al remate
+// - ver problemas de estilos z-index en tags e icono de video
 
 // - Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
 // - En la seccion home - en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision
@@ -465,10 +468,9 @@ export default App;
 // - Implementar sistema de tokens solo para usuarios administradores
 // - Arreglar pestañeo de 404 cuando en algunos cambios de pagina
 // - Averiguar correos corporativos en google
-// Al cargar el listado de lotes los iframes demoran demasiado
+// - Al cargar el listado de lotes los iframes demoran demasiado, que hacer?
 
 // - Ver como funciona este sistema y ver como replicar preoferta por animales dentro del lote: https://juanvera.preofertas.uy/lotes/lotespublicados/remate/21
 
 // HOY:
-// - en subir video, crear campo "cabaña"
 // - Chequear con catalogo real los campos si no da error con los datos reales

@@ -139,12 +139,10 @@ function LotPreview({
         </div>
         <div className="col-lg-8 info-preview">
           {lotTitle && <h4>{lotTitle}</h4>}
-          <p>
-            {lotCategory && <><b>Categoría: </b>{lotCategory}{"︱"}</>}
-            {name && <><b>Nombre: </b>{name}{"︱"}</>}
-            {animals && <><b>Animales: </b>{animals}{"︱"}</>}
-            {location && <><b>Ubicación: </b>{location}</>}
-          </p>
+          {lotCategory && <p><b>Categoría: </b>{lotCategory}</p>}
+          {name && <p><b>Nombre: </b>{name}</p>}
+          {animals && <p><b>Animales: </b>{animals}</p>}
+          {location && <p><b>Ubicación: </b>{location}</p>}
           {state.data ? (
             state.data.length > 0 ? (
               getLastAcceptedPreoffer(state.data)

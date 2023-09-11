@@ -113,59 +113,22 @@ function EventCard({ event }) {
               <div className="p-4">
                 <h2>{event.title}</h2>
                 <p className="date">{getDate(event.startBroadcastTimestamp)}</p>
-                {event.description && (
-                  <p>
-                    <b>Descripción:</b> {event.description}
-                  </p>
-                )}
-                <p>
-                  {event.category && (
-                    <>
-                      <b>Categoría:</b> {event.category}
-                      {"︱"}
-                    </>
-                  )}
-                  {event.company && (
-                    <>
-                      <b>Remata:</b> {event.company}
-                      {"︱"}
-                    </>
-                  )}
-                  {event.organizer && (
-                    <>
-                      <b>Organiza:</b> {event.organizer}
-                      {"︱"}
-                    </>
-                  )}
-                  {event.breeder && (
-                    <>
-                      <b>Cabaña:</b> {event.breeder}
-                      {"︱"}
-                    </>
-                  )}
-                  {event.funder && (
-                    <>
-                      <b>Financiación:</b> {event.funder}
-                      {"︱"}
-                    </>
-                  )}
-                  {event.location && (
-                    <>
-                      <b>Lugar:</b> {event.location}
-                      {"︱"}
-                    </>
-                  )}
-                </p>
-
+                {event.description && <p><b>Descripción:</b> {event.description}</p>}
+                {event.category && <p><b>Categoría:</b> {event.category}</p>}
+                {event.company && <p><b>Remata:</b> {event.company}</p>}
+                {event.organizer && <p><b>Organiza:</b> {event.organizer}</p>}
+                {event.breeder && <p><b>Cabaña:</b> {event.breeder}</p>}
+                {event.funder && <p><b>Financiación:</b> {event.funder}</p>}
+                {event.location && <p><b>Lugar:</b> {event.location}</p>}
                 {event.broadcastLinkId && (
-                  <a
-                    className="button view-more"
-                    href={`https://www.youtube.com/watch/${event.broadcastLinkId}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <i className="fas fa-play"></i> Enlace transmisión
-                  </a>
+                <a
+                  className="button view-more"
+                  href={`https://www.youtube.com/watch/${event.broadcastLinkId}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="fas fa-play"></i> Enlace transmisión
+                </a>
                 )}
               </div>
             </div>

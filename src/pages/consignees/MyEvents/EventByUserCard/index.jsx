@@ -20,12 +20,10 @@ function EventByUserCard({ event }) {
                 <h2>{event.title}</h2>
                 <p className="date">{getDate(event.startBroadcastTimestamp)}</p>
                 {event.description && <p><b>Descripción: </b>{event.description}</p>}
-                <p>
-                  {event.company && <><b>Remata: </b>{event.company} </>}
-                  {event.organizer && <><b>Organiza: </b>{event.organizer} </>}
-                  {event.breeder && <><b>Cabaña: </b>{event.breeder} </>}
-                  {event.category && <><b>Categoría: </b>{event.category}</>}
-                </p>
+                {event.company && <p><b>Remata: </b>{event.company} </p>}
+                {event.organizer && <p><b>Organiza: </b>{event.organizer} </p>}
+                {event.breeder && <p><b>Cabaña: </b>{event.breeder} </p>}
+                {event.category && <p><b>Categoría: </b>{event.category}</p>}
                 <a 
                   className="button view-more me-3" 
                   onClick={() => navigate(`/consignatarios/mis-remates/${event.id}`)}
