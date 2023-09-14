@@ -423,26 +423,24 @@ export default App;
 
 // TO DO:
 
+// - Separar entre preofertas de remates que existen y preofertas de remates terminados o eliminados. Que las no activas puedan ser elimiadas por el usuario. 
 // - en Crear lote, agregar campo "cabaña"
-// - Mostrar datos con breaklines en vez de lineas verticales
 // - Se eliminaron las validaciones en el backend, habilitarlas para contemplar caracteres espciales y que la validacion tambien se aplique en el update.
 // - Reemplazar Bootstrap y fontawesome por bibliotecas locales?
 // - Revisar campos obligatorios en todos los formularios y mensajes de error en formularios
-// - Que el live se muestre durante todo el dia del remate y que nunca se corten las preofertas (eso quedara en manos del usuario consignatario), tambien que se siga mostrando info de remates y lotes.
 // - Solucionar problema de _id & id para que el usuario no inicie sesion despues de registrarse
 // - Mis remates que tenga colores mas oscuros tipo administrador
 // - Que se cargue el afiche desde el formulario de creacion de remate o de inmediato
 // - Averiguar como dar opcion a recuperar contraseña
-// - Cuando se elimina el remate la preoferta queda colgada. Separar entre preofertas activas (remates que existen) y preofertas no activas (remates terminados o eliminados). Que preofertas en grupo de no activas tengan la opcion de ser elimiadas (por el usuario que las hizo) 
+// - Arreglar que cuando se elimina el remate la preoferta queda colgada. 
 // - Que se permita al usuario editar sus datos de contacto
 // - En formularios de edicion cuando no hay link que muestre algo diferente a undefined
-// - Generar una bitacora descargable con los datos de remates, lotes, preofertas y clientes. Luego, que al eliminar el remate se eliminen tamb los lotes y las preofertas
-// - Sacar "Sin video"?
+// - Generar bitacora descargable con los datos de remates, lotes, preofertas y clientes. 
+// - Que al eliminar el remate se eliminen tamb los lotes y las preofertas
 // - Que el enlace final del remate sea amigable con el usuario
 // - Dar posiblidad de agregar la hoja del catalogo (o catalogo completo), en vez de completar los datos (tanto link a pdf ya subido como que lo suban de la pc)
 // - Que despues de Lote editado y lote eliminado lleve al remate
 // - ver problemas de estilos z-index en tags e icono de video
-
 // - Terminar codigo de cleaningTextareas para evitar errores al hacer break lines
 // - En la seccion home - en vivo, manejar error cuando Nestor no agrega enlace al rematevivo y llega la fecha de emision
 // - Chequear manejo de errores en los formularios
@@ -452,25 +450,16 @@ export default App;
 // - Ajustar estilos Desktop y celulares (Redondear todas las imagenes & iframes)
 // - Reforzar seguridad
 // - Testing
-// - Mejorar la velocidad en la plataforma, ya sea con microoptimizaciones o pagando sevidor mas rapido
 // - Notificaciones a usuarios mediante email, sms o wapp
-// - A estudiar, pero no hacerlo aún: Administrador que se pueda Aceptar o Rechazar preoferta de cualquiera
 // - Que se permitan espacios en registro de numero tel
 // - En listado de remates, al pasar a siguiente que devuelva al top
 // - Chequear las redirecciones de emnsajes de confirmacion. Porque a veces tanto como Consignatario como Admin usan las mismas pantallas-
-
 // - Manejar cuando el remate esta completado
 // - Que boton de siguiente no se muestre cuando no hay mas paginas
-// - Que listado de remates de Administrador sea igual que el de consignatarios
 // - Mejorar mensajes de Exito, editado, borrado, llevando a URL del elemento afectado
 // - Uniformizar fade effect 
 // - Reducir codigo repetido
 // - Implementar sistema de tokens solo para usuarios administradores
-// - Arreglar pestañeo de 404 cuando en algunos cambios de pagina
+// - Arreglar pestañeo de 404 cuando cambia de pagina
 // - Averiguar correos corporativos en google
-// - Al cargar el listado de lotes los iframes demoran demasiado, que hacer?
-
-// - Ver como funciona este sistema y ver como replicar preoferta por animales dentro del lote: https://juanvera.preofertas.uy/lotes/lotespublicados/remate/21
-
-// HOY:
-// - Chequear con catalogo real los campos si no da error con los datos reales
+// - Ver como funciona este sistema y replicar preoferta por animales dentro del lote: https://juanvera.preofertas.uy/lotes/lotespublicados/remate/21

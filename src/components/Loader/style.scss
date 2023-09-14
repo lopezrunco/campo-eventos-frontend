@@ -2,6 +2,7 @@
 
 .loader {
     background-color: darken($color: $primary-color, $amount: 15);
+    background-color: $primary-gradient;
     position: fixed;
     top: 0;
     z-index: 9999;

@@ -14,7 +14,7 @@ export const ServicesGrid = () => {
         <article className='container'>
           <div className='row'>
             {servicesData.map(servicesEl =>
-              <div className='col-md-4' key={servicesEl.id}>
+              <div className='col-md-4 mb-4 mb-md-0' key={servicesEl.id}>
                 <div className='item'>
                   {(servicesEl.icon === 'stream.svg' && (
                     <img src={streamImg} alt={servicesEl.title} />
@@ -35,7 +35,7 @@ export const ServicesGrid = () => {
       <section className='video-service'>
         <article className='container'>
           <div className='row'>
-            <div className='col title'>
+            <div className='col title mb-4'>
               <img src={videoImg} alt={videosData.title} />
               <h3>{videosData.title}</h3>
               <div className='separator'></div>

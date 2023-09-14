@@ -36,6 +36,10 @@ a {
   }
 }
 
+iframe {
+  border-radius: $sm-border-radius;
+}
+
 section {
   padding: 5rem 0;
 }
@@ -83,7 +87,7 @@ input[type="file"] {
   color: $light-color;
   padding: 0.4rem 1.6rem;
   margin: 0.4rem 0.6rem;
-  background-color: $primary-medium-dark-color;
+  background-color: $primary-medium-dark-color-op-60;
   font-size: 13px;
   border-radius: $sm-border-radius;
   text-transform: capitalize;
@@ -108,7 +112,6 @@ input[type="file"] {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 1rem;
 
   .acepted,
   .refused {
@@ -239,6 +242,11 @@ input[type="file"] {
 .view-more {
   background-color: $gray-color;
   border-radius: $sm-border-radius;
+
+  &:hover,
+  &:active {
+    background-color: darken($color: $gray-color, $amount: 5);
+  }
 }
 
 .preoffers-container {

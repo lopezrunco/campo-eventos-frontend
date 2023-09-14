@@ -148,7 +148,13 @@ function MyPreOffers() {
                     <MyPreofferCard key={preoffer.id} preoffer={preoffer} />
                   ))
                 ) : (
-                  <p>No hay preofertas para mostrar...</p>
+                  <div className="col-lg-8">
+                    <h3>No hay preofertas para mostrar</h3>
+                    <div className="separator"></div>
+                    <p>Si ya ha realizado preofertas en el pasado, es posible que el remate haya sido despublicado y las preofertas eliminadas.</p>
+                    <p>Para preofertar, visite nuestra Cartelera.</p>
+                    <a href="/" className="button button-dark-outline"><i className="fas fa-home me-2"></i> Ver Cartelera</a>
+                  </div>
                 )}
               </React.Fragment>
             )}

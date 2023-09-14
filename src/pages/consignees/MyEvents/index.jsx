@@ -136,7 +136,7 @@ function MyEvents() {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Consignatarios"} />
+        <Breadcrumbs location={"Mis remates"} />
       </motion.div>
       <section className="container">
         <Title

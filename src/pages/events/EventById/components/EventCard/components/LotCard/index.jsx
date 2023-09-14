@@ -96,20 +96,12 @@ function LotCard({ lot }) {
 
   return (
     <React.Fragment>
-      <div className="col-lg-7">
+      <div className="col-lg-7 mb-5 mb-lg-0">
         <h3>
           <i className="fas fa-layer-group me-3 mb-3"></i> {lot.title}
         </h3>
-        {lot.category && (
-          <div className="category-tag">
-            <b>Categoría:</b> {lot.category}
-          </div>
-        )}
-        {lot.description && (
-          <p>
-            <b>Descripción:</b> {lot.description}
-          </p>
-        )}
+        {lot.category && <div className="category-tag"><b>Categoría:</b> {lot.category}</div>}
+        {lot.description && <p><b>Descripción:</b> {lot.description}</p>}
         {lot.name && <p><b>Nombre:</b> {lot.name}</p>}
         {lot.rp && <p><b>RP:</b> {lot.rp}</p>}
         {lot.pedigree && <p><b>Pedigree:</b> {lot.pedigree}</p>}
@@ -121,13 +113,9 @@ function LotCard({ lot }) {
         {lot.location && <p><b>Ubicación:</b> {lot.location}</p>}
         {lot.certificate && <p><b>Certificado:</b> {lot.certificate}</p>}
         {lot.type && <p><b>Tipo:</b> {lot.type}</p>}
-        {lot.observations && (
-          <p>
-            <b>Observaciones:</b> {lot.observations}
-          </p>
-        )}
+        {lot.observations && <p><b>Observaciones:</b> {lot.observations}</p>}
       </div>
-      <div className="col-lg-5">
+      <div className="col-lg-5 mb-5 mb-lg-0">
         {lot.YTVideoSrc ? (
           <iframe
             width="100%"

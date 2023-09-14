@@ -111,9 +111,9 @@ function LotCard({ lot }) {
 
   return (
     <React.Fragment>
-      <div className="my-event-lot-card row p-0 p-lg-3 mb-5">
+      <div className="my-event-lot-card row p-3 mb-5">
         <div className="d-flex justify-content-between align-items-center mb-2">
-          <h3 className="mb-0">Nombre del lote: {lot.title}</h3>
+          <h3 className="mb-0">{lot.title}</h3>
           <div className="options-buttons">
             <a
               className="rounded-icon primary"
@@ -127,16 +127,8 @@ function LotCard({ lot }) {
           </div>
         </div>
         <div className="col-lg-7">
-          {lot.category && (
-            <div className="category-tag mt-0">
-              <b>Categoría:</b> {lot.category}
-            </div>
-          )}
-          {lot.description && (
-            <p>
-              <b>Descripción:</b> {lot.description}
-            </p>
-          )}
+          {lot.category && <div className="category-tag mt-0"><b>Categoría:</b> {lot.category}</div>}
+          {lot.description && <p><b>Descripción:</b> {lot.description}</p>}
           {lot.name && <p><b>Nombre:</b> {lot.name}</p>}
           {lot.rp && <p><b>RP:</b> {lot.rp}</p>}
           {lot.pedigree && <p><b>Pedigree:</b> {lot.pedigree}</p>}
@@ -148,13 +140,9 @@ function LotCard({ lot }) {
           {lot.location && <p><b>Ubicación:</b> {lot.location}</p>}
           {lot.certificate && <p><b>Certificado:</b> {lot.certificate}</p>}
           {lot.type && <p><b>Tipo:</b> {lot.type}</p>}
-          {lot.observations && (
-            <p>
-              <b>Observaciones:</b> {lot.observations}
-            </p>
-          )}
+          {lot.observations && <p><b>Observaciones:</b> {lot.observations}</p>}
         </div>
-        <div className="col-lg-5">
+        <div className="col-lg-5 my-5 my-lg-0">
           {lot.YTVideoSrc ? (
             <iframe
               width="100%"

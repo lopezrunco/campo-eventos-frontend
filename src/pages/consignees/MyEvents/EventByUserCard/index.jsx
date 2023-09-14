@@ -25,10 +25,10 @@ function EventByUserCard({ event }) {
                 {event.breeder && <p><b>Cabaña: </b>{event.breeder} </p>}
                 {event.category && <p><b>Categoría: </b>{event.category}</p>}
                 <a 
-                  className="button view-more me-3" 
+                  className="button view-more me-3 mb-0" 
                   onClick={() => navigate(`/consignatarios/mis-remates/${event.id}`)}
                 >
-                  Ver más / Editar<i className="fas fa-chevron-right ms-2"></i>
+                  <i className="fas fa-chevron-right me-2"></i> Ver más / Editar
                 </a>
                 {event.broadcastLinkId && (
                   <a
@@ -37,7 +37,7 @@ function EventByUserCard({ event }) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <i className="fas fa-play"></i> Enlace transmisión
+                    <i className="fas fa-play me-2"></i> Enlace transmisión
                   </a>
                 )}
               </div>

@@ -188,7 +188,7 @@ function PreoffersList({ preoffers, lotId }) {
         <div className="row justify-content-between">
           <div className="col-lg-4 mb-5 mb-lg-0">
             <h4 className="mb-4">
-              <i className="fas fa-comments-dollar me-2"></i> Preofertas:
+              Preofertas realizadas:
             </h4>
             {preoffers.length === 0 && (
               <p>Aún no hay preofertas en este lote.</p>
@@ -208,8 +208,7 @@ function PreoffersList({ preoffers, lotId }) {
           </div>
           <div className="col-lg-5">
             <h4 className="mb-4">
-              <i className="fas fa-comment-dollar me-2"></i> Hacer Preoferta
-              (U$S):
+              Hacer Preoferta (U$S):
             </h4>
             <div className="make-preoffer-container">
               <input
@@ -226,6 +225,7 @@ function PreoffersList({ preoffers, lotId }) {
                 onClick={handleFormSubmit}
                 disabled={state.isSubmitting}
               >
+                <i className="fas fa-comments-dollar me-2"></i>
                 {state.isSubmitting ? "Espere..." : "Preofertar"}
               </button>
               {state.hasError && (
