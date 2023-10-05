@@ -133,6 +133,9 @@ function EventCard({ event }) {
                 {/* TO DO: Solucion temporal a remate externo Santa Lucia.  */}
                 {event.id === '65196553667712fd63de7d89' && <a className="button view-more ms-2" href='http://campoeventos.preofertas.uy/lotes/lotespublicados/remate/1' target="_blank" rel="noreferrer">
                   <i className="fas fa-play"></i> Preofertar aquí</a>}
+                {/* TO DO: Solucion temporal a remate externo Del Parana. */}
+                {event.id === '65199252667712fd63de7db3' && <a className="button view-more ms-2" href='http://campoeventos.preofertas.uy/lotes/lotespublicados/remate/2' target="_blank" rel="noreferrer">
+                  <i className="fas fa-play"></i> Preofertar aquí</a>}
               </div>
             </div>
             <div className="col-lg-3">
