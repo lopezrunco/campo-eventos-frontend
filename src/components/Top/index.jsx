@@ -36,7 +36,7 @@ export const Top = () => {
                 </small>
               ) : (
                 <React.Fragment>
-                  <small>
+                  {/* <small>
                     <a href="/login">
                       <i className="fas fa-user"></i> Iniciar sesión
                     </a>
@@ -45,7 +45,7 @@ export const Top = () => {
                     <a href="/register">
                       <i className="fa fa-sign-in-alt"></i>Registro
                     </a>
-                  </small>
+                  </small> */}
                 </React.Fragment>
               )}
             </div>

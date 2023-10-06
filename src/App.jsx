@@ -181,7 +181,7 @@ function App() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            {/* <Top /> */}
+            <Top />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -402,7 +402,7 @@ function App() {
               }
             />
             <Route path="/servicios" element={<Servicios />} />
-            {/* <Route path="/login" element={<Login />} /> */}
+            <Route path="/login" element={<Login />} />
             {/* <Route path="/register" element={<Register />} /> */}
             <Route path="/user-created" element={<UserCreated />} />
             <Route path="/remates/:id" element={<EventById />} />

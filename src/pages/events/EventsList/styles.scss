@@ -2,6 +2,7 @@
 
 .broadcast-section {
     border-bottom: 1px solid $medium-light-color;
+    background-color: lighten($color: $medium-light-color, $amount: 7);
 
     iframe {
         width: 100%;

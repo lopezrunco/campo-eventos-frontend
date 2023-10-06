@@ -42,6 +42,10 @@ export const Header = () => {
                 <a href='/servicios' className="nav-link-item" title='Servicios'>Servicios</a>
               </li>
 
+              <li className={`navigation-bar-item`} id="navigation-bar-item" onClick={handleMenuClick} >
+                <a href='https://campoeventos.preofertas.uy/remates/rematespublicados' target="_blank" rel="noreferrer" className="nav-link-item" title='Ir a preofertas'>Ir a preofertas</a>
+              </li>
+
               {/* Basic users */}
               {authState.user && ( 
                 <React.Fragment>
