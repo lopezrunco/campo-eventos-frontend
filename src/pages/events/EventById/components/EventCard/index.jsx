@@ -156,7 +156,7 @@ function EventCard({ event }) {
                 <div className="row">
                   {state.data.length === 0 ? (
                     <div className="col-12 mt-3">
-                      <p>No hay lotes en este remate.</p>
+                      {/* <p>No hay lotes en este remate.</p> */}
                     </div>
                   ) :(
                     <h3 className="mb-4">
@@ -183,7 +183,7 @@ function EventCard({ event }) {
             </div>
           ) : (
             <div className="col-12 m-5">
-              <p>Cargando lotes...</p>
+              {/* <p>Cargando lotes...</p> */}
             </div>
           )}
         </div>
