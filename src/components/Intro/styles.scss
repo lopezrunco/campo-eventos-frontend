@@ -1,18 +1,33 @@
 @import '../../Variables.scss';
 
-.intro {
+.desktop-intro {
     display: none;
 }
 
+.mobile-intro {
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+    background: $primary-color;
+    background: $primary-gradient;
+    margin-bottom: -1rem;
+    padding: 1rem 7rem;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
 @media screen and (min-width: 768px) {
-    .intro {
+    .mobile-intro {
+        display: none;
+    }
+
+    .desktop-intro {
         display: inline-block;
         overflow: hidden;
         width: 100%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: top;
-        background-attachment: fixed;
         margin-bottom: -1rem;
         // Fade & translate animation
         opacity: 0;

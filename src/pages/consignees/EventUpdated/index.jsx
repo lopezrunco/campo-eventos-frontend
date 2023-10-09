@@ -5,10 +5,10 @@ function EventUpdated() {
     <SuccessMessage
       title="Remate editado"
       message="El remate ha sido editado con éxito."
-      redirectingMessage="Redirigiendo a Cartelera..."
-      duration="5000"
+      redirectingMessage="Redirigiendo a Mis remates..."
+      duration="3000"
       breadcrumbsLocation="Remate editado"
-      navigateTo="/"
+      navigateTo="/consignatarios/mis-remates"
     />
   );
 }

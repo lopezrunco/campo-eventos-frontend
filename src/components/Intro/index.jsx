@@ -1,11 +1,19 @@
-import heroLogoImgUrl from '../../assets/hero-logo.png'
+import React from "react";
 
-import './styles.scss'
+import heroLogoImgUrl from "../../assets/hero-logo.png";
+import mobileLogo from "../../assets/campoeventos-logo-alfa.png";
+
+import "./styles.scss";
 
 export const Intro = () => {
   return (
-    <div className="intro">
-        <img src={heroLogoImgUrl} alt='Campo Eventos' />
-    </div>
-  )
-}
+    <React.Fragment>
+      <div className="mobile-intro">
+        <img className="mobile-logo" src={mobileLogo} alt="Campo Eventos" />
+      </div>
+      <div className="desktop-intro">
+        <img className="desktop-img" src={heroLogoImgUrl} alt="Campo Eventos" />
+      </div>
+    </React.Fragment>
+  );
+};

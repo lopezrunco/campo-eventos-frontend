@@ -32,6 +32,7 @@ import MyEventById from "./pages/consignees/MyEventById";
 import PreOfferEdited from "./pages/consignees/PreOfferEdited";
 import CreateEvent from "./pages/consignees/CreateEvent";
 import EventCreated from "./pages/consignees/EventCreated";
+import EventUpdated from "./pages/consignees/EventUpdated";
 import EventDeleted from "./pages/consignees/EventDeleted";
 import PreofferDeleted from "./pages/consignees/PreofferDeleted";
 import CreateLot from "./pages/consignees/CreateLot";
@@ -55,7 +56,6 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 
 import "./App.scss";
-import EventUpdated from "./pages/consignees/EventUpdated";
 
 // Create context to manage authentication data type
 export const AuthContext = createContext();
@@ -422,6 +422,10 @@ function App() {
 export default App;
 
 // TO DO:
+
+// Urgente:
+// Agregar field para cargar enlace a sistema externo en creacion remate
+// Cargar imagen evento en la misma pantalla de remate
 
 // - Separar entre preofertas de remates que existen y preofertas de remates terminados o eliminados. Que las no activas puedan ser elimiadas por el usuario. 
 // - en Crear lote, agregar campo "cabaña"

@@ -6,9 +6,9 @@ function EventDeleted() {
       title="Remate eliminado"
       message="El remate ha sido eliminado con éxito."
       redirectingMessage="Redirigiendo a Cartelera..."
-      duration="5000"
+      duration="3000"
       breadcrumbsLocation="Remate eliminado"
-      navigateTo="/"
+      navigateTo="/consignatarios/mis-remates"
     />
   );
 }
