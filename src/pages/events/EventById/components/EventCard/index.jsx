@@ -132,10 +132,19 @@ function EventCard({ event }) {
                 )}
                 {/* TO DO: Solucion temporal a remate externo Santa Lucia.  */}
                 {event.id === '65196553667712fd63de7d89' && <a className="button view-more ms-2" href='http://campoeventos.preofertas.uy/lotes/lotespublicados/remate/1' target="_blank" rel="noreferrer">
-                  <i className="fas fa-play"></i> Preofertar aquí</a>}
+                  <i className="fas fa-play"></i> Preofertar aquí</a>
+                }
                 {/* TO DO: Solucion temporal a remate externo Del Parana. */}
                 {event.id === '65199252667712fd63de7db3' && <a className="button view-more ms-2" href='http://campoeventos.preofertas.uy/lotes/lotespublicados/remate/2' target="_blank" rel="noreferrer">
-                  <i className="fas fa-play"></i> Preofertar aquí</a>}
+                  <i className="fas fa-play"></i> Preofertar aquí</a>
+                }
+                {/* TO DO: Solucion temporal a remate externo Expo Lazcano.  */}
+                {event.id === '6526d679667712fd63de89a6' && <a className="button view-more ms-2" href='https://campoeventos.preofertas.uy/lotes/lotespublicados/remate/3' target="_blank" rel="noreferrer">
+                  <i className="fas fa-play"></i> Preofertar aquí</a>
+                }
+                {event.id === '65241e2e667712fd63de8885' && <a className="button view-more ms-2" href='https://campoeventos.preofertas.uy/lotes/lotespublicados/remate/3' target="_blank" rel="noreferrer">
+                  <i className="fas fa-play"></i> Preofertar aquí</a>
+                }
               </div>
             </div>
             <div className="col-lg-3">
