@@ -25,19 +25,29 @@ function EventByUserCard({ event }) {
                 {event.breeder && <p><b>Cabaña: </b>{event.breeder} </p>}
                 {event.category && <p><b>Categoría: </b>{event.category}</p>}
                 <a 
-                  className="button view-more me-3 mb-0" 
+                  className="button view-more mb-0" 
                   onClick={() => navigate(`/consignatarios/mis-remates/${event.id}`)}
                 >
                   <i className="fas fa-chevron-right me-2"></i> Ver más / Editar
                 </a>
                 {event.broadcastLinkId && (
                   <a
-                    className="button view-more"
+                    className="button view-more ms-3"
                     href={`https://www.youtube.com/watch/${event.broadcastLinkId}`}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <i className="fas fa-play me-2"></i> Enlace transmisión
+                    <i className="fas fa-play me-2"></i> Transmisión
+                  </a>
+                )}
+                {event.externalLink && (
+                  <a
+                    className="button view-more ms-3"
+                    href={event.externalLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <i className="fa fa-comment-dollar"></i> Preofertas
                   </a>
                 )}
               </div>

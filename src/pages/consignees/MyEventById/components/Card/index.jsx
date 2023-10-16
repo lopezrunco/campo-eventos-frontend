@@ -179,7 +179,17 @@ function Card({ myEvent }) {
               target="_blank"
               rel="noreferrer"
             >
-              <i className="fas fa-play"></i> Enlace transmisión
+              <i className="fas fa-play"></i> Transmisión
+            </a>
+          )}
+          {myEvent.externalLink && (
+            <a
+              className="button view-more ms-3"
+              href={myEvent.externalLink}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <i className="fa fa-comment-dollar"></i> Preofertas
             </a>
           )}
         </div>

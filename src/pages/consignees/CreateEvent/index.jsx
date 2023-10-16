@@ -32,6 +32,7 @@ const initialState = {
   eventDate: "",
   eventHour: "",
   broadcastLinkId: "",
+  externalLink: "",
   coverImgName: undefined,
   userId: "",
   isSending: false,
@@ -115,6 +116,7 @@ function CreateEvent() {
           state.broadcastLinkId === undefined
             ? undefined
             : getYoutubeId(state.broadcastLinkId),
+        externalLink: state.externalLink,
         coverImgName: state.imageUrl,
         userId: authState.user.id,
       }),
@@ -333,6 +335,17 @@ function CreateEvent() {
                 onChange={handleInputChange}
                 name="broadcastLinkId"
                 id="broadcastLinkId"
+              />
+            </label>
+
+            <label htmlFor="externalLink">
+              Enlace Preofertas
+              <input
+                type="text"
+                value={state.externalLink}
+                onChange={handleInputChange}
+                name="externalLink"
+                id="externalLink"
               />
             </label>
 

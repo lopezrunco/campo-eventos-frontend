@@ -38,6 +38,7 @@ const initialState = {
   eventDate: "",
   eventHour: "",
   broadcastLinkId: undefined,
+  externalLink: "",
   isSending: false,
   hasError: false,
 };
@@ -71,6 +72,7 @@ const reducer = (state, action) => {
         duration: action.payload.event.duration,
         startBroadcastTimestamp: action.payload.event.startBroadcastTimestamp,
         broadcastLinkId: `https://www.youtube.com/watch/${action.payload.event.broadcastLinkId}`,
+        externalLink: action.payload.event.externalLink,
         eventDate: action.payload.event.startBroadcastTimestamp.split("T")[0],
         eventHour: new Date(
           action.payload.event.startBroadcastTimestamp
@@ -216,6 +218,7 @@ function UpdateEvent() {
           state.broadcastLinkId === undefined
             ? null
             : getYoutubeId(state.broadcastLinkId),
+        externalLink: state.externalLink,
       }),
     })
       .then((response) => {
@@ -407,6 +410,17 @@ function UpdateEvent() {
                     onChange={handleInputChange}
                     name="broadcastLinkId"
                     id="broadcastLinkId"
+                  />
+                </label>
+              
+                <label htmlFor="externalLink">
+                  Enlace Preofertas
+                  <input
+                    type="text"
+                    value={state.externalLink}
+                    onChange={handleInputChange}
+                    name="externalLink"
+                    id="externalLink"
                   />
                 </label>
 

@@ -121,14 +121,24 @@ function EventCard({ event }) {
                 {event.funder && <p><b>Financiación:</b> {event.funder}</p>}
                 {event.location && <p><b>Lugar:</b> {event.location}</p>}
                 {event.broadcastLinkId && (
-                <a
-                  className="button view-more"
-                  href={`https://www.youtube.com/watch/${event.broadcastLinkId}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fas fa-play"></i> Enlace transmisión
-                </a>
+                  <a
+                    className="button view-more"
+                    href={`https://www.youtube.com/watch/${event.broadcastLinkId}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <i className="fas fa-play"></i> Transmisión
+                  </a>
+                )}
+                {event.externalLink && (
+                  <a
+                    className="button view-more ms-3"
+                    href={event.externalLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <i className="fa fa-comment-dollar"></i> Preofertas
+                  </a>
                 )}
                 {/* TO DO: Solucion temporal a remate externo Santa Lucia.  */}
                 {event.id === '65196553667712fd63de7d89' && <a className="button view-more ms-2" href='http://campoeventos.preofertas.uy/lotes/lotespublicados/remate/1' target="_blank" rel="noreferrer">
