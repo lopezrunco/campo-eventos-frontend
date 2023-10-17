@@ -17,6 +17,7 @@ import {
   UPLOAD_IMAGE_REQUEST,
   UPLOAD_IMAGE_SUCCESS,
   UPLOAD_INPUT_CHANGE,
+  UPDATE_IMAGE_PREVIEW,
 } from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
@@ -75,6 +76,11 @@ const reducer = (state, action) => {
         ...state,
         image: action.payload,
       };
+    case UPDATE_IMAGE_PREVIEW:
+      return {
+        ...state,
+        imagePreview: action.payload,
+      };
     case UPLOAD_IMAGE_REQUEST:
       return {
         ...state,
@@ -99,8 +105,6 @@ const reducer = (state, action) => {
 };
 
 function CreateEvent() {
-  // Add a new state to store the image preview URL
-  const [imagePreview, setImagePreview] = useState("");
   const [state, dispatch] = useReducer(reducer, initialState);
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -120,7 +124,10 @@ function CreateEvent() {
     if (imgElement) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImagePreview(reader.result);
+        dispatch({
+          type: UPDATE_IMAGE_PREVIEW,
+          payload: reader.result,
+        });
       };
       reader.readAsDataURL(imgElement);
     }
@@ -128,6 +135,13 @@ function CreateEvent() {
     dispatch({
       type: UPLOAD_INPUT_CHANGE,
       payload: imgElement,
+    });
+  };
+
+  const cancelImageUpload = () => {
+    dispatch({
+      type: UPDATE_IMAGE_PREVIEW,
+      payload: undefined,
     });
   };
 
@@ -173,8 +187,11 @@ function CreateEvent() {
         }
       })
       .finally(() => {
-        setImagePreview("")
-      })
+        dispatch({
+          type: UPDATE_IMAGE_PREVIEW,
+          payload: undefined,
+        });
+      });
   };
 
   const getTimeStamp = (date, hour) => {
@@ -444,22 +461,52 @@ function CreateEvent() {
 
             <div className="add-event-img">
               <label htmlFor="eventImg">
-                Afiche del evento
-                <input
-                  id="eventImg"
-                  name="eventImg"
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => handleUploadInputChange(e.target.files[0])}
-                ></input>
+                <div className="row align-items-center">
+                  <div className="col-lg-3">Afiche del evento</div>
+                  <div className="col-lg-9">
+                    <input
+                      id="eventImg"
+                      name="eventImg"
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) =>
+                        handleUploadInputChange(e.target.files[0])
+                      }
+                    ></input>
+                  </div>
+                </div>
               </label>
-              {imagePreview && (
+              {state.imagePreview && (
                 <div className="confirmation-modal">
-                  <img src={imagePreview} alt="Preview" />
-                  <p>Desea usar esta imagen?</p>
-                  <button className="button button-dark" onClick={handleImageSubmit} disabled={state.isSending}>
-                    <i className="fas fa-upload"></i> {state.isSending ? "Cargando..." : "Aceptar"}
-                  </button>
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-12 modal-container">
+                        <img
+                          src={state.imagePreview}
+                          alt="Previsualización de afiche."
+                        />
+                        <p>
+                          El archivo <i>{state.image.name}</i> se usará como
+                          afiche del evento.
+                        </p>
+                        <button
+                          className="button button-dark"
+                          onClick={handleImageSubmit}
+                          disabled={state.isSending}
+                        >
+                          <i className="fas fa-check"></i>{" "}
+                          {state.isSending ? "Cargando..." : "Confirmar"}
+                        </button>
+                        <button
+                          className="button button-dark-outline"
+                          onClick={cancelImageUpload}
+                          disabled={state.isSending}
+                        >
+                          <i className="fas fa-times"></i> Cancelar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>

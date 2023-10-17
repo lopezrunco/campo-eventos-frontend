@@ -423,9 +423,6 @@ export default App;
 
 // TO DO:
 
-// Octubre:
-// Cargar imagen evento en la misma pantalla de remate
-
 // Problema de paginacion: remates viejos que no se muestran igual siguen ocupando lugar en la paginacion y entonces los remates pendientes saltan a la siguiente pagina
 // - Separar entre preofertas de remates que existen y preofertas de remates terminados o eliminados. Que las no activas puedan ser elimiadas por el usuario. 
 // - en Crear lote, agregar campo "cabaña"
