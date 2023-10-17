@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 
 // import { cleanTextareas } from "../../../utils/cleanTextareas";
+const CLOUDINARY_ID = import.meta.env.VITE_CLOUDINARY_ID;
 import { refreshToken } from "../../../utils/refresh-token";
 import { getYoutubeId } from "../../../utils/getYoutubeID";
 import { apiUrl } from "../../../utils/api-url";
@@ -12,6 +13,10 @@ import {
   CREATE_EVENT_REQUEST,
   CREATE_EVENT_SUCCESS,
   FORM_INPUT_CHANGE,
+  UPLOAD_IMAGE_FAILURE,
+  UPLOAD_IMAGE_REQUEST,
+  UPLOAD_IMAGE_SUCCESS,
+  UPLOAD_INPUT_CHANGE,
 } from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
@@ -33,6 +38,7 @@ const initialState = {
   eventHour: "",
   broadcastLinkId: "",
   externalLink: "",
+  image: undefined,
   coverImgName: undefined,
   userId: "",
   isSending: false,
@@ -64,6 +70,29 @@ const reducer = (state, action) => {
         isSending: false,
         hasError: true,
       };
+    case UPLOAD_INPUT_CHANGE:
+      return {
+        ...state,
+        image: action.payload,
+      };
+    case UPLOAD_IMAGE_REQUEST:
+      return {
+        ...state,
+        isSending: true,
+        hasError: false,
+      };
+    case UPLOAD_IMAGE_SUCCESS:
+      return {
+        ...state,
+        imageUrl: action.payload.url,
+        isSending: false,
+      };
+    case UPLOAD_IMAGE_FAILURE:
+      return {
+        ...state,
+        isSending: false,
+        hasError: true,
+      };
     default:
       return state;
   }
@@ -82,6 +111,56 @@ function CreateEvent() {
         value: event.target.value,
       },
     });
+  };
+
+  const handleUploadInputChange = (imgElement) => {
+    dispatch({
+      type: UPLOAD_INPUT_CHANGE,
+      payload: imgElement,
+    });
+  };
+
+  const handleImageSubmit = () => {
+    dispatch({
+      type: UPLOAD_IMAGE_REQUEST,
+    });
+
+    const data = new FormData();
+    data.append("file", state.image);
+    data.append("upload_preset", "campoeventos");
+    data.append("cloud_name", "dvkq2sewj");
+
+    fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_ID}/image/upload`, {
+      method: "post",
+      body: data,
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw response;
+        }
+      })
+      .then((data) => {
+        dispatch({
+          type: UPLOAD_IMAGE_SUCCESS,
+          payload: data,
+        });
+      })
+      .catch((error) => {
+        console.error("Error uploading the image: ", error);
+        if (error.status === 401) {
+          refreshToken(authState.refreshToken, authDispatch, navigate, () =>
+            handleImageSubmit()
+          );
+        } else if (error.status === 403) {
+          navigate("/forbidden");
+        } else {
+          dispatch({
+            type: UPLOAD_IMAGE_FAILURE,
+          });
+        }
+      });
   };
 
   const getTimeStamp = (date, hour) => {
@@ -349,20 +428,55 @@ function CreateEvent() {
               />
             </label>
 
+            <div className="add-event-img">
+              <label htmlFor="eventImg">
+                Afiche del evento
+                <input
+                  id="eventImg"
+                  name="eventImg"
+                  type="file"
+                  onChange={(e) => handleUploadInputChange(e.target.files[0])}
+                ></input>
+              </label>
+              {/* <button
+                className="button button-dark"
+                onClick={handleImageSubmit}
+                disabled={state.isSending}
+              >
+                <i className="fas fa-upload"></i>
+                {state.isSending ? "Subiendo..." : "Subir"}
+              </button> */}
+              {/* <div className="file-preview">
+                {state.imageUrl !== "" && <img src={state.imageUrl} />}
+                {state.appendImageToEvent && (
+                    <AppendImage eventId={id} imageName={state.imageUrl} />
+                  )}
+                <a
+                    className="button button-dark-outline"
+                    href={`/consignatarios/mis-remates/${id}`}
+                  >
+                    <i className="fas fa-times"></i> Cancelar
+                  </a>
+              </div> */}
+            </div>
+
             <button
               className="button button-dark"
               onClick={handleFormSubmit}
-              disabled={state.isSubmitting}
+              disabled={state.isSending}
             >
               <i className="fas fa-plus"></i>
-              {state.isSubmitting ? "Por favor, espere..." : "Crear remate"}
+              {state.isSending ? "Por favor, espere..." : "Crear remate"}
             </button>
 
-            {state.hasError && (
-              (state.errorMessage) 
-                ? <span className="error-message">{state.errorMessage}</span> 
-                : <span className="error-message">Ocurrió un error. Revise los datos e intente nuevamente.</span>
-            )}
+            {state.hasError &&
+              (state.errorMessage ? (
+                <span className="error-message">{state.errorMessage}</span>
+              ) : (
+                <span className="error-message">
+                  Ocurrió un error. Revise los datos e intente nuevamente.
+                </span>
+              ))}
           </div>
         </article>
       </section>

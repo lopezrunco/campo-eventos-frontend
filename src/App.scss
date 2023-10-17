@@ -269,6 +269,17 @@ input[type="file"] {
     flex-direction: column;
     width: 100%;
   }
+
+  .add-event-img {
+    
+    input {
+      width: 100%;
+      background: $gray-color;
+      border-radius: $sm-border-radius;
+      border: 1px solid $medium-light-color;
+      padding: 2rem 1rem;
+      }
+  }
 }
 
 .form-accordion {
