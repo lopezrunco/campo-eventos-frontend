@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useEffect, useReducer } from "react";
+import React, { useContext, useState, useReducer } from "react";
 
 // import { cleanTextareas } from "../../../utils/cleanTextareas";
 const CLOUDINARY_ID = import.meta.env.VITE_CLOUDINARY_ID;
@@ -99,6 +99,8 @@ const reducer = (state, action) => {
 };
 
 function CreateEvent() {
+  // Add a new state to store the image preview URL
+  const [imagePreview, setImagePreview] = useState("");
   const [state, dispatch] = useReducer(reducer, initialState);
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -114,6 +116,15 @@ function CreateEvent() {
   };
 
   const handleUploadInputChange = (imgElement) => {
+    // Update the image preview when a new image is selected
+    if (imgElement) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(imgElement);
+    }
+
     dispatch({
       type: UPLOAD_INPUT_CHANGE,
       payload: imgElement,
@@ -160,7 +171,10 @@ function CreateEvent() {
             type: UPLOAD_IMAGE_FAILURE,
           });
         }
-      });
+      })
+      .finally(() => {
+        setImagePreview("")
+      })
   };
 
   const getTimeStamp = (date, hour) => {
@@ -435,29 +449,19 @@ function CreateEvent() {
                   id="eventImg"
                   name="eventImg"
                   type="file"
+                  accept="image/*"
                   onChange={(e) => handleUploadInputChange(e.target.files[0])}
                 ></input>
               </label>
-              {/* <button
-                className="button button-dark"
-                onClick={handleImageSubmit}
-                disabled={state.isSending}
-              >
-                <i className="fas fa-upload"></i>
-                {state.isSending ? "Subiendo..." : "Subir"}
-              </button> */}
-              {/* <div className="file-preview">
-                {state.imageUrl !== "" && <img src={state.imageUrl} />}
-                {state.appendImageToEvent && (
-                    <AppendImage eventId={id} imageName={state.imageUrl} />
-                  )}
-                <a
-                    className="button button-dark-outline"
-                    href={`/consignatarios/mis-remates/${id}`}
-                  >
-                    <i className="fas fa-times"></i> Cancelar
-                  </a>
-              </div> */}
+              {imagePreview && (
+                <div className="confirmation-modal">
+                  <img src={imagePreview} alt="Preview" />
+                  <p>Desea usar esta imagen?</p>
+                  <button className="button button-dark" onClick={handleImageSubmit} disabled={state.isSending}>
+                    <i className="fas fa-upload"></i> {state.isSending ? "Cargando..." : "Aceptar"}
+                  </button>
+                </div>
+              )}
             </div>
 
             <button

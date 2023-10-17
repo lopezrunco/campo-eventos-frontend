@@ -271,14 +271,20 @@ input[type="file"] {
   }
 
   .add-event-img {
-    
+    background: $gray-color;
+    border-radius: $sm-border-radius;
+    border: 1px solid $medium-light-color;
+    padding: 1rem;
+
     input {
       width: 100%;
-      background: $gray-color;
-      border-radius: $sm-border-radius;
-      border: 1px solid $medium-light-color;
-      padding: 2rem 1rem;
+    }
+
+    .confirmation-modal {
+      img {
+        max-width: 200px;
       }
+    }
   }
 }
 
