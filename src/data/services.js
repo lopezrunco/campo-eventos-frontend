@@ -8,6 +8,11 @@ export const servicesData = [
     },
     {
         id: getUniqueId(),
+        icon: 'hammer.svg',
+        title: 'Preofertas',
+    },
+    {
+        id: getUniqueId(),
         icon: 'megaphone.svg',
         title: 'Publicidad',
     },
