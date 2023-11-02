@@ -1,18 +1,16 @@
-import { useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 
-import { LOGOUT } from "../../utils/action-types";
+import { LOGOUT, LOGGING_OUT } from "../../utils/action-types";
 import { AuthContext } from "../../App";
 
 import "./styles.scss";
 
 export const Top = () => {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
-  const navigate = useNavigate();
 
-  const logout = () => {
+  const handleLogout = () => {
+    authDispatch({ type: LOGGING_OUT });
     authDispatch({ type: LOGOUT });
-    navigate("/logged-out");
   };
 
   return (
@@ -30,7 +28,7 @@ export const Top = () => {
             <div className="user-links">
               {authState.user ? (
                 <small>
-                  <a href="/login" onClick={logout}>
+                  <a href="/login" onClick={handleLogout}>
                     <i className="fas fa-sign-out-alt"></i> Cerrar sesión
                   </a>
                 </small>

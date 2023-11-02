@@ -2,6 +2,7 @@
 
 export const LOGIN = 'LOGIN'
 export const REFRESH_TOKEN = 'REFRESH_TOKEN'
+export const LOGGING_OUT = 'LOGGING_OUT';
 export const LOGOUT = 'LOGOUT'
 export const ENABLE_MFA = 'ENABLE_MFA'
 export const SHOW_LOADER = 'SHOW_LOADER'

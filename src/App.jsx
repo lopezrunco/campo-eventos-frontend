@@ -3,9 +3,10 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { createContext, useEffect, useReducer } from "react";
 
 import {
-  ENABLE_MFA,
+  // ENABLE_MFA,
   HIDE_LOADER,
   LOGIN,
+  LOGGING_OUT,
   LOGOUT,
   REFRESH_TOKEN,
   SHOW_LOADER,
@@ -19,7 +20,7 @@ import PreOfferDone from "./pages/events/PreOfferDone";
 import MyPreOffers from "./pages/events/MyPreOffers";
 
 import Login from "./pages/security/Login";
-import Register from "./pages/security/Register";
+// import Register from "./pages/security/Register";
 import UserCreated from "./pages/security/UserCreated";
 import { NotFound } from "./pages/access/NotFound";
 import UpdateUserInfo from "./pages/security/UpdateUserInfo";
@@ -75,14 +76,13 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case LOGIN:
-      // Take user data and set it in local storage
+      // Set user data in local storage
       localStorage.setItem("user", JSON.stringify(action.payload.user));
       localStorage.setItem("role", action.payload.user.role);
       localStorage.setItem("token", action.payload.user.token);
       localStorage.setItem("id", action.payload.user.id);
       localStorage.setItem("refreshToken", action.payload.user.refreshToken);
 
-      // Return new state
       return {
         ...state,
         isAuthenticated: true,
@@ -103,10 +103,15 @@ const reducer = (state, action) => {
         refreshToken: action.payload.refreshToken,
       };
 
-    case LOGOUT:
+    case LOGGING_OUT:
       localStorage.clear();
 
-      // Return new state with reseted values
+      return {
+        ...state,
+        showingLoader: true,
+      };
+
+    case LOGOUT:
       return {
         ...state,
         isAuthenticated: false,
@@ -115,22 +120,23 @@ const reducer = (state, action) => {
         token: null,
         id: null,
         refreshToken: null,
+        showingLoader: false,
       };
 
-    case ENABLE_MFA:
-      // Basically, clones actual user and enables MFA
-      const user = {
-        ...state.user,
-        mfaEnabled: true,
-      };
+    // case ENABLE_MFA:
+    //   // Basically, clones actual user and enables MFA
+    //   const user = {
+    //     ...state.user,
+    //     mfaEnabled: true,
+    //   };
 
-      // Save in local storage to disable MFA enable button
-      localStorage.setItem("user", JSON.stringify(user));
+    //   // Save in local storage to disable MFA enable button
+    //   localStorage.setItem("user", JSON.stringify(user));
 
-      return {
-        ...state,
-        user,
-      };
+    //   return {
+    //     ...state,
+    //     user,
+    //   };
 
     case SHOW_LOADER:
       return {
@@ -411,7 +417,7 @@ function App() {
           </Routes>
         </BrowserRouter>
 
-          <Footer />
+        <Footer />
 
         {state.showingLoader && <Loader />}
       </div>
