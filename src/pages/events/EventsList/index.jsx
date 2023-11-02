@@ -34,6 +34,7 @@ const initialState = {
   eventsList: [],
   selectedEventId: undefined,
   isFetching: false,
+  eventsFetched: false,
   hasError: false,
 };
 
@@ -51,17 +52,14 @@ const reducer = (state, action) => {
         ...state,
         isFetching: false,
         eventsList: action.payload.events,
+        eventsFetched: true
       };
     case FETCH_EVENTS_FAILURE:
       return {
         ...state,
         hasError: true,
         isFetching: false,
-      };
-    case "SET_EVENT":
-      return {
-        ...state,
-        selectedEventId: action.payload,
+        eventsFetched: true
       };
     default:
       return state;
@@ -205,7 +203,7 @@ function EventsList() {
                         <Card key={event.id} event={event} />
                       ))
                     ) : (
-                      <p>No hay remates para mostrar...</p>
+                      state.eventsFetched && <p>No hay remates para mostrar...</p>
                     )}
                   </>
                 )}
