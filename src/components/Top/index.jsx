@@ -3,6 +3,8 @@ import React, { useContext } from "react";
 import { LOGOUT, LOGGING_OUT } from "../../utils/action-types";
 import { AuthContext } from "../../App";
 
+import { Weather } from "../Weather";
+
 import "./styles.scss";
 
 export const Top = () => {
@@ -19,10 +21,12 @@ export const Top = () => {
         <div className="row">
           <div className="content-wrapper">
             <div className="user-info">
-              {authState.user && (
+              {authState.user ? (
                 <small>
                   <i className="fas fa-user"></i> {authState.user.nickname}
                 </small>
+              ) : (
+                <Weather />
               )}
             </div>
             <div className="user-links">
@@ -34,6 +38,7 @@ export const Top = () => {
                 </small>
               ) : (
                 <React.Fragment>
+                  <small>{new Date().toLocaleDateString("es-UY")}</small>
                   {/* <small>
                     <a href="/login">
                       <i className="fas fa-user"></i> Iniciar sesión
