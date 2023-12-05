@@ -3,7 +3,6 @@ import React from "react";
 
 import { Breadcrumbs } from "../../components/Breadcrumbs";
 import { ServicesGrid } from "./components/ServicesGrid";
-import { ScrollTop } from "../../components/ScrollTop";
 
 export const Servicios = () => {
   return (
@@ -24,7 +23,6 @@ export const Servicios = () => {
       >
         <ServicesGrid />
       </motion.div>
-      <ScrollTop scrollTo={"#top"} />
     </React.Fragment>
   );
 };

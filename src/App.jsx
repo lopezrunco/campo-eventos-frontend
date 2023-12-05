@@ -55,6 +55,7 @@ import { Loader } from "./components/Loader";
 import { Top } from "./components/Top";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import { ScrollTop } from "./components/ScrollTop";
 
 import "./App.scss";
 
@@ -418,6 +419,7 @@ function App() {
         </BrowserRouter>
 
         <Footer />
+        <ScrollTop scrollTo={"#top"} />
 
         {state.showingLoader && <Loader />}
       </div>
