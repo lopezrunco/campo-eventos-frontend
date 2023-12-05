@@ -27,7 +27,6 @@ import UpdateUserInfo from "./pages/security/UpdateUserInfo";
 import UserUpdated from "./pages/security/UserUpdated";
 import { Forbidden } from "./pages/access/Forbidden";
 
-import ConsigneesHomePage from "./pages/consignees/ConsigneesHomePage";
 import MyEvents from "./pages/consignees/MyEvents";
 import MyEventById from "./pages/consignees/MyEventById";
 import PreOfferEdited from "./pages/consignees/PreOfferEdited";
@@ -353,14 +352,6 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios"
-              element={
-                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
-                  <ConsigneesHomePage />
-                </RequireAuth>
-              }
-            />
-            <Route
               path="/mis-preofertas"
               element={
                 <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
@@ -400,14 +391,7 @@ function App() {
                 </RequireAuth>
               }
             />
-            <Route
-              path="/forbidden"
-              element={
-                <>
-                  <Forbidden />
-                </>
-              }
-            />
+            <Route path="/forbidden" element={<Forbidden />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
             {/* <Route path="/register" element={<Register />} /> */}

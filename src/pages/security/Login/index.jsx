@@ -87,59 +87,68 @@ function Login() {
       </motion.div>
       <section>
         <article className="container">
-          <div className="row">
-            <div className="col">
-              <div className="login-container">
-                <h1>Iniciar sesión</h1>
-                <div className="separator"></div>
-                <p className="text-center">Inicie sesión para acceder a la plataforma de preofertas.</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.3 }}
+            viewport={{ once: true }}
+          >
+            <div className="row">
+              <div className="col">
+                <div className="login-container">
+                  <h1>Iniciar sesión</h1>
+                  <div className="separator"></div>
+                  <p className="text-center">
+                    Inicie sesión para acceder a la plataforma de preofertas.
+                  </p>
 
-                <label htmlFor="nickname">
-                  <input
-                    type="text"
-                    value={data.nickname}
-                    onChange={handleInputChange}
-                    name="nickname"
-                    id="nickname"
-                  />
-                  Nombre de usuario *
-                </label>
+                  <label htmlFor="nickname">
+                    <input
+                      type="text"
+                      value={data.nickname}
+                      onChange={handleInputChange}
+                      name="nickname"
+                      id="nickname"
+                    />
+                    Nombre de usuario *
+                  </label>
 
-                <label htmlFor="password">
-                  <input
-                    type="password"
-                    value={data.password}
-                    onChange={handleInputChange}
-                    name="password"
-                    id="password"
-                  />
-                  Contraseña *
-                </label>
+                  <label htmlFor="password">
+                    <input
+                      type="password"
+                      value={data.password}
+                      onChange={handleInputChange}
+                      name="password"
+                      id="password"
+                    />
+                    Contraseña *
+                  </label>
 
-                <button
-                  onClick={handleFormSubmit}
-                  disabled={data.isSubmitting}
-                  className="button button-dark"
-                >
-                  <i className="fas fa-user"></i>
-                  {data.isSubmitting ? "Enviando datos..." : "Iniciar sesión"}
-                </button>
+                  <button
+                    onClick={handleFormSubmit}
+                    disabled={data.isSubmitting}
+                    className="button button-dark"
+                  >
+                    <i className="fas fa-user"></i>
+                    {data.isSubmitting ? "Enviando datos..." : "Iniciar sesión"}
+                  </button>
 
-                {data.errorMessage && (
-                  <span className="error-message">{data.errorMessage}</span>
-                )}
-              </div>
+                  {data.errorMessage && (
+                    <span className="error-message">{data.errorMessage}</span>
+                  )}
+                </div>
 
-              <div className="links">
-                <small>
-                  ¿No tiene una cuenta? <Link to="/register">Regístrese</Link>
-                </small>
-                <small>
-                  <Link to="/">Volver a la página de inicio</Link>
-                </small>
+                <div className="links">
+                  <small>
+                    ¿No tiene una cuenta? <Link to="/register">Regístrese</Link>
+                  </small>
+                  <small>
+                    <Link to="/">Volver a la página de inicio</Link>
+                  </small>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </article>
       </section>
     </React.Fragment>

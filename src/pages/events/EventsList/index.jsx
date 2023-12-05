@@ -25,7 +25,7 @@ import { Title } from "../../../components/Title";
 import LoadingMessage from "../../../components/LoadingMessage/index.jsx";
 import Card from "./components/Card/index.jsx";
 
-import './styles.scss'
+import "./styles.scss";
 
 // Create context to manage events
 export const EventsContext = createContext();
@@ -52,14 +52,14 @@ const reducer = (state, action) => {
         ...state,
         isFetching: false,
         eventsList: action.payload.events,
-        eventsFetched: true
+        eventsFetched: true,
       };
     case FETCH_EVENTS_FAILURE:
       return {
         ...state,
         hasError: true,
         isFetching: false,
-        eventsFetched: true
+        eventsFetched: true,
       };
     default:
       return state;
@@ -84,38 +84,38 @@ function EventsList() {
   }
 
   useEffect(() => {
-      fetch(apiUrl(`events?page=${currentPage}&itemsPerPage=${itemsPerPage}`), {
-        headers: {
-          Authorization: authState.token,
-          "Content-Type": "application/json",
-        },
+    fetch(apiUrl(`events?page=${currentPage}&itemsPerPage=${itemsPerPage}`), {
+      headers: {
+        Authorization: authState.token,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw response;
+        }
       })
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw response;
-          }
-        })
-        .then((data) => {
-          dispatch({
-            type: FETCH_EVENTS_SUCCESS,
-            payload: data,
-          });
-        })
-        .catch((error) => {
-          console.error("Error trying to fetch the events", error);
-
-          if (error.status === 401) {
-            refreshToken(authState.refreshToken, authDispatch, navigate);
-          } else if (error.status === 403) {
-            navigate("/forbidden");
-          } else {
-            dispatch({
-              type: FETCH_EVENTS_FAILURE,
-            });
-          }
+      .then((data) => {
+        dispatch({
+          type: FETCH_EVENTS_SUCCESS,
+          payload: data,
         });
+      })
+      .catch((error) => {
+        console.error("Error trying to fetch the events", error);
+
+        if (error.status === 401) {
+          refreshToken(authState.refreshToken, authDispatch, navigate);
+        } else if (error.status === 403) {
+          navigate("/forbidden");
+        } else {
+          dispatch({
+            type: FETCH_EVENTS_FAILURE,
+          });
+        }
+      });
   }, [
     authDispatch,
     authState.token,
@@ -140,38 +140,66 @@ function EventsList() {
         <div className="container">
           <div className="row">
             {state.eventsList.map((el, i) => {
-              let setEventDuration = (el.duration ? el.duration : 12)
+              let setEventDuration = el.duration ? el.duration : 12;
               let finishDate = new Date(
                 new Date(el.startBroadcastTimestamp).setHours(
-                  new Date(el.startBroadcastTimestamp).getHours() + setEventDuration
+                  new Date(el.startBroadcastTimestamp).getHours() +
+                    setEventDuration
                 )
               ).toJSON();
 
               return el.startBroadcastTimestamp < currentDate &&
                 finishDate > currentDate ? (
                 <div key={i} className="col-12 items-container">
-                  {i === 0 ? <Title title="En vivo" /> : null}
-                  <div className="item">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${el.broadcastLinkId}`}
-                      title="YouTube video player"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                    ></iframe>
-                    <div className="event-description">
-                      <h2>{el.title}</h2>
-                      <span className="event-date">
-                        <i className="fas fa-calendar-alt"></i>{" "}
-                        {getDate(el.startBroadcastTimestamp)}
-                      </span>
-                      {el.location && <span><b>Lugar: </b>{el.location}</span>}
-                      {el.organizer && <span><b>Organiza: </b>{el.organizer}</span>}
-                      <a className="button button-light-outline" href={`/remates/${el.id}`}>
-                        <i className="fas fa-play"></i> Ver más
-                      </a>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2 }}
+                    viewport={{ once: true }}
+                  >
+                    {i === 0 ? <Title title="En vivo" /> : null}
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="item">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${el.broadcastLinkId}`}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      ></iframe>
+                      <div className="event-description">
+                        <h2>{el.title}</h2>
+                        <span className="event-date">
+                          <i className="fas fa-calendar-alt"></i>{" "}
+                          {getDate(el.startBroadcastTimestamp)}
+                        </span>
+                        {el.location && (
+                          <span>
+                            <b>Lugar: </b>
+                            {el.location}
+                          </span>
+                        )}
+                        {el.organizer && (
+                          <span>
+                            <b>Organiza: </b>
+                            {el.organizer}
+                          </span>
+                        )}
+                        <a
+                          className="button button-light-outline"
+                          href={`/remates/${el.id}`}
+                        >
+                          <i className="fas fa-play"></i> Ver más
+                        </a>
+                      </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               ) : null;
             })}
@@ -182,40 +210,54 @@ function EventsList() {
       {/* Event list (Cartelera) */}
       <section className="events">
         <article className="container">
-          <Title
-            title="Cartelera de remates"
-            subtitle="Estos son los próximos remates que estaremos transmitiendo en vivo."
-          />
-          <div className="row">
-            <div className="col-12">
-              <div className="row">
-                {state.isFetching ? (
-                  <LoadingMessage
-                    title="Cargando eventos..."
-                    message="Esto puede tardar un poco dependiendo de la cantidad de eventos en nuestro sistema."
-                  />
-                ) : state.hasError ? (
-                  <p>Error al obtener los datos</p>
-                ) : (
-                  <>
-                    {state.eventsList.length > 0 ? (
-                      state.eventsList.map((event) => (
-                        <Card key={event.id} event={event} />
-                      ))
-                    ) : (
-                      state.eventsFetched && <p>No hay remates para mostrar...</p>
-                    )}
-                  </>
-                )}
-              </div>
-            </div>
-            <Pagination
-              elementList={state.eventsList}
-              currentPage={currentPage}
-              prevPageFunction={prevPage}
-              nextPageFunction={nextPage}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+            viewport={{ once: true }}
+          >
+            <Title
+              title="Cartelera de remates"
+              subtitle="Estos son los próximos remates que estaremos transmitiendo en vivo."
             />
-          </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="row">
+              <div className="col-12">
+                <div className="row">
+                  {state.isFetching ? (
+                    <LoadingMessage
+                      title="Cargando eventos..."
+                      message="Esto puede tardar un poco dependiendo de la cantidad de eventos en nuestro sistema."
+                    />
+                  ) : state.hasError ? (
+                    <p>Error al obtener los datos</p>
+                  ) : (
+                    <>
+                      {state.eventsList.length > 0
+                        ? state.eventsList.map((event) => (
+                            <Card key={event.id} event={event} />
+                          ))
+                        : state.eventsFetched && (
+                            <p>No hay remates para mostrar...</p>
+                          )}
+                    </>
+                  )}
+                </div>
+              </div>
+              <Pagination
+                elementList={state.eventsList}
+                currentPage={currentPage}
+                prevPageFunction={prevPage}
+                nextPageFunction={nextPage}
+              />
+            </div>
+          </motion.div>
         </article>
       </section>
     </EventsContext.Provider>

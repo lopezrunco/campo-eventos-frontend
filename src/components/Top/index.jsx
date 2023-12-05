@@ -38,7 +38,7 @@ export const Top = () => {
                 </small>
               ) : (
                 <React.Fragment>
-                  <small>{new Date().toLocaleDateString("es-UY")}</small>
+                  <small className="top-date">{new Date().toLocaleDateString("es-UY")}</small>
                   {/* <small>
                     <a href="/login">
                       <i className="fas fa-user"></i> Iniciar sesión

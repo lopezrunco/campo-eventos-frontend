@@ -15,14 +15,7 @@ export const Servicios = () => {
       >
         <Breadcrumbs location={"Servicios"} />
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.4 }}
-        viewport={{ once: true }}
-      >
-        <ServicesGrid />
-      </motion.div>
+      <ServicesGrid />
     </React.Fragment>
   );
 };

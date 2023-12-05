@@ -172,256 +172,268 @@ function CreateLot() {
       >
         <Breadcrumbs location={"Subir lote"} />
       </motion.div>
-      <section>
-        <article className="container">
-          <Title
-            title="Subir lote"
-            subtitle="Los campos marcados con * son obligatorios"
-          />
-          <div className="row">
-            <div className="col-12">
-              <div className="form-container row">
-                <div className="col-12">
-                  <label htmlFor="title">
-                    Título *
-                    <input
-                      required
-                      type="text"
-                      value={state.title}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.3 }}
+        viewport={{ once: true }}
+      >
+        <section>
+          <article className="container">
+            <Title
+              title="Subir lote"
+              subtitle="Los campos marcados con * son obligatorios"
+            />
+            <div className="row">
+              <div className="col-12">
+                <div className="form-container row">
+                  <div className="col-12">
+                    <label htmlFor="title">
+                      Título *
+                      <input
+                        required
+                        type="text"
+                        value={state.title}
+                        onChange={handleInputChange}
+                        name="title"
+                        id="title"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-6">
+                    <label htmlFor="category">
+                      Categoría
+                      <input
+                        type="text"
+                        value={state.category}
+                        onChange={handleInputChange}
+                        name="category"
+                        id="category"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-6">
+                    <label htmlFor="name">
+                      Nombre
+                      <input
+                        type="text"
+                        value={state.name}
+                        onChange={handleInputChange}
+                        name="name"
+                        id="name"
+                      />
+                    </label>
+                  </div>
+
+                  <label htmlFor="description">
+                    Descripción
+                    <textarea
+                      value={state.description}
                       onChange={handleInputChange}
-                      name="title"
-                      id="title"
-                    />
+                      name="description"
+                      id="description"
+                      cols="10"
+                      rows="7"
+                      maxLength="600"
+                    ></textarea>
                   </label>
-                </div>
 
-                <div className="col-lg-6">
-                  <label htmlFor="category">
-                    Categoría
-                    <input
-                      type="text"
-                      value={state.category}
+                  <div className="col-lg-3">
+                    <label htmlFor="rp">
+                      RP
+                      <input
+                        type="number"
+                        value={state.rp}
+                        onChange={handleInputChange}
+                        name="rp"
+                        id="rp"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-3">
+                    <label htmlFor="animals">
+                      Cantidad
+                      <input
+                        type="number"
+                        value={state.animals}
+                        onChange={handleInputChange}
+                        name="animals"
+                        id="animals"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-3">
+                    <label htmlFor="weight">
+                      Peso
+                      <input
+                        type="number"
+                        value={state.weight}
+                        onChange={handleInputChange}
+                        name="weight"
+                        id="weight"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-3">
+                    <label htmlFor="age">
+                      Fecha nac.
+                      <input
+                        type="text"
+                        value={state.age}
+                        onChange={handleInputChange}
+                        name="age"
+                        id="age"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-3">
+                    <label htmlFor="class">
+                      Clase
+                      <input
+                        type="text"
+                        value={state.class}
+                        onChange={handleInputChange}
+                        name="class"
+                        id="class"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-3">
+                    <label htmlFor="state">
+                      Estado
+                      <input
+                        type="text"
+                        value={state.state}
+                        onChange={handleInputChange}
+                        name="state"
+                        id="state"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-3">
+                    <label htmlFor="race">
+                      Raza
+                      <input
+                        type="text"
+                        value={state.race}
+                        onChange={handleInputChange}
+                        name="race"
+                        id="race"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-3">
+                    <label htmlFor="type">
+                      Tipo
+                      <input
+                        type="text"
+                        value={state.type}
+                        onChange={handleInputChange}
+                        name="type"
+                        id="type"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-6">
+                    <label htmlFor="pedigree">
+                      Pedigree
+                      <input
+                        type="text"
+                        value={state.pedigree}
+                        onChange={handleInputChange}
+                        name="pedigree"
+                        id="pedigree"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-6">
+                    <label htmlFor="location">
+                      Lugar
+                      <input
+                        type="text"
+                        value={state.location}
+                        onChange={handleInputChange}
+                        name="location"
+                        id="location"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-3">
+                    <label htmlFor="certificate">
+                      Certificado
+                      <input
+                        type="text"
+                        value={state.certificate}
+                        onChange={handleInputChange}
+                        name="certificate"
+                        id="certificate"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-9">
+                    <label htmlFor="ytvideo">
+                      Enlace (YouTube)
+                      <input
+                        type="text"
+                        value={state.YTVideoSrc}
+                        onChange={handleInputChange}
+                        name="YTVideoSrc"
+                        id="ytvideo"
+                      />
+                    </label>
+                  </div>
+
+                  <label htmlFor="observations">
+                    Observaciones
+                    <textarea
+                      value={state.observations}
                       onChange={handleInputChange}
-                      name="category"
-                      id="category"
-                    />
+                      name="observations"
+                      id="observations"
+                      cols="10"
+                      rows="7"
+                      maxLength="600"
+                    ></textarea>
                   </label>
+
+                  <button
+                    className="button button-dark"
+                    onClick={handleFormSubmit}
+                    disabled={state.isSubmitting}
+                  >
+                    <i className="fas fa-plus"></i>
+                    {state.isSubmitting ? "Por favor, espere..." : "Subir lote"}
+                  </button>
+
+                  {state.hasError &&
+                    (state.errorMessage ? (
+                      <span className="error-message">
+                        {state.errorMessage}
+                      </span>
+                    ) : (
+                      <span className="error-message">
+                        Ocurrió un error. Revise los datos e intente nuevamente.
+                      </span>
+                    ))}
                 </div>
-
-                <div className="col-lg-6">
-                  <label htmlFor="name">
-                    Nombre
-                    <input
-                      type="text"
-                      value={state.name}
-                      onChange={handleInputChange}
-                      name="name"
-                      id="name"
-                    />
-                  </label>
-                </div>
-
-                <label htmlFor="description">
-                  Descripción
-                  <textarea
-                    value={state.description}
-                    onChange={handleInputChange}
-                    name="description"
-                    id="description"
-                    cols="10"
-                    rows="7"
-                    maxLength="600"
-                  ></textarea>
-                </label>
-
-                <div className="col-lg-3">
-                  <label htmlFor="rp">
-                    RP
-                    <input
-                      type="number"
-                      value={state.rp}
-                      onChange={handleInputChange}
-                      name="rp"
-                      id="rp"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-3">
-                  <label htmlFor="animals">
-                    Cantidad
-                    <input
-                      type="number"
-                      value={state.animals}
-                      onChange={handleInputChange}
-                      name="animals"
-                      id="animals"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-3">
-                  <label htmlFor="weight">
-                    Peso
-                    <input
-                      type="number"
-                      value={state.weight}
-                      onChange={handleInputChange}
-                      name="weight"
-                      id="weight"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-3">
-                  <label htmlFor="age">
-                    Fecha nac.
-                    <input
-                      type="text"
-                      value={state.age}
-                      onChange={handleInputChange}
-                      name="age"
-                      id="age"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-3">
-                  <label htmlFor="class">
-                    Clase
-                    <input
-                      type="text"
-                      value={state.class}
-                      onChange={handleInputChange}
-                      name="class"
-                      id="class"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-3">
-                  <label htmlFor="state">
-                    Estado
-                    <input
-                      type="text"
-                      value={state.state}
-                      onChange={handleInputChange}
-                      name="state"
-                      id="state"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-3">
-                  <label htmlFor="race">
-                    Raza
-                    <input
-                      type="text"
-                      value={state.race}
-                      onChange={handleInputChange}
-                      name="race"
-                      id="race"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-3">
-                  <label htmlFor="type">
-                    Tipo
-                    <input
-                      type="text"
-                      value={state.type}
-                      onChange={handleInputChange}
-                      name="type"
-                      id="type"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-6">
-                  <label htmlFor="pedigree">
-                    Pedigree
-                    <input
-                      type="text"
-                      value={state.pedigree}
-                      onChange={handleInputChange}
-                      name="pedigree"
-                      id="pedigree"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-6">
-                  <label htmlFor="location">
-                    Lugar
-                    <input
-                      type="text"
-                      value={state.location}
-                      onChange={handleInputChange}
-                      name="location"
-                      id="location"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-3">
-                  <label htmlFor="certificate">
-                    Certificado
-                    <input
-                      type="text"
-                      value={state.certificate}
-                      onChange={handleInputChange}
-                      name="certificate"
-                      id="certificate"
-                    />
-                  </label>
-                </div>
-
-                <div className="col-lg-9">
-                  <label htmlFor="ytvideo">
-                    Enlace (YouTube)
-                    <input
-                      type="text"
-                      value={state.YTVideoSrc}
-                      onChange={handleInputChange}
-                      name="YTVideoSrc"
-                      id="ytvideo"
-                    />
-                  </label>
-                </div>
-
-                <label htmlFor="observations">
-                  Observaciones
-                  <textarea
-                    value={state.observations}
-                    onChange={handleInputChange}
-                    name="observations"
-                    id="observations"
-                    cols="10"
-                    rows="7"
-                    maxLength="600"
-                  ></textarea>
-                </label>
-
-                <button
-                  className="button button-dark"
-                  onClick={handleFormSubmit}
-                  disabled={state.isSubmitting}
-                >
-                  <i className="fas fa-plus"></i>
-                  {state.isSubmitting ? "Por favor, espere..." : "Subir lote"}
-                </button>
-
-                {state.hasError && (
-                  (state.errorMessage) 
-                    ? <span className="error-message">{state.errorMessage}</span> 
-                    : <span className="error-message">Ocurrió un error. Revise los datos e intente nuevamente.</span>
-                )}
               </div>
             </div>
-          </div>
-        </article>
-      </section>
+          </article>
+        </section>
+      </motion.div>
     </React.Fragment>
   );
 }

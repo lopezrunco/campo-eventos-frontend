@@ -1,11 +1,6 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import React, {
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 
 import { AuthContext } from "../../../App";
 import { apiUrl } from "../../../utils/api-url";
@@ -134,40 +129,54 @@ function AllEvents() {
       >
         <Breadcrumbs location={"Lista de remates"} />
       </motion.div>
+
       <section className="backoffice-events-page">
         <article className="container">
-            <Title title="Lista de remates" subtitle="Todos los remates subidos por los consignatarios." />
-          <div className="row">
-            <div className="col-12">
-              <div className="row">
-                {state.isFetching ? (
-                  <Loader />
-                ) : state.hasError ? (
-                  <p>Error al obtener los datos</p>
-                ) : (
-                  <React.Fragment>
-                    {state.eventsList.length > 0 ? (
-                      state.eventsList.map(
-                        (event) =>
-                          <EventByUserCard
-                            key={event.id}
-                            event={event}
-                          />
-                      )
-                    ) : (
-                      <p>En este momento, no hay remates.</p>
-                    )}
-                  </React.Fragment>
-                )}
-              </div>
-            </div>
-            <Pagination
-              elementList={state.eventsList}
-              currentPage={currentPage}
-              prevPageFunction={prevPage}
-              nextPageFunction={nextPage}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.3 }}
+            viewport={{ once: true }}
+          >
+            <Title
+              title="Lista de remates"
+              subtitle="Todos los remates subidos por los consignatarios."
             />
-          </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="row">
+              <div className="col-12">
+                <div className="row">
+                  {state.isFetching ? (
+                    <Loader />
+                  ) : state.hasError ? (
+                    <p>Error al obtener los datos</p>
+                  ) : (
+                    <React.Fragment>
+                      {state.eventsList.length > 0 ? (
+                        state.eventsList.map((event) => (
+                          <EventByUserCard key={event.id} event={event} />
+                        ))
+                      ) : (
+                        <p>En este momento, no hay remates.</p>
+                      )}
+                    </React.Fragment>
+                  )}
+                </div>
+              </div>
+              <Pagination
+                elementList={state.eventsList}
+                currentPage={currentPage}
+                prevPageFunction={prevPage}
+                nextPageFunction={nextPage}
+              />
+            </div>
+          </motion.div>
         </article>
       </section>
     </React.Fragment>

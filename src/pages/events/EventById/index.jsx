@@ -10,7 +10,6 @@ import {
   FETCH_EVENT_REQUEST,
   FETCH_EVENT_SUCCESS,
   HIDE_LOADER,
-  SHOW_LOADER,
 } from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
@@ -107,17 +106,24 @@ function EventById() {
       >
         <Breadcrumbs location={"Detalles del remate"} />
       </motion.div>
-      <section className="event-id">
-        <article className="container">
-          {state.event ? (
-            <EventCard event={state.event} />
-          ) : state.hasError ? (
-            <p>Error al obtener el remate</p>
-          ) : (
-            <p>Cargando detalles del remate...</p>
-          )}
-        </article>
-      </section>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        viewport={{ once: true }}
+      >
+        <section className="event-id">
+          <article className="container">
+            {state.event ? (
+              <EventCard event={state.event} />
+            ) : state.hasError ? (
+              <p>Error al obtener el remate</p>
+            ) : (
+              <p>Cargando detalles del remate...</p>
+            )}
+          </article>
+        </section>
+      </motion.div>
     </React.Fragment>
   );
 }

@@ -134,39 +134,52 @@ function MyPreOffers() {
       >
         <Breadcrumbs location={"Mis preofertas"} />
       </motion.div>
-      <section>
-        <article className="container">
-          <div className="row">
-            {state.isFetching ? (
-              <Loader />
-            ) : state.hasError ? (
-              <p>Error al obtener los datos</p>
-            ) : (
-              <React.Fragment>
-                {state.preoffersList.length > 0 ? (
-                  state.preoffersList.map((preoffer) => (
-                    <MyPreofferCard key={preoffer.id} preoffer={preoffer} />
-                  ))
-                ) : (
-                  <div className="col-lg-8">
-                    <h3>No hay preofertas para mostrar</h3>
-                    <div className="separator"></div>
-                    <p>Si ya ha realizado preofertas en el pasado, es posible que el remate haya sido despublicado y las preofertas eliminadas.</p>
-                    <p>Para preofertar, visite nuestra Cartelera.</p>
-                    <a href="/" className="button button-dark-outline"><i className="fas fa-home me-2"></i> Ver Cartelera</a>
-                  </div>
-                )}
-              </React.Fragment>
-            )}
-            <Pagination
-              elementList={state.preoffersList}
-              currentPage={currentPage}
-              prevPageFunction={prevPage}
-              nextPageFunction={nextPage}
-            />
-          </div>
-        </article>
-      </section>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.3 }}
+        viewport={{ once: true }}
+      >
+        <section>
+          <article className="container">
+            <div className="row">
+              {state.isFetching ? (
+                <Loader />
+              ) : state.hasError ? (
+                <p>Error al obtener los datos</p>
+              ) : (
+                <React.Fragment>
+                  {state.preoffersList.length > 0 ? (
+                    state.preoffersList.map((preoffer) => (
+                      <MyPreofferCard key={preoffer.id} preoffer={preoffer} />
+                    ))
+                  ) : (
+                    <div className="col-lg-8">
+                      <h3>No hay preofertas para mostrar</h3>
+                      <div className="separator"></div>
+                      <p>
+                        Si ya ha realizado preofertas en el pasado, es posible
+                        que el remate haya sido despublicado y las preofertas
+                        eliminadas.
+                      </p>
+                      <p>Para preofertar, visite nuestra Cartelera.</p>
+                      <a href="/" className="button button-dark-outline">
+                        <i className="fas fa-home me-2"></i> Ver Cartelera
+                      </a>
+                    </div>
+                  )}
+                </React.Fragment>
+              )}
+              <Pagination
+                elementList={state.preoffersList}
+                currentPage={currentPage}
+                prevPageFunction={prevPage}
+                nextPageFunction={nextPage}
+              />
+            </div>
+          </article>
+        </section>
+      </motion.div>
     </React.Fragment>
   );
 }

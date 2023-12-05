@@ -139,42 +139,56 @@ function MyEvents() {
         <Breadcrumbs location={"Mis remates"} />
       </motion.div>
       <section className="container">
-        <Title
-          title="Mis remates"
-          subtitle="Gestione preofertas, cree, edite y elimine remates."
-        />
-        <article className="row">
-          <div className="col-lg-12 d-flex justify-content-end">
-            <a
-              className="button button-dark"
-              href="/consignatarios/crear-remate"
-            >
-              <i className="fas fa-plus"></i> Crear remate
-            </a>
-          </div>
-          {state.isFetching ? (
-            <Loader />
-          ) : state.hasError ? (
-            <p>Error al obtener los datos</p>
-          ) : (
-            <>
-              {state.eventsList.length > 0 ? (
-                state.eventsList.map((event) => (
-                  <EventByUserCard key={event.id} event={event} />
-                ))
-              ) : (
-                <p>No hay remates para mostrar...</p>
-              )}
-            </>
-          )}
-
-          <Pagination
-            elementList={state.eventsList}
-            currentPage={currentPage}
-            prevPageFunction={prevPage}
-            nextPageFunction={nextPage}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.3 }}
+          viewport={{ once: true }}
+        >
+          <Title
+            title="Mis remates"
+            subtitle="Gestione preofertas, cree, edite y elimine remates."
           />
-        </article>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4 }}
+          viewport={{ once: true }}
+        >
+          <article className="row">
+            <div className="col-lg-12 d-flex justify-content-end">
+              <a
+                className="button button-dark"
+                href="/consignatarios/crear-remate"
+              >
+                <i className="fas fa-plus"></i> Crear remate
+              </a>
+            </div>
+            {state.isFetching ? (
+              <Loader />
+            ) : state.hasError ? (
+              <p>Error al obtener los datos</p>
+            ) : (
+              <>
+                {state.eventsList.length > 0 ? (
+                  state.eventsList.map((event) => (
+                    <EventByUserCard key={event.id} event={event} />
+                  ))
+                ) : (
+                  <p>No hay remates para mostrar...</p>
+                )}
+              </>
+            )}
+
+            <Pagination
+              elementList={state.eventsList}
+              currentPage={currentPage}
+              prevPageFunction={prevPage}
+              nextPageFunction={nextPage}
+            />
+          </article>
+        </motion.div>
       </section>
     </React.Fragment>
   );

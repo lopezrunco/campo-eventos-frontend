@@ -32,6 +32,10 @@
                     display: flex;
                     gap: 2rem;
 
+                    .top-date {
+                        color: $accent-color;
+                    }
+
                     a {
                         width: max-content;
                         color: $light-color;

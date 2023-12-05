@@ -19,17 +19,24 @@ const AddVideoToLot = () => {
       >
         <Breadcrumbs location={"Agregar video"} />
       </motion.div>
-      <section className="upload-video-page">
-        <article className="container">
-          <Title
-            title="Agregar video al lote"
-            subtitle="Use un enlace de YouTube o suba un video desde su dispositivo"
-          />
-          <div className="row">
-            <YouTubeVideo lotId={id} />
-          </div>
-        </article>
-      </section>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.3 }}
+        viewport={{ once: true }}
+      >
+        <section className="upload-video-page">
+          <article className="container">
+            <Title
+              title="Agregar video al lote"
+              subtitle="Use un enlace de YouTube o suba un video desde su dispositivo"
+            />
+            <div className="row">
+              <YouTubeVideo lotId={id} />
+            </div>
+          </article>
+        </section>
+      </motion.div>
     </React.Fragment>
   );
 };

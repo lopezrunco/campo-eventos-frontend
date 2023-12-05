@@ -127,73 +127,85 @@ function UpdateUserInfo() {
       >
         <Breadcrumbs location={"Complete sus datos"} />
       </motion.div>
-      <section className="update-user-page">
-        <article className="container">
-          <Title
-            title="Complete sus datos"
-            subtitle="Para hacer preofertas, debe facilitar sus datos de contacto."
-          />
-          <div className="row">
-            <div className="col-12">
-              <div className="form-container row">
-                <div className="col-lg-6">
-                  <label htmlFor="phone">
-                    Teléfono (Sin espacios ni guiones) *
-                    <input
-                      required
-                      type="number"
-                      value={state.phone}
-                      onChange={handleInputChange}
-                      name="phone"
-                      id="phone"
-                    />
-                  </label>
-                </div>
-                <div className="col-lg-6">
-                  <label htmlFor="telephone">
-                    Telefono fijo
-                    <input
-                      type="number"
-                      value={state.telephone}
-                      onChange={handleInputChange}
-                      name="telephone"
-                      id="telephone"
-                    />
-                  </label>
-                </div>
-                <div className="col-12">
-                  <label htmlFor="address">
-                    Dirección *
-                    <input
-                      required
-                      type="text"
-                      value={state.address}
-                      onChange={handleInputChange}
-                      name="address"
-                      id="address"
-                    />
-                  </label>
-                </div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.3 }}
+        viewport={{ once: true }}
+      >
+        <section className="update-user-page">
+          <article className="container">
+            <Title
+              title="Complete sus datos"
+              subtitle="Para hacer preofertas, debe facilitar sus datos de contacto."
+            />
+            <div className="row">
+              <div className="col-12">
+                <div className="form-container row">
+                  <div className="col-lg-6">
+                    <label htmlFor="phone">
+                      Teléfono (Sin espacios ni guiones) *
+                      <input
+                        required
+                        type="number"
+                        value={state.phone}
+                        onChange={handleInputChange}
+                        name="phone"
+                        id="phone"
+                      />
+                    </label>
+                  </div>
+                  <div className="col-lg-6">
+                    <label htmlFor="telephone">
+                      Telefono fijo
+                      <input
+                        type="number"
+                        value={state.telephone}
+                        onChange={handleInputChange}
+                        name="telephone"
+                        id="telephone"
+                      />
+                    </label>
+                  </div>
+                  <div className="col-12">
+                    <label htmlFor="address">
+                      Dirección *
+                      <input
+                        required
+                        type="text"
+                        value={state.address}
+                        onChange={handleInputChange}
+                        name="address"
+                        id="address"
+                      />
+                    </label>
+                  </div>
 
-                <button
-                  className="button button-dark"
-                  onClick={handleFormSubmit}
-                  disabled={state.isSubmitting}
-                >
-                  <i className="fas fa-sync-alt"></i>
-                  {state.isSubmitting ? "Por favor, espere..." : "Actualizar"}
-                </button>
+                  <button
+                    className="button button-dark"
+                    onClick={handleFormSubmit}
+                    disabled={state.isSubmitting}
+                  >
+                    <i className="fas fa-sync-alt"></i>
+                    {state.isSubmitting ? "Por favor, espere..." : "Actualizar"}
+                  </button>
 
-                {state.hasError && (
-                  (state.errorMessage) 
-                    ? <span className="error-message">{state.errorMessage}</span> 
-                    : <span className="error-message">Ocurrió un error. Revise los datos e intente nuevamente.</span>
-                )}
+                  {state.hasError &&
+                    (state.errorMessage ? (
+                      <span className="error-message">
+                        {state.errorMessage}
+                      </span>
+                    ) : (
+                      <span className="error-message">
+                        Ocurrió un error. Revise los datos e intente nuevamente.
+                      </span>
+                    ))}
+                </div>
               </div>
             </div>
-          </div>
-        </article>
-      </section>
+          </article>
+        </section>
+      </motion.div>
     </React.Fragment>
   );
 }

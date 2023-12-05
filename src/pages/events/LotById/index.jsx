@@ -112,14 +112,21 @@ function LotById() {
       >
         <Breadcrumbs location={"Detalles de lote"} />
       </motion.div>
-      <section>
-        <article className="container">
-          <div className="row">
-            {state.lot && <LotCard lot={state.lot} />}
-            {state.hasError && <p>Error al obtener el lote</p>}
-          </div>
-        </article>
-      </section>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        viewport={{ once: true }}
+      >
+        <section>
+          <article className="container">
+            <div className="row">
+              {state.lot && <LotCard lot={state.lot} />}
+              {state.hasError && <p>Error al obtener el lote</p>}
+            </div>
+          </article>
+        </section>
+      </motion.div>
     </React.Fragment>
   );
 }

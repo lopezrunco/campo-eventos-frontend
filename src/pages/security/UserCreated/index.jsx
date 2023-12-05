@@ -1,11 +1,12 @@
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 
 import { LOGIN } from "../../../utils/action-types";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 
-import './style.scss'
+import "./style.scss";
 
 function UserCreated() {
   // From auth AuthContext take the dispatch function to indicate login
@@ -73,16 +74,25 @@ function UserCreated() {
   };
 
   return (
-    <React.Fragment>
-      <section className="user-created-screen">
-        <article className="container">
-          <div className="row">
-            <div className="col">
+    <section className="user-created-screen">
+      <article className="container">
+        <div className="row">
+          <div className="col">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
               <div className="login-container">
-                <h1 className="text-center">Inicie sesión para activar su cuenta</h1>
+                <h1 className="text-center">
+                  Inicie sesión para activar su cuenta
+                </h1>
                 <div className="separator"></div>
-                <p className="text-center">Su usuario ha sido creado, solo debe ingresar sus datos una vez más.</p>
-                
+                <p className="text-center">
+                  Su usuario ha sido creado, solo debe ingresar sus datos una
+                  vez más.
+                </p>
 
                 <label htmlFor="nickname">
                   <input
@@ -119,11 +129,11 @@ function UserCreated() {
                   <span className="error-message">{data.errorMessage}</span>
                 )}
               </div>
-            </div>
+            </motion.div>
           </div>
-        </article>
-      </section>
-    </React.Fragment>
+        </div>
+      </article>
+    </section>
   );
 }
 

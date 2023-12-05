@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import React, { useContext, useReducer } from "react";
 
 const CLOUDINARY_ID = import.meta.env.VITE_CLOUDINARY_ID;
+
 import { refreshToken } from "../../../utils/refresh-token";
 import { AuthContext } from "../../../App";
 import {
@@ -122,51 +123,60 @@ const UploadEventCover = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
         <Breadcrumbs location={"Subir imagen"} />
       </motion.div>
-      <section className="upload-file-page">
-        <article className="container">
-          <Title
-            title="Subir nueva imagen"
-            subtitle="El archivo no puede pesar más de 10 megabytes"
-          />
-          <div className="row">
-            <div className="col-12">
-              <div className="select-file">
-                <label>
-                  <input
-                    type="file"
-                    onChange={(e) => handleUploadInputChange(e.target.files[0])}
-                  ></input>
-                </label>
-                <button
-                  className="button button-dark"
-                  onClick={handleImageSubmit}
-                  disabled={state.isSending}
-                >
-                  <i className="fas fa-upload"></i>
-                  {state.isSending ? "Subiendo..." : "Subir"}
-                </button>
-              </div>
-              <div className="file-preview">
-                {state.url !== "" && <img src={state.url} />}
-                {state.appendImageToEvent && (
-                  <AppendImage eventId={id} imageName={state.url} />
-                )}
-                <a
-                  className="button button-dark-outline"
-                  href={`/consignatarios/mis-remates/${id}`}
-                >
-                  <i className="fas fa-times"></i> Cancelar
-                </a>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.3 }}
+        viewport={{ once: true }}
+      >
+        <section className="upload-file-page">
+          <article className="container">
+            <Title
+              title="Subir nueva imagen"
+              subtitle="El archivo no puede pesar más de 10 megabytes"
+            />
+            <div className="row">
+              <div className="col-12">
+                <div className="select-file">
+                  <label>
+                    <input
+                      type="file"
+                      onChange={(e) =>
+                        handleUploadInputChange(e.target.files[0])
+                      }
+                    ></input>
+                  </label>
+                  <button
+                    className="button button-dark"
+                    onClick={handleImageSubmit}
+                    disabled={state.isSending}
+                  >
+                    <i className="fas fa-upload"></i>
+                    {state.isSending ? "Subiendo..." : "Subir"}
+                  </button>
+                </div>
+                <div className="file-preview">
+                  {state.url !== "" && <img src={state.url} />}
+                  {state.appendImageToEvent && (
+                    <AppendImage eventId={id} imageName={state.url} />
+                  )}
+                  <a
+                    className="button button-dark-outline"
+                    href={`/consignatarios/mis-remates/${id}`}
+                  >
+                    <i className="fas fa-times"></i> Cancelar
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </article>
-      </section>
+          </article>
+        </section>
+      </motion.div>
     </React.Fragment>
   );
 };

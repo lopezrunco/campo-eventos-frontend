@@ -100,93 +100,101 @@ function Register() {
       <section>
         <article className="container">
           <div className="row">
-            <div className="col">
-              <div className="register-container">
-                <h1>Registrarme</h1>
-                <div className="separator"></div>
-                <p className="text-center">
-                  Regístrese para acceder a la plataforma de preofertas.
-                </p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.3 }}
+              viewport={{ once: true }}
+            >
+              <div className="col">
+                <div className="register-container">
+                  <h1>Registrarme</h1>
+                  <div className="separator"></div>
+                  <p className="text-center">
+                    Regístrese para acceder a la plataforma de preofertas.
+                  </p>
 
-                <label htmlFor="nickname">
-                  <input
-                    type="text"
-                    value={data.nickname}
-                    onChange={handleInputChange}
-                    name="nickname"
-                    id="nickname"
-                  />
-                  Nombre de usuario (Sólo números y letras) *
-                </label>
+                  <label htmlFor="nickname">
+                    <input
+                      type="text"
+                      value={data.nickname}
+                      onChange={handleInputChange}
+                      name="nickname"
+                      id="nickname"
+                    />
+                    Nombre de usuario (Sólo números y letras) *
+                  </label>
 
-                <label htmlFor="password">
-                  <input
-                    type="password"
-                    value={data.password}
-                    onChange={handleInputChange}
-                    name="password"
-                    id="password"
-                  />
-                  Contraseña *
-                </label>
+                  <label htmlFor="password">
+                    <input
+                      type="password"
+                      value={data.password}
+                      onChange={handleInputChange}
+                      name="password"
+                      id="password"
+                    />
+                    Contraseña *
+                  </label>
 
-                <label htmlFor="email">
-                  <input
-                    type="email"
-                    value={data.email}
-                    onChange={handleInputChange}
-                    name="email"
-                    id="email"
-                  />
-                  Email *
-                </label>
+                  <label htmlFor="email">
+                    <input
+                      type="email"
+                      value={data.email}
+                      onChange={handleInputChange}
+                      name="email"
+                      id="email"
+                    />
+                    Email *
+                  </label>
 
-                <label htmlFor="phone">
-                  <input
-                    required
-                    type="tel"
-                    value={data.phone}
-                    onChange={handleInputChange}
-                    name="phone"
-                    id="phone"
-                  />
-                  Celular (Sólo numeros sin espacios) *
-                </label>
+                  <label htmlFor="phone">
+                    <input
+                      required
+                      type="tel"
+                      value={data.phone}
+                      onChange={handleInputChange}
+                      name="phone"
+                      id="phone"
+                    />
+                    Celular (Sólo numeros sin espacios) *
+                  </label>
 
-                <label htmlFor="address">
-                  <input
-                    type="text"
-                    value={data.address}
-                    onChange={handleInputChange}
-                    name="address"
-                    id="address"
-                  />
-                  Dirección *
-                </label>
+                  <label htmlFor="address">
+                    <input
+                      type="text"
+                      value={data.address}
+                      onChange={handleInputChange}
+                      name="address"
+                      id="address"
+                    />
+                    Dirección *
+                  </label>
 
-                <button
-                  onClick={handleFormSubmit}
-                  disabled={data.isSubmitting}
-                  className="button button-dark"
-                >
-                  <i className="fas fa-sign-in-alt"></i>
-                  {data.isSubmitting ? "Enviando datos..." : "Registrar"}
-                </button>
+                  <button
+                    onClick={handleFormSubmit}
+                    disabled={data.isSubmitting}
+                    className="button button-dark"
+                  >
+                    <i className="fas fa-sign-in-alt"></i>
+                    {data.isSubmitting ? "Enviando datos..." : "Registrar"}
+                  </button>
 
-                {data.errorMessage && (
-                  <span className="error-message">{data.errorMessage}</span>
-                )}
+                  {data.errorMessage && (
+                    <span className="error-message">{data.errorMessage}</span>
+                  )}
+                </div>
+
+                <div className="links">
+                  <small>
+                    ¿Ya tiene una cuenta?{" "}
+                    <Link to="/login">Iniciar sesión</Link>
+                  </small>
+                  <small>
+                    <Link to="/">Volver a la página de inicio</Link>
+                  </small>
+                </div>
               </div>
-
-              <div className="links">
-                <small>
-                  ¿Ya tiene una cuenta? <Link to="/login">Iniciar sesión</Link>
-                </small>
-                <small>
-                  <Link to="/">Volver a la página de inicio</Link>
-                </small>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </article>
       </section>

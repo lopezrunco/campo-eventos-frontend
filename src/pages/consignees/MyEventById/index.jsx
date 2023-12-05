@@ -112,12 +112,19 @@ function MyEventById() {
       >
         <Breadcrumbs location={"Detalles de mi remate"} />
       </motion.div>
-      <section className="my-event-by-id">
-        <article className="container">
-          {state.myEvent && <Card myEvent={state.myEvent} />}
-          {state.hasError && <p>Error al obtener el remate</p>}
-        </article>
-      </section>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.3 }}
+        viewport={{ once: true }}
+      >
+        <section className="my-event-by-id">
+          <article className="container">
+            {state.myEvent && <Card myEvent={state.myEvent} />}
+            {state.hasError && <p>Error al obtener el remate</p>}
+          </article>
+        </section>
+      </motion.div>
     </React.Fragment>
   );
 }

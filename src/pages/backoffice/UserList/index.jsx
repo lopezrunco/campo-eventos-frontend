@@ -131,7 +131,7 @@ function UserList() {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Ver usuarios activos"} />
+        <Breadcrumbs location={"Usuarios activos"} />
       </motion.div>
       <section className="user-list">
         <article className="container">
@@ -139,8 +139,15 @@ function UserList() {
             <div className="col-12">
               {!state.hasError && (
                 <h3 className="mb-4">
-                  <i className="fas fa-user me-3"></i> Usuarios activos:{" "}
-                  {state.usercount}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.3 }}
+                    viewport={{ once: true }}
+                  >
+                    <i className="fas fa-user me-3"></i> Total:{" "}
+                    {state.usercount}
+                  </motion.div>
                 </h3>
               )}
             </div>
