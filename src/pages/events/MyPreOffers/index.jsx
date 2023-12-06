@@ -134,21 +134,21 @@ function MyPreOffers() {
       >
         <Breadcrumbs location={"Mis preofertas"} />
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.3 }}
-        viewport={{ once: true }}
-      >
-        <section>
-          <article className="container">
-            <div className="row">
-              {state.isFetching ? (
-                <Loader />
-              ) : state.hasError ? (
-                <p>Error al obtener los datos</p>
-              ) : (
-                <React.Fragment>
+      <section>
+        <article className="container">
+          <div className="row">
+            {state.isFetching ? (
+              <Loader />
+            ) : state.hasError ? (
+              <p>Error al obtener los datos</p>
+            ) : (
+              <React.Fragment>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1.3 }}
+                  viewport={{ once: true }}
+                >
                   {state.preoffersList.length > 0 ? (
                     state.preoffersList.map((preoffer) => (
                       <MyPreofferCard key={preoffer.id} preoffer={preoffer} />
@@ -168,18 +168,18 @@ function MyPreOffers() {
                       </a>
                     </div>
                   )}
-                </React.Fragment>
-              )}
-              <Pagination
-                elementList={state.preoffersList}
-                currentPage={currentPage}
-                prevPageFunction={prevPage}
-                nextPageFunction={nextPage}
-              />
-            </div>
-          </article>
-        </section>
-      </motion.div>
+                </motion.div>
+              </React.Fragment>
+            )}
+            <Pagination
+              elementList={state.preoffersList}
+              currentPage={currentPage}
+              prevPageFunction={prevPage}
+              nextPageFunction={nextPage}
+            />
+          </div>
+        </article>
+      </section>
     </React.Fragment>
   );
 }
