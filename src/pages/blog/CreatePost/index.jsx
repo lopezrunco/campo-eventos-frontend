@@ -245,7 +245,7 @@ export const CreatePost = () => {
           type: CREATE_POST_SUCCESS,
           payload: data,
         });
-        navigate("/articulo-creado");
+        navigate("/autor/articulos/articulo-creado");
       })
       .catch((error) => {
         console.error("Error al crear el articulo", error);

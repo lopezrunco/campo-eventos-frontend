@@ -38,19 +38,19 @@ export const BackOfficeHome = () => {
               <div className="col-12 col-lg-3 mb-5 mb-lg-0 admin-home-card">
                 <h3>Artículos</h3>
                 <div className="separator"></div>
-                <a href="/admin/articulos/crear">
+                <a href="/autor/articulos/crear">
                   <i className="fas fa-file me-2"></i> Crear artículo
                 </a>
-                <a href="/admin/articulos/listar">
+                <a href="/autor/articulos/listar">
                   <i className="fas fa-list me-2"></i>Listar artículos
                 </a>
-                <a href="/admin/articulos/categorias/crear">
+                <a href="/autor/articulos/categorias/crear">
                   <i className="fas fa-folder-plus me-2"></i>Crear categoría
                 </a>
-                <a href="/admin/articulos/categorias/listar">
+                <a href="/autor/articulos/categorias/listar">
                   <i className="fas fa-list me-2"></i>Listar categorías
                 </a>
-                <a href="/admin/articulos/etiquetas/listar">
+                <a href="/autor/articulos/etiquetas/listar">
                   <i className="fas fa-tags me-2"></i>Listar etiquetas
                 </a>
               </div>
