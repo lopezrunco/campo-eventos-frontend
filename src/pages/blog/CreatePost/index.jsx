@@ -115,13 +115,27 @@ export const CreatePost = () => {
   };
 
   const handleInputChange = (post) => {
-    dispatch({
-      type: FORM_INPUT_CHANGE,
-      payload: {
-        input: post.target.name,
-        value: post.target.value,
-      },
-    });
+    const { name, value } = post.target;
+
+    if (name === "tags") {
+      // Creates an array of tags with every comma separated word
+      const tagsArray = value.split(",").map((tag) => tag.trim());
+      dispatch({
+        type: FORM_INPUT_CHANGE,
+        payload: {
+          input: name,
+          value: tagsArray,
+        },
+      });
+    } else {
+      dispatch({
+        type: FORM_INPUT_CHANGE,
+        payload: {
+          input: name,
+          value: value,
+        },
+      });
+    }
   };
 
   const handleUploadInputChange = (imgElement) => {
@@ -231,8 +245,7 @@ export const CreatePost = () => {
           type: CREATE_POST_SUCCESS,
           payload: data,
         });
-        navigate("/");
-        // navigate("/articulo-creado");
+        navigate("/articulo-creado");
       })
       .catch((error) => {
         console.error("Error al crear el articulo", error);
@@ -317,10 +330,10 @@ export const CreatePost = () => {
 
               <div className="col-12">
                 <label htmlFor="tags">
-                  Etiquetas
+                  Etiquetas (Separe las etiquetas con una coma)
                   <input
                     type="text"
-                    value={state.tags}
+                    value={state.tags.join(', ')}
                     onChange={handleInputChange}
                     name="tags"
                     id="tags"

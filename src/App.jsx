@@ -45,6 +45,7 @@ import UpdateEvent from "./pages/consignees/UpdateEvent";
 import UpdateLot from "./pages/consignees/UpdateLot";
 
 import { CreatePost } from "./pages/blog/CreatePost";
+import PostCreated from "./pages/blog/PostCreated";
 
 import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
 import UserList from "./pages/backoffice/UserList";
@@ -397,6 +398,14 @@ function App() {
             {/* Blog routes ------------------------------------------------ */}
 
             {/* TODO: Create new type of user AUTHOR to handle blog & ads */}
+            <Route
+              path="/articulo-creado"
+              element={
+                <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
+                  <PostCreated />
+                </RequireAuth>
+              }
+            />
             <Route
               path="/admin/articulos/crear"
               element={
