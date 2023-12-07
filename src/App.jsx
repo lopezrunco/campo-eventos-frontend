@@ -44,6 +44,8 @@ import AddVideoToLot from "./pages/consignees/AddVideoToLot";
 import UpdateEvent from "./pages/consignees/UpdateEvent";
 import UpdateLot from "./pages/consignees/UpdateLot";
 
+import { CreatePost } from "./pages/blog/CreatePost";
+
 import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
 import UserList from "./pages/backoffice/UserList";
 import AllEvents from "./pages/backoffice/AllEvents";
@@ -391,6 +393,19 @@ function App() {
                 </RequireAuth>
               }
             />
+
+            {/* Blog routes ------------------------------------------------ */}
+
+            {/* TODO: Create new type of user AUTHOR to handle blog & ads */}
+            <Route
+              path="/admin/articulos/crear"
+              element={
+                <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
+                  <CreatePost />
+                </RequireAuth>
+              }
+            />
+
             <Route path="/forbidden" element={<Forbidden />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
