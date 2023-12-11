@@ -71,6 +71,10 @@ input[type="file"] {
   margin: 0 0.3rem;
   background-color: $accent-color;
   font-size: 0.8rem;
+
+  &.gray {
+    background-color: $gray-color;
+  }
 }
 
 .category-tag {
@@ -81,7 +85,8 @@ input[type="file"] {
   width: max-content;
 }
 
-.event-type-tag {
+.event-type-tag,
+.post-type-tag {
   position: absolute;
   z-index: 999;
   color: $light-color;
