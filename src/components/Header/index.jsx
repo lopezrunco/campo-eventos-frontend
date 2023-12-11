@@ -47,13 +47,14 @@ export const Header = () => {
               </li>
 
               {/* Basic users */}
-              {authState.user && ( 
+              {
+                ['BASIC'].find(role => role === authState.role) &&
                 <React.Fragment>
                   <li className={`navigation-bar-item ${activeLink === '/mis-preofertas' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
-                  <a href="/mis-preofertas" className="nav-link-item" title="Mis preofertas">Mis preofertas</a>
+                    <a href="/mis-preofertas" className="nav-link-item" title="Mis preofertas">Mis preofertas</a>
                   </li>
                 </React.Fragment>
-              )}
+              }
 
               {/* Consignatarios users */}
               {
@@ -61,6 +62,16 @@ export const Header = () => {
                 <React.Fragment>
                   <li className={`navigation-bar-item ${activeLink === '/consignatarios/mis-remates' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
                     <a href="/consignatarios/mis-remates" className="nav-link-item" title="Mis remates">Mis remates</a>
+                  </li>
+                </React.Fragment>
+              }
+
+              {/* Autores users */}
+              {
+                ['AUTHOR'].find(role => role === authState.role) &&
+                <React.Fragment>
+                  <li className={`navigation-bar-item ${activeLink === '/autor/articulos/mis-articulos' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                    <a href="/autor/articulos/mis-articulos" className="nav-link-item" title="Mis articulos">Mis articulos</a>
                   </li>
                 </React.Fragment>
               }

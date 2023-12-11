@@ -16,21 +16,15 @@ export const PostByUserCard = ({ post }) => {
           <div className="col-lg-9">
             <div className="content">
               <h3>{post.title}</h3>
-              <p className="date">Creado: {getDate(post.createdAt)}</p>
+              <p className="date">
+                <i className="fas fa-calendar me-2"></i>{" "}
+                {getDate(post.createdAt)}
+              </p>
               <p>{post.headline}</p>
-              <div className="tags">
-                {post.tags.map((tag, i) => {
-                  return (
-                    <span className="tag gray" key={i}>
-                      {tag}
-                    </span>
-                  );
-                })}
-              </div>
               <a
                 className="button view-more mb-0"
                 onClick={() =>
-                  navigate(`/autor/articulos/mis-articulos${post.id}`)
+                  navigate(`/autor/articulos/mis-articulos/${post.id}`)
                 }
               >
                 <i className="fas fa-chevron-right me-2"></i> Ver más / Editar
@@ -39,7 +33,7 @@ export const PostByUserCard = ({ post }) => {
           </div>
           <div className="col-lg-3">
             {post.category && (
-              <span className="post-type-tag">{post.category}</span>
+              <span className="post-category-tag">{post.category}</span>
             )}
             {post.picture ? (
               <img src={post.picture} width="100%" />
