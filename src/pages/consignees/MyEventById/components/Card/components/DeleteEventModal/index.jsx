@@ -10,8 +10,6 @@ import {
   DELETE_EVENT_SUCCESS,
 } from "../../../../../../../utils/action-types";
 
-import "./styles.scss";
-
 const initialState = {
   event: undefined,
   isSending: false,
@@ -90,7 +88,7 @@ function DeleteEventModal({ eventId, closeFunction }) {
   };
 
   return (
-    <div className="delete-event-modal">
+    <div className="delete-modal">
       <div className="content-wrap">
         <p>¿Está seguro que desea eliminar el remate?</p>
         <div>

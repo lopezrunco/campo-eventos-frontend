@@ -46,6 +46,7 @@ import UpdateLot from "./pages/consignees/UpdateLot";
 
 import { CreatePost } from "./pages/blog/CreatePost";
 import PostCreated from "./pages/blog/PostCreated";
+import PostDeleted from "./pages/blog/PostDeleted";
 import { MyPosts } from "./pages/blog/MyPosts";
 import { MyPostById } from "./pages/blog/MyPostById";
 
@@ -413,6 +414,14 @@ function App() {
               element={
                 <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
                   <MyPosts />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/autor/articulos/articulo-borrado"
+              element={
+                <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
+                  <PostDeleted />
                 </RequireAuth>
               }
             />

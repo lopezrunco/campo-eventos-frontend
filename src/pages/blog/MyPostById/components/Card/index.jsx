@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { getDate } from "../../../../../utils/get-date";
 
@@ -8,11 +7,10 @@ import imgUrl from "../../../../../assets/no-img.jpg";
 import { DeletePostModal } from "./components/DeletePostModal";
 
 function Card({ myPost }) {
-  const navigate = useNavigate();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleDeleteModal = () => {
-    setShowDeleteModal(true);
+    setShowDeleteModal(!showDeleteModal);
   };
 
   return (
