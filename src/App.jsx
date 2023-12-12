@@ -45,7 +45,9 @@ import UpdateEvent from "./pages/consignees/UpdateEvent";
 import UpdateLot from "./pages/consignees/UpdateLot";
 
 import { CreatePost } from "./pages/blog/CreatePost";
+import { UpdatePost } from "./pages/blog/UpdatePost";
 import PostCreated from "./pages/blog/PostCreated";
+import PostUpdated from "./pages/blog/PostUpdated";
 import PostDeleted from "./pages/blog/PostDeleted";
 import { MyPosts } from "./pages/blog/MyPosts";
 import { MyPostById } from "./pages/blog/MyPostById";
@@ -400,7 +402,6 @@ function App() {
 
             {/* Blog routes ------------------------------------------------ */}
 
-            {/* TODO: Create new type of user AUTHOR to handle blog & ads */}
             <Route
               path="/autor/articulos/mis-articulos/:id"
               element={
@@ -426,10 +427,26 @@ function App() {
               }
             />
             <Route
+              path="/autor/articulos/articulo-editado"
+              element={
+                <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
+                  <PostUpdated />
+                </RequireAuth>
+              }
+            />
+            <Route
               path="/autor/articulos/articulo-creado"
               element={
                 <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
                   <PostCreated />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/autor/articulos/mis-articulos/editar/:id"
+              element={
+                <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
+                  <UpdatePost />
                 </RequireAuth>
               }
             />

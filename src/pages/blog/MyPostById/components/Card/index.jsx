@@ -44,7 +44,7 @@ function Card({ myPost }) {
             <div className="options-buttons">
               <a
                 className="rounded-icon primary"
-                href={`/consignatarios/mis-remates/editar/${myPost.id}`}
+                href={`/autor/articulos/mis-articulos/editar/${myPost.id}`}
               >
                 <i className="fas fa-pen"></i>
               </a>
