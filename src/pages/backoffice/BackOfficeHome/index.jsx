@@ -44,7 +44,7 @@ export const BackOfficeHome = () => {
                 <a href="/autor/articulos/mis-articulos" title="Muestra sólo los artículos creados por mí.">
                   <i className="fas fa-list me-2"></i>Listar mis artículos
                 </a>
-                <a href="/autor/articulos/listar" title="Muestra todos los artículos creados por los diferentes usuarios.">
+                <a href="/admin/articulos" title="Muestra todos los artículos creados por los diferentes usuarios.">
                   <i className="fas fa-list me-2"></i>Listar todos los artículos
                 </a>
                 <a href="/autor/articulos/categorias/crear" title="Crea una categoría de artículos.">

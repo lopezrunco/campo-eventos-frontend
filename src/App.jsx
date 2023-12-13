@@ -49,6 +49,7 @@ import { UpdatePost } from "./pages/blog/UpdatePost";
 import PostCreated from "./pages/blog/PostCreated";
 import PostUpdated from "./pages/blog/PostUpdated";
 import PostDeleted from "./pages/blog/PostDeleted";
+import { AllPosts } from "./pages/backoffice/AllPosts";
 import { MyPosts } from "./pages/blog/MyPosts";
 import { MyPostById } from "./pages/blog/MyPostById";
 
@@ -401,6 +402,15 @@ function App() {
             />
 
             {/* Blog routes ------------------------------------------------ */}
+
+            <Route
+              path="/admin/articulos"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <AllPosts />
+                </RequireAuth>
+              }
+            />
 
             <Route
               path="/autor/articulos/mis-articulos/:id"

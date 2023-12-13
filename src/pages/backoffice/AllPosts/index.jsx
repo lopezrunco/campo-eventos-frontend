@@ -16,8 +16,8 @@ import {
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
 import { Loader } from "../../../components/Loader";
+import { PostByUserCard } from "../../blog/MyPosts/components/PostByUserCard";
 import Pagination from "../../../components/Pagination";
-import { PostByUserCard } from "./components/PostByUserCard";
 
 const initialState = {
   postsList: [],
@@ -50,7 +50,7 @@ const reducer = (state, action) => {
   }
 };
 
-export const MyPosts = () => {
+export const AllPosts = () => {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
@@ -74,19 +74,13 @@ export const MyPosts = () => {
         type: FETCH_POSTS_REQUEST,
       });
 
-      fetch(
-        apiUrl(`my-posts?page=${currentPage}&itemsPerPage=${itemsPerPage}`),
-        {
-          method: "POST",
-          headers: {
-            Authorization: authState.token,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: authState.user.id,
-          }),
-        }
-      )
+      fetch(apiUrl(`posts?page=${currentPage}&itemsPerPage=${itemsPerPage}`), {
+        method: "GET",
+        headers: {
+          Authorization: authState.token,
+          "Content-Type": "application/json",
+        },
+      })
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -101,7 +95,7 @@ export const MyPosts = () => {
           });
         })
         .catch((error) => {
-          console.error("Error trying to fetch the posts by user", error);
+          console.error("Error trying to fetch the posts", error);
           if (error.status === 401) {
             refreshToken(authState.refreshToken, authDispatch, navigate);
           } else if (error.status === 403) {
@@ -135,7 +129,7 @@ export const MyPosts = () => {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Mis artículos"} />
+        <Breadcrumbs location={"Lista de artículos"} />
       </motion.div>
       <section className="container">
         <motion.div
@@ -145,8 +139,8 @@ export const MyPosts = () => {
           viewport={{ once: true }}
         >
           <Title
-            title="Mis artículos"
-            subtitle="Cree, edite y elimine sus artículos."
+            title="Lista de artículos"
+            subtitle="Todos los artículos subidos por los usuarios autores."
           />
         </motion.div>
         <motion.div
@@ -156,11 +150,6 @@ export const MyPosts = () => {
           viewport={{ once: true }}
         >
           <article className="row">
-            <div className="col-lg-12 d-flex justify-content-end">
-              <a className="button button-dark" href="/autor/articulos/crear">
-                <i className="fas fa-plus"></i> Crear artículo
-              </a>
-            </div>
             {state.isFetching ? (
               <Loader />
             ) : state.hasError ? (
