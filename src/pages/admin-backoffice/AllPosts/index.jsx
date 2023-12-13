@@ -16,7 +16,7 @@ import {
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
 import { Loader } from "../../../components/Loader";
-import { PostByUserCard } from "../../blog/MyPosts/components/PostByUserCard";
+import { PostByUserCard } from "../../author-backoffice/MyPosts/components/PostByUserCard";
 import Pagination from "../../../components/Pagination";
 
 const initialState = {

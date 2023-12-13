@@ -105,7 +105,6 @@ function EventsList() {
       })
       .catch((error) => {
         console.error("Error trying to fetch the events", error);
-
         if (error.status === 401) {
           refreshToken(authState.refreshToken, authDispatch, navigate);
         } else if (error.status === 403) {

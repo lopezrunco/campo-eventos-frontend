@@ -12,6 +12,7 @@ import {
   SHOW_LOADER,
 } from "./utils/action-types";
 
+import { PostList } from "./pages/blog/PostList";
 import { Servicios } from "./pages/Servicios";
 import EventsList from "./pages/events/EventsList";
 import EventById from "./pages/events/EventById";
@@ -27,35 +28,35 @@ import UpdateUserInfo from "./pages/security/UpdateUserInfo";
 import UserUpdated from "./pages/security/UserUpdated";
 import { Forbidden } from "./pages/access/Forbidden";
 
-import MyEvents from "./pages/consignees/MyEvents";
-import MyEventById from "./pages/consignees/MyEventById";
-import PreOfferEdited from "./pages/consignees/PreOfferEdited";
-import CreateEvent from "./pages/consignees/CreateEvent";
-import EventCreated from "./pages/consignees/EventCreated";
-import EventUpdated from "./pages/consignees/EventUpdated";
-import EventDeleted from "./pages/consignees/EventDeleted";
-import PreofferDeleted from "./pages/consignees/PreofferDeleted";
-import CreateLot from "./pages/consignees/CreateLot";
-import LotCreated from "./pages/consignees/LotCreated";
-import LotEdited from "./pages/consignees/LotEdited";
-import LotDeleted from "./pages/consignees/LotDeleted";
-import UploadEventCover from "./pages/consignees/UploadEventCover";
-import AddVideoToLot from "./pages/consignees/AddVideoToLot";
-import UpdateEvent from "./pages/consignees/UpdateEvent";
-import UpdateLot from "./pages/consignees/UpdateLot";
+import MyEvents from "./pages/cons-backoffice/MyEvents";
+import MyEventById from "./pages/cons-backoffice/MyEventById";
+import PreOfferEdited from "./pages/cons-backoffice/PreOfferEdited";
+import CreateEvent from "./pages/cons-backoffice/CreateEvent";
+import EventCreated from "./pages/cons-backoffice/EventCreated";
+import EventUpdated from "./pages/cons-backoffice/EventUpdated";
+import EventDeleted from "./pages/cons-backoffice/EventDeleted";
+import PreofferDeleted from "./pages/cons-backoffice/PreofferDeleted";
+import CreateLot from "./pages/cons-backoffice/CreateLot";
+import LotCreated from "./pages/cons-backoffice/LotCreated";
+import LotEdited from "./pages/cons-backoffice/LotEdited";
+import LotDeleted from "./pages/cons-backoffice/LotDeleted";
+import UploadEventCover from "./pages/cons-backoffice/UploadEventCover";
+import AddVideoToLot from "./pages/cons-backoffice/AddVideoToLot";
+import UpdateEvent from "./pages/cons-backoffice/UpdateEvent";
+import UpdateLot from "./pages/cons-backoffice/UpdateLot";
+import { AllPosts } from "./pages/admin-backoffice/AllPosts";
 
-import { CreatePost } from "./pages/blog/CreatePost";
-import { UpdatePost } from "./pages/blog/UpdatePost";
-import PostCreated from "./pages/blog/PostCreated";
-import PostUpdated from "./pages/blog/PostUpdated";
-import PostDeleted from "./pages/blog/PostDeleted";
-import { AllPosts } from "./pages/backoffice/AllPosts";
-import { MyPosts } from "./pages/blog/MyPosts";
-import { MyPostById } from "./pages/blog/MyPostById";
+import { CreatePost } from "./pages/author-backoffice/CreatePost";
+import { UpdatePost } from "./pages/author-backoffice/UpdatePost";
+import PostCreated from "./pages/author-backoffice/PostCreated";
+import PostUpdated from "./pages/author-backoffice/PostUpdated";
+import PostDeleted from "./pages/author-backoffice/PostDeleted";
+import { MyPosts } from "./pages/author-backoffice/MyPosts";
+import { MyPostById } from "./pages/author-backoffice/MyPostById";
 
-import { BackOfficeHome } from "./pages/backoffice/BackOfficeHome";
-import UserList from "./pages/backoffice/UserList";
-import AllEvents from "./pages/backoffice/AllEvents";
+import { BackOfficeHome } from "./pages/admin-backoffice/BackOfficeHome";
+import UserList from "./pages/admin-backoffice/UserList";
+import AllEvents from "./pages/admin-backoffice/AllEvents";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -475,6 +476,7 @@ function App() {
             {/* <Route path="/register" element={<Register />} /> */}
             <Route path="/user-created" element={<UserCreated />} />
             <Route path="/remates/:id" element={<EventById />} />
+            <Route path="/informacion" element={<PostList />} />
             <Route path="/" element={<EventsList />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

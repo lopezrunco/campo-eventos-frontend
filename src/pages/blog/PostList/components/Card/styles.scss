@@ -1,0 +1,42 @@
+@import '../../../../../Variables.scss';
+
+.post-card {
+    border-radius: $sm-border-radius;
+    overflow: hidden;
+    border: 1px solid $medium-light-color;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+
+    .img-wrapper {
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: auto;
+            transition: $main-transition;
+        }
+    }
+
+    &:hover img {
+        transform: scale(1.03);
+    }
+
+    .content {
+        padding: 2rem 2rem 1rem;
+
+        small {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: .5rem 0;
+            color: lighten($color: $primary-color, $amount: 20);
+
+            span {
+                i {
+                    margin-right: .5 rem;
+                }
+            }
+        }
+    }
+}

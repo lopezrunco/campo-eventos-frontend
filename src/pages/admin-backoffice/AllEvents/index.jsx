@@ -16,7 +16,7 @@ import {
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Loader } from "../../../components/Loader";
 import Pagination from "../../../components/Pagination";
-import EventByUserCard from "../../consignees/MyEvents/EventByUserCard";
+import EventByUserCard from "../../cons-backoffice/MyEvents/EventByUserCard";
 import { Title } from "../../../components/Title";
 
 const initialState = {

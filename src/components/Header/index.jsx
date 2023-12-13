@@ -34,6 +34,10 @@ export const Header = () => {
             <ul className="nav-list">
 
               {/* Public menu */}
+              <li className={`navigation-bar-item ${activeLink === '/informacion' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                <a href="/informacion" className="nav-link-item" title="Información">Información</a>
+              </li>
+
               <li className={`navigation-bar-item ${activeLink === '/' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
                 <a href="/" className="nav-link-item" title="Cartelera">Cartelera</a>
               </li>
