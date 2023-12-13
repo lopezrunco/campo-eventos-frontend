@@ -121,6 +121,7 @@ export const UpdatePost = () => {
         }
       })
       .then((data) => {
+        setMainContent(data.post.content)
         dispatch({
           type: GET_MY_POST_SUCCESS,
           payload: data,
