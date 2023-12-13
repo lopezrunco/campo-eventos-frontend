@@ -58,17 +58,21 @@ function Card({ myPost }) {
               <b>{myPost.headline}</b>
             </p>
             <div dangerouslySetInnerHTML={{ __html: myPost.content }} />
-            <hr className="my-4" />
-            <div className="tags">
-              Etiquetas:
-              {myPost.tags.map((tag, i) => {
-                return (
-                  <span className="tag gray" key={i}>
-                    {tag}
-                  </span>
-                );
-              })}
-            </div>
+            {myPost.tags.length > 0 && (
+              <React.Fragment>
+                <hr className="mt-4" />
+                <div className="article-tag-container">
+                  Etiquetas:
+                  {myPost.tags.map((tag, i) => {
+                    return (
+                      <span className="tag gray" key={i}>
+                        {tag}
+                      </span>
+                    );
+                  })}
+                </div>
+              </React.Fragment>
+            )}
           </div>
         </div>
       </div>

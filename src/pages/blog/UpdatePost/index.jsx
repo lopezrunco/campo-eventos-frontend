@@ -102,6 +102,33 @@ export const UpdatePost = () => {
 
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [mainContent, setMainContent] = useState("");
+  const [tagInput, setTagInput] = useState("");
+
+  const handleAddTag = () => {
+    const newTag = tagInput.trim();
+    if (newTag !== "" && !state.tags.includes(newTag)) {
+      const updatedTags = [...state.tags, newTag];
+      dispatch({
+        type: FORM_INPUT_CHANGE,
+        payload: {
+          input: "tags",
+          value: updatedTags,
+        },
+      });
+      setTagInput(""); // Clear input after adding tag
+    }
+  };
+
+  const handleRemoveTag = (tagToRemove) => {
+    const updatedTags = state.tags.filter((tag) => tag !== tagToRemove);
+    dispatch({
+      type: FORM_INPUT_CHANGE,
+      payload: {
+        input: "tags",
+        value: updatedTags,
+      },
+    });
+  };
 
   // On component mount, fetch the post and set data in the form
   useEffect(() => {
@@ -121,7 +148,7 @@ export const UpdatePost = () => {
         }
       })
       .then((data) => {
-        setMainContent(data.post.content)
+        setMainContent(data.post.content);
         dispatch({
           type: GET_MY_POST_SUCCESS,
           payload: data,
@@ -303,19 +330,6 @@ export const UpdatePost = () => {
                   </div>
 
                   <div className="col-12">
-                    <label htmlFor="tags">
-                      Etiquetas (Separe las etiquetas con una coma)
-                      <input
-                        type="text"
-                        value={state.tags.join(", ")}
-                        onChange={handleInputChange}
-                        name="tags"
-                        id="tags"
-                      />
-                    </label>
-                  </div>
-
-                  <div className="col-12">
                     <label htmlFor="content">
                       Contenido
                       {/* TO DO: fix error while typing */}
@@ -358,6 +372,43 @@ export const UpdatePost = () => {
                           });
                         }}
                       />
+                    </label>
+                  </div>
+
+                  <div className="col-12">
+                    <label htmlFor="tags">
+                      Etiquetas
+                      <div className="article-tag-container">
+                        {state.tags.map((tag, index) => (
+                          <span key={index} className="tag gray">
+                            {tag}
+                            <button
+                              type="button"
+                              title={`Eliminar etiqueta ${tag}`}
+                              onClick={() => handleRemoveTag(tag)}
+                              className="remove-tag-button"
+                            >
+                              <i className="fas fa-trash icon"></i>
+                            </button>
+                          </span>
+                        ))}
+                        <div className="add-article-tag">
+                          <input
+                            type="text"
+                            value={tagInput}
+                            onChange={(e) => setTagInput(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                handleAddTag();
+                              }
+                            }}
+                            placeholder="Nueva etiqueta"
+                          />
+                          <button type="button" onClick={handleAddTag}>
+                            +
+                          </button>
+                        </div>
+                      </div>
                     </label>
                   </div>
 

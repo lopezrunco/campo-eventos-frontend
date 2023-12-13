@@ -113,6 +113,48 @@ input[type="file"] {
   }
 }
 
+.article-tag-container {
+  padding: 1rem 0;
+
+  .tag {
+    margin-bottom: 0.6rem;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+
+    .icon {
+      color: $danger-color;
+    }
+  }
+}
+
+.add-article-tag {
+  display: inline-block;
+  margin-left: .6rem;
+  border: 1px solid $primary-color;
+  border-radius: 2px;
+
+  input {
+    border: none;
+    outline: none;
+  }
+
+  button {
+    height: 100%;
+    background-color: $primary-color;
+    color: $light-color;
+    margin-left: 0.6rem;
+    padding: 0.1rem 0.6rem;
+    transition: $main-transition;
+
+    &:hover {
+      background-color: lighten($color: $primary-color, $amount: 5);
+    }
+  }
+}
+
 .preoffer {
   display: flex;
   flex-direction: row;
@@ -555,11 +597,11 @@ h6 {
   z-index: 999;
 
   .content-wrap {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
   }
 }
 
