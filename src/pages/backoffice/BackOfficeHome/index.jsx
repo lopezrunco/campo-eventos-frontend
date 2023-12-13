@@ -28,10 +28,10 @@ export const BackOfficeHome = () => {
               <div className="col-12 col-lg-3 mb-5 mb-lg-0 admin-home-card">
                 <h3>Remates</h3>
                 <div className="separator"></div>
-                <a href="/consignatarios/crear-remate">
+                <a href="/consignatarios/crear-remate" title="Crea un nuevo remate al que se le podrán agregar lotes y preofertas.">
                   <i className="fas fa-gavel me-2"></i> Crear remate
                 </a>
-                <a href="/admin/remates">
+                <a href="/admin/remates" title="Muestra todos los remates creados por los diferentes usuarios.">
                   <i className="fas fa-list me-2"></i>Listar remates
                 </a>
               </div>
@@ -41,26 +41,29 @@ export const BackOfficeHome = () => {
                 <a href="/autor/articulos/crear">
                   <i className="fas fa-file me-2"></i> Crear artículo
                 </a>
-                <a href="/autor/articulos/listar">
-                  <i className="fas fa-list me-2"></i>Listar artículos
+                <a href="/autor/articulos/mis-articulos" title="Muestra sólo los artículos creados por mí.">
+                  <i className="fas fa-list me-2"></i>Listar mis artículos
                 </a>
-                <a href="/autor/articulos/categorias/crear">
+                <a href="/autor/articulos/listar" title="Muestra todos los artículos creados por los diferentes usuarios.">
+                  <i className="fas fa-list me-2"></i>Listar todos los artículos
+                </a>
+                <a href="/autor/articulos/categorias/crear" title="Crea una categoría de artículos.">
                   <i className="fas fa-folder-plus me-2"></i>Crear categoría
                 </a>
-                <a href="/autor/articulos/categorias/listar">
+                <a href="/autor/articulos/categorias/listar" title="Muestra todas las categorías de artículos creadas.">
                   <i className="fas fa-list me-2"></i>Listar categorías
                 </a>
-                <a href="/autor/articulos/etiquetas/listar">
+                <a href="/autor/articulos/etiquetas/listar" title="Muestra todos las etiquetas creadas en los artículos por los diferentes usuarios.">
                   <i className="fas fa-tags me-2"></i>Listar etiquetas
                 </a>
               </div>
               <div className="col-12 col-lg-3 mb-5 mb-lg-0 admin-home-card">
                 <h3>Publicidad</h3>
                 <div className="separator"></div>
-                <a href="/admin/publicidad/crear">
+                <a href="/admin/publicidad/crear" title="Crea una nueva publicidad para agregar en la sección de blog.">
                   <i className="fas fa-bullhorn me-2"></i> Crear publicidad
                 </a>
-                <a href="/admin/publicidad/listar">
+                <a href="/admin/publicidad/listar" title="Muestra todas las publicidades creadas por los diferentes usuarios.">
                   <i className="fas fa-list me-2"></i>Listar publicidades
                 </a>
                 <a href="/admin/publicidad/ayuda">
@@ -70,7 +73,7 @@ export const BackOfficeHome = () => {
               <div className="col-12 col-lg-3 mb-5 mb-lg-0 admin-home-card">
                 <h3>Usuarios</h3>
                 <div className="separator"></div>
-                <a href="/admin/usuarios">
+                <a href="/admin/usuarios" title="Muestra todos los usuarios registrados en el sistema.">
                   <i className="fas fa-users me-2"></i>Listar usuarios
                 </a>
               </div>
