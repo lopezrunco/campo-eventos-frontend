@@ -445,7 +445,6 @@ function UpdateEvent() {
                           ></i>
                         </span>
                       )}
-                      {/* TO DO: Chequear si en uruguay se muestra en formato DD MM YYYY */}
                       <input
                         hidden={!editDate ? "hidden" : null}
                         type="date"

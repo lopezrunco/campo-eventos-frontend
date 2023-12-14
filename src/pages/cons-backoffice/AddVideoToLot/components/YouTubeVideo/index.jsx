@@ -18,8 +18,6 @@ const initialState = {
   hasError: false,
 };
 
-// TO DO: Check usage of this component
-
 const reducer = (state, action) => {
   switch (action.type) {
     case FORM_INPUT_CHANGE:
