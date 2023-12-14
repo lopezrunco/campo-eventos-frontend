@@ -41,6 +41,16 @@ const initialState = {
   hasError: false,
 };
 
+const allowedCategories = [
+  "Zafras",
+  "Ferias",
+  "Pantalla",
+  "Equinos",
+  "Eventos",
+  "Sociales",
+  "Otros",
+];
+
 const reducer = (state, action) => {
   switch (action.type) {
     case FORM_INPUT_CHANGE:
@@ -305,14 +315,23 @@ export const UpdatePost = () => {
 
                   <div className="col-lg-6">
                     <label htmlFor="category">
-                      Categoría
-                      <input
-                        type="text"
+                      Categoría *
+                      <select
                         value={state.category}
                         onChange={handleInputChange}
                         name="category"
                         id="category"
-                      />
+                      >
+                        <option value={state.category}>{state.category}</option>
+                        {allowedCategories.map(
+                          (category) =>
+                            state.category !== category && (
+                              <option key={category} value={category}>
+                                {category}
+                              </option>
+                            )
+                        )}
+                      </select>
                     </label>
                   </div>
 

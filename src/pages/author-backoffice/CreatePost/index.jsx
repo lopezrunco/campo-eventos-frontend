@@ -37,6 +37,16 @@ const initialState = {
   hasError: false,
 };
 
+const allowedCategories = [
+  "Zafras",
+  "Ferias",
+  "Pantalla",
+  "Equinos",
+  "Eventos",
+  "Sociales",
+  "Otros",
+];
+
 const reducer = (state, action) => {
   switch (action.type) {
     case FORM_INPUT_CHANGE:
@@ -304,14 +314,18 @@ export const CreatePost = () => {
 
               <div className="col-lg-6">
                 <label htmlFor="category">
-                  Categoría
-                  <input
-                    type="text"
+                  Categoría *
+                  <select
                     value={state.category}
                     onChange={handleInputChange}
                     name="category"
                     id="category"
-                  />
+                  >
+                    <option value="">Seleccionar categoría</option>
+                    {allowedCategories.map((category, index) => (
+                      <option key={index}>{category}</option>
+                    ))}
+                  </select>
                 </label>
               </div>
 
@@ -333,7 +347,7 @@ export const CreatePost = () => {
                   Etiquetas (Separe las etiquetas con una coma)
                   <input
                     type="text"
-                    value={state.tags.join(', ')}
+                    value={state.tags.join(", ")}
                     onChange={handleInputChange}
                     name="tags"
                     id="tags"
