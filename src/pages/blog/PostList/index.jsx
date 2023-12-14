@@ -16,6 +16,7 @@ import { Intro } from "../../../components/Intro";
 import { Loader } from "../../../components/Loader";
 import Pagination from "../../../components/Pagination";
 import { Card } from "./components/Card";
+import { CategoryTitle } from "../../../components/CategoryTitle";
 
 const initialState = {
   postsList: [],
@@ -135,15 +136,16 @@ export const PostList = () => {
             ) : state.hasError ? (
               <p>Error al obtener los datos</p>
             ) : (
-              <>
+              <React.Fragment>
+                <CategoryTitle category={'Últimas noticias'} link={'/'} />
                 {state.postsList.length > 0 ? (
                   state.postsList.map((post) => (
-                    <Card key={post.id} post={post} colClass={'col-lg-6'} />
+                    <Card key={post.id} post={post} colClass={"col-lg-6"} />
                   ))
                 ) : (
                   <p>No hay artículos para mostrar...</p>
                 )}
-              </>
+              </React.Fragment>
             )}
 
             <Pagination

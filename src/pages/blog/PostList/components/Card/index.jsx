@@ -22,15 +22,15 @@ export const Card = ({ post, colClass }) => {
         <div className="content">
           <h3>{post.title}</h3>
           <small>
-            {post.category && (
-              <span>
-                <i className="far fa-folder-open"></i> {post.category}
-              </span>
-            )}
             {post.createdAt && (
               <span>
                 <i className="fas fa-calendar-alt"></i>{" "}
                 {getDate(post.createdAt)}
+              </span>
+            )}
+            {post.category && (
+              <span>
+                <i className="fas fa-folder"></i> {post.category}
               </span>
             )}
           </small>

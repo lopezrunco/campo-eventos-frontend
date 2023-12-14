@@ -26,16 +26,18 @@
 
         small {
             display: inline-flex;
+            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            padding: .5rem 0;
+            align-items: flex-start;
+            padding: 0.5rem 0;
             color: lighten($color: $primary-color, $amount: 20);
 
             span {
-                i {
-                    margin-right: .5 rem;
-                }
+                margin-bottom: .1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
             }
         }
     }
