@@ -12,7 +12,7 @@ import {
   SHOW_LOADER,
 } from "./utils/action-types";
 
-import { PostList } from "./pages/blog/PostList";
+import { Home } from "./pages/Home";
 import { Servicios } from "./pages/Servicios";
 import EventsList from "./pages/events/EventsList";
 import EventById from "./pages/events/EventById";
@@ -476,7 +476,7 @@ function App() {
             {/* <Route path="/register" element={<Register />} /> */}
             <Route path="/user-created" element={<UserCreated />} />
             <Route path="/remates/:id" element={<EventById />} />
-            <Route path="/informacion" element={<PostList />} />
+            <Route path="/informacion" element={<Home />} />
             <Route path="/" element={<EventsList />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -1,12 +1,11 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import imgUrl from "../../../../../assets/no-img.jpg";
-import { getDate } from "../../../../../utils/get-date";
+import imgUrl from "../../../../assets/no-img.jpg";
+import { getDate } from "../../../../utils/get-date";
 
 import "./styles.scss";
 
-export const Card = ({ post, colClass }) => {
+export const PostCard = ({ post, colClass }) => {
   const navigate = useNavigate();
 
   return (
