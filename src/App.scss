@@ -64,6 +64,27 @@ input[type="file"] {
   margin: 1rem 0 2rem;
 }
 
+// Color classes
+.bg-light {
+  background-color: $light-color !important;
+}
+
+.bg-md-light {
+  background-color: lighten($color: $medium-light-color, $amount: 10) !important;
+}
+
+.bg-dark {
+  background-color: $dark-color !important;
+}
+
+.bg-image {
+  background-image: url('./assets/news-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
 // Tags
 .tag {
   border-radius: $sm-border-radius;

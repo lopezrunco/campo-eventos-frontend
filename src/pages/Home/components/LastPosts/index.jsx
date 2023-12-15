@@ -49,14 +49,22 @@ const reducer = (state, action) => {
   }
 };
 
-export const LastPosts = () => {
+export const LastPosts = ({
+  bgClass,
+  containerClass,
+  btnClass,
+  items,
+  colClass,
+  cardType,
+  showTitle,
+}) => {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
 
   // Handle pagination
   const [currentPage, setCurentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = items;
   function prevPage() {
     setCurentPage(currentPage - 1);
   }
@@ -113,42 +121,53 @@ export const LastPosts = () => {
     authState.refreshToken,
     authState.token,
     currentPage,
+    itemsPerPage,
     navigate,
   ]);
 
   return (
-    <section className="container">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.4 }}
-        viewport={{ once: true }}
-      >
-        <article className="row">
-          {state.isFetching ? (
-            <Loader />
-          ) : state.hasError ? (
-            <p>Error al obtener los datos</p>
-          ) : (
-            <React.Fragment>
-              <CategoryTitle category={"Últimas noticias"} link={"/"} />
-              {state.postsList.length > 0 ? (
-                state.postsList.map((post) => (
-                  <PostCard key={post.id} post={post} colClass={"col-lg-4"} />
-                ))
-              ) : (
-                <p>No hay artículos para mostrar...</p>
-              )}
-            </React.Fragment>
-          )}
-          <Pagination
-            elementList={state.postsList}
-            currentPage={currentPage}
-            prevPageFunction={prevPage}
-            nextPageFunction={nextPage}
-          />
-        </article>
-      </motion.div>
+    <section className={bgClass}>
+      <article className={containerClass}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4 }}
+          viewport={{ once: true }}
+        >
+          <div className="row">
+            {state.isFetching ? (
+              <Loader />
+            ) : state.hasError ? (
+              <p>Error al obtener los datos</p>
+            ) : (
+              <React.Fragment>
+                {showTitle && (
+                  <CategoryTitle category={"Últimas noticias"} link={"/"} />
+                )}
+                {state.postsList.length > 0 ? (
+                  state.postsList.map((post) => (
+                    <PostCard
+                      key={post.id}
+                      post={post}
+                      colClass={colClass}
+                      btnClass={btnClass}
+                      cardType={cardType}
+                    />
+                  ))
+                ) : (
+                  <p>No hay artículos para mostrar...</p>
+                )}
+              </React.Fragment>
+            )}
+            <Pagination
+              elementList={state.postsList}
+              currentPage={currentPage}
+              prevPageFunction={prevPage}
+              nextPageFunction={nextPage}
+            />
+          </div>
+        </motion.div>
+      </article>
     </section>
   );
 };

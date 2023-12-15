@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import React, { useContext, useEffect, useReducer } from "react";
+
+import { refreshToken } from "../../../../utils/refresh-token";
+import { apiUrl } from "../../../../utils/api-url";
+import { AuthContext } from "../../../../App";
 import {
   FETCH_POSTS_FAILURE,
   FETCH_POSTS_REQUEST,
@@ -7,12 +12,10 @@ import {
   HIDE_LOADER,
   SHOW_LOADER,
 } from "../../../../utils/action-types";
-import { AuthContext } from "../../../../App";
-import { useNavigate } from "react-router-dom";
-import { apiUrl } from "../../../../utils/api-url";
-import { refreshToken } from "../../../../utils/refresh-token";
-import { Loader } from "../../../../components/Loader";
+
 import { CategoryTitle } from "../../../../components/CategoryTitle";
+import { TextBanner } from "../../../../components/TextBanner";
+import { Loader } from "../../../../components/Loader";
 import { PostCard } from "../PostCard";
 
 const initialState = {
@@ -46,7 +49,17 @@ const reducer = (state, action) => {
   }
 };
 
-export const PostsByCategory = ({ category, items, colClass }) => {
+export const PostsByCategory = ({
+  bgClass,
+  containerClass,
+  btnClass,
+  category,
+  items,
+  colClass,
+  cardType,
+  showTitle,
+  showBanner
+}) => {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
@@ -108,32 +121,41 @@ export const PostsByCategory = ({ category, items, colClass }) => {
   ]);
 
   return (
-    <section className="container">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.4 }}
-        viewport={{ once: true }}
-      >
-        <article className="row">
-        {state.isFetching ? (
-            <Loader />
-          ) : state.hasError ? (
-            <p>Error al obtener los datos</p>
-          ) : (
-            <React.Fragment>
-              <CategoryTitle category={category} link={"/"} />
-              {state.postsList.length > 0 ? (
-                state.postsList.map((post) => (
-                  <PostCard key={post.id} post={post} colClass={colClass} />
-                ))
-              ) : (
-                <p>No hay artículos para mostrar...</p>
-              )}
-            </React.Fragment>
-          )}
-        </article>
-      </motion.div>
+    <section className={bgClass}>
+      <article className={containerClass}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.4 }}
+          viewport={{ once: true }}
+        >
+          <article className="row">
+            {state.isFetching ? (
+              <Loader />
+            ) : state.hasError ? (
+              <p>Error al obtener los datos</p>
+            ) : (
+              <React.Fragment>
+                {showTitle && <CategoryTitle category={category} link={"/"} />}
+                {showBanner && <TextBanner text={category} bgClass="" textClass='text-muted' /> }
+                {state.postsList.length > 0 ? (
+                  state.postsList.map((post) => (
+                    <PostCard
+                      key={post.id}
+                      post={post}
+                      colClass={colClass}
+                      btnClass={btnClass}
+                      cardType={cardType}
+                    />
+                  ))
+                ) : (
+                  <p>No hay artículos para mostrar...</p>
+                )}
+              </React.Fragment>
+            )}
+          </article>
+        </motion.div>
+      </article>
     </section>
   );
 };
