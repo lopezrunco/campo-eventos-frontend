@@ -18,11 +18,10 @@ import {
   FETCH_EVENTS_SUCCESS,
 } from "../../../utils/action-types";
 
-// import EventCard from "./components/EventCard";
-import { Intro } from "../../../components/Intro";
-import Pagination from "../../../components/Pagination";
-import { Title } from "../../../components/Title";
 import LoadingMessage from "../../../components/LoadingMessage/index.jsx";
+import { Title } from "../../../components/Title";
+import { Breadcrumbs } from "../../../components/Breadcrumbs/index.jsx";
+import Pagination from "../../../components/Pagination";
 import Card from "./components/Card/index.jsx";
 
 import "./styles.scss";
@@ -131,7 +130,7 @@ function EventsList() {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Intro />
+        <Breadcrumbs location={"Cartelera"} />
       </motion.div>
 
       {/* Broadcast section only active at hour of the event */}

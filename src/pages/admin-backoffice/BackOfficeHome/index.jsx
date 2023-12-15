@@ -47,9 +47,6 @@ export const BackOfficeHome = () => {
                 <a href="/admin/articulos" title="Muestra todos los artículos creados por los diferentes usuarios.">
                   <i className="fas fa-list me-2"></i>Listar todos los artículos
                 </a>
-                <a href="/autor/articulos/categorias/crear" title="Crea una categoría de artículos.">
-                  <i className="fas fa-folder-plus me-2"></i>Crear categoría
-                </a>
                 <a href="/autor/articulos/categorias/listar" title="Muestra todas las categorías de artículos creadas.">
                   <i className="fas fa-list me-2"></i>Listar categorías
                 </a>
