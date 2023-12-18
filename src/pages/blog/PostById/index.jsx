@@ -18,6 +18,7 @@ import {
 
 import { ShareOnSocialMedia } from "../../../components/ShareOnSocialMedia";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
+import { LatestPostsAside } from "../../../components/LatestPostsAside";
 
 import "./styles.scss";
 
@@ -126,14 +127,19 @@ export const PostById = () => {
       >
         <section className="post-by-id">
           <article className="container">
-            <div className="col-lg-9">
-              {state.post ? (
-                <Post post={state.post} />
-              ) : state.hasError ? (
-                <p>Error al obtener el artículo</p>
-              ) : (
-                <p>Cargando artículo...</p>
-              )}
+            <div className="row">
+              <div className="col-lg-9">
+                {state.post ? (
+                  <Post post={state.post} />
+                ) : state.hasError ? (
+                  <p>Error al obtener el artículo</p>
+                ) : (
+                  <p>Cargando artículo...</p>
+                )}
+              </div>
+              <div className="col-lg-3">
+                <LatestPostsAside numbOfItems="4" />
+              </div>
             </div>
           </article>
         </section>
@@ -143,7 +149,8 @@ export const PostById = () => {
 };
 
 const Post = ({ post }) => {
-  const { id, title, category, picture, headline, content, tags, createdAt } = post;
+  const { id, title, category, picture, headline, content, tags, createdAt } =
+    post;
 
   return (
     <div className="post-wapper">
@@ -159,7 +166,7 @@ const Post = ({ post }) => {
             <i className="fas fa-calendar"></i> {getDate(createdAt)}
           </small>
           <small>
-            <i className="fa fa-user"></i> Autor: Campo Eventos
+            <i className="fa fa-user"></i> CampoEventos
           </small>
           <small>
             <i className="fa fa-folder"></i> {category}

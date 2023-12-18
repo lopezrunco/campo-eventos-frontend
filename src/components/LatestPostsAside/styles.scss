@@ -1,0 +1,41 @@
+@import '../../Variables.scss';
+
+.latest-posts-aside {
+    .wapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        >.post-img {
+            flex: 1;
+
+            img {
+                height: 90px;
+                object-fit: cover;
+                border-radius: $sm-border-radius;
+            }
+        }
+
+        >.content {
+            flex: 2;
+
+            p {
+                margin-bottom: 0;
+                color: lighten($color: $primary-color, $amount: 10);
+                transition: $main-transition;
+
+                &:hover,
+                &:active {
+                    color: lighten($color: $primary-color, $amount: 20);
+                }
+            }
+
+            small {
+                color: darken($color: $medium-light-color, $amount: 10);
+            }
+        }
+    }
+}
