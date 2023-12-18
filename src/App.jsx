@@ -53,6 +53,8 @@ import PostUpdated from "./pages/author-backoffice/PostUpdated";
 import PostDeleted from "./pages/author-backoffice/PostDeleted";
 import { MyPosts } from "./pages/author-backoffice/MyPosts";
 import { MyPostById } from "./pages/author-backoffice/MyPostById";
+import { PostById } from "./pages/blog/PostById";
+import { PostsByTag } from "./pages/blog/PostsByTag";
 
 import { BackOfficeHome } from "./pages/admin-backoffice/BackOfficeHome";
 import UserList from "./pages/admin-backoffice/UserList";
@@ -67,7 +69,6 @@ import { Footer } from "./components/Footer";
 import { ScrollTop } from "./components/ScrollTop";
 
 import "./App.scss";
-import { PostById } from "./pages/blog/PostById";
 
 // Create context to manage authentication data type
 export const AuthContext = createContext();
@@ -405,6 +406,7 @@ function App() {
 
             {/* Blog routes ------------------------------------------------ */}
 
+            <Route path="/articulos/etiqueta/:tag" element={<PostsByTag />} />
             <Route path="/articulos/:id" element={<PostById />} />
 
             <Route

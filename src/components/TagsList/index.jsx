@@ -95,7 +95,7 @@ export const TagsList = () => {
         <p>No hay etiquetas que mostrar</p>
       ) : (
         state.tagsList.map((tag, i) => {
-          return <a key={i}>{tag}</a>;
+          return <a href={`/articulos/etiqueta/${tag}`} key={i}>{tag}</a>;
         })
       )}
     </div>
