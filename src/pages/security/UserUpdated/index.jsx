@@ -8,7 +8,7 @@ function UserUpdated() {
       redirectingMessage="Redirigiendo a Cartelera..."
       duration="5000"
       breadcrumbsLocation="Datos actualizados"
-      navigateTo="/"
+      navigateTo="/cartelera"
     />
   );
 }

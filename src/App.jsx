@@ -476,8 +476,8 @@ function App() {
             {/* <Route path="/register" element={<Register />} /> */}
             <Route path="/user-created" element={<UserCreated />} />
             <Route path="/remates/:id" element={<EventById />} />
-            <Route path="/informacion" element={<Home />} />
-            <Route path="/" element={<EventsList />} />
+            <Route path="/cartelera" element={<EventsList />} />
+            <Route path="/" element={<Home />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -142,7 +142,7 @@ export const LastPosts = ({
             ) : (
               <React.Fragment>
                 {showTitle && (
-                  <CategoryTitle category={"Últimas noticias"} link={"/"} />
+                  <CategoryTitle category={"Últimas noticias"} link={"/posts"} />
                 )}
                 {state.postsList.length > 0 ? (
                   state.postsList.map((post) => (

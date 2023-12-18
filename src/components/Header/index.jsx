@@ -34,12 +34,12 @@ export const Header = () => {
             <ul className="nav-list">
 
               {/* Public menu */}
-              <li className={`navigation-bar-item ${activeLink === '/informacion' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
-                <a href="/informacion" className="nav-link-item" title="Información">Información</a>
+              <li className={`navigation-bar-item ${activeLink === '/' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                <a href="/" className="nav-link-item" title="Inicio">Inicio</a>
               </li>
 
-              <li className={`navigation-bar-item ${activeLink === '/' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
-                <a href="/" className="nav-link-item" title="Cartelera">Cartelera</a>
+              <li className={`navigation-bar-item ${activeLink === '/cartelera' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                <a href="/cartelera" className="nav-link-item" title="Cartelera">Cartelera</a>
               </li>
 
               <li className={`navigation-bar-item ${activeLink === '/servicios' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >

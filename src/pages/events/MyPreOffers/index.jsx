@@ -163,7 +163,7 @@ function MyPreOffers() {
                         eliminadas.
                       </p>
                       <p>Para preofertar, visite nuestra Cartelera.</p>
-                      <a href="/" className="button button-dark-outline">
+                      <a href="/cartelera" className="button button-dark-outline">
                         <i className="fas fa-home me-2"></i> Ver Cartelera
                       </a>
                     </div>
