@@ -22,7 +22,7 @@ export const PostCard = ({ post, colClass, btnClass, cardType }) => {
         <div className={colClass}>
           <div
             className="all-content-post-card"
-            onClick={() => navigate(`/posts/${post.id}`)}
+            onClick={() => navigate(`/articulos/${post.id}`)}
           >
             <div className="img-wrapper">
               {post.picture ? (
@@ -59,7 +59,7 @@ export const PostCard = ({ post, colClass, btnClass, cardType }) => {
         <div className={colClass}>
           <div
             className="content-right-post-card"
-            onClick={() => navigate(`/posts/${post.id}`)}
+            onClick={() => navigate(`/articulos/${post.id}`)}
           >
             <div className="img-wrapper">
               {post.picture ? (
@@ -96,7 +96,7 @@ export const PostCard = ({ post, colClass, btnClass, cardType }) => {
         <div className={colClass}>
           <div
             className="content-left-post-card"
-            onClick={() => navigate(`/posts/${post.id}`)}
+            onClick={() => navigate(`/articulos/${post.id}`)}
           >
             <div className="img-wrapper">
               {post.picture ? (
@@ -133,7 +133,7 @@ export const PostCard = ({ post, colClass, btnClass, cardType }) => {
         <div className={colClass}>
           <div
             className="img-title-post-card"
-            onClick={() => navigate(`/posts/${post.id}`)}
+            onClick={() => navigate(`/articulos/${post.id}`)}
           >
             <div className="img-wrapper">
               <h3>
@@ -155,7 +155,7 @@ export const PostCard = ({ post, colClass, btnClass, cardType }) => {
         <div className={colClass}>
           <div
             className="dark-post-card"
-            onClick={() => navigate(`/posts/${post.id}`)}
+            onClick={() => navigate(`/articulos/${post.id}`)}
           >
             <div className="img-wrapper">
               {post.picture ? (

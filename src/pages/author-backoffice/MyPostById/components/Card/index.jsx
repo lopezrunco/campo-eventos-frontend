@@ -62,7 +62,7 @@ function Card({ myPost }) {
               <React.Fragment>
                 <hr className="mt-4" />
                 <div className="article-tag-container">
-                  Etiquetas:
+                  <i className="fas fa-tags me-3"></i>
                   {myPost.tags.map((tag, i) => {
                     return (
                       <span className="tag gray" key={i}>

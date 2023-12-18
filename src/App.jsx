@@ -67,6 +67,7 @@ import { Footer } from "./components/Footer";
 import { ScrollTop } from "./components/ScrollTop";
 
 import "./App.scss";
+import { PostById } from "./pages/blog/PostById";
 
 // Create context to manage authentication data type
 export const AuthContext = createContext();
@@ -403,6 +404,8 @@ function App() {
             />
 
             {/* Blog routes ------------------------------------------------ */}
+
+            <Route path="/articulos/:id" element={<PostById />} />
 
             <Route
               path="/admin/articulos"

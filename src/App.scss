@@ -137,6 +137,10 @@ input[type="file"] {
 .article-tag-container {
   padding: 1rem 0;
 
+  i {
+    color: $primary-color;
+  }
+
   .tag {
     margin-bottom: 0.6rem;
     display: inline-flex;

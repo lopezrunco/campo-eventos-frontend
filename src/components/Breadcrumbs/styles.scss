@@ -8,20 +8,29 @@
     padding: 1rem 0;
 
     .path {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+        display: none;
+    }
+}
 
-        a {
-            color: $light-color;
-        }
+@media screen and (min-width: 992px) {
+    .breadcrumbs {
+        .path {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
 
-        i {
-            font-size: .5rem;
-        }
 
-        .actual-location {
-            color: $accent-color;
+            a {
+                color: $light-color;
+            }
+
+            i {
+                font-size: .5rem;
+            }
+
+            .actual-location {
+                color: $accent-color;
+            }
         }
     }
 }
