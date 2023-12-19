@@ -67,7 +67,6 @@ export const TagsList = () => {
         }
       })
       .then((data) => {
-        console.log(data);
         dispatch({
           type: FETCH_TAGS_SUCCESS,
           payload: data,

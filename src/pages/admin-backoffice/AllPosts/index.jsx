@@ -232,7 +232,9 @@ export const AllPosts = () => {
               <p>Error al obtener los datos</p>
             ) : (
               <React.Fragment>
-                <SortArticles />
+                <div className="options d-flex justify-content-between">
+                  <SortArticles />
+                </div>
                 {state.postsList.length > 0 ? (
                   state.postsList.map((post) => (
                     <PostByUserCard key={post.id} post={post} />

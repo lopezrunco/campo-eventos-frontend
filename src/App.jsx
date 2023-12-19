@@ -57,6 +57,7 @@ import { BlogHome } from "./pages/blog/BlogHome";
 import { PostById } from "./pages/blog/PostById";
 import { PostsByTag } from "./pages/blog/PostsByTag";
 import { PostsByCategory } from "./pages/blog/PostsByCategory";
+import { SearchResults } from "./pages/blog/SearchResults";
 
 import { BackOfficeHome } from "./pages/admin-backoffice/BackOfficeHome";
 import UserList from "./pages/admin-backoffice/UserList";
@@ -416,6 +417,7 @@ function App() {
             />
             <Route path="/articulos/etiqueta/:tag" element={<PostsByTag />} />
             <Route path="/articulos/:id" element={<PostById />} />
+            <Route path="/resultados-busqueda" element={<SearchResults />} />
 
             <Route
               path="/admin/articulos"
