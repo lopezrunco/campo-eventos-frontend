@@ -71,6 +71,7 @@ import { Footer } from "./components/Footer";
 import { ScrollTop } from "./components/ScrollTop";
 
 import "./App.scss";
+import { UploadArticleImage } from "./pages/author-backoffice/UploadArticleImage";
 
 // Create context to manage authentication data type
 export const AuthContext = createContext();
@@ -409,7 +410,10 @@ function App() {
             {/* Blog routes ------------------------------------------------ */}
 
             <Route path="/articulos" element={<BlogHome />} />
-            <Route path="/articulos/categoria/:category" element={<PostsByCategory />} />
+            <Route
+              path="/articulos/categoria/:category"
+              element={<PostsByCategory />}
+            />
             <Route path="/articulos/etiqueta/:tag" element={<PostsByTag />} />
             <Route path="/articulos/:id" element={<PostById />} />
 
@@ -418,6 +422,15 @@ function App() {
               element={
                 <RequireAuth allowedRoles={["ADMIN"]}>
                   <AllPosts />
+                </RequireAuth>
+              }
+            />
+
+            <Route
+              path="/autor/articulos/mis-articulos/:id/upload"
+              element={
+                <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
+                  <UploadArticleImage />
                 </RequireAuth>
               }
             />

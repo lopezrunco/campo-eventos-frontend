@@ -1,36 +1,36 @@
 import { useNavigate } from "react-router-dom";
 import React, { useContext, useReducer } from "react";
 
-import { refreshToken } from "../../../../../utils/refresh-token";
-import { apiUrl } from "../../../../../utils/api-url";
-import { AuthContext } from "../../../../../App";
 import {
-  EDIT_EVENT_FAILURE,
-  EDIT_EVENT_REQUEST,
-  EDIT_EVENT_SUCCESS,
+  EDIT_POST_FAILURE,
+  EDIT_POST_REQUEST,
+  EDIT_POST_SUCCESS,
 } from "../../../../../utils/action-types";
+import { AuthContext } from "../../../../../App";
+import { apiUrl } from "../../../../../utils/api-url";
+import { refreshToken } from "../../../../../utils/refresh-token";
 
 const initialState = {
-  imageUrl: "",
+  coverImgName: "",
   isSending: false,
   hasError: false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case EDIT_EVENT_REQUEST:
+    case EDIT_POST_REQUEST:
       return {
         ...state,
         isSending: true,
         hasError: false,
       };
-    case EDIT_EVENT_SUCCESS:
+    case EDIT_POST_SUCCESS:
       return {
         ...state,
         isSending: false,
-        imageUrl: action.payload.imageUrl,
+        coverImgName: action.payload.coverImgName,
       };
-    case EDIT_EVENT_FAILURE:
+    case EDIT_POST_FAILURE:
       return {
         ...state,
         isSending: false,
@@ -41,24 +41,24 @@ const reducer = (state, action) => {
   }
 };
 
-function AppendImage({ eventId, imageName }) {
+export const AppendImage = ({ articleId, imageName }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = () => {
     dispatch({
-      type: EDIT_EVENT_REQUEST,
+      type: EDIT_POST_REQUEST,
     });
 
-    fetch(apiUrl(`/events/${eventId}`), {
+    fetch(apiUrl(`/posts/${articleId}`), {
       method: "PUT",
       headers: {
         Authorization: authState.token,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        imageUrl: imageName,
+        picture: imageName,
       }),
     })
       .then((response) => {
@@ -70,10 +70,10 @@ function AppendImage({ eventId, imageName }) {
       })
       .then((data) => {
         dispatch({
-          type: EDIT_EVENT_SUCCESS,
+          type: EDIT_POST_SUCCESS,
           payload: data,
         });
-        navigate(`/consignatarios/mis-remates`);
+        navigate(`/autor/articulos/mis-articulos/${articleId}`);
       })
       .catch((error) => {
         if (error.status === 401) {
@@ -82,7 +82,7 @@ function AppendImage({ eventId, imageName }) {
           navigate("/forbidden");
         } else {
           dispatch({
-            type: EDIT_EVENT_FAILURE,
+            type: EDIT_POST_FAILURE,
           });
         }
       });
@@ -90,14 +90,10 @@ function AppendImage({ eventId, imageName }) {
 
   return (
     <React.Fragment>
-      <p>
-        El archivo <i>{imageName}</i> se usará como afiche del remate
-      </p>
-      <a className="button button-dark" onClick={handleSubmit}>
+      <p>¿Usar este archivo como imagen del artículo?</p>
+      <a className="button button-dark mb-0" onClick={handleSubmit}>
         <i className="fas fa-check"></i> Aceptar
       </a>
     </React.Fragment>
   );
-}
-
-export default AppendImage;
+};
