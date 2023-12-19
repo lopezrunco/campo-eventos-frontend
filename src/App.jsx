@@ -53,8 +53,10 @@ import PostUpdated from "./pages/author-backoffice/PostUpdated";
 import PostDeleted from "./pages/author-backoffice/PostDeleted";
 import { MyPosts } from "./pages/author-backoffice/MyPosts";
 import { MyPostById } from "./pages/author-backoffice/MyPostById";
+import { BlogHome } from "./pages/blog/BlogHome";
 import { PostById } from "./pages/blog/PostById";
 import { PostsByTag } from "./pages/blog/PostsByTag";
+import { PostsByCategory } from "./pages/blog/PostsByCategory";
 
 import { BackOfficeHome } from "./pages/admin-backoffice/BackOfficeHome";
 import UserList from "./pages/admin-backoffice/UserList";
@@ -406,6 +408,8 @@ function App() {
 
             {/* Blog routes ------------------------------------------------ */}
 
+            <Route path="/articulos" element={<BlogHome />} />
+            <Route path="/articulos/categoria/:category" element={<PostsByCategory />} />
             <Route path="/articulos/etiqueta/:tag" element={<PostsByTag />} />
             <Route path="/articulos/:id" element={<PostById />} />
 

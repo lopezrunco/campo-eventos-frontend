@@ -3,41 +3,46 @@
 .latest-posts-aside {
     margin-bottom: 3rem;
 
-    .wapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 1rem;
-        margin-bottom: 1rem;
+    a {
+        width: 100%;
 
-        >.post-img {
-            flex: 1;
+        .wapper {
+            margin-bottom: 1rem;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
 
-            img {
-                height: 90px;
-                object-fit: cover;
-                border-radius: $sm-border-radius;
-            }
-        }
+            >.post-img {
+                grid-column: 1/3;
 
-        >.content {
-            flex: 2;
-
-            p {
-                margin-bottom: 0;
-                color: lighten($color: $primary-color, $amount: 10);
-                transition: $main-transition;
-
-                &:hover,
-                &:active {
-                    color: lighten($color: $primary-color, $amount: 20);
+                img {
+                    width: 100%;
+                    max-height: 90px;
+                    object-fit: cover;
+                    border-radius: $sm-border-radius;
                 }
             }
 
-            small {
-                color: darken($color: $medium-light-color, $amount: 10);
+            >.content {
+                grid-column: 3/6;
+
+                p {
+                    margin-bottom: 0;
+                    color: lighten($color: $primary-color, $amount: 10);
+                    transition: $main-transition;
+
+                    &:hover,
+                    &:active {
+                        color: lighten($color: $primary-color, $amount: 20);
+                    }
+                }
+
+                small {
+                    color: darken($color: $medium-light-color, $amount: 10);
+                }
             }
         }
     }
+
+
 }

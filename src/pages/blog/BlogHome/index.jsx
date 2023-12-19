@@ -1,22 +1,22 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import React, { useContext, useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 
-import { refreshToken } from "../../../../utils/refresh-token";
-import { apiUrl } from "../../../../utils/api-url";
-import { AuthContext } from "../../../../App";
+import { refreshToken } from "../../../utils/refresh-token";
+import { ALL } from "../../../utils/blog-card-types";
+import { apiUrl } from "../../../utils/api-url";
+import { AuthContext } from "../../../App";
 import {
   FETCH_POSTS_FAILURE,
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,
   HIDE_LOADER,
   SHOW_LOADER,
-} from "../../../../utils/action-types";
+} from "../../../utils/action-types";
 
-import { CategoryTitle } from "../../../../components/CategoryTitle";
-import { TextBanner } from "../../../../components/TextBanner";
-import { Loader } from "../../../../components/Loader";
-import { PostCard } from "../PostCard";
+import { Loader } from "../../../components/Loader";
+import { PostCard } from "../../Home/components/PostCard";
+import Pagination from "../../../components/Pagination";
 
 const initialState = {
   postsList: [],
@@ -49,20 +49,20 @@ const reducer = (state, action) => {
   }
 };
 
-export const PostsByCategory = ({
-  bgClass,
-  containerClass,
-  btnClass,
-  category,
-  items,
-  colClass,
-  cardType,
-  showTitle,
-  showBanner,
-}) => {
+export const BlogHome = () => {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
+
+  // Handle pagination
+  const [currentPage, setCurentPage] = useState(1);
+  const itemsPerPage = 12;
+  function prevPage() {
+    setCurentPage(currentPage - 1);
+  }
+  function nextPage() {
+    setCurentPage(currentPage + 1);
+  }
 
   useEffect(() => {
     dispatch({
@@ -71,7 +71,7 @@ export const PostsByCategory = ({
     dispatch({
       type: FETCH_POSTS_REQUEST,
     });
-    fetch(apiUrl(`/posts/category/${category}?page=1&itemsPerPage=${items}`), {
+    fetch(apiUrl(`posts?page=${currentPage}&itemsPerPage=${itemsPerPage}`), {
       method: "GET",
       headers: {
         Authorization: authState.token,
@@ -92,7 +92,7 @@ export const PostsByCategory = ({
         });
       })
       .catch((error) => {
-        console.error("Error trying to fetch the posts by category", error);
+        console.error("Error trying to fetch the posts", error);
         if (error.status === 401) {
           refreshToken(authState.refreshToken, authDispatch, navigate);
         } else if (error.status === 403) {
@@ -112,43 +112,35 @@ export const PostsByCategory = ({
     authDispatch,
     authState.refreshToken,
     authState.token,
-    category,
-    items,
+    currentPage,
+    itemsPerPage,
     navigate,
   ]);
 
   return (
-    <section className={bgClass}>
-      <article className={containerClass}>
+    <section className="latest-posts">
+      <article className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.4 }}
           viewport={{ once: true }}
         >
-          <article className="row">
+          <div className="row">
             {state.isFetching ? (
               <Loader />
             ) : state.hasError ? (
               <p>Error al obtener los datos</p>
             ) : (
               <React.Fragment>
-                {showTitle && <CategoryTitle category={category} link={`/articulos/categoria/${category}`} />}
-                {showBanner && (
-                  <TextBanner
-                    text={category}
-                    bgClass=""
-                    textClass="text-muted"
-                  />
-                )}
                 {state.postsList.length > 0 ? (
                   state.postsList.map((post) => (
                     <PostCard
                       key={post.id}
                       post={post}
-                      colClass={colClass}
-                      btnClass={btnClass}
-                      cardType={cardType}
+                      colClass={"col-lg-4"}
+                      btnClass="button-dark"
+                      cardType={ALL}
                     />
                   ))
                 ) : (
@@ -156,7 +148,13 @@ export const PostsByCategory = ({
                 )}
               </React.Fragment>
             )}
-          </article>
+            <Pagination
+              elementList={state.postsList}
+              currentPage={currentPage}
+              prevPageFunction={prevPage}
+              nextPageFunction={nextPage}
+            />
+          </div>
         </motion.div>
       </article>
     </section>

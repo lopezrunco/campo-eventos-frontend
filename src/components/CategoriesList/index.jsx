@@ -20,7 +20,7 @@ export const CategoriesList = () => {
       <div className="list">
         {categories.map((cat, i) => {
           return (
-            <Link key={i} to={`/articulos/${cat}`}>
+            <Link key={i} to={`/articulos/categoria/${cat}`}>
               <small>
               <i className="fas fa-chevron-right"></i> {cat}
               </small>

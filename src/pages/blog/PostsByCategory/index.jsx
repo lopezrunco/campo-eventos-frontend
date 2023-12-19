@@ -19,8 +19,8 @@ import { PostCard } from "../../Home/components/PostCard";
 import Pagination from "../../../components/Pagination";
 
 const initialState = {
-  posts: [],
-  isSending: false,
+  postsList: [],
+  isFetching: false,
   hasError: false,
 };
 
@@ -29,30 +29,30 @@ const reducer = (state, action) => {
     case FETCH_POSTS_REQUEST:
       return {
         ...state,
-        isSending: true,
+        isFetching: true,
         hasError: false,
       };
     case FETCH_POSTS_SUCCESS:
       return {
         ...state,
-        isSending: false,
-        posts: action.payload.posts,
+        isFetching: false,
+        postsList: action.payload.posts,
       };
     case FETCH_POSTS_FAILURE:
       return {
         ...state,
-        isSending: false,
         hasError: true,
+        isFetching: false,
       };
     default:
       return state;
   }
 };
 
-export const PostsByTag = () => {
-  const { tag } = useParams();
-  const [state, dispatch] = useReducer(reducer, initialState);
+export const PostsByCategory = () => {
+  const { category } = useParams();
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
+  const [state, dispatch] = useReducer(reducer, initialState);
   const navigate = useNavigate();
 
   // Handle pagination
@@ -66,18 +66,18 @@ export const PostsByTag = () => {
   }
 
   useEffect(() => {
-    authDispatch({
+    dispatch({
       type: SHOW_LOADER,
     });
     dispatch({
       type: FETCH_POSTS_REQUEST,
     });
-
     fetch(
       apiUrl(
-        `/posts/tag/${tag}?page=${currentPage}&itemsPerPage=${itemsPerPage}`
+        `/posts/category/${category}?page=${currentPage}&itemsPerPage=${itemsPerPage}`
       ),
       {
+        method: "GET",
         headers: {
           Authorization: authState.token,
           "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export const PostsByTag = () => {
         });
       })
       .catch((error) => {
-        console.error("Error trying to fetch the posts", error);
+        console.error("Error trying to fetch the posts by category", error);
         if (error.status === 401) {
           refreshToken(authState.refreshToken, authDispatch, navigate);
         } else if (error.status === 403) {
@@ -118,9 +118,9 @@ export const PostsByTag = () => {
     authDispatch,
     authState.refreshToken,
     authState.token,
+    category,
     currentPage,
     navigate,
-    tag,
   ]);
 
   return (
@@ -131,7 +131,7 @@ export const PostsByTag = () => {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        {state.posts && <Breadcrumbs location={`Etiqueta: ${tag}`} />}
+        {state.postsList && <Breadcrumbs location={`Categoría: ${category}`} />}
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -139,15 +139,15 @@ export const PostsByTag = () => {
         transition={{ duration: 1.3 }}
         viewport={{ once: true }}
       >
-        <section className="post-by-tag">
+        <section className="post-by-category">
           <article className="container">
             <div className="row">
               {state.isSending ? (
                 <p>Cargando...</p>
               ) : state.hasError ? (
                 <p>Error al obtener los datos</p>
-              ) : state.posts.length > 0 ? (
-                state.posts.map((post) => (
+              ) : state.postsList.length > 0 ? (
+                state.postsList.map((post) => (
                   <PostCard
                     key={post.id}
                     post={post}
@@ -160,7 +160,7 @@ export const PostsByTag = () => {
                 <p>No hay artículos para mostrar...</p>
               )}
               <Pagination
-                elementList={state.posts}
+                elementList={state.postsList}
                 currentPage={currentPage}
                 prevPageFunction={prevPage}
                 nextPageFunction={nextPage}
