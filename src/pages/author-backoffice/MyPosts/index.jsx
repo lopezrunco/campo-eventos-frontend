@@ -11,6 +11,7 @@ import {
   FETCH_POSTS_SUCCESS,
   HIDE_LOADER,
   SHOW_LOADER,
+  SORT_POSTS,
 } from "../../../utils/action-types";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
@@ -23,6 +24,8 @@ const initialState = {
   postsList: [],
   isFetching: false,
   hasError: false,
+  sortCriteria: null,
+  sortOrder: "asc",
 };
 
 const reducer = (state, action) => {
@@ -45,6 +48,40 @@ const reducer = (state, action) => {
         hasError: true,
         isFetching: false,
       };
+    case SORT_POSTS: {
+      const { criteria, order } = action.payload;
+      let sortedList = [...state.postsList];
+
+      switch (criteria) {
+        case "title":
+          sortedList.sort((a, b) => {
+            if (order === "asc") {
+              return a.title.localeCompare(b.title);
+            } else {
+              return b.title.localeCompare(a.title);
+            }
+          });
+          break;
+        case "createdAt":
+          sortedList.sort((a, b) => {
+            if (order === "asc") {
+              return new Date(a.createdAt) - new Date(b.createdAt);
+            } else {
+              return new Date(b.createdAt) - new Date(a.createdAt);
+            }
+          });
+          break;
+        default:
+          break;
+      }
+
+      return {
+        ...state,
+        postsList: sortedList,
+        sortCriteria: criteria,
+        sortOrder: order,
+      };
+    }
     default:
       return state;
   }
@@ -64,6 +101,45 @@ export const MyPosts = () => {
   function nextPage() {
     setCurentPage(currentPage + 1);
   }
+
+  const handleSort = (criteria) => {
+    const newOrder =
+      state.sortCriteria === criteria && state.sortOrder === "asc"
+        ? "desc"
+        : "asc";
+
+    dispatch({
+      type: SORT_POSTS,
+      payload: {
+        criteria,
+        order: newOrder,
+      },
+    });
+  };
+
+  const SortArticles = () => {
+    const handleSortChange = (e) => {
+      const selectedCriteria = e.target.value;
+      handleSort(selectedCriteria);
+    };
+
+    return (
+      <div className="sort-articles mb-4">
+        <label>
+          Ordenar por:
+          <select
+            id="sort"
+            value={state.sortCriteria}
+            onChange={handleSortChange}
+            className="ms-2"
+          >
+            <option value="title">Título</option>
+            <option value="createdAt">Fecha de creación</option>
+          </select>
+        </label>
+      </div>
+    );
+  };
 
   useEffect(() => {
     if (authState.token) {
@@ -166,7 +242,10 @@ export const MyPosts = () => {
             ) : state.hasError ? (
               <p>Error al obtener los datos</p>
             ) : (
-              <>
+              <React.Fragment>
+                <div className="options d-flex justify-content-between">
+                  <SortArticles />
+                </div>
                 {state.postsList.length > 0 ? (
                   state.postsList.map((post) => (
                     <PostByUserCard key={post.id} post={post} />
@@ -174,7 +253,7 @@ export const MyPosts = () => {
                 ) : (
                   <p>No hay artículos para mostrar...</p>
                 )}
-              </>
+              </React.Fragment>
             )}
 
             <Pagination

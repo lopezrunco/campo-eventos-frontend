@@ -17,6 +17,11 @@ import {
 import { Loader } from "../../../components/Loader";
 import { PostCard } from "../../Home/components/PostCard";
 import Pagination from "../../../components/Pagination";
+import { SearchArticle } from "../../../components/SearchArticle";
+import { CategoriesList } from "../../../components/CategoriesList";
+import { LatestPostsAside } from "../../../components/LatestPostsAside";
+import { TagsList } from "../../../components/TagsList";
+import { Breadcrumbs } from "../../../components/Breadcrumbs";
 
 const initialState = {
   postsList: [],
@@ -56,7 +61,7 @@ export const BlogHome = () => {
 
   // Handle pagination
   const [currentPage, setCurentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 6;
   function prevPage() {
     setCurentPage(currentPage - 1);
   }
@@ -118,45 +123,65 @@ export const BlogHome = () => {
   ]);
 
   return (
-    <section className="latest-posts">
-      <article className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4 }}
-          viewport={{ once: true }}
-        >
-          <div className="row">
-            {state.isFetching ? (
-              <Loader />
-            ) : state.hasError ? (
-              <p>Error al obtener los datos</p>
-            ) : (
-              <React.Fragment>
-                {state.postsList.length > 0 ? (
-                  state.postsList.map((post) => (
-                    <PostCard
-                      key={post.id}
-                      post={post}
-                      colClass={"col-lg-4"}
-                      btnClass="button-dark"
-                      cardType={ALL}
-                    />
-                  ))
-                ) : (
-                  <p>No hay artículos para mostrar...</p>
-                )}
-              </React.Fragment>
-            )}
-            <Pagination
-              elementList={state.postsList}
-              currentPage={currentPage}
-              prevPageFunction={prevPage}
-              nextPageFunction={nextPage}
-            />
-          </div>
-        </motion.div>
-      </article>
-    </section>
+    <React.Fragment>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        viewport={{ once: true }}
+      >
+        <Breadcrumbs location="Últimas noticias" />
+      </motion.div>
+      <section className="latest-posts">
+        <article className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="row">
+              <div className="col-lg-9">
+                <div className="row">
+                  {state.isFetching ? (
+                    <Loader />
+                  ) : state.hasError ? (
+                    <p>Error al obtener los datos</p>
+                  ) : (
+                    <React.Fragment>
+                      {state.postsList.length > 0 ? (
+                        state.postsList.map((post) => (
+                          <PostCard
+                            key={post.id}
+                            post={post}
+                            colClass={"col-lg-6"}
+                            btnClass="button-dark"
+                            cardType={ALL}
+                          />
+                        ))
+                      ) : (
+                        <p>No hay artículos para mostrar...</p>
+                      )}
+                    </React.Fragment>
+                  )}
+                </div>
+              </div>
+              <div className="col-lg-3">
+                <SearchArticle />
+                <CategoriesList />
+                <LatestPostsAside numbOfItems="3" />
+                <TagsList />
+              </div>
+              <Pagination
+                elementList={state.postsList}
+                currentPage={currentPage}
+                prevPageFunction={prevPage}
+                nextPageFunction={nextPage}
+              />
+            </div>
+          </motion.div>
+        </article>
+      </section>
+    </React.Fragment>
   );
 };

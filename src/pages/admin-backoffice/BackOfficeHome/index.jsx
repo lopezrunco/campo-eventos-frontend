@@ -47,12 +47,12 @@ export const BackOfficeHome = () => {
                 <a href="/admin/articulos" title="Muestra todos los artículos creados por los diferentes usuarios.">
                   <i className="fas fa-list me-2"></i>Listar todos los artículos
                 </a>
-                <a href="/autor/articulos/categorias/listar" title="Muestra todas las categorías de artículos creadas.">
+                {/* <a href="/autor/articulos/categorias/listar" title="Muestra todas las categorías de artículos creadas.">
                   <i className="fas fa-list me-2"></i>Listar categorías
-                </a>
-                <a href="/autor/articulos/etiquetas/listar" title="Muestra todos las etiquetas creadas en los artículos por los diferentes usuarios.">
+                </a> */}
+                {/* <a href="/autor/articulos/etiquetas/listar" title="Muestra todos las etiquetas creadas en los artículos por los diferentes usuarios.">
                   <i className="fas fa-tags me-2"></i>Listar etiquetas
-                </a>
+                </a> */}
               </div>
               <div className="col-12 col-lg-3 mb-5 mb-lg-0 admin-home-card">
                 <h3>Publicidad</h3>
@@ -63,9 +63,9 @@ export const BackOfficeHome = () => {
                 <a href="/admin/publicidad/listar" title="Muestra todas las publicidades creadas por los diferentes usuarios.">
                   <i className="fas fa-list me-2"></i>Listar publicidades
                 </a>
-                <a href="/admin/publicidad/ayuda">
+                {/* <a href="/admin/publicidad/ayuda">
                   <i className="fas fa-info-circle me-2"></i>Ayuda
-                </a>
+                </a> */}
               </div>
               <div className="col-12 col-lg-3 mb-5 mb-lg-0 admin-home-card">
                 <h3>Usuarios</h3>

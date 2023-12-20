@@ -63,51 +63,49 @@ export const PostById = () => {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
 
   useEffect(() => {
-    if (authState.token) {
-      authDispatch({
-        type: SHOW_LOADER,
-      });
-      dispatch({
-        type: FETCH_POST_REQUEST,
-      });
+    authDispatch({
+      type: SHOW_LOADER,
+    });
+    dispatch({
+      type: FETCH_POST_REQUEST,
+    });
 
-      fetch(apiUrl(`/posts/${id}`), {
-        headers: {
-          Authorization: authState.token,
-          "Content-Type": "application/json",
-        },
+    fetch(apiUrl(`/posts/${id}`), {
+      headers: {
+        Authorization: authState.token,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw response;
+        }
       })
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            throw response;
-          }
-        })
-        .then((data) => {
-          dispatch({
-            type: FETCH_POST_SUCCESS,
-            payload: data,
-          });
-        })
-        .catch((error) => {
-          console.error("Error trying to fetch the post", error);
-          if (error.status === 401) {
-            refreshToken(authState.refreshToken, authDispatch, navigate);
-          } else if (error.status === 403) {
-            navigate("/forbidden");
-          } else {
-            dispatch({
-              type: FETCH_POST_FAILURE,
-            });
-          }
-        })
-        .finally(() => {
-          authDispatch({
-            type: HIDE_LOADER,
-          });
+      .then((data) => {
+        dispatch({
+          type: FETCH_POST_SUCCESS,
+          payload: data,
         });
-    }
+      })
+      .catch((error) => {
+        console.error("Error trying to fetch the post", error);
+        if (error.status === 401) {
+          refreshToken(authState.refreshToken, authDispatch, navigate);
+        } else if (error.status === 403) {
+          navigate("/forbidden");
+        } else {
+          dispatch({
+            type: FETCH_POST_FAILURE,
+          });
+        }
+      })
+      .finally(() => {
+        authDispatch({
+          type: HIDE_LOADER,
+        });
+      });
   }, [authDispatch, authState.refreshToken, authState.token, id, navigate]);
 
   return (

@@ -7,6 +7,10 @@ import { DARK } from "../../../utils/blog-card-types";
 import { Title } from "../../../components/Title";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { PostCard } from "../../Home/components/PostCard";
+import { SearchArticle } from "../../../components/SearchArticle";
+import { CategoriesList } from "../../../components/CategoriesList";
+import { LatestPostsAside } from "../../../components/LatestPostsAside";
+import { TagsList } from "../../../components/TagsList";
 
 export const SearchResults = () => {
   const location = useLocation();
@@ -20,7 +24,7 @@ export const SearchResults = () => {
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
       >
-        <Breadcrumbs location={"Resultados de búsqueda"} />
+        <Breadcrumbs location={"Resultados de la búsqueda"} />
       </motion.div>
       <section className="container">
         <motion.div
@@ -41,15 +45,25 @@ export const SearchResults = () => {
           viewport={{ once: true }}
         >
           <div className="row">
-            {searchResults.map((post) => (
-              <PostCard
-                key={post.id}
-                post={post}
-                colClass={"col-lg-12"}
-                btnClass="button button-light-outline"
-                cardType={DARK}
-              />
-            ))}
+            <div className="col-lg-9">
+              <div className="row">
+                {searchResults.map((post) => (
+                  <PostCard
+                    key={post.id}
+                    post={post}
+                    colClass={"col-lg-12"}
+                    btnClass="button button-light-outline"
+                    cardType={DARK}
+                  />
+                ))}
+              </div>
+            </div>
+            <div className="col-lg-3">
+              <SearchArticle />
+              <CategoriesList />
+              <LatestPostsAside numbOfItems="3" />
+              <TagsList />
+            </div>
           </div>
         </motion.div>
       </section>

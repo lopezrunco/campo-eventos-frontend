@@ -27,6 +27,7 @@
                 grid-column: 3/6;
 
                 p {
+                    text-transform: capitalize;
                     margin-bottom: 0;
                     color: lighten($color: $primary-color, $amount: 10);
                     transition: $main-transition;
