@@ -32,6 +32,7 @@ const initialState = {
   content: "",
   picture: undefined,
   tags: [],
+  link: "",
   userId: "",
   isSending: false,
   hasError: false,
@@ -240,6 +241,7 @@ export const CreatePost = () => {
         content: mainContent,
         picture: state.imageUrl,
         tags: state.tags,
+        link: state.link,
         userId: authState.user.id,
       }),
     })
@@ -342,15 +344,28 @@ export const CreatePost = () => {
                 </label>
               </div>
 
-              <div className="col-12">
+              <div className="col-lg-6">
                 <label htmlFor="tags">
-                  Etiquetas (Separe las etiquetas con una coma)
+                  Etiquetas (Separadas con comas)
                   <input
                     type="text"
                     value={state.tags.join(", ")}
                     onChange={handleInputChange}
                     name="tags"
                     id="tags"
+                  />
+                </label>
+              </div>
+
+              <div className="col-lg-6">
+                <label htmlFor="link">
+                  Enlace
+                  <input
+                    type="text"
+                    value={state.link}
+                    onChange={handleInputChange}
+                    name="link"
+                    id="link"
                   />
                 </label>
               </div>

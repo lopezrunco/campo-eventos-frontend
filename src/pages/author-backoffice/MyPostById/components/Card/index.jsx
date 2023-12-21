@@ -58,6 +58,16 @@ function Card({ myPost }) {
               <b>{myPost.headline}</b>
             </p>
             <div dangerouslySetInnerHTML={{ __html: myPost.content }} />
+            {myPost.link && (
+              <a
+                className="button view-more"
+                href={myPost.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Ir a enlace <i className="fas fa-chevron-right ms-2"></i>
+              </a>
+            )}
             {myPost.tags.length > 0 && (
               <React.Fragment>
                 <hr className="mt-4" />

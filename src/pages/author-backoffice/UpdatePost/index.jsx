@@ -36,6 +36,7 @@ const initialState = {
   content: "",
   picture: undefined,
   tags: [],
+  link: "",
   userId: "",
   isSending: false,
   hasError: false,
@@ -74,6 +75,7 @@ const reducer = (state, action) => {
         content: action.payload.post.content,
         picture: action.payload.post.picture,
         tags: action.payload.post.tags,
+        link: action.payload.post.link,
       };
     case GET_MY_POST_FAILURE:
       return {
@@ -242,6 +244,7 @@ export const UpdatePost = () => {
         content: mainContent,
         picture: state.picture,
         tags: state.tags,
+        link: state.link,
       }),
     })
       .then((response) => {
@@ -344,6 +347,19 @@ export const UpdatePost = () => {
                         onChange={handleInputChange}
                         name="headline"
                         id="headline"
+                      />
+                    </label>
+                  </div>
+
+                  <div className="col-12">
+                    <label htmlFor="link">
+                      Enlace
+                      <input
+                        type="text"
+                        value={state.link}
+                        onChange={handleInputChange}
+                        name="link"
+                        id="link"
                       />
                     </label>
                   </div>

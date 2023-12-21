@@ -155,8 +155,17 @@ export const PostById = () => {
 };
 
 const Post = ({ post }) => {
-  const { id, title, category, picture, headline, content, tags, createdAt } =
-    post;
+  const {
+    id,
+    title,
+    category,
+    picture,
+    headline,
+    content,
+    tags,
+    link,
+    createdAt,
+  } = post;
 
   return (
     <div className="post-wapper">
@@ -183,6 +192,16 @@ const Post = ({ post }) => {
             <b>{headline}</b>
           </p>
           <div dangerouslySetInnerHTML={{ __html: content }} />
+          {link && (
+            <a
+              className="button view-more"
+              href={link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Ir a enlace <i className="fas fa-chevron-right ms-2"></i>
+            </a>
+          )}
           <hr className="mt-4" />
           <div className="article-tag-container">
             <i className="fas fa-tags me-3"></i>
