@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import {
+import React, {
   createContext,
   useContext,
   useEffect,
@@ -9,7 +9,6 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import { refreshToken } from "../../../utils/refresh-token.js";
-import { getDate } from "../../../utils/get-date";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 import {
@@ -23,6 +22,7 @@ import { Title } from "../../../components/Title";
 import { Breadcrumbs } from "../../../components/Breadcrumbs/index.jsx";
 import Pagination from "../../../components/Pagination";
 import Card from "./components/Card/index.jsx";
+import { Live } from "../../../components/Live/index.jsx";
 
 import "./styles.scss";
 
@@ -31,13 +31,11 @@ export const EventsContext = createContext();
 
 const initialState = {
   eventsList: [],
-  selectedEventId: undefined,
   isFetching: false,
   eventsFetched: false,
   hasError: false,
 };
 
-// Reducer to manage events
 const reducer = (state, action) => {
   switch (action.type) {
     case FETCH_EVENTS_REQUEST:
@@ -69,8 +67,6 @@ function EventsList() {
   const navigate = useNavigate();
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  let currentDate = new Date().toJSON();
 
   // Handle pagination
   const [currentPage, setCurentPage] = useState(1);
@@ -123,7 +119,7 @@ function EventsList() {
   ]);
 
   return (
-    <EventsContext.Provider value={{ state, dispatch }}>
+    <React.Fragment>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -132,86 +128,21 @@ function EventsList() {
       >
         <Breadcrumbs location={"Cartelera"} />
       </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.3 }}
+        viewport={{ once: true }}
+      >
+        <Live events={state.eventsList} />
+      </motion.div>
 
-      {/* Broadcast section only active at hour of the event */}
-      <div className="broadcast-section">
-        <div className="container">
-          <div className="row">
-            {state.eventsList.map((el, i) => {
-              let setEventDuration = el.duration ? el.duration : 12;
-              let finishDate = new Date(
-                new Date(el.startBroadcastTimestamp).setHours(
-                  new Date(el.startBroadcastTimestamp).getHours() +
-                    setEventDuration
-                )
-              ).toJSON();
-
-              return el.startBroadcastTimestamp < currentDate &&
-                finishDate > currentDate ? (
-                <div key={i} className="col-12 items-container">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2 }}
-                    viewport={{ once: true }}
-                  >
-                    {i === 0 ? <Title title="En vivo" /> : null}
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="item">
-                      <iframe
-                        src={`https://www.youtube.com/embed/${el.broadcastLinkId}`}
-                        title="YouTube video player"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      ></iframe>
-                      <div className="event-description">
-                        <h2>{el.title}</h2>
-                        <span className="event-date">
-                          <i className="fas fa-calendar-alt"></i>{" "}
-                          {getDate(el.startBroadcastTimestamp)}
-                        </span>
-                        {el.location && (
-                          <span>
-                            <b>Lugar: </b>
-                            {el.location}
-                          </span>
-                        )}
-                        {el.organizer && (
-                          <span>
-                            <b>Organiza: </b>
-                            {el.organizer}
-                          </span>
-                        )}
-                        <a
-                          className="button button-light-outline"
-                          href={`/remates/${el.id}`}
-                        >
-                          <i className="fas fa-play"></i> Ver más
-                        </a>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              ) : null;
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* Event list (Cartelera) */}
       <section className="events">
         <article className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2 }}
+            transition={{ duration: 1.3 }}
             viewport={{ once: true }}
           >
             <Title
@@ -258,7 +189,7 @@ function EventsList() {
           </motion.div>
         </article>
       </section>
-    </EventsContext.Provider>
+    </React.Fragment>
   );
 }
 
