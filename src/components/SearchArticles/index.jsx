@@ -5,6 +5,7 @@ import { refreshToken } from "../../utils/refresh-token";
 import { apiUrl } from "../../utils/api-url";
 import { AuthContext } from "../../App";
 import {
+  CLEAR_SEARCH,
   FETCH_POSTS_FAILURE,
   FETCH_POSTS_REQUEST,
   FETCH_POSTS_SUCCESS,
@@ -46,16 +47,34 @@ const reducer = (state, action) => {
         isSearching: false,
         noResults: true,
       };
+    case CLEAR_SEARCH:
+      return {
+        ...state,
+        searchResults: [],
+        isSearching: false,
+        hasError: false,
+        noResults: false,
+      };
     default:
       return state;
   }
 };
 
-export const SearchArticle = () => {
+export const SearchArticles = () => {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, initialState);
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const searchEndpoint = () => {
+    return authState.token
+      ? apiUrl(
+          `/posts/my-posts/search?userId=${encodeURIComponent(
+            authState.user.id
+          )}&title=${encodeURIComponent(searchQuery)}`
+        )
+      : apiUrl(`/posts/search?title=${encodeURIComponent(searchQuery)}`);
+  };
 
   const handleSearch = () => {
     if (searchQuery.trim() !== "") {
@@ -63,7 +82,7 @@ export const SearchArticle = () => {
         type: FETCH_POSTS_REQUEST,
       });
 
-      fetch(apiUrl(`/posts/search?title=${encodeURIComponent(searchQuery)}`))
+      fetch(searchEndpoint())
         .then((response) => {
           if (response.ok) {
             return response.json();
@@ -101,6 +120,16 @@ export const SearchArticle = () => {
     }
   };
 
+  const handleKeyPress = (e) => {
+    e.key === "Enter" && handleSearch();
+  };
+
+  const clearSearch = () => {
+    dispatch({
+      type: CLEAR_SEARCH,
+    });
+  };
+
   return (
     <div className="search-article">
       <div className="wrapper">
@@ -109,6 +138,7 @@ export const SearchArticle = () => {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={handleKeyPress}
             placeholder="Buscar..."
           />
           <button onClick={handleSearch}>
@@ -116,8 +146,32 @@ export const SearchArticle = () => {
           </button>
         </label>
       </div>
-      {state.hasError && <p>Ocurrió un error.</p>}
-      {state.noResults && <p>No hay coincidencias.</p>}
+      {(state.hasError || state.noResults) && (
+        <div className="confirmation-modal">
+          <div className="container">
+            <div className="row">
+              <div className="content-wrap">
+                <h2 className="mb-4">Búsqueda</h2>
+                {state.hasError && (
+                  <p className="text-center">
+                    Ocurrió un error al realizar la búsqueda. <br /> Intente
+                    refrescando la página e intente de nuevo.
+                  </p>
+                )}
+                {state.noResults && (
+                  <p className="text-center">
+                    Su búsqueda no arrojó ningún resultado. <br /> Intente con
+                    otras palabras clave.
+                  </p>
+                )}
+                <div className="button button-dark" onClick={clearSearch}>
+                  <i className="fas fa-times"></i> Cerrar
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

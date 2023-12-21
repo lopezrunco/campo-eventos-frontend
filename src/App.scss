@@ -467,6 +467,40 @@ input[type="file"] {
   }
 }
 
+.blog-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  .button {
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .blog-options {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.sort-articles {
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 1rem;
+
+  select {
+    height: 3rem;
+    border: none;
+    outline: none;
+    font-weight: 400;
+    color: $medium-dark-color;
+  }
+}
+
 .pagination {
   display: flex;
   flex-direction: row;
@@ -593,7 +627,7 @@ h6 {
   top: 0;
   right: 0;
   background-color: $modal-bg;
-  z-index: 999;
+  z-index: 9999;
 
   .container {
     height: 100%;

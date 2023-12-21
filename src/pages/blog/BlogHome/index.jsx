@@ -17,7 +17,7 @@ import {
 import { Loader } from "../../../components/Loader";
 import { PostCard } from "../../Home/components/PostCard";
 import Pagination from "../../../components/Pagination";
-import { SearchArticle } from "../../../components/SearchArticle";
+import { SearchArticles } from "../../../components/SearchArticles";
 import { CategoriesList } from "../../../components/CategoriesList";
 import { LatestPostsAside } from "../../../components/LatestPostsAside";
 import { TagsList } from "../../../components/TagsList";
@@ -167,7 +167,9 @@ export const BlogHome = () => {
                 </div>
               </div>
               <div className="col-lg-3">
-                <SearchArticle />
+                <div className="mb-5">
+                  <SearchArticles />
+                </div>
                 <CategoriesList />
                 <LatestPostsAside numbOfItems="3" />
                 <TagsList />

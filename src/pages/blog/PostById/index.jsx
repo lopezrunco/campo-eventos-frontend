@@ -20,7 +20,7 @@ import { ShareOnSocialMedia } from "../../../components/ShareOnSocialMedia";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { LatestPostsAside } from "../../../components/LatestPostsAside";
 import { CategoriesList } from "../../../components/CategoriesList";
-import { SearchArticle } from "../../../components/SearchArticle";
+import { SearchArticles } from "../../../components/SearchArticles";
 import { TagsList } from "../../../components/TagsList";
 
 import "./styles.scss";
@@ -139,7 +139,9 @@ export const PostById = () => {
                 )}
               </div>
               <div className="col-lg-3">
-                <SearchArticle />
+                <div className="mb-5">
+                  <SearchArticles />
+                </div>
                 <CategoriesList />
                 <LatestPostsAside numbOfItems="3" />
                 <TagsList />

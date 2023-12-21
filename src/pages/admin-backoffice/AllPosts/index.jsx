@@ -19,6 +19,7 @@ import { Title } from "../../../components/Title";
 import { Loader } from "../../../components/Loader";
 import { PostByUserCard } from "../../author-backoffice/MyPosts/components/PostByUserCard";
 import Pagination from "../../../components/Pagination";
+import { SearchArticles } from "../../../components/SearchArticles";
 
 const initialState = {
   postsList: [],
@@ -124,7 +125,7 @@ export const AllPosts = () => {
     };
 
     return (
-      <div className="sort-articles mb-4">
+      <div className="sort-articles">
         <label>
           Ordenar por:
           <select
@@ -232,8 +233,9 @@ export const AllPosts = () => {
               <p>Error al obtener los datos</p>
             ) : (
               <React.Fragment>
-                <div className="options d-flex justify-content-between">
+                <div className="blog-options">
                   <SortArticles />
+                  <SearchArticles />
                 </div>
                 {state.postsList.length > 0 ? (
                   state.postsList.map((post) => (
@@ -244,7 +246,6 @@ export const AllPosts = () => {
                 )}
               </React.Fragment>
             )}
-
             <Pagination
               elementList={state.postsList}
               currentPage={currentPage}

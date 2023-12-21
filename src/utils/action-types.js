@@ -95,6 +95,7 @@ export const FETCH_TAGS_SUCCESS = 'FETCH_TAGS_SUCCESS'
 export const FETCH_TAGS_FAILURE = 'FETCH_TAGS_FAILURE'
 export const SORT_POSTS = 'SORT_POSTS'
 export const NO_RESULTS = 'NO_RESULTS'
+export const CLEAR_SEARCH = 'CLEAR_SEARCH'
 
 // Lots
 

@@ -7,7 +7,7 @@ import { DARK } from "../../../utils/blog-card-types";
 import { Title } from "../../../components/Title";
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { PostCard } from "../../Home/components/PostCard";
-import { SearchArticle } from "../../../components/SearchArticle";
+import { SearchArticles } from "../../../components/SearchArticles";
 import { CategoriesList } from "../../../components/CategoriesList";
 import { LatestPostsAside } from "../../../components/LatestPostsAside";
 import { TagsList } from "../../../components/TagsList";
@@ -35,7 +35,7 @@ export const SearchResults = () => {
         >
           <Title
             title="Resultados"
-            subtitle={`Se encontraron ${searchResults.length} artículos:`}
+            subtitle={`Artículos encontrados: ${searchResults.length}`}
           />
         </motion.div>
         <motion.div
@@ -59,7 +59,9 @@ export const SearchResults = () => {
               </div>
             </div>
             <div className="col-lg-3">
-              <SearchArticle />
+              <div className="mb-5">
+                <SearchArticles />
+              </div>
               <CategoriesList />
               <LatestPostsAside numbOfItems="3" />
               <TagsList />
