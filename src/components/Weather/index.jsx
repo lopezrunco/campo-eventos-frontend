@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { OPENWEATHER_API_KEY } from "../../config";
 
 import "./styles.scss";
@@ -47,7 +48,7 @@ function ShowWeather({ weatherData }) {
         <small>
           {getWeatherName(main)} | {temp} °C
         </small>
-        {/* <small>Humedad: {humidity}%</small> */}
+        <small>Humedad: {humidity}%</small>
       </div>
     </div>
   );
