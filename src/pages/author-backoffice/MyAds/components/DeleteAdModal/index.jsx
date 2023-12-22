@@ -70,7 +70,14 @@ export const DeleteAdModal = ({ adId, adTitle, closeFunction }) => {
           type: DELETE_AD_SUCCESS,
           payload: data,
         });
-        navigate("/autor/anuncios/mis-anuncios/anuncio-borrado");
+        navigate("/mensaje", {
+          state: {
+            title: "Anuncio borrado",
+            message: "El anuncio ha sido borrado con éxito.",
+            duration: "2000",
+            navigateTo: "/autor/articulos/mis-articulos",
+          },
+        });
       })
       .catch((error) => {
         console.error("Error trying to delete the ad", error);

@@ -75,6 +75,7 @@ import { ScrollTop } from "./components/ScrollTop";
 
 import "./App.scss";
 import { UploadArticleImage } from "./pages/author-backoffice/UploadArticleImage";
+import { Message } from "./pages/Message";
 
 // Create context to manage authentication data type
 export const AuthContext = createContext();
@@ -507,6 +508,7 @@ function App() {
               }
             />
 
+            <Route path="/mensaje" element={<Message />} />
             <Route path="/forbidden" element={<Forbidden />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
