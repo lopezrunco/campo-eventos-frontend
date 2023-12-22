@@ -116,7 +116,7 @@ function LotCard({ lot }) {
           <h3 className="mb-0">{lot.title}</h3>
           <div className="options-buttons">
             <a
-              className="rounded-icon primary"
+              className="rounded-icon blue"
               href={`/consignatarios/mis-remates/lotes/editar/${lot.id}`}
             >
               <i className="fas fa-pen"></i>

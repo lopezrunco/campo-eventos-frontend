@@ -159,7 +159,7 @@ export const MyAds = () => {
             ) : state.adsList.length > 0 ? (
               state.adsList.map((ad) => <AdCard key={ad.id} ad={ad} />)
             ) : (
-              <p>No hay artículos para mostrar...</p>
+              <p>No hay anuncios para mostrar...</p>
             )}
             <Pagination
               elementList={state.adsList}
@@ -190,22 +190,28 @@ const AdCard = ({ ad }) => {
           src={ad.imgUrl}
           alt={ad.title}
           width="100%"
-          className="sm-border-radius border box-shadow"
+          className="sm-border-radius border"
         />
         <div className="options-buttons bottom">
           <a
-            className="rounded-icon light"
+            className="rounded-icon blue box-shadow"
             href={`/autor/anuncios/mis-anuncios/editar/${ad.id}`}
+            title={`Editar ${ad.title}`}
           >
             <i className="fas fa-pen"></i>
           </a>
           <a
-            className="rounded-icon light"
+            className="rounded-icon blue box-shadow"
             onClick={handleSwitchPublishModal}
+            title={ad.published ? `Despublicar ${ad.title}` : `Publicar ${ad.title}`}
           >
             <i className={ad.published ? "far fa-eye-slash" : "far fa-eye"}></i>
           </a>
-          <a className="rounded-icon light" onClick={handleDeleteModal}>
+          <a
+            className="rounded-icon danger box-shadow"
+            onClick={handleDeleteModal}
+            title={`Eliminar ${ad.title}`}
+          >
             <i className="fas fa-trash"></i>
           </a>
         </div>

@@ -41,7 +41,7 @@ export const BackOfficeHome = () => {
                 <a href="/autor/articulos/crear">
                   <i className="fas fa-file me-2"></i> Crear artículo
                 </a>
-                <a href="/autor/articulos/mis-articulos" title="Muestra sólo los artículos creados por mí.">
+                <a href="/autor/articulos/mis-articulos" title="Muestra solo los artículos creados por mí.">
                   <i className="fas fa-list me-2"></i>Listar mis artículos
                 </a>
                 <a href="/admin/articulos" title="Muestra todos los artículos creados por los diferentes usuarios.">
@@ -55,15 +55,18 @@ export const BackOfficeHome = () => {
                 </a> */}
               </div>
               <div className="col-12 col-lg-3 mb-5 mb-lg-0 admin-home-card">
-                <h3>Publicidad</h3>
+                <h3>Anuncios</h3>
                 <div className="separator"></div>
-                <a href="/admin/publicidad/crear" title="Crea una nueva publicidad para agregar en la sección de blog.">
-                  <i className="fas fa-bullhorn me-2"></i> Crear publicidad
+                <a href="/admin/anuncios/crear" title="Crea una nuevo anuncio para la sección de blog.">
+                  <i className="fas fa-bullhorn me-2"></i> Crear anuncio
                 </a>
-                <a href="/admin/publicidad/listar" title="Muestra todas las publicidades creadas por los diferentes usuarios.">
-                  <i className="fas fa-list me-2"></i>Listar publicidades
+                <a href="/autor/anuncios/mis-anuncios" title="Muestra solo los anuncios creados por mí.">
+                  <i className="fas fa-list me-2"></i>Listar mis anuncios
                 </a>
-                {/* <a href="/admin/publicidad/ayuda">
+                <a href="/admin/anuncios/listar" title="Muestra todos los anuncios creados por los diferentes usuarios.">
+                  <i className="fas fa-list me-2"></i>Listar todos los anuncios
+                </a>
+                {/* <a href="/admin/anuncios/ayuda">
                   <i className="fas fa-info-circle me-2"></i>Ayuda
                 </a> */}
               </div>

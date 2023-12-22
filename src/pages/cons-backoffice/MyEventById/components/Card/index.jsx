@@ -119,14 +119,20 @@ function Card({ myEvent }) {
     <React.Fragment>
       <div className="row">
         <div className="col-lg-3 mb-5">
-          {myEvent.eventType && <span className="event-type-tag">{myEvent.eventType}</span>}
+          {myEvent.eventType && (
+            <span className="event-type-tag">{myEvent.eventType}</span>
+          )}
           {myEvent.coverImgName ? (
-            <img src={myEvent.coverImgName} width="100%" />
+            <img
+              src={myEvent.coverImgName}
+              width="100%"
+              className="sm-border-radius"
+            />
           ) : (
-            <img src={imgUrl} width="100%" />
+            <img src={imgUrl} width="100%" className="sm-border-radius" />
           )}
           <a
-            className="rounded-icon primary over-top"
+            className="rounded-icon blue over-top"
             href={`/consignatarios/mis-remates/${myEvent.id}/upload`}
           >
             <i className="fas fa-camera"></i>
@@ -142,7 +148,7 @@ function Card({ myEvent }) {
             </div>
             <div className="options-buttons">
               <a
-                className="rounded-icon primary"
+                className="rounded-icon blue"
                 href={`/consignatarios/mis-remates/editar/${myEvent.id}`}
               >
                 <i className="fas fa-pen"></i>
@@ -162,14 +168,46 @@ function Card({ myEvent }) {
               </div>
             )}
             <div className="col-12">
-              {myEvent.eventType && <p><b>Tipo de evento:</b> {myEvent.eventType}</p>}
-              {myEvent.category && <p><b>Categoría:</b> {myEvent.category}</p>}
-              {myEvent.company && <p><b>Remata:</b> {myEvent.company}</p>}
-              {myEvent.organizer && <p><b>Organiza:</b> {myEvent.organizer}</p>}
-              {myEvent.breeder && <p><b>Cabaña:</b> {myEvent.breeder}</p>}
-              {myEvent.funder && <p><b>Financia:</b> {myEvent.funder}</p>}
-              {myEvent.location && <p><b>Lugar:</b> {myEvent.location}</p>}
-              {myEvent.duration && <p><b>Duración:</b> {myEvent.duration} hs.</p>}
+              {myEvent.eventType && (
+                <p>
+                  <b>Tipo de evento:</b> {myEvent.eventType}
+                </p>
+              )}
+              {myEvent.category && (
+                <p>
+                  <b>Categoría:</b> {myEvent.category}
+                </p>
+              )}
+              {myEvent.company && (
+                <p>
+                  <b>Remata:</b> {myEvent.company}
+                </p>
+              )}
+              {myEvent.organizer && (
+                <p>
+                  <b>Organiza:</b> {myEvent.organizer}
+                </p>
+              )}
+              {myEvent.breeder && (
+                <p>
+                  <b>Cabaña:</b> {myEvent.breeder}
+                </p>
+              )}
+              {myEvent.funder && (
+                <p>
+                  <b>Financia:</b> {myEvent.funder}
+                </p>
+              )}
+              {myEvent.location && (
+                <p>
+                  <b>Lugar:</b> {myEvent.location}
+                </p>
+              )}
+              {myEvent.duration && (
+                <p>
+                  <b>Duración:</b> {myEvent.duration} hs.
+                </p>
+              )}
             </div>
           </div>
           {myEvent.broadcastLinkId && (
@@ -197,7 +235,10 @@ function Card({ myEvent }) {
         {state.showLots ? (
           <div className="col-12">
             <div className="col-lg-12 d-lg-flex justify-content-lg-end">
-              <a className="button button-dark" href={`/consignatarios/mis-remates/${myEvent.id}/crear-lote`}>
+              <a
+                className="button button-dark"
+                href={`/consignatarios/mis-remates/${myEvent.id}/crear-lote`}
+              >
                 <i className="fas fa-plus"></i> Subir lote
               </a>
             </div>
@@ -217,7 +258,6 @@ function Card({ myEvent }) {
                   return <LotCard key={lot.id} lot={lot} />;
                 })}
               </div>
-
             </div>
           </div>
         ) : (

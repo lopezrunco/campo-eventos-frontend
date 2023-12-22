@@ -622,7 +622,7 @@ h6 {
     background-color: $primary-color;
 
     &:hover {
-      background-color: darken($color: $primary-color, $amount: 10);
+      background-color: darken($color: $primary-color, $amount: 5);
       color: $light-color;
     }
   }
@@ -631,7 +631,7 @@ h6 {
     background-color: $accent-color;
 
     &:hover {
-      background-color: darken($color: $accent-color, $amount: 10);
+      background-color: darken($color: $accent-color, $amount: 5);
       color: $light-color;
     }
   }
@@ -640,7 +640,7 @@ h6 {
     background-color: $danger-color;
 
     &:hover {
-      background-color: darken($color: $danger-color, $amount: 10);
+      background-color: darken($color: $danger-color, $amount: 5);
       color: $light-color;
     }
   }
@@ -649,7 +649,19 @@ h6 {
     background-color: $light-color;
     border: $border;
     color: $primary-color;
-    box-shadow: $box-shadow;
+
+    &:hover {
+      background-color: darken($color: $light-color, $amount: 5);
+    }
+  }
+
+  &.blue {
+    background-color: $blue-color;
+
+    &:hover {
+      background-color: darken($color: $blue-color, $amount: 5);
+      color: $light-color;
+    }
   }
 
   &.over-top {

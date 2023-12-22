@@ -99,10 +99,10 @@ export const Ad = ({ position }) => {
               )
           )
         ) : (
-          <p>Esta posición no tiene ninguna publicidad asignada.</p>
+          <p>Esta posición no tiene ningún anuncio asignado.</p>
         )
       ) : (
-        <p>Ocurrió un error al cargar la publicidad.</p>
+        <p>Ocurrió un error al cargar el anuncio.</p>
       )}
     </div>
   );

@@ -21,12 +21,16 @@ function Card({ myPost }) {
             <span className="post-category-tag">{myPost.category}</span>
           )}
           {myPost.picture ? (
-            <img src={myPost.picture} width="100%" />
+            <img
+              src={myPost.picture}
+              width="100%"
+              className="sm-border-radius"
+            />
           ) : (
-            <img src={imgUrl} width="100%" />
+            <img src={imgUrl} width="100%" className="sm-border-radius" />
           )}
           <a
-            className="rounded-icon primary over-top"
+            className="rounded-icon blue over-top"
             href={`/autor/articulos/mis-articulos/${myPost.id}/upload`}
           >
             <i className="fas fa-camera"></i>
@@ -43,7 +47,7 @@ function Card({ myPost }) {
             </div>
             <div className="options-buttons">
               <a
-                className="rounded-icon primary"
+                className="rounded-icon blue"
                 href={`/autor/articulos/mis-articulos/editar/${myPost.id}`}
               >
                 <i className="fas fa-pen"></i>
