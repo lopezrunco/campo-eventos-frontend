@@ -590,10 +590,20 @@ h6 {
   border-radius: $sm-border-radius;
 }
 
+.box-shadow {
+  box-shadow: $box-shadow;
+}
+
 .options-buttons {
   display: flex;
   justify-content: flex-end;
   gap: .5rem;
+
+  &.bottom {
+    position: relative;
+    transform: translateY(-50%);
+    right: 1rem;
+  }
 }
 
 .rounded-icon {
@@ -633,6 +643,13 @@ h6 {
       background-color: darken($color: $danger-color, $amount: 10);
       color: $light-color;
     }
+  }
+
+  &.light {
+    background-color: $light-color;
+    border: $border;
+    color: $primary-color;
+    box-shadow: $box-shadow;
   }
 
   &.over-top {

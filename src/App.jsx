@@ -59,6 +59,8 @@ import { PostsByTag } from "./pages/blog/PostsByTag";
 import { PostsByCategory } from "./pages/blog/PostsByCategory";
 import { SearchResults } from "./pages/blog/SearchResults";
 
+import { MyAds } from "./pages/author-backoffice/MyAds";
+
 import { BackOfficeHome } from "./pages/admin-backoffice/BackOfficeHome";
 import UserList from "./pages/admin-backoffice/UserList";
 import AllEvents from "./pages/admin-backoffice/AllEvents";
@@ -404,6 +406,17 @@ function App() {
               element={
                 <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
                   <UpdateUserInfo />
+                </RequireAuth>
+              }
+            />
+
+            {/* Ad routes ------------------------------------------------ */}
+
+            <Route
+              path="/autor/anuncios/mis-anuncios"
+              element={
+                <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
+                  <MyAds />
                 </RequireAuth>
               }
             />

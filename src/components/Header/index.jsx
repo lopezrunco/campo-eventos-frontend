@@ -77,6 +77,9 @@ export const Header = () => {
                   <li className={`navigation-bar-item ${activeLink === '/autor/articulos/mis-articulos' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
                     <a href="/autor/articulos/mis-articulos" className="nav-link-item" title="Mis articulos">Mis articulos</a>
                   </li>
+                  <li className={`navigation-bar-item ${activeLink === '/autor/anuncios/mis-anuncios' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
+                    <a href="/autor/anuncios/mis-anuncios" className="nav-link-item" title="Mis anuncios">Mis anuncios</a>
+                  </li>
                 </React.Fragment>
               }
 
