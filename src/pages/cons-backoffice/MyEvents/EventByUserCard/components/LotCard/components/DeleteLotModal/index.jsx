@@ -72,7 +72,14 @@ function DeleteLotModal({ lotId, closeFunction }) {
           type: DELETE_LOT_SUCCESS,
           payload: data,
         });
-        navigate("/consignatarios/mis-remates/lote-borrado");
+        navigate("/mensaje", {
+          state: {
+            title: "Lote borrado",
+            message: "El lote ha sido borrado con éxito.",
+            duration: "2000",
+            navigateTo: "/consignatarios/mis-remates",
+          },
+        });
       })
       .catch((error) => {
         console.error("Error trying to delete the lot", error);

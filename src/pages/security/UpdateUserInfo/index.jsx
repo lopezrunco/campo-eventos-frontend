@@ -97,8 +97,14 @@ function UpdateUserInfo() {
           type: EDIT_USER_SUCCESS,
           payload: data,
         });
-
-        navigate("/usuario-actualizado");
+        navigate("/mensaje", {
+          state: {
+            title: "Datos actualizados",
+            message: "Ahora podrá hacer preofertas en la plataforma.",
+            duration: "4000",
+            navigateTo: "/cartelera",
+          },
+        });
       })
       .catch((error) => {
         console.error("Error al actualizar la información de usuario", error);

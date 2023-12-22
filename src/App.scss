@@ -390,7 +390,7 @@ input[type="file"] {
 }
 
 .error-message {
-  background-color: lighten($color: $danger-color, $amount: 20);
+  background-color: $danger-color;
   color: $light-color;
   padding: 1rem;
   border-radius: $sm-border-radius;

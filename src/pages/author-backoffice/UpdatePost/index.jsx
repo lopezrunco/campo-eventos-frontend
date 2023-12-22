@@ -259,7 +259,14 @@ export const UpdatePost = () => {
           type: EDIT_POST_SUCCESS,
           payload: data,
         });
-        navigate("/autor/articulos/articulo-editado");
+        navigate("/mensaje", {
+          state: {
+            title: "Artículo editado",
+            message: "El artículo ha sido editado con éxito.",
+            duration: "2000",
+            navigateTo: "/autor/articulos/mis-articulos",
+          },
+        });
       })
       .catch((error) => {
         console.error("Error al editar el articulo.", error);

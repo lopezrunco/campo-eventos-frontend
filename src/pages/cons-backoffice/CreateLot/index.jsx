@@ -142,7 +142,7 @@ function CreateLot() {
           type: CREATE_LOT_SUCCESS,
           payload: data,
         });
-
+        // TO DO: Refactor this line to use the Message page
         navigate(`/consignatarios/mis-remates/${id}/lote-creado`);
       })
       .catch((error) => {

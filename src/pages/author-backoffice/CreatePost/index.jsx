@@ -257,7 +257,14 @@ export const CreatePost = () => {
           type: CREATE_POST_SUCCESS,
           payload: data,
         });
-        navigate("/autor/articulos/articulo-creado");
+        navigate("/mensaje", {
+          state: {
+            title: "Artículo creado",
+            message: "El artículo ha sido creado con éxito.",
+            duration: "2000",
+            navigateTo: "/autor/articulos/mis-articulos",
+          },
+        });
       })
       .catch((error) => {
         console.error("Error al crear el articulo", error);

@@ -75,7 +75,7 @@ export const DeleteAdModal = ({ adId, adTitle, closeFunction }) => {
             title: "Anuncio borrado",
             message: "El anuncio ha sido borrado con éxito.",
             duration: "2000",
-            navigateTo: "/autor/articulos/mis-articulos",
+            navigateTo: "/autor/articulos/mis-anuncios",
           },
         });
       })

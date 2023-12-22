@@ -70,7 +70,14 @@ function DeleteEventModal({ eventId, closeFunction }) {
           type: DELETE_EVENT_SUCCESS,
           payload: data,
         });
-        navigate("/consignatarios/mis-remates/remate-borrado");
+        navigate("/mensaje", {
+          state: {
+            title: "Remate borrado",
+            message: "El remate ha sido borrado con éxito.",
+            duration: "3000",
+            navigateTo: "/consignatarios/mis-remates",
+          },
+        });
       })
       .catch((error) => {
         console.error("Error trying to delete the event", error);

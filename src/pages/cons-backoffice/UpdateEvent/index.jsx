@@ -233,8 +233,14 @@ function UpdateEvent() {
           type: EDIT_EVENT_SUCCESS,
           payload: data,
         });
-
-        navigate("/remate-editado");
+        navigate("/mensaje", {
+          state: {
+            title: "Remate editado",
+            message: "El remate ha sido editado con éxito.",
+            duration: "2000",
+            navigateTo: "/consignatarios/mis-remates",
+          },
+        });
       })
       .catch((error) => {
         console.error("Error al editar el remate.", error);

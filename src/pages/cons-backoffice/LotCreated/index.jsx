@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import SuccessMessage from "../../../components/SuccessMessage";
 
+// TO DO: Refactor this code to use the Message page
 function LotCreated() {
   const { id } = useParams();
   

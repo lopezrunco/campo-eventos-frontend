@@ -80,7 +80,14 @@ function RefuseAcceptPreoffer({ preoffer }) {
           type: EDIT_PREOFFER_SUCCESS,
           payload: data,
         });
-        navigate(`/preoferta-editada`);
+        navigate("/mensaje", {
+          state: {
+            title: "Preoferta editada",
+            message: "Redirigiendo a Mis remates...",
+            duration: "2000",
+            navigateTo: "/consignatarios/mis-remates",
+          },
+        });
       })
       .catch((error) => {
         console.error("Error trying to edit the preoffer", error);

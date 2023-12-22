@@ -72,7 +72,14 @@ function DeleteLotModal({ preofferId, closeFunction }) {
           type: DELETE_PREOFFER_SUCCESS,
           payload: data,
         });
-        navigate("/consignatarios/mis-remates/preoferta-borrada");
+        navigate("/mensaje", {
+          state: {
+            title: "Preoferta borrada",
+            message: "La preoferta ha sido borrada con éxito.",
+            duration: "3000",
+            navigateTo: "/consignatarios/mis-remates",
+          },
+        });
       })
       .catch((error) => {
         console.error("Error trying to delete the preoffer", error);

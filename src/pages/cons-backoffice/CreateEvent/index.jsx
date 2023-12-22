@@ -243,8 +243,14 @@ function CreateEvent() {
           type: CREATE_EVENT_SUCCESS,
           payload: data,
         });
-
-        navigate("/remate-creado");
+        navigate("/mensaje", {
+          state: {
+            title: "Remate creado",
+            message: "El remate ha sido creado con éxito.",
+            duration: "2000",
+            navigateTo: "/consignatarios/mis-remates",
+          },
+        });
       })
       .catch((error) => {
         console.error("Error al crear el remate", error);

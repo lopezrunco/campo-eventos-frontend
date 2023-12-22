@@ -214,6 +214,7 @@ function UpdateLot() {
           type: EDIT_LOT_SUCCESS,
           payload: data,
         });
+        // TO DO: Refactor this line to use the Message page and the event id
         navigate(`/consignatarios/mis-remates/${id}/lote-editado`);
       })
       .catch((error) => {

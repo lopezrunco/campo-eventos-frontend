@@ -17,7 +17,6 @@ import { Servicios } from "./pages/Servicios";
 import EventsList from "./pages/events/EventsList";
 import EventById from "./pages/events/EventById";
 import LotById from "./pages/events/LotById";
-import PreOfferDone from "./pages/events/PreOfferDone";
 import MyPreOffers from "./pages/events/MyPreOffers";
 
 import Login from "./pages/security/Login";
@@ -25,21 +24,14 @@ import Login from "./pages/security/Login";
 import UserCreated from "./pages/security/UserCreated";
 import { NotFound } from "./pages/access/NotFound";
 import UpdateUserInfo from "./pages/security/UpdateUserInfo";
-import UserUpdated from "./pages/security/UserUpdated";
 import { Forbidden } from "./pages/access/Forbidden";
 
 import MyEvents from "./pages/cons-backoffice/MyEvents";
 import MyEventById from "./pages/cons-backoffice/MyEventById";
-import PreOfferEdited from "./pages/cons-backoffice/PreOfferEdited";
 import CreateEvent from "./pages/cons-backoffice/CreateEvent";
-import EventCreated from "./pages/cons-backoffice/EventCreated";
-import EventUpdated from "./pages/cons-backoffice/EventUpdated";
-import EventDeleted from "./pages/cons-backoffice/EventDeleted";
-import PreofferDeleted from "./pages/cons-backoffice/PreofferDeleted";
 import CreateLot from "./pages/cons-backoffice/CreateLot";
 import LotCreated from "./pages/cons-backoffice/LotCreated";
 import LotEdited from "./pages/cons-backoffice/LotEdited";
-import LotDeleted from "./pages/cons-backoffice/LotDeleted";
 import UploadEventCover from "./pages/cons-backoffice/UploadEventCover";
 import AddVideoToLot from "./pages/cons-backoffice/AddVideoToLot";
 import UpdateEvent from "./pages/cons-backoffice/UpdateEvent";
@@ -48,9 +40,6 @@ import { AllPosts } from "./pages/admin-backoffice/AllPosts";
 
 import { CreatePost } from "./pages/author-backoffice/CreatePost";
 import { UpdatePost } from "./pages/author-backoffice/UpdatePost";
-import PostCreated from "./pages/author-backoffice/PostCreated";
-import PostUpdated from "./pages/author-backoffice/PostUpdated";
-import PostDeleted from "./pages/author-backoffice/PostDeleted";
 import { MyPosts } from "./pages/author-backoffice/MyPosts";
 import { MyPostById } from "./pages/author-backoffice/MyPostById";
 import { BlogHome } from "./pages/blog/BlogHome";
@@ -275,30 +264,6 @@ function App() {
               }
             />
             <Route
-              path="/consignatarios/mis-remates/preoferta-borrada"
-              element={
-                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
-                  <PreofferDeleted />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/consignatarios/mis-remates/remate-borrado"
-              element={
-                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
-                  <EventDeleted />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/consignatarios/mis-remates/lote-borrado"
-              element={
-                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
-                  <LotDeleted />
-                </RequireAuth>
-              }
-            />
-            <Route
               path="/consignatarios/mis-remates/:id/lote-editado"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
@@ -323,34 +288,10 @@ function App() {
               }
             />
             <Route
-              path="/remate-editado"
-              element={
-                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
-                  <EventUpdated />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/remate-creado"
-              element={
-                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
-                  <EventCreated />
-                </RequireAuth>
-              }
-            />
-            <Route
               path="/consignatarios/crear-remate"
               element={
                 <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
                   <CreateEvent />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/preoferta-editada"
-              element={
-                <RequireAuth allowedRoles={["ADMIN", "CONS"]}>
-                  <PreOfferEdited />
                 </RequireAuth>
               }
             />
@@ -379,26 +320,10 @@ function App() {
               }
             />
             <Route
-              path="/preoferta-hecha"
-              element={
-                <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
-                  <PreOfferDone />
-                </RequireAuth>
-              }
-            />
-            <Route
               path="/lotes/:id"
               element={
                 <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
                   <LotById />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/usuario-actualizado"
-              element={
-                <RequireAuth allowedRoles={["BASIC", "ADMIN", "CONS"]}>
-                  <UserUpdated />
                 </RequireAuth>
               }
             />
@@ -464,30 +389,6 @@ function App() {
               element={
                 <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
                   <MyPosts />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/autor/articulos/articulo-borrado"
-              element={
-                <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
-                  <PostDeleted />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/autor/articulos/articulo-editado"
-              element={
-                <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
-                  <PostUpdated />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/autor/articulos/articulo-creado"
-              element={
-                <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
-                  <PostCreated />
                 </RequireAuth>
               }
             />

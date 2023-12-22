@@ -160,7 +160,14 @@ function PreoffersList({ preoffers, lotId }) {
             type: CREATE_PREOFFER_SUCCESS,
             payload: data,
           });
-          navigate("/preoferta-hecha");
+          navigate("/mensaje", {
+            state: {
+              title: "¡Exito!",
+              message: "Su preoferta a sido realizada correctamente.",
+              duration: "3000",
+              navigateTo: "/cartelera",
+            },
+          });
         })
         .catch((error) => {
           console.error("Error creating the preoffer", error);

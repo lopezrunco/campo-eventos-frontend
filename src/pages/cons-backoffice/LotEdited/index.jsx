@@ -1,5 +1,6 @@
 import SuccessMessage from "../../../components/SuccessMessage";
 
+// TO DO: Refactor this code to use the Message page and the event id to navigate to the event
 function LotEdited() {
   return (
     <SuccessMessage

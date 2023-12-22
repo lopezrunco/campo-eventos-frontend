@@ -75,7 +75,7 @@ export const Header = () => {
                 ['AUTHOR'].find(role => role === authState.role) &&
                 <React.Fragment>
                   <li className={`navigation-bar-item ${activeLink === '/autor/articulos/mis-articulos' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
-                    <a href="/autor/articulos/mis-articulos" className="nav-link-item" title="Mis articulos">Mis articulos</a>
+                    <a href="/autor/articulos/mis-articulos" className="nav-link-item" title="Mis artículos">Mis artículos</a>
                   </li>
                   <li className={`navigation-bar-item ${activeLink === '/autor/anuncios/mis-anuncios' ? "active-navigation" : ""}`} id="navigation-bar-item" onClick={handleMenuClick} >
                     <a href="/autor/anuncios/mis-anuncios" className="nav-link-item" title="Mis anuncios">Mis anuncios</a>
