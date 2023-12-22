@@ -12,6 +12,7 @@ import {
   GET_PREOFFERS_FAILURE,
   GET_PREOFFERS_REQUEST,
   GET_PREOFFERS_SUCCESS,
+  SHOW_DELETE_MODAL,
 } from "../../../../../../utils/action-types";
 
 import "./styles.scss";
@@ -45,7 +46,7 @@ const reducer = (state, action) => {
         isSending: false,
         hasError: true,
       };
-    case "SHOW_DELETE_MODAL":
+    case SHOW_DELETE_MODAL:
       return {
         ...state,
         showDeleteModal: !state.showDeleteModal,
@@ -105,7 +106,7 @@ function LotCard({ lot }) {
 
   const handleDeleteModal = () => {
     dispatch({
-      type: "SHOW_DELETE_MODAL",
+      type: SHOW_DELETE_MODAL,
     });
   };
 

@@ -17,6 +17,7 @@ import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
 import { Loader } from "../../../components/Loader";
 import Pagination from "../../../components/Pagination";
+import { DeleteAdModal } from "./components/DeleteAdModal";
 
 const initialState = {
   adsList: [],
@@ -175,47 +176,60 @@ export const MyAds = () => {
 };
 
 const AdCard = ({ ad }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleDeleteModal = () => {
+    setShowModal(!showModal);
+  };
+
   const handleSwitchPublishModal = () => {
     // TODO: Update ad
   };
 
-  const handleDeleteModal = () => {
-    // TODO: Delete ad
-  };
-
   return (
-    <div className="col-lg-4 mb-3">
-      <div key={ad.id} className="overflow-hidden sm-border-radius">
-        <img
-          src={ad.imgUrl}
-          alt={ad.title}
-          width="100%"
-          className="sm-border-radius border"
-        />
-        <div className="options-buttons bottom">
-          <a
-            className="rounded-icon blue box-shadow"
-            href={`/autor/anuncios/mis-anuncios/editar/${ad.id}`}
-            title={`Editar ${ad.title}`}
-          >
-            <i className="fas fa-pen"></i>
-          </a>
-          <a
-            className="rounded-icon blue box-shadow"
-            onClick={handleSwitchPublishModal}
-            title={ad.published ? `Despublicar ${ad.title}` : `Publicar ${ad.title}`}
-          >
-            <i className={ad.published ? "far fa-eye-slash" : "far fa-eye"}></i>
-          </a>
-          <a
-            className="rounded-icon danger box-shadow"
-            onClick={handleDeleteModal}
-            title={`Eliminar ${ad.title}`}
-          >
-            <i className="fas fa-trash"></i>
-          </a>
+    <React.Fragment>
+      <div className="col-lg-4 mb-3">
+        <div key={ad.id} className="overflow-hidden sm-border-radius">
+          <img
+            src={ad.imgUrl}
+            alt={ad.title}
+            width="100%"
+            className="sm-border-radius border"
+          />
+          <div className="options-buttons bottom">
+            <a
+              className="rounded-icon blue box-shadow"
+              href={`/autor/anuncios/mis-anuncios/editar/${ad.id}`}
+              title={`Editar ${ad.title}`}
+            >
+              <i className="fas fa-pen"></i>
+            </a>
+            <a
+              className="rounded-icon blue box-shadow"
+              onClick={handleSwitchPublishModal}
+              title={
+                ad.published
+                  ? `Despublicar ${ad.title}`
+                  : `Publicar ${ad.title}`
+              }
+            >
+              <i
+                className={ad.published ? "far fa-eye-slash" : "far fa-eye"}
+              ></i>
+            </a>
+            <a
+              className="rounded-icon danger box-shadow"
+              onClick={handleDeleteModal}
+              title={`Eliminar ${ad.title}`}
+            >
+              <i className="fas fa-trash"></i>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+      {showModal && (
+        <DeleteAdModal adId={ad.id} adTitle={ad.title} closeFunction={handleDeleteModal} />
+      )}
+    </React.Fragment>
   );
 };

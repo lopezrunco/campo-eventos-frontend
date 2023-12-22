@@ -98,9 +98,7 @@ export const Ad = ({ position }) => {
                 </div>
               )
           )
-        ) : (
-          <p>Esta posición no tiene ningún anuncio asignado.</p>
-        )
+        ) : console.log(`The position ${position} does not have any ad associated.`)
       ) : (
         <p>Ocurrió un error al cargar el anuncio.</p>
       )}

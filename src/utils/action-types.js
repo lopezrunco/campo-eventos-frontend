@@ -1,3 +1,6 @@
+// General
+export const SHOW_DELETE_MODAL = 'SHOW_DELETE_MODAL'
+
 // User access
 
 export const LOGIN = 'LOGIN'
