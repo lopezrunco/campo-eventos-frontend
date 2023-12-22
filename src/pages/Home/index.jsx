@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import React, { useContext, useEffect, useReducer, useState } from "react";
 
+import { refreshToken } from "../../utils/refresh-token";
+import { apiUrl } from "../../utils/api-url";
+import { AuthContext } from "../../App";
 import {
   ALL,
   CONTENT_LEFT,
@@ -8,20 +12,17 @@ import {
   DARK,
   IMG_TITLE,
 } from "../../utils/blog-card-types";
-
-import { Intro } from "../../components/Intro";
-import { LastPosts } from "./components/LastPosts";
-import { PostsByCategory } from "./components/PostsByCategory";
-import { Live } from "../../components/Live";
 import {
   FETCH_EVENTS_FAILURE,
   FETCH_EVENTS_REQUEST,
   FETCH_EVENTS_SUCCESS,
 } from "../../utils/action-types";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../App";
-import { apiUrl } from "../../utils/api-url";
-import { refreshToken } from "../../utils/refresh-token";
+
+import { Intro } from "../../components/Intro";
+import { Live } from "../../components/Live";
+import { Ad } from "../../components/Ad";
+import { LastPosts } from "./components/LastPosts";
+import { PostsByCategory } from "./components/PostsByCategory";
 
 const initialState = {
   eventsList: [],
@@ -134,6 +135,14 @@ export const Home = () => {
         cardType={ALL}
         showTitle={true}
       />
+
+      <div className="container">
+        <div className="ad-wrapper">
+          <Ad position="news-1-left" />
+          <Ad position="news-1-right" />
+        </div>
+      </div>
+
       <PostsByCategory
         bgClass="bg-md-light"
         containerClass="container"
@@ -144,6 +153,14 @@ export const Home = () => {
         cardType={ALL}
         showTitle={true}
       />
+
+      <div className="container">
+        <div className="ad-wrapper">
+          <Ad position="news-2-left" />
+          <Ad position="news-2-right" />
+        </div>
+      </div>
+
       <PostsByCategory
         bgClass="bg-light"
         containerClass="container"
@@ -154,6 +171,14 @@ export const Home = () => {
         cardType={CONTENT_RIGHT}
         showTitle={true}
       />
+
+      <div className="container">
+        <div className="ad-wrapper">
+          <Ad position="news-3-left" />
+          <Ad position="news-3-right" />
+        </div>
+      </div>
+
       <PostsByCategory
         bgClass="bg-md-light"
         containerClass="container"
@@ -164,6 +189,14 @@ export const Home = () => {
         cardType={IMG_TITLE}
         showTitle={true}
       />
+
+      <div className="container">
+        <div className="ad-wrapper">
+          <Ad position="news-4-left" />
+          <Ad position="news-4-right" />
+        </div>
+      </div>
+
       <PostsByCategory
         bgClass="bg-light"
         containerClass="container"
@@ -174,6 +207,14 @@ export const Home = () => {
         cardType={CONTENT_LEFT}
         showTitle={true}
       />
+
+      <div className="container">
+        <div className="ad-wrapper">
+          <Ad position="news-5-left" />
+          <Ad position="news-5-right" />
+        </div>
+      </div>
+
       <PostsByCategory
         bgClass="bg-md-light"
         containerClass="container"
@@ -184,6 +225,7 @@ export const Home = () => {
         cardType={DARK}
         showTitle={true}
       />
+
       <PostsByCategory
         bgClass="bg-image"
         containerClass="container-fluid"
