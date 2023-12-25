@@ -47,8 +47,10 @@ import { PostById } from "./pages/blog/PostById";
 import { PostsByTag } from "./pages/blog/PostsByTag";
 import { PostsByCategory } from "./pages/blog/PostsByCategory";
 import { SearchResults } from "./pages/blog/SearchResults";
+import { UploadArticleImage } from "./pages/author-backoffice/UploadArticleImage";
 
 import { MyAds } from "./pages/author-backoffice/MyAds";
+import { CreateAd } from "./pages/author-backoffice/CreateAd";
 
 import { BackOfficeHome } from "./pages/admin-backoffice/BackOfficeHome";
 import UserList from "./pages/admin-backoffice/UserList";
@@ -61,10 +63,9 @@ import { Top } from "./components/Top";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { ScrollTop } from "./components/ScrollTop";
+import { Message } from "./pages/Message";
 
 import "./App.scss";
-import { UploadArticleImage } from "./pages/author-backoffice/UploadArticleImage";
-import { Message } from "./pages/Message";
 
 // Create context to manage authentication data type
 export const AuthContext = createContext();
@@ -337,6 +338,15 @@ function App() {
             />
 
             {/* Ad routes ------------------------------------------------ */}
+
+            <Route
+              path="/autor/anuncios/crear-anuncio"
+              element={
+                <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
+                  <CreateAd />
+                </RequireAuth>
+              }
+            />
 
             <Route
               path="/autor/anuncios/mis-anuncios"

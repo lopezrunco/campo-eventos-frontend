@@ -350,7 +350,8 @@ input[type="file"] {
     width: 100%;
   }
 
-  .add-event-img {
+  .add-event-img,
+  .add-ad-img {
     background: $gray-color;
     border-radius: $sm-border-radius;
     border: 1px solid $medium-light-color;

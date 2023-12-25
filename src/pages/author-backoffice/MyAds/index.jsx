@@ -153,6 +153,14 @@ export const MyAds = () => {
           viewport={{ once: true }}
         >
           <article className="row">
+            <div className="col-lg-12 d-flex justify-content-end">
+              <a
+                className="button button-dark mb-5"
+                href="/autor/anuncios/crear-anuncio"
+              >
+                <i className="fas fa-plus"></i> Crear anuncio
+              </a>
+            </div>
             {state.isFetching ? (
               <Loader />
             ) : state.hasError ? (
@@ -228,7 +236,11 @@ const AdCard = ({ ad }) => {
         </div>
       </div>
       {showModal && (
-        <DeleteAdModal adId={ad.id} adTitle={ad.title} closeFunction={handleDeleteModal} />
+        <DeleteAdModal
+          adId={ad.id}
+          adTitle={ad.title}
+          closeFunction={handleDeleteModal}
+        />
       )}
     </React.Fragment>
   );
