@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import DOMPurify from "dompurify";
 import React, { useContext, useReducer } from "react";
 
 const CLOUDINARY_ID = import.meta.env.VITE_CLOUDINARY_ID;
 
 import {
+  CLEAR_IMAGE_INPUT,
   UPDATE_IMAGE_PREVIEW,
   UPLOAD_IMAGE_FAILURE,
   UPLOAD_IMAGE_REQUEST,
@@ -50,7 +52,12 @@ const reducer = (state, action) => {
         isSending: false,
         hasError: true,
       };
-
+    case CLEAR_IMAGE_INPUT:
+      return {
+        ...state,
+        image: undefined,
+        imagePreview: undefined,
+      };
     default:
       return state;
   }
@@ -62,13 +69,30 @@ export const UploadImage = ({ onImageUpload }) => {
   const navigate = useNavigate();
 
   const handleUploadInputChange = (imgElement) => {
-    // Update the image preview when a new image is selected
     if (imgElement) {
+      // Validate file type
+      const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+      if (!allowedTypes.includes(imgElement.type)) {
+        alert("Por favor, seleccione una imágen válida (JPEG, PNG o GIF)");
+        dispatch({ type: CLEAR_IMAGE_INPUT });
+        document.getElementById("adImg").value = "";
+        return;
+      }
+      // Validate file size to 5 MB
+      const maxSize = 5 * 1024 * 1024;
+      if (imgElement.size > maxSize) {
+        alert("Por favor, seleccione un archivo menor a 5 MB");
+        dispatch({ type: CLEAR_IMAGE_INPUT });
+        document.getElementById("adImg").value = "";
+        return;
+      }
+
       const reader = new FileReader();
       reader.onloadend = () => {
+        const sanitized = DOMPurify.sanitize(reader.result);
         dispatch({
           type: UPDATE_IMAGE_PREVIEW,
-          payload: reader.result,
+          payload: sanitized,
         });
       };
       reader.readAsDataURL(imgElement);
@@ -80,6 +104,10 @@ export const UploadImage = ({ onImageUpload }) => {
   };
 
   const handleImageSubmit = () => {
+    if (!state.image) {
+      alert("Por favor, seleccione una imagen para subir.");
+      return;
+    }
     dispatch({
       type: UPLOAD_IMAGE_REQUEST,
     });
@@ -87,7 +115,7 @@ export const UploadImage = ({ onImageUpload }) => {
     const data = new FormData();
     data.append("file", state.image);
     data.append("upload_preset", "campoeventos");
-    data.append("cloud_name", "dvkq2sewj");
+    data.append("cloud_name", CLOUDINARY_ID);
 
     fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_ID}/image/upload`, {
       method: "post",
