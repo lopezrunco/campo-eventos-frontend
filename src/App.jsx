@@ -56,6 +56,7 @@ import { UpdateAd } from "./pages/author-backoffice/UpdateAd";
 import { BackOfficeHome } from "./pages/admin-backoffice/BackOfficeHome";
 import UserList from "./pages/admin-backoffice/UserList";
 import AllEvents from "./pages/admin-backoffice/AllEvents";
+import { AllAds } from "./pages/admin-backoffice/AllAds";
 
 import RequireAuth from "./components/RequireAuth";
 import { ScrollOnNav } from "./components/ScrollOnNav";
@@ -339,6 +340,15 @@ function App() {
             />
 
             {/* Ad routes ------------------------------------------------ */}
+
+            <Route
+              path="/admin/anuncios/listar"
+              element={
+                <RequireAuth allowedRoles={["ADMIN"]}>
+                  <AllAds />
+                </RequireAuth>
+              }
+            />
 
             <Route
               path="/autor/anuncios/mis-anuncios/editar/:id"

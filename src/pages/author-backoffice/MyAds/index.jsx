@@ -184,7 +184,7 @@ export const MyAds = () => {
   );
 };
 
-const AdCard = ({ ad }) => {
+export const AdCard = ({ ad }) => {
   const [showDeleteModal, setshowDeleteModal] = useState(false);
   const [showTooglePublishModal, setShowTooglePublishModal] = useState(false);
 
