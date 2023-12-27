@@ -18,6 +18,7 @@ import { Title } from "../../../components/Title";
 import { Loader } from "../../../components/Loader";
 import Pagination from "../../../components/Pagination";
 import { DeleteAdModal } from "./components/DeleteAdModal";
+import { TooglePublishedModal } from "./components/TooglePublishedModal";
 
 const initialState = {
   adsList: [],
@@ -184,14 +185,15 @@ export const MyAds = () => {
 };
 
 const AdCard = ({ ad }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setshowDeleteModal] = useState(false);
+  const [showTooglePublishModal, setShowTooglePublishModal] = useState(false);
 
   const handleDeleteModal = () => {
-    setShowModal(!showModal);
+    setshowDeleteModal(!showDeleteModal);
   };
 
-  const handleSwitchPublishModal = () => {
-    // TODO: Update ad
+  const tooglePublishModal = () => {
+    setShowTooglePublishModal(!showTooglePublishModal);
   };
 
   return (
@@ -202,7 +204,7 @@ const AdCard = ({ ad }) => {
             src={ad.imgUrl}
             alt={ad.title}
             width="100%"
-            className="sm-border-radius border"
+            className={`sm-border-radius border ${ad.published ? '' : 'unpublished'}`}
           />
           <div className="options-buttons bottom">
             <a
@@ -214,7 +216,7 @@ const AdCard = ({ ad }) => {
             </a>
             <a
               className="rounded-icon blue box-shadow"
-              onClick={handleSwitchPublishModal}
+              onClick={tooglePublishModal}
               title={
                 ad.published
                   ? `Despublicar ${ad.title}`
@@ -235,11 +237,19 @@ const AdCard = ({ ad }) => {
           </div>
         </div>
       </div>
-      {showModal && (
+      {showDeleteModal && (
         <DeleteAdModal
           adId={ad.id}
           adTitle={ad.title}
           closeFunction={handleDeleteModal}
+        />
+      )}
+      {showTooglePublishModal && (
+        <TooglePublishedModal
+          adId={ad.id}
+          adTitle={ad.title}
+          published={ad.published}
+          closeFunction={tooglePublishModal}
         />
       )}
     </React.Fragment>

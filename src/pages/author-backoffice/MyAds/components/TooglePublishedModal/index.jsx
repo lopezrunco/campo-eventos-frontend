@@ -2,35 +2,35 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useReducer } from "react";
 
 import {
-  DELETE_AD_FAILURE,
-  DELETE_AD_REQUEST,
-  DELETE_AD_SUCCESS,
+  EDIT_AD_FAILURE,
+  EDIT_AD_REQUEST,
+  EDIT_AD_SUCCESS,
 } from "../../../../../utils/action-types";
 import { AuthContext } from "../../../../../App";
 import { apiUrl } from "../../../../../utils/api-url";
 import { refreshToken } from "../../../../../utils/refresh-token";
 
 const initialState = {
-  ad: undefined,
+  published: undefined,
   isSending: false,
   hasError: false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case DELETE_AD_REQUEST:
+    case EDIT_AD_REQUEST:
       return {
         ...state,
         isSending: true,
         hasError: false,
       };
-    case DELETE_AD_SUCCESS:
+    case EDIT_AD_SUCCESS:
       return {
         ...state,
         isSending: false,
         ad: action.payload.ad,
       };
-    case DELETE_AD_FAILURE:
+    case EDIT_AD_FAILURE:
       return {
         ...state,
         isSending: false,
@@ -41,22 +41,30 @@ const reducer = (state, action) => {
   }
 };
 
-export const DeleteAdModal = ({ adId, adTitle, closeFunction }) => {
+export const TooglePublishedModal = ({
+  adId,
+  adTitle,
+  published,
+  closeFunction,
+}) => {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, initialState);
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
 
   const handleClick = () => {
     dispatch({
-      type: DELETE_AD_REQUEST,
+      type: EDIT_AD_REQUEST,
     });
 
     fetch(apiUrl(`/ads/${adId}`), {
-      method: "DELETE",
+      method: "PUT",
       headers: {
         Authorization: authState.token,
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        published: !published,
+      }),
     })
       .then((response) => {
         if (response.ok) {
@@ -67,37 +75,42 @@ export const DeleteAdModal = ({ adId, adTitle, closeFunction }) => {
       })
       .then((data) => {
         dispatch({
-          type: DELETE_AD_SUCCESS,
+          type: EDIT_AD_SUCCESS,
           payload: data,
         });
         navigate("/mensaje", {
           state: {
-            title: "Anuncio borrado",
-            message: "El anuncio ha sido borrado con éxito.",
+            title: `Anuncio ${published ? "despublicado" : "publicado"}`,
+            message: `El anuncio ha sido ${
+              published ? "despublicado" : "publicado"
+            } con éxito.`,
             duration: "2000",
             navigateTo: "/autor/anuncios/mis-anuncios",
           },
         });
       })
       .catch((error) => {
-        console.error("Error trying to delete the ad", error);
+        console.error("Error al editar el anuncio.", error);
         if (error.status === 401) {
-          refreshToken(authState.refreshToken, authDispatch, navigate);
+          refreshToken(authState.refreshToken, authDispatch, navigate, () =>
+            handleClick()
+          );
         } else if (error.status === 403) {
           navigate("/forbidden");
         } else {
           dispatch({
-            type: DELETE_AD_FAILURE,
+            type: EDIT_AD_FAILURE,
           });
         }
       });
   };
 
   return (
-    <div className="delete-modal">
+    <div className="edit-modal">
       <div className="content-wrap">
         <p>
-          ¿Está seguro que desea eliminar el anuncio <b>{adTitle}</b>?
+          ¿Está seguro que desea {published ? "despublicar" : "publicar"} el
+          anuncio <b>{adTitle}</b>?
         </p>
         <div>
           <a className="button button-dark me-3" onClick={handleClick}>
