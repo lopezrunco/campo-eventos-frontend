@@ -33,6 +33,7 @@ const initialState = {
   picture: undefined,
   tags: [],
   link: "",
+  published: true,
   userId: "",
   isSending: false,
   hasError: false,
@@ -242,6 +243,7 @@ export const CreatePost = () => {
         picture: state.imageUrl,
         tags: state.tags,
         link: state.link,
+        published: state.published,
         userId: authState.user.id,
       }),
     })
@@ -351,7 +353,7 @@ export const CreatePost = () => {
                 </label>
               </div>
 
-              <div className="col-lg-6">
+              <div className="col-12">
                 <label htmlFor="tags">
                   Etiquetas (Separadas con comas)
                   <input
@@ -374,6 +376,21 @@ export const CreatePost = () => {
                     name="link"
                     id="link"
                   />
+                </label>
+              </div>
+
+              <div className="col-lg-6">
+                <label htmlFor="published">
+                  Publicado
+                  <select
+                    value={state.published}
+                    onChange={handleInputChange}
+                    name="published"
+                    id="published"
+                  >
+                    <option value={true}>Sí</option>
+                    <option value={false}>No</option>
+                  </select>
                 </label>
               </div>
 

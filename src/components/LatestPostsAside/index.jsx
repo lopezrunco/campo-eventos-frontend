@@ -54,7 +54,7 @@ export const LatestPostsAside = ({ numbOfItems }) => {
     dispatch({
       type: FETCH_POSTS_REQUEST,
     });
-    fetch(apiUrl(`posts?page=1&itemsPerPage=${numbOfItems}`), {
+    fetch(apiUrl(`posts/published?page=1&itemsPerPage=${numbOfItems}`), {
       method: "GET",
       headers: {
         Authorization: authState.token,

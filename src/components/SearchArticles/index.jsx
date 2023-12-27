@@ -73,7 +73,7 @@ export const SearchArticles = () => {
             authState.user.id
           )}&title=${encodeURIComponent(searchQuery)}`
         )
-      : apiUrl(`/posts/search?title=${encodeURIComponent(searchQuery)}`);
+      : apiUrl(`/posts/search/published?title=${encodeURIComponent(searchQuery)}`);
   };
 
   const handleSearch = () => {

@@ -76,7 +76,7 @@ export const BlogHome = () => {
     dispatch({
       type: FETCH_POSTS_REQUEST,
     });
-    fetch(apiUrl(`posts?page=${currentPage}&itemsPerPage=${itemsPerPage}`), {
+    fetch(apiUrl(`/posts/published?page=${currentPage}&itemsPerPage=${itemsPerPage}`), {
       method: "GET",
       headers: {
         Authorization: authState.token,

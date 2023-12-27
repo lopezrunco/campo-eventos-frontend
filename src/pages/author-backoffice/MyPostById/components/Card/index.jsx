@@ -40,6 +40,7 @@ function Card({ myPost }) {
           <div className="d-flex justify-content-between align-items-center mb-4">
             <div>
               <h4 className="mb-0">{myPost.title}</h4>
+              <small>{myPost.published ? '(Publicado)' : '(No publicado)'}</small>
               <p className="date mt-2">
                 <i className="fas fa-calendar me-2"></i>{" "}
                 {getDate(myPost.createdAt)}

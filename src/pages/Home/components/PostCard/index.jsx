@@ -21,7 +21,7 @@ export const PostCard = ({ post, colClass, btnClass, cardType }) => {
       return (
         <div className={colClass}>
           <div
-            className="all-content-post-card"
+            className={`all-content-post-card ${post.published ? '' : 'unpublished'}`}
             onClick={() => navigate(`/articulos/${post.id}`)}
           >
             <div className="img-wrapper">
@@ -58,7 +58,7 @@ export const PostCard = ({ post, colClass, btnClass, cardType }) => {
       return (
         <div className={colClass}>
           <div
-            className="content-right-post-card"
+            className={`content-right-post-card ${post.published ? '' : 'unpublished'}`}
             onClick={() => navigate(`/articulos/${post.id}`)}
           >
             <div className="img-wrapper">
@@ -95,7 +95,7 @@ export const PostCard = ({ post, colClass, btnClass, cardType }) => {
       return (
         <div className={colClass}>
           <div
-            className="content-left-post-card"
+            className={`content-left-post-card ${post.published ? '' : 'unpublished'}`}
             onClick={() => navigate(`/articulos/${post.id}`)}
           >
             <div className="img-wrapper">
@@ -132,7 +132,7 @@ export const PostCard = ({ post, colClass, btnClass, cardType }) => {
       return (
         <div className={colClass}>
           <div
-            className="img-title-post-card"
+            className={`img-title-post-card ${post.published ? '' : 'unpublished'}`}
             onClick={() => navigate(`/articulos/${post.id}`)}
           >
             <div className="img-wrapper">
@@ -154,7 +154,7 @@ export const PostCard = ({ post, colClass, btnClass, cardType }) => {
       return (
         <div className={colClass}>
           <div
-            className="dark-post-card"
+            className={`dark-post-card ${post.published ? '' : 'unpublished'}`}
             onClick={() => navigate(`/articulos/${post.id}`)}
           >
             <div className="img-wrapper">

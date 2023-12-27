@@ -37,6 +37,7 @@ const initialState = {
   picture: undefined,
   tags: [],
   link: "",
+  published: undefined,
   userId: "",
   isSending: false,
   hasError: false,
@@ -75,6 +76,7 @@ const reducer = (state, action) => {
         content: action.payload.post.content,
         picture: action.payload.post.picture,
         tags: action.payload.post.tags,
+        published: action.payload.post.published,
         link: action.payload.post.link,
       };
     case GET_MY_POST_FAILURE:
@@ -244,6 +246,7 @@ export const UpdatePost = () => {
         content: mainContent,
         picture: state.picture,
         tags: state.tags,
+        published: state.published,
         link: state.link,
       }),
     })
@@ -358,7 +361,7 @@ export const UpdatePost = () => {
                     </label>
                   </div>
 
-                  <div className="col-12">
+                  <div className="col-lg-6">
                     <label htmlFor="link">
                       Enlace
                       <input
@@ -368,6 +371,21 @@ export const UpdatePost = () => {
                         name="link"
                         id="link"
                       />
+                    </label>
+                  </div>
+
+                  <div className="col-lg-6">
+                    <label htmlFor="published">
+                      Publicado
+                      <select
+                        value={state.published}
+                        onChange={handleInputChange}
+                        name="published"
+                        id="published"
+                      >
+                        <option value={true}>Sí</option>
+                        <option value={false}>No</option>
+                      </select>
                     </label>
                   </div>
 

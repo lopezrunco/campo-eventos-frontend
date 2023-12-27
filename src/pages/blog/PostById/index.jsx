@@ -164,6 +164,7 @@ const Post = ({ post }) => {
     content,
     tags,
     link,
+    published,
     createdAt,
   } = post;
 
@@ -177,6 +178,9 @@ const Post = ({ post }) => {
       <div className="content-wrapper">
         <h6>{title}</h6>
         <div className="details">
+          <small>
+            <i className={published ? "far fa-eye" : "far fa-eye-slash"} ></i> {published ? 'Publicado' : 'No publicado'}
+          </small>
           <small>
             <i className="fas fa-calendar"></i> {getDate(createdAt)}
           </small>

@@ -11,7 +11,7 @@ export const PostByUserCard = ({ post }) => {
 
   return (
     <div className="col-12">
-      <div className="my-post-card">
+      <div className={`my-post-card ${post.published ? '' : 'unpublished'}`}>
         <div className="row">
           <div className="col-lg-9">
             <div className="content">
