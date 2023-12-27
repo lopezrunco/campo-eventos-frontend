@@ -57,7 +57,7 @@ export const BackOfficeHome = () => {
               <div className="col-12 col-lg-3 mb-5 mb-lg-0 admin-home-card">
                 <h3>Anuncios</h3>
                 <div className="separator"></div>
-                <a href="/admin/anuncios/crear" title="Crea una nuevo anuncio para la sección de blog.">
+                <a href="/autor/anuncios/crear-anuncio" title="Crea una nuevo anuncio para la sección de blog.">
                   <i className="fas fa-bullhorn me-2"></i> Crear anuncio
                 </a>
                 <a href="/autor/anuncios/mis-anuncios" title="Muestra solo los anuncios creados por mí.">

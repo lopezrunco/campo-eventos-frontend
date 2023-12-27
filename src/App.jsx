@@ -51,6 +51,7 @@ import { UploadArticleImage } from "./pages/author-backoffice/UploadArticleImage
 
 import { MyAds } from "./pages/author-backoffice/MyAds";
 import { CreateAd } from "./pages/author-backoffice/CreateAd";
+import { UpdateAd } from "./pages/author-backoffice/UpdateAd";
 
 import { BackOfficeHome } from "./pages/admin-backoffice/BackOfficeHome";
 import UserList from "./pages/admin-backoffice/UserList";
@@ -338,6 +339,15 @@ function App() {
             />
 
             {/* Ad routes ------------------------------------------------ */}
+
+            <Route
+              path="/autor/anuncios/mis-anuncios/editar/:id"
+              element={
+                <RequireAuth allowedRoles={["AUTHOR", "ADMIN"]}>
+                  <UpdateAd />
+                </RequireAuth>
+              }
+            />
 
             <Route
               path="/autor/anuncios/crear-anuncio"
