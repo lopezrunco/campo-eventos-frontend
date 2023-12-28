@@ -9,7 +9,5 @@ import react from '@vitejs/plugin-react'
 // TO DO: Avoid setting global this way
 export default defineConfig({
   plugins: [react()],
-  define: {
-    global: {},
-  },
+  define: { global: 'window' }
 })
