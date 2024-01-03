@@ -168,10 +168,11 @@ const Post = ({ post }) => {
     createdAt,
   } = post;
 
-  const formattedExternalLink =
-    link.startsWith("http://") || link.startsWith("https://")
-      ? link
-      : `https://${link}`;
+  let formattedExternalLink = "";
+
+  if (link) {
+    formattedExternalLink = link.startsWith("http://") || link.startsWith("https://") ? link : `https://${link}`;
+  }
 
   return (
     <div className="post-wapper">
