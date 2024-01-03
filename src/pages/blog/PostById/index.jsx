@@ -168,6 +168,11 @@ const Post = ({ post }) => {
     createdAt,
   } = post;
 
+  const formattedExternalLink =
+    link.startsWith("http://") || link.startsWith("https://")
+      ? link
+      : `https://${link}`;
+
   return (
     <div className="post-wapper">
       {picture ? (
@@ -179,7 +184,8 @@ const Post = ({ post }) => {
         <h6>{title}</h6>
         <div className="details">
           <small>
-            <i className={published ? "far fa-eye" : "far fa-eye-slash"} ></i> {published ? 'Publicado' : 'No publicado'}
+            <i className={published ? "far fa-eye" : "far fa-eye-slash"}></i>{" "}
+            {published ? "Publicado" : "No publicado"}
           </small>
           <small>
             <i className="fas fa-calendar"></i> {getDate(createdAt)}
@@ -199,7 +205,7 @@ const Post = ({ post }) => {
           {link && (
             <a
               className="button view-more"
-              href={link}
+              href={formattedExternalLink}
               target="_blank"
               rel="noreferrer"
             >
