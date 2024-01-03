@@ -14,6 +14,7 @@ import {
 
 import { Home } from "./pages/Home";
 import { Servicios } from "./pages/Servicios";
+import { Contacto } from "./pages/Contacto";
 import EventsList from "./pages/events/EventsList";
 import EventById from "./pages/events/EventById";
 import LotById from "./pages/events/LotById";
@@ -441,6 +442,7 @@ function App() {
 
             <Route path="/mensaje" element={<Message />} />
             <Route path="/forbidden" element={<Forbidden />} />
+            <Route path="/contacto" element={<Contacto />} />
             <Route path="/servicios" element={<Servicios />} />
             <Route path="/login" element={<Login />} />
             {/* <Route path="/register" element={<Register />} /> */}

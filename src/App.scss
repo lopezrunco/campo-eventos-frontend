@@ -85,6 +85,48 @@ input[type="file"] {
   position: relative;
 }
 
+// Cards
+.info-card {
+  width: 100%;
+  border-radius: $sm-border-radius;
+  overflow: hidden;
+  border: $border;
+  padding: 2rem;
+
+  &:hover,
+  &:active {
+    background-color: lighten($color: $medium-light-color, $amount: 5);
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+      font-size: 3rem;
+      color: $primary-color;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &.green {
+    background-color: $primary-color;
+
+    h4,
+    a,
+    .icon {
+      color: $gray-color;
+    }
+
+    &:hover,
+    &:active {
+      background-color: $primary-medium-dark-color;
+    }
+  }
+}
+
 // Tags
 .tag {
   border-radius: $sm-border-radius;
