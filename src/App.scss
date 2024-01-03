@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;0,900;1,100;1,400;1,700;1,900&family=Salsa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;0,900;1,100;1,400;1,700;1,900&display=swap');
 @import './Variables.scss';
 
 * {
@@ -573,8 +573,9 @@ h5 {
 }
 
 h6 {
-  font-family: 'Salsa', cursive;
-  font-size: 2.25rem;
+  font-size: 2.1rem;
+  text-transform: uppercase;
+  font-weight: 700;
   color: $primary-color;
 }
 

@@ -25,7 +25,7 @@ export const servicesData = [
 
 export const videosData = {
     title: 'Videos en el campo',
-    icon: 'video.svg',
+    icon: 'camera.svg',
     videos: [{
         src: 'FGyp6DCqYW0',
         title: 'EL BAQUEANO | HEREFORD'

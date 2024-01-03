@@ -5,7 +5,7 @@ import streamImg from "../../../../assets/stream.svg";
 import megaphoneImg from "../../../../assets/megaphone.svg";
 import monitorImg from "../../../../assets/monitor.svg";
 import hammerImg from "../../../../assets/hammer.svg";
-import videoImg from "../../../../assets/stream.svg";
+import videoImg from "../../../../assets/camera.svg";
 
 import "./styles.scss";
 

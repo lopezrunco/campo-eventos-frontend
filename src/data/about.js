@@ -14,8 +14,20 @@ export const aboutData = {
         link: 'mailto:campoeventos@gmail.com'
     }],
     social: [{
+        iconClassname: 'fab fa-facebook icon',
+        info: '@campotv.tv',
+        link: 'https://www.facebook.com/campotv.tv'
+    }, {
+        iconClassname: 'fab fa-twitter icon',
+        info: '@campotv_tv',
+        link: 'https://twitter.com/campotv_tv'
+    }, {
+        iconClassname: 'fab fa-instagram icon',
+        info: '@campotv.tv',
+        link: 'https://www.instagram.com/campotv.tv/'
+    }, {
         iconClassname: 'fab fa-youtube icon',
-        info: '@CampoEventos',
-        link: 'https://www.youtube.com/@CampoEventos'
+        info: '@ProduccionesOroVerde',
+        link: 'https://www.youtube.com/@ProduccionesOroVerde'
     }]
 }

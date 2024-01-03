@@ -130,10 +130,10 @@ export const Home = () => {
         bgClass="bg-light"
         containerClass="container"
         btnClass="button-dark-outline"
-        items="3"
+        items="6"
         colClass={"col-lg-4"}
         cardType={ALL}
-        showTitle={true}
+        showTitle={false}
       />
 
       <div className="container">
