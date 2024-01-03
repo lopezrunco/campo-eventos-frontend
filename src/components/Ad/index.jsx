@@ -78,30 +78,37 @@ export const Ad = ({ position }) => {
   }, [position]);
 
   const isPositionAllowed = allowedPositions.includes(position);
-  return (
-    <div className="ad">
-      {isPositionAllowed ? (
-        state.ads.length > 0 ? (
-          state.ads.map(
-            (ad) =>
-              ad.published && (
-                <div key={ad.id} className="text-center my-5 overflow-hidden">
-                  <a href={ad.link} target="_blank" rel="noreferrer">
-                    <img
-                      src={ad.imgUrl}
-                      alt={ad.title}
-                      width="100%"
-                      className="sm-border-radius"
-                      title={`Visitar ${ad.title}`}
-                    />
-                  </a>
-                </div>
-              )
-          )
-        ) : console.log(`The position ${position} does not have any ad associated.`)
-      ) : (
-        <p>Ocurrió un error al cargar el anuncio.</p>
-      )}
-    </div>
-  );
+  !isPositionAllowed && <p>Ocurrió un error al cargar el anuncio.</p>;
+
+  if (state.ads.length > 0) {
+    const publishedAds = state.ads.filter((ad) => ad.published);
+    return (
+      <div className="ad">
+        {publishedAds.map((ad) => (
+          <div key={ad.id} className="text-center my-5 overflow-hidden">
+            {ad.link ? (
+              <a href={ad.link} target="_blank" rel="noreferrer">
+                <img
+                  src={ad.imgUrl}
+                  alt={ad.title}
+                  width="100%"
+                  className="sm-border-radius"
+                  title={`Visitar ${ad.title}`}
+                />
+              </a>
+            ) : (
+              <img
+                src={ad.imgUrl}
+                alt={ad.title}
+                width="100%"
+                className="sm-border-radius"
+                title={`Visitar ${ad.title}`}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return null; // If no ads associated
 };
