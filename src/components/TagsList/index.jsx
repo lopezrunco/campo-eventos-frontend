@@ -10,7 +10,7 @@ import {
   FETCH_TAGS_SUCCESS,
 } from "../../utils/action-types";
 
-import './styles.scss'
+import "./styles.scss";
 
 const initialState = {
   tagsList: [],
@@ -30,7 +30,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         isFetching: false,
-        tagsList: action.payload.tags,
+        tagsList: action.payload.tags.filter((tag) => tag.trim() !== ""), // Filter empty or whitespace tags
       };
     case FETCH_TAGS_FAILURE:
       return {
@@ -94,7 +94,11 @@ export const TagsList = () => {
         <p>No hay etiquetas que mostrar</p>
       ) : (
         state.tagsList.map((tag, i) => {
-          return <a href={`/articulos/etiqueta/${tag}`} key={i}>{tag}</a>;
+          return (
+            <a href={`/articulos/etiqueta/${tag}`} key={i}>
+              {tag}
+            </a>
+          );
         })
       )}
     </div>
