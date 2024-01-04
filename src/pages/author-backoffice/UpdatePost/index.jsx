@@ -392,7 +392,6 @@ export const UpdatePost = () => {
                   <div className="col-12">
                     <label htmlFor="content">
                       Contenido
-                      {/* TO DO: fix error while typing */}
                       <Editor
                         editorState={editorState}
                         wrapperClassName="card"
