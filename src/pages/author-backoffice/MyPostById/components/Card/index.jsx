@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { getDate } from "../../../../../utils/get-date";
 
-import imgUrl from "../../../../../assets/no-img.jpg";
+import imgUrl from "../../../../../assets/no-media.jpg";
 
 import { DeletePostModal } from "./components/DeletePostModal";
 

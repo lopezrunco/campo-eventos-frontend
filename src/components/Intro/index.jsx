@@ -1,7 +1,7 @@
 import React from "react";
 
 import heroLogoImgUrl from "../../assets/hero-logo.png";
-import mobileLogo from "../../assets/campoeventos-logo-alfa.png";
+import mobileLogo from "../../assets/logo-alfa.png";
 
 import "./styles.scss";
 

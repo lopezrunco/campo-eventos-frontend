@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useReducer } from "react";
 
-import imgUrl from "../../assets/no-img.jpg";
+import imgUrl from "../../assets/no-media.jpg";
 
 import { refreshToken } from "../../utils/refresh-token";
 import { apiUrl } from "../../utils/api-url";

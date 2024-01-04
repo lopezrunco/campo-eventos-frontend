@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import imgUrl from "../../../../assets/no-img.jpg";
+import imgUrl from "../../../../assets/no-media.jpg";
 
 import { getDate } from "../../../../utils/get-date";
 import {
