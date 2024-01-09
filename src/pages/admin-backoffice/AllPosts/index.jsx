@@ -19,7 +19,6 @@ import { Title } from "../../../components/Title";
 import { Loader } from "../../../components/Loader";
 import { PostByUserCard } from "../../author-backoffice/MyPosts/components/PostByUserCard";
 import Pagination from "../../../components/Pagination";
-import { SearchArticles } from "../../../components/SearchArticles";
 
 const initialState = {
   postsList: [],
@@ -235,7 +234,6 @@ export const AllPosts = () => {
               <React.Fragment>
                 <div className="blog-options">
                   <SortArticles />
-                  <SearchArticles />
                 </div>
                 {state.postsList.length > 0 ? (
                   state.postsList.map((post) => (

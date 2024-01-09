@@ -66,23 +66,13 @@ export const SearchArticles = () => {
   const { state: authState, dispatch: authDispatch } = useContext(AuthContext);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const searchEndpoint = () => {
-    return authState.token
-      ? apiUrl(
-          `/posts/my-posts/search?userId=${encodeURIComponent(
-            authState.user.id
-          )}&title=${encodeURIComponent(searchQuery)}`
-        )
-      : apiUrl(`/posts/search/published?title=${encodeURIComponent(searchQuery)}`);
-  };
-
   const handleSearch = () => {
     if (searchQuery.trim() !== "") {
       dispatch({
         type: FETCH_POSTS_REQUEST,
       });
 
-      fetch(searchEndpoint())
+      fetch(apiUrl(`/posts/search/published?title=${encodeURIComponent(searchQuery)}`))
         .then((response) => {
           if (response.ok) {
             return response.json();

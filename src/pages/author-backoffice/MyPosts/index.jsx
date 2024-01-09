@@ -19,7 +19,6 @@ import { Title } from "../../../components/Title";
 import { Loader } from "../../../components/Loader";
 import Pagination from "../../../components/Pagination";
 import { PostByUserCard } from "./components/PostByUserCard";
-import { SearchArticles } from "../../../components/SearchArticles";
 
 const initialState = {
   postsList: [],
@@ -241,7 +240,6 @@ export const MyPosts = () => {
               <React.Fragment>
                 <div className="blog-options">
                   <SortArticles />
-                  <SearchArticles />
                   <a className="button button-dark" href="/autor/articulos/crear">
                     <i className="fas fa-plus"></i> Crear artículo
                   </a>
