@@ -11,6 +11,7 @@ import {
 import { AuthContext } from "../../../App";
 import { apiUrl } from "../../../utils/api-url";
 import { refreshToken } from "../../../utils/refresh-token";
+import { returnRouteAdsActions } from "../../../utils/return-route-by-user-type";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
@@ -147,7 +148,7 @@ export const CreateAd = () => {
             title: "Anuncio creado",
             message: "El anuncio ha sido creado con éxito.",
             duration: "2000",
-            navigateTo: "/autor/anuncios/mis-anuncios",
+            navigateTo: returnRouteAdsActions(authState.user.role),
           },
         });
       })

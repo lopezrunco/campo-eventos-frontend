@@ -25,6 +25,7 @@ import {
   HIDE_LOADER,
   SHOW_LOADER,
 } from "../../../utils/action-types";
+import { returnRouteBlogActions } from "../../../utils/return-route-by-user-type";
 
 import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
@@ -267,7 +268,7 @@ export const UpdatePost = () => {
             title: "Artículo editado",
             message: "El artículo ha sido editado con éxito.",
             duration: "2000",
-            navigateTo: "/autor/articulos/mis-articulos",
+            navigateTo: returnRouteBlogActions(authState.user.role),
           },
         });
       })

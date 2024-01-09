@@ -24,6 +24,7 @@ import { Breadcrumbs } from "../../../components/Breadcrumbs";
 import { Title } from "../../../components/Title";
 import { refreshToken } from "../../../utils/refresh-token";
 import { apiUrl } from "../../../utils/api-url";
+import { returnRouteBlogActions } from "../../../utils/return-route-by-user-type";
 
 const initialState = {
   title: "",
@@ -264,7 +265,7 @@ export const CreatePost = () => {
             title: "Artículo creado",
             message: "El artículo ha sido creado con éxito.",
             duration: "2000",
-            navigateTo: "/autor/articulos/mis-articulos",
+            navigateTo: returnRouteBlogActions(authState.user.role),
           },
         });
       })

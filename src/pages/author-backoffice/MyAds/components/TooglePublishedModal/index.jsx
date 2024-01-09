@@ -9,6 +9,7 @@ import {
 import { AuthContext } from "../../../../../App";
 import { apiUrl } from "../../../../../utils/api-url";
 import { refreshToken } from "../../../../../utils/refresh-token";
+import { returnRouteAdsActions } from "../../../../../utils/return-route-by-user-type";
 
 const initialState = {
   published: undefined,
@@ -85,7 +86,7 @@ export const TooglePublishedModal = ({
               published ? "despublicado" : "publicado"
             } con éxito.`,
             duration: "2000",
-            navigateTo: "/autor/anuncios/mis-anuncios",
+            navigateTo: returnRouteAdsActions(authState.user.role),
           },
         });
       })

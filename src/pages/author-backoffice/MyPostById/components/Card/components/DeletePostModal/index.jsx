@@ -9,6 +9,7 @@ import {
   DELETE_POST_REQUEST,
   DELETE_POST_SUCCESS,
 } from "../../../../../../../utils/action-types";
+import { returnRouteBlogActions } from "../../../../../../../utils/return-route-by-user-type";
 
 const initialState = {
   post: undefined,
@@ -75,7 +76,7 @@ export const DeletePostModal = ({ postId, closeFunction }) => {
             title: "Artículo borrado",
             message: "El artículo ha sido borrado con éxito.",
             duration: "2000",
-            navigateTo: "/autor/articulos/mis-articulos",
+            navigateTo: returnRouteBlogActions(authState.user.role),
           },
         });
       })
