@@ -20,12 +20,12 @@ export const aboutData = {
         info: 'Montevideo, Uruguay',
     }],
     social: [{
-        iconClassname: 'fab fa-facebook icon',
+        iconClassname: 'fa-brands fa-facebook-f icon',
         info: '@campotv.tv',
         title: 'Facebook',
         link: 'https://www.facebook.com/campotv.tv'
     }, {
-        iconClassname: 'fab fa-twitter icon',
+        iconClassname: 'fa-brands fa-x-twitter icon',
         info: '@campotv_tv',
         title: 'Twitter',
         link: 'https://twitter.com/campotv_tv'

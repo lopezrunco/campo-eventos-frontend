@@ -19,7 +19,7 @@ export const ShareOnSocialMedia = ({ url }) => {
   return (
     <div className="social-share">
       <a onClick={() => shareOnSocial('facebook')}><i className="fab fa-facebook"></i></a>
-      <a onClick={() => shareOnSocial('twitter')}><i className="fab fa-twitter"></i></a>
+      <a onClick={() => shareOnSocial('twitter')}><i className="fa-brands fa-x-twitter"></i></a>
       <a onClick={() => shareOnSocial('linkedIn')}><i className="fab fa-linkedin-in"></i></a>
       <a onClick={() => shareOnSocial('whatsapp')}><i className="fab fa-whatsapp"></i></a>
     </div>
