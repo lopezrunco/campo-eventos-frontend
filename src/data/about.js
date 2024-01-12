@@ -7,13 +7,13 @@ export const aboutData = {
     contactInfo: [{
         iconClassname: 'fas fa-phone icon',
         title: 'Teléfono',
-        info: '(+598) 00 000 000',
-        link: 'tel:+59800000000'
+        info: '095 674 393',
+        link: 'tel:+59895674393'
     }, {
         iconClassname: 'fas fa-envelope icon',
         title: 'Email',
-        info: 'campoeventos@gmail.com',
-        link: 'mailto:campoeventos@gmail.com'
+        info: 'campotv@gmail.com',
+        link: 'mailto:campotv@gmail.com'
     }, {
         iconClassname: 'fas fa-map-marker-alt icon',
         title: 'Dirección',
@@ -36,8 +36,8 @@ export const aboutData = {
         link: 'https://www.instagram.com/campotv.tv/'
     }, {
         iconClassname: 'fab fa-youtube icon',
-        info: '@ProduccionesOroVerde',
+        info: '@CampoEventos',
         title: 'Youtube',
-        link: 'https://www.youtube.com/@ProduccionesOroVerde'
+        link: 'https://www.youtube.com/@CampoEventos'
     }]
 }
