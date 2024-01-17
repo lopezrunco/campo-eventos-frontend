@@ -200,6 +200,7 @@ function UpdateEvent() {
       method: "PUT",
       headers: {
         Authorization: authState.token,
+        UserRole: authState.role,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({

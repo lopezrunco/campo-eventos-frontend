@@ -154,6 +154,7 @@ export const AllPosts = () => {
         method: "GET",
         headers: {
           Authorization: authState.token,
+          UserRole: authState.role,
           "Content-Type": "application/json",
         },
       })
