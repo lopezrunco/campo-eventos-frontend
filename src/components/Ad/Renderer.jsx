@@ -1,4 +1,4 @@
-import { adAllowedPositions } from "../../utils/ad-allowed-positions";
+import { adAllowedPositions } from "../../config/ad-config";
 
 export const Renderer = ({ state, position }) => {
   const isPositionAllowed = adAllowedPositions.includes(position);
