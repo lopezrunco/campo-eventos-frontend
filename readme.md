@@ -4,6 +4,7 @@
 <br />
 <div align="center">
 <h3 align="center">Campo Eventos Front end</h3>
+  This repository powers the user interface of the CampoEventos web app, granting users access to live-streamed livestock auctions and the functionality to submit pre-auction offers.
   <p align="center">
     <a href='https://campoeventos.com.uy'>View online</a>
   </p>
