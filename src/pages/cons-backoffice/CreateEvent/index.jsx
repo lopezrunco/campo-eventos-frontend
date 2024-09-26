@@ -4,8 +4,9 @@ import React, { useContext, useReducer } from "react";
 
 // import { cleanTextareas } from "../../../utils/cleanTextareas";
 const CLOUDINARY_ID = import.meta.env.VITE_CLOUDINARY_ID;
+import { validateYoutubeUrl } from "../../../utils/validate-you-tube-url";
 import { refreshToken } from "../../../utils/refresh-token";
-import { getYoutubeId } from "../../../utils/getYoutubeID";
+// import { getYoutubeId } from "../../../utils/getYoutubeID";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 import {
@@ -223,13 +224,10 @@ function CreateEvent() {
         location: state.location,
         duration: state.duration,
         startBroadcastTimestamp: getTimeStamp(state.eventDate, state.eventHour),
-        broadcastLinkId:
-          state.broadcastLinkId === undefined
-            ? undefined
-            : getYoutubeId(state.broadcastLinkId),
+        broadcastLinkId: validateYoutubeUrl(state.broadcastLinkId),
         externalLink: state.externalLink,
         coverImgName: state.imageUrl,
-        userId: authState.user.id,
+        userId: authState.user._id,
       }),
     })
       .then((response) => {
