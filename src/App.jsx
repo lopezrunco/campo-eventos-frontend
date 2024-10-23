@@ -449,6 +449,8 @@ function App() {
             <Route path="/user-created" element={<UserCreated />} />
             <Route path="/remates/:id" element={<EventById />} />
             <Route path="/cartelera" element={<EventsList />} />
+
+            {/* TODO: Home page directory has blog components inside, refactor that, as now Homepage is showing events instead of blog posts. */}
             <Route path="/" element={<Home />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
