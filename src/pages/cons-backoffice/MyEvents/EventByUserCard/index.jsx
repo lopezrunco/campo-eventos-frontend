@@ -33,7 +33,7 @@ function EventByUserCard({ event }) {
                 {event.broadcastLinkId && (
                   <a
                     className="button view-more ms-3"
-                    href={`https://www.youtube.com/watch/${event.broadcastLinkId}`}
+                    href={event.broadcastLinkId}
                     target="_blank"
                     rel="noreferrer"
                   >
