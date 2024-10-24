@@ -17,6 +17,7 @@ import { Title } from "../../components/Title";
 import LoadingMessage from "../../components/LoadingMessage";
 import Card from "../events/EventsList/components/Card";
 import Pagination from "../../components/Pagination";
+import { ContactBanner } from "../../components/ContactBanner";
 
 const initialState = {
   eventsList: [],
@@ -126,6 +127,15 @@ export const Home = () => {
         viewport={{ once: true }}
       >
         <Live events={state.eventsList} />
+      </motion.div>
+
+      <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.3 }}
+            viewport={{ once: true }}
+          >
+        <ContactBanner />
       </motion.div>
 
       <section className="events">
