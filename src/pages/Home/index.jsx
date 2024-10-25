@@ -121,21 +121,21 @@ export const Home = () => {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.3 }}
-        viewport={{ once: true }}
-      >
-        <Live events={state.eventsList} />
-      </motion.div>
-
-      <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.3 }}
             viewport={{ once: true }}
           >
         <ContactBanner />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.3 }}
+        viewport={{ once: true }}
+      >
+        <Live events={state.eventsList} />
       </motion.div>
 
       <section className="events">
