@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import './styles.scss'
 
 export const ScrollTop = ({ scrollTo }) => {
@@ -24,5 +25,4 @@ export const ScrollTop = ({ scrollTo }) => {
             </a>
         )
     }
-
 }

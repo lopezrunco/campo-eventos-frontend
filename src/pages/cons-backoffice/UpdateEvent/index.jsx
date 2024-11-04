@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import React, { useContext, useEffect, useReducer, useState } from "react";
 
 import { refreshToken } from "../../../utils/refresh-token";
-import { getYoutubeId } from "../../../utils/getYoutubeID";
+import { validateYoutubeUrl } from "../../../utils/validate-you-tube-url";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 import {
@@ -71,7 +71,7 @@ const reducer = (state, action) => {
         location: action.payload.event.location,
         duration: action.payload.event.duration,
         startBroadcastTimestamp: action.payload.event.startBroadcastTimestamp,
-        broadcastLinkId: `https://www.youtube.com/watch/${action.payload.event.broadcastLinkId}`,
+        broadcastLinkId: action.payload.event.broadcastLinkId,
         externalLink: action.payload.event.externalLink,
         eventDate: action.payload.event.startBroadcastTimestamp.split("T")[0],
         eventHour: new Date(
@@ -215,10 +215,7 @@ function UpdateEvent() {
         location: state.location,
         duration: state.duration,
         startBroadcastTimestamp: getTimeStamp(state.eventDate, state.eventHour),
-        broadcastLinkId:
-          state.broadcastLinkId === undefined
-            ? null
-            : getYoutubeId(state.broadcastLinkId),
+        broadcastLinkId: validateYoutubeUrl(state.broadcastLinkId),
         externalLink: state.externalLink,
       }),
     })
