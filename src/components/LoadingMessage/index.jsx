@@ -1,4 +1,3 @@
-
 function LoadingMessage({title, message}) {
   return (
     <div className="text-center">
