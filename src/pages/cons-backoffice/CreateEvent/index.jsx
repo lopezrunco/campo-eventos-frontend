@@ -227,7 +227,7 @@ function CreateEvent() {
         broadcastLinkId: validateYoutubeUrl(state.broadcastLinkId),
         externalLink: state.externalLink,
         coverImgName: state.imageUrl,
-        userId: authState.user._id,
+        userId: authState.user.id,
       }),
     })
       .then((response) => {
