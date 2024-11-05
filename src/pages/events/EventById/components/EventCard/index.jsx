@@ -123,7 +123,7 @@ function EventCard({ event }) {
                 {event.broadcastLinkId && (
                   <a
                     className="button view-more"
-                    href={`https://www.youtube.com/watch/${event.broadcastLinkId}`}
+                    href={event.broadcastLinkId}
                     target="_blank"
                     rel="noreferrer"
                   >

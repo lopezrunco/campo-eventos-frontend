@@ -1,4 +1,5 @@
 import { getDate } from "../../utils/get-date"
+import { getYoutubeId } from "../../utils/getYoutubeID"
 
 import { Title } from "../Title"
 
@@ -6,7 +7,7 @@ const LiveEventItem = ({ event }) => {
     return (
         <div className="item">
             <iframe
-                src={`https://www.youtube.com/embed/${event.broadcastLinkId}`}
+                src={`https://www.youtube.com/embed/${getYoutubeId(event.broadcastLinkId)}`}
                 title="YouTube video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
