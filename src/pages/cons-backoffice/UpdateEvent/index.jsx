@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useContext, useEffect, useReducer, useState } from "react";
 
-import { refreshToken } from "../../../utils/refresh-token";
+import { formatToUruguayLocalTime } from "../../../utils/formatToUYLocalTime";
 import { validateYoutubeUrl } from "../../../utils/validate-you-tube-url";
+import { refreshToken } from "../../../utils/refresh-token";
 import { apiUrl } from "../../../utils/api-url";
 import { AuthContext } from "../../../App";
 import {
@@ -73,13 +74,8 @@ const reducer = (state, action) => {
         startBroadcastTimestamp: action.payload.event.startBroadcastTimestamp,
         broadcastLinkId: action.payload.event.broadcastLinkId,
         externalLink: action.payload.event.externalLink,
-        eventDate: action.payload.event.startBroadcastTimestamp.split("T")[0],
-        eventHour: new Date(
-          action.payload.event.startBroadcastTimestamp
-        ).toLocaleString("es-uy", {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
+        eventDate: formatToUruguayLocalTime(action.payload.event.startBroadcastTimestamp, 'eventDate'),
+        eventHour: formatToUruguayLocalTime(action.payload.event.startBroadcastTimestamp, 'eventHour')
       };
     case GET_MY_EVENT_FAILURE:
       return {
