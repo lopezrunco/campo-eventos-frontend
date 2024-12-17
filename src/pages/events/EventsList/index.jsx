@@ -145,10 +145,7 @@ function EventsList() {
             transition={{ duration: 1.3 }}
             viewport={{ once: true }}
           >
-            <Title
-              title="Cartelera de remates"
-              subtitle="Estos son los próximos remates que estaremos transmitiendo en vivo."
-            />
+            <Title title="Cartelera" />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
